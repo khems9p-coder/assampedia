@@ -6,13 +6,13 @@ import 'package:assampedia/core/theme/theme_controller.dart';
 import 'package:assampedia/main.dart';
 
 void main() {
-  testWidgets('Welcome screen shows the brand and colour guide', (tester) async {
+  testWidgets('Welcome screen shows the brand', (tester) async {
     SharedPreferences.setMockInitialValues({});
     final controller = ThemeController();
     await controller.load();
     await tester.pumpWidget(AssampediaApp(themeController: controller));
     expect(find.text('Explore Assam. Learn. Prepare. Succeed.'), findsOneWidget);
-    expect(find.text('Colour guide'), findsOneWidget);
+    expect(find.text('অসমীয়া | English'), findsOneWidget);
   });
 
   testWidgets('Theme choice is remembered', (tester) async {
