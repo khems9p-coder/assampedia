@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+<defs><clipPath id="ca"><circle cx="256" cy="256" r="232"/></clipPath></defs>
+<circle cx="256" cy="256" r="248" fill="#D4A62A"/>
+<g clip-path="url(#ca)">
+<rect width="512" height="512" fill="#1E6B3C"/>
+<path d="M0,340 C90,300 170,380 256,345 C340,310 420,380 512,340 L512,512 L0,512 Z" fill="#1B5E8C"/>
+<path d="M0,372 C90,332 170,412 256,377 C340,342 420,412 512,372" stroke="#FBF6EA" stroke-width="6" fill="none" opacity=".55"/>
+<g transform="translate(86,150) scale(1.7)"><path d="M18,70 C16,46 40,34 72,33 C98,31 118,34 132,42 C140,40 147,43 152,49 C162,56 172,64 180,73 L191,52 C194,47 199,49 198,54 L189,84 C187,90 181,93 174,92 C166,96 157,96 151,92 C149,100 150,108 151,117 L137,117 L134,100 C120,102 106,102 94,100 L91,117 L78,117 L77,100 C70,99 64,98 59,97 L57,117 L43,117 L41,96 C29,92 19,84 18,70 Z M143,47 L145,32 C147,30 150,31 150,34 L154,47 Z" fill="#D4A62A"/><circle cx="168" cy="66" r="2.6" fill="#1E6B3C"/><path d="M126,46 C120,62 121,80 128,98 M64,40 C58,58 58,78 64,95" stroke="#1E6B3C" stroke-width="2.4" fill="none" opacity=".5"/></g>
+<rect x="0" y="440" width="512" height="28" fill="#FBF6EA"/><path d="M0,468 L14,440 L28,468 Z" fill="#B3261E"/><path d="M28,468 L42,440 L56,468 Z" fill="#B3261E"/><path d="M56,468 L70,440 L84,468 Z" fill="#B3261E"/><path d="M84,468 L98,440 L112,468 Z" fill="#B3261E"/><path d="M112,468 L126,440 L140,468 Z" fill="#B3261E"/><path d="M140,468 L154,440 L168,468 Z" fill="#B3261E"/><path d="M168,468 L182,440 L196,468 Z" fill="#B3261E"/><path d="M196,468 L210,440 L224,468 Z" fill="#B3261E"/><path d="M224,468 L238,440 L252,468 Z" fill="#B3261E"/><path d="M252,468 L266,440 L280,468 Z" fill="#B3261E"/><path d="M280,468 L294,440 L308,468 Z" fill="#B3261E"/><path d="M308,468 L322,440 L336,468 Z" fill="#B3261E"/><path d="M336,468 L350,440 L364,468 Z" fill="#B3261E"/><path d="M364,468 L378,440 L392,468 Z" fill="#B3261E"/><path d="M392,468 L406,440 L420,468 Z" fill="#B3261E"/><path d="M420,468 L434,440 L448,468 Z" fill="#B3261E"/><path d="M448,468 L462,440 L476,468 Z" fill="#B3261E"/><path d="M476,468 L490,440 L504,468 Z" fill="#B3261E"/><path d="M504,468 L518,440 L532,468 Z" fill="#B3261E"/>
+</g>
+<circle cx="256" cy="256" r="232" fill="none" stroke="#FBF6EA" stroke-width="6"/>
+</svg>
