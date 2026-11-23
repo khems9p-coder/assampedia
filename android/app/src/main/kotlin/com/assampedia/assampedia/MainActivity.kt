@@ -1,0 +1,5 @@
+package com.assampedia.assampedia
+
+import io.flutter.embedding.android.FlutterActivity
+
+class MainActivity : FlutterActivity()
