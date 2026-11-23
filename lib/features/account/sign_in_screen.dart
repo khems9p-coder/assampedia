@@ -23,10 +23,17 @@ class _SignInScreenState extends State<SignInScreen> {
     });
     try {
       await action();
+    } on AuthRetryableFetchException {
+      // Network problem (no internet / server unreachable).
+      if (mounted) setState(() => _message = context.s.loadFailed);
     } on AuthException catch (e) {
-      setState(() => _message = e.message);
+      final network = e.message.contains('SocketException') ||
+          e.message.contains('ClientException');
+      if (mounted) {
+        setState(() => _message = network ? context.s.loadFailed : e.message);
+      }
     } catch (e) {
-      setState(() => _message = context.s.loadFailed);
+      if (mounted) setState(() => _message = context.s.loadFailed);
     } finally {
       if (mounted) setState(() => _busy = false);
     }
