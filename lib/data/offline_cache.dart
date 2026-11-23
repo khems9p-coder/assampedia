@@ -33,4 +33,22 @@ class OfflineCache {
     if (!await f.exists()) return null;
     return jsonDecode(await f.readAsString());
   }
+
+  /// Every saved item whose name starts with [prefix].
+  Future<List<dynamic>> readAll(String prefix) async {
+    final dir = await _folder();
+    if (dir == null) return const [];
+    final out = <dynamic>[];
+    await for (final f in dir.list()) {
+      final name = f.uri.pathSegments.last;
+      if (f is File && name.startsWith(_safe(prefix)) && name.endsWith('.json')) {
+        try {
+          out.add(jsonDecode(await f.readAsString()));
+        } catch (_) {
+          // Skip a damaged file.
+        }
+      }
+    }
+    return out;
+  }
 }

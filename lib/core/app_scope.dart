@@ -3,7 +3,9 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../data/admin_repository.dart';
 import '../data/auth_service.dart';
+import '../data/bookmark_store.dart';
 import '../data/content_repository.dart';
+import '../data/models.dart';
 import 'i18n/app_lang.dart';
 import 'i18n/strings.dart';
 import 'theme/theme_controller.dart';
@@ -16,13 +18,36 @@ class AppServices {
     required this.content,
     required this.auth,
     this.admin,
-  });
+    BookmarkStore? bookmarks,
+  }) : bookmarks = bookmarks ?? BookmarkStore();
 
   final LanguageController language;
   final ThemeController theme;
   final ContentRepository? content;
   final AuthService auth;
   final AdminRepository? admin;
+  final BookmarkStore bookmarks;
+
+  Future<List<Term>>? _terms;
+
+  /// Dictionary terms, downloaded once per app start.
+  Future<List<Term>> terms() {
+    final repo = content;
+    if (repo == null) return Future.value(const []);
+    return _terms ??= repo.terms().catchError((Object e) {
+      _terms = null;
+      throw e;
+    });
+  }
+
+  /// Call after an admin changes the dictionary.
+  void refreshTerms() => _terms = null;
+
+  static const _sideBySideKey = 'side_by_side';
+
+  Future<bool> sideBySide() async => (await SharedPreferences.getInstance()).getBool(_sideBySideKey) ?? false;
+
+  Future<void> setSideBySide(bool on) async => (await SharedPreferences.getInstance()).setBool(_sideBySideKey, on);
 
   static const _lastChapterKey = 'last_chapter';
 
@@ -41,8 +66,7 @@ class AppScope extends InheritedWidget {
   const AppScope({super.key, required this.services, required super.child});
   final AppServices services;
 
-  static AppServices of(BuildContext context) =>
-      context.dependOnInheritedWidgetOfExactType<AppScope>()!.services;
+  static AppServices of(BuildContext context) => context.dependOnInheritedWidgetOfExactType<AppScope>()!.services;
 
   @override
   bool updateShouldNotify(AppScope oldWidget) => services != oldWidget.services;
@@ -50,11 +74,9 @@ class AppScope extends InheritedWidget {
 
 /// Rebuilds every screen that shows text when the language changes.
 class LanguageScope extends InheritedNotifier<LanguageController> {
-  const LanguageScope({super.key, required LanguageController controller, required super.child})
-      : super(notifier: controller);
+  const LanguageScope({super.key, required LanguageController controller, required super.child}) : super(notifier: controller);
 
-  static LanguageController of(BuildContext context) =>
-      context.dependOnInheritedWidgetOfExactType<LanguageScope>()!.notifier!;
+  static LanguageController of(BuildContext context) => context.dependOnInheritedWidgetOfExactType<LanguageScope>()!.notifier!;
 }
 
 extension AppContext on BuildContext {

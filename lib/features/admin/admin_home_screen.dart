@@ -4,6 +4,7 @@ import '../../core/app_scope.dart';
 import '../../core/widgets/common.dart';
 import '../../data/models.dart';
 import 'admin_chapter_list_screen.dart';
+import 'admin_terms_screen.dart';
 
 /// Admin start page: pick a category to manage its chapters.
 class AdminHomeScreen extends StatefulWidget {
@@ -34,6 +35,16 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
           }
           if (!snap.hasData) return const Center(child: CircularProgressIndicator());
           return ListView(children: [
+            Card(
+              margin: const EdgeInsets.fromLTRB(12, 12, 12, 4),
+              child: ListTile(
+                leading: const Icon(Icons.translate),
+                title: const Text('Dictionary terms'),
+                subtitle: const Text('Words readers can tap inside chapters'),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AdminTermsScreen())),
+              ),
+            ),
             const Padding(
               padding: EdgeInsets.fromLTRB(16, 12, 16, 4),
               child: Text('Choose a category to add or edit its chapters.'),

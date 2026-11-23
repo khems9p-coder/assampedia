@@ -10,11 +10,16 @@ Do this once, in the Supabase dashboard.
 4. Back in **SQL Editor**, make that account the admin (put your email in):
 
    ```sql
-   update public.profiles set role = 'admin'
-   where id = (select id from auth.users where email = 'your@email.com');
+   insert into public.profiles (id, role)
+   select id, 'admin' from auth.users where email = 'your@email.com'
+   on conflict (id) do update set role = 'admin';
    ```
 
-5. Close and reopen the app. The **Admin panel** appears on the Me tab.
+5. In the app, sign out and sign in again. The **Admin panel** appears on the Me tab.
+
+## Updates (run each file once, in order, each in its own New query)
+
+- `migrations/0002_terms.sql` (Phase 3): the dictionary of tappable terms and faster search.
 
 ## How content is stored
 
@@ -29,4 +34,5 @@ Readers can only read published versions. Only admin accounts can change content
 ## Testing the security rules locally
 
 `tests/local_stub.sql` stands in for Supabase's auth and storage on plain
-PostgreSQL; `tests/rls_test.sql` checks who can read and write what.
+PostgreSQL; `tests/rls_test.sql` checks who can read and write what, and
+`tests/terms_test.sql` does the same for the dictionary.
