@@ -4,8 +4,8 @@
 class AppConfig {
   AppConfig._();
 
-  static const supabaseUrl = String.fromEnvironment('SUPABASE_URL', defaultValue: '');
-  static const supabaseKey = String.fromEnvironment('SUPABASE_KEY', defaultValue: '');
+  static const supabaseUrl = String.fromEnvironment('SUPABASE_URL', defaultValue: 'https://argjiadkwcsfjalwktwp.supabase.co');
+  static const supabaseKey = String.fromEnvironment('SUPABASE_KEY', defaultValue: 'sb_publishable_0ArqPW47PfkP5T9wXZxyhQ_gcuDCvuW');
 
   /// Demo mode shows clearly labelled sample text, used only for testing layouts.
   static const demoMode = bool.fromEnvironment('DEMO', defaultValue: false);
