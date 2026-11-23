@@ -14,9 +14,13 @@ government job profiles, current affairs, vacancies and practice tests.
 
 ## Getting the test app
 
-Every push to `main` builds an installable APK on GitHub Actions.
-Open the **Actions** tab, choose the latest **Build test app (APK)** run,
-and download `assampedia-test-apk` at the bottom of the page.
+Every push to `main` builds an installable APK on GitHub Actions and
+publishes it here, ready to open on an Android phone:
+
+https://github.com/khems9p-coder/assampedia/releases/download/test-build/assampedia-test.apk
+
+Pull requests also build the APK; it is attached to the workflow run as
+`assampedia-test-apk`.
 
 ## Project layout
 
