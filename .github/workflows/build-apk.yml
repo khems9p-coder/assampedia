@@ -36,8 +36,29 @@ jobs:
       - name: Run tests
         run: flutter test
 
+      # Uses the Play upload key when the two repository secrets exist
+      # (ANDROID_KEYSTORE_BASE64, ANDROID_KEYSTORE_PASSWORD); otherwise the debug key.
+      - name: Set up signing key
+        if: github.event_name != 'pull_request'
+        env:
+          KEYSTORE_BASE64: ${{ secrets.ANDROID_KEYSTORE_BASE64 }}
+          KEYSTORE_PASSWORD: ${{ secrets.ANDROID_KEYSTORE_PASSWORD }}
+        run: |
+          if [ -n "$KEYSTORE_BASE64" ] && [ -n "$KEYSTORE_PASSWORD" ]; then
+            echo "$KEYSTORE_BASE64" | tr -d ' \n\r' | base64 -d > android/upload-keystore.jks
+            printf 'storeFile=upload-keystore.jks\npassword=%s\n' "$KEYSTORE_PASSWORD" > android/key.properties
+            echo "Signing with the Play upload key."
+          else
+            echo "No signing secrets: using the debug key (fine for test installs, not for Play)."
+          fi
+
+      # Every build gets a higher version code, which Play requires for each upload.
       - name: Build APK
-        run: flutter build apk --release
+        run: flutter build apk --release --build-number=${{ github.run_number }}
+
+      - name: Build app bundle for Play Console
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+        run: flutter build appbundle --release --build-number=${{ github.run_number }}
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
@@ -52,8 +73,13 @@ jobs:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cp build/app/outputs/flutter-apk/app-release.apk assampedia-test.apk
+          files="assampedia-test.apk"
+          if [ -f android/key.properties ]; then
+            cp build/app/outputs/bundle/release/app-release.aab assampedia-play-upload.aab
+            files="$files assampedia-play-upload.aab"
+          fi
           gh release delete test-build --yes --cleanup-tag || true
-          gh release create test-build assampedia-test.apk \
+          gh release create test-build $files \
             --prerelease \
             --title "ASSAMPEDIA test build" \
             --notes "Latest test build from main (${GITHUB_SHA::7}). Not for the Play Store."

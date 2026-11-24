@@ -15,6 +15,7 @@ import 'data/content_repository.dart';
 import 'data/demo_content_repository.dart';
 import 'data/offline_cache.dart';
 import 'data/practice_models.dart';
+import 'data/premium_service.dart';
 import 'data/supabase_content_repository.dart';
 import 'features/onboarding/language_select_screen.dart';
 import 'features/shell/main_shell.dart';
@@ -34,6 +35,10 @@ Future<void> main() async {
     client = Supabase.instance.client;
   }
 
+  final premium = PremiumService(client);
+  // Not awaited: the app opens straight away and locks update when ready.
+  premium.start();
+
   ContentRepository? content;
   if (AppConfig.demoMode) {
     content = DemoContentRepository();
@@ -52,6 +57,7 @@ Future<void> main() async {
         bookmarks: bookmarks,
         savedJobs: savedJobs,
         progress: progress,
+        premium: premium,
       ),
     ),
   );

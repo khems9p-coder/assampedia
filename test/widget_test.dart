@@ -14,6 +14,7 @@ import 'package:assampedia/data/jobs_models.dart';
 import 'package:assampedia/data/models.dart';
 import 'package:assampedia/data/offline_cache.dart';
 import 'package:assampedia/data/practice_models.dart';
+import 'package:assampedia/data/premium_service.dart';
 import 'package:assampedia/features/admin/section_templates.dart';
 import 'package:assampedia/features/reader/reader_screen.dart';
 import 'package:assampedia/main.dart';
@@ -505,4 +506,40 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.textContaining('Option D', findRichText: true), findsOneWidget);
   });
+
+  test('Phase 6c: the first 3 of each group are free', () {
+    final p = PremiumService();
+    expect([for (var i = 0; i < 5; i++) p.canOpen(indexInGroup: i)], [true, true, true, false, false]);
+  });
+
+  testWidgets('Phase 6c: the 4th quiz of a type shows a lock and opens the Premium page', (tester) async {
+    tester.view.physicalSize = const Size(1200, 2600);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(tester.view.reset);
+    SharedPreferences.setMockInitialValues({'app_lang': 'en'});
+    final services = await _services(lang: 'en');
+    final withFour = AppServices(
+      language: services.language,
+      theme: services.theme,
+      content: _FourQuizzes(),
+      auth: services.auth,
+    );
+    await tester.pumpWidget(AssampediaApp(services: withFour));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Practice Zone'));
+    await tester.pumpAndSettle();
+    expect(find.byIcon(Icons.lock_outline), findsOneWidget);
+    await tester.tap(find.text('Quiz 4'));
+    await tester.pumpAndSettle();
+    expect(find.text('ASSAMPEDIA Premium'), findsOneWidget);
+    expect(find.text('Job vacancies always stay free'), findsOneWidget);
+  });
+}
+
+class _FourQuizzes extends DemoContentRepository {
+  @override
+  Future<List<QuestionSet>> questionSets() async => [
+    for (var i = 1; i <= 4; i++)
+      QuestionSet(id: 't$i', kind: QuizKind.topic, position: i, text: {'title_en': 'Quiz $i'}, isPublished: true, questionCount: 1),
+  ];
 }

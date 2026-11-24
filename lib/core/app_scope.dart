@@ -7,6 +7,7 @@ import '../data/bookmark_store.dart';
 import '../data/content_repository.dart';
 import '../data/models.dart';
 import '../data/practice_models.dart';
+import '../data/premium_service.dart';
 import '../data/saved_jobs_store.dart';
 import 'i18n/app_lang.dart';
 import 'i18n/strings.dart';
@@ -23,9 +24,11 @@ class AppServices {
     BookmarkStore? bookmarks,
     SavedJobsStore? savedJobs,
     PracticeProgressStore? progress,
+    PremiumService? premium,
   }) : bookmarks = bookmarks ?? BookmarkStore(),
        savedJobs = savedJobs ?? SavedJobsStore(),
-       progress = progress ?? PracticeProgressStore();
+       progress = progress ?? PracticeProgressStore(),
+       premium = premium ?? PremiumService();
 
   final LanguageController language;
   final ThemeController theme;
@@ -37,6 +40,9 @@ class AppServices {
 
   /// Quiz scores, kept on this phone.
   final PracticeProgressStore progress;
+
+  /// Premium subscription status and purchase.
+  final PremiumService premium;
 
   Future<List<Term>>? _terms;
 

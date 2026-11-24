@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../core/app_scope.dart';
 import '../../core/widgets/common.dart';
 import '../../data/practice_models.dart';
+import '../premium/paywall_screen.dart';
 import 'quiz_screen.dart';
 import 'revision_screens.dart';
 
@@ -49,7 +50,7 @@ class _PracticeScreenState extends State<PracticeScreen> {
                 return RefreshIndicator(
                   onRefresh: () async => _reload(),
                   child: ListenableBuilder(
-                    listenable: progress,
+                    listenable: Listenable.merge([progress, context.services.premium]),
                     builder: (context, _) => ListView(
                       padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
                       children: [
@@ -95,7 +96,16 @@ class _PracticeScreenState extends State<PracticeScreen> {
                                 style: theme.textTheme.titleSmall?.copyWith(color: theme.colorScheme.primary, fontWeight: FontWeight.w700),
                               ),
                             ),
-                            for (final x in sets.where((x) => x.kind == k)) _SetCard(set: x, best: progress.best(x.id)),
+                            for (final x in sets.where((x) => x.kind == k))
+                              _SetCard(
+                                set: x,
+                                best: progress.best(x.id),
+                                // The first 3 of each type (counted before the level filter) and all daily ones are free.
+                                locked: x.kind != QuizKind.daily &&
+                                    !context.services.premium.canOpen(
+                                      indexInGroup: snap.data!.where((y) => y.kind == x.kind).toList().indexOf(x),
+                                    ),
+                              ),
                           ],
                       ],
                     ),
@@ -108,7 +118,8 @@ class _PracticeScreenState extends State<PracticeScreen> {
 }
 
 class _SetCard extends StatelessWidget {
-  const _SetCard({required this.set, this.best});
+  const _SetCard({required this.set, this.best, this.locked = false});
+  final bool locked;
   final QuestionSet set;
   final QuizAttempt? best;
 
@@ -133,11 +144,11 @@ class _SetCard extends StatelessWidget {
             title: Text(set.title(lang)),
             subtitle: Text([?set.description(lang), info].join('\n')),
             isThreeLine: set.description(lang) != null,
-            trailing: const Icon(Icons.chevron_right),
-            onTap: () => open(QuizScreen(set: set)),
+            trailing: locked ? const LockIcon() : const Icon(Icons.chevron_right),
+            onTap: () => open(locked ? const PaywallScreen() : QuizScreen(set: set)),
           ),
           // Revision from the same questions (mock tests and the daily question stay unseen).
-          if (!set.isTimed && set.kind != QuizKind.daily && set.questionCount > 0)
+          if (!locked && !set.isTimed && set.kind != QuizKind.daily && set.questionCount > 0)
             Padding(
               padding: const EdgeInsets.fromLTRB(8, 0, 8, 4),
               child: Wrap(

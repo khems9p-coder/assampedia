@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../../core/app_scope.dart';
 import '../../core/i18n/app_lang.dart';
 import '../admin/admin_home_screen.dart';
+import '../jobs/vacancy_widgets.dart';
+import '../premium/paywall_screen.dart';
 import 'sign_in_screen.dart';
 
 /// "Me" tab: language, light/dark mode, account and (for admins) the admin panel.
@@ -17,11 +19,14 @@ class AccountScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(s.navMe)),
       body: ListenableBuilder(
-        listenable: Listenable.merge([services.auth, services.theme]),
+        listenable: Listenable.merge([services.auth, services.theme, services.premium]),
         builder: (context, _) {
           final auth = services.auth;
           return RefreshIndicator(
-            onRefresh: auth.refresh,
+            onRefresh: () async {
+              await auth.refresh();
+              await services.premium.refresh();
+            },
             child: ListView(
               physics: const AlwaysScrollableScrollPhysics(),
               padding: const EdgeInsets.symmetric(vertical: 8),
@@ -47,6 +52,21 @@ class AccountScreen extends StatelessWidget {
                     selected: {services.theme.mode},
                     onSelectionChanged: (v) => services.theme.setMode(v.first),
                   ),
+                ),
+                _Section(s.premium),
+                ListTile(
+                  leading: Icon(
+                    services.premium.isPremium ? Icons.workspace_premium : Icons.lock_open_outlined,
+                    color: theme.colorScheme.tertiary,
+                  ),
+                  title: Text(services.premium.isPremium ? s.premiumTitle : s.freePlan),
+                  subtitle: Text(
+                    services.premium.isPremium
+                        ? (services.premium.expiresAt == null ? s.youArePremium : s.premiumUntil(formatDate(services.premium.expiresAt!)))
+                        : s.seePremium,
+                  ),
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const PaywallScreen())),
                 ),
                 _Section(s.account),
                 if (!auth.available)
