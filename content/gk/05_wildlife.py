@@ -123,6 +123,9 @@ CHAPTERS = [
                  "The IUCN lists it as {{term:iucn-vulnerable|Vulnerable}}."),
                 ("p2", "paragraph", "verified_fact",
                  "A census in March 2025 counted 4,075 wild rhinos: 3,323 in India and 752 in Nepal. In 2006 there were only 2,577."),
+                ("img1", "image", "normal",
+                 "Chart: wild one-horned rhinos in India and Nepal together, 2006 and 2025.",
+                 "charts/rhino-count.png"),
                 ("p3", "paragraph", "normal",
                  "More than 70 percent of all one-horned rhinos live in a single place, Kaziranga National Park. "
                  "Pobitora Wildlife Sanctuary in Morigaon district has one of the largest rhino populations in Assam in a small area of about 38.8 sq km."),
@@ -141,6 +144,9 @@ CHAPTERS = [
                  "আই ইউ চি এনে ইয়াক {{term:iucn-vulnerable|বিপদাপন্ন}} প্ৰজাতি হিচাপে তালিকাভুক্ত কৰিছে।"),
                 ("p2", "paragraph", "verified_fact",
                  "২০২৫ চনৰ মাৰ্চ মাহৰ লোকপিয়লত বনত ৪,০৭৫ টা গঁড় গণনা কৰা হয়: ভাৰতত ৩,৩২৩ আৰু নেপালত ৭৫২। ২০০৬ চনত মাত্ৰ ২,৫৭৭ টা আছিল।"),
+                ("img1", "image", "normal",
+                 "চিত্ৰ: ভাৰত আৰু নেপালত মুঠ বনৰীয়া এশিঙীয়া গঁড়ৰ সংখ্যা, ২০০৬ আৰু ২০২৫।",
+                 "charts/rhino-count.png"),
                 ("p3", "paragraph", "normal",
                  "সকলো এশিঙীয়া গঁড়ৰ ৭০ শতাংশতকৈ বেছি একেটা ঠাইতে থাকে, সেয়া হ'ল কাজিৰঙা ৰাষ্ট্ৰীয় উদ্যান। "
                  "মৰিগাঁও জিলাৰ পবিতৰা বন্যপ্ৰাণী অভয়াৰণ্যত প্ৰায় ৩৮.৮ বৰ্গ কিমিৰ সৰু এলেকাত অসমৰ আটাইতকৈ ডাঙৰ গঁড়ৰ সমষ্টিসমূহৰ এটা আছে।"),

@@ -236,6 +236,13 @@
       "body": "A census in March 2025 counted 4,075 wild rhinos: 3,323 in India and 752 in Nepal. In 2006 there were only 2,577."
      },
      {
+      "block_key": "img1",
+      "block_type": "image",
+      "style": "normal",
+      "body": "Chart: wild one-horned rhinos in India and Nepal together, 2006 and 2025.",
+      "image_url": "https://raw.githubusercontent.com/khems9p-coder/assampedia/main/supabase/content/images/charts/rhino-count.png"
+     },
+     {
       "block_key": "p3",
       "block_type": "paragraph",
       "style": "normal",
@@ -278,6 +285,13 @@
       "block_type": "paragraph",
       "style": "verified_fact",
       "body": "২০২৫ চনৰ মাৰ্চ মাহৰ লোকপিয়লত বনত ৪,০৭৫ টা গঁড় গণনা কৰা হয়: ভাৰতত ৩,৩২৩ আৰু নেপালত ৭৫২। ২০০৬ চনত মাত্ৰ ২,৫৭৭ টা আছিল।"
+     },
+     {
+      "block_key": "img1",
+      "block_type": "image",
+      "style": "normal",
+      "body": "চিত্ৰ: ভাৰত আৰু নেপালত মুঠ বনৰীয়া এশিঙীয়া গঁড়ৰ সংখ্যা, ২০০৬ আৰু ২০২৫।",
+      "image_url": "https://raw.githubusercontent.com/khems9p-coder/assampedia/main/supabase/content/images/charts/rhino-count.png"
      },
      {
       "block_key": "p3",

@@ -49,10 +49,12 @@ class _AdminImportScreenState extends State<AdminImportScreen> {
     try {
       final data = await _getJson(file);
       final r = await admin.importGroup(data);
+      final pics = r.pictures == 0 ? '' : '${r.pictures} new picture${r.pictures == 1 ? '' : 's'}';
       _message[file] = r.added == 0
-          ? 'Already added. Nothing new.'
+          ? (pics.isEmpty ? 'Already added. Nothing new.' : 'Already added. Added $pics.')
           : 'Added ${r.added} chapter${r.added == 1 ? '' : 's'} as drafts'
-                '${r.skipped > 0 ? ' (${r.skipped} were already there)' : ''}.';
+                '${r.skipped > 0 ? ' (${r.skipped} were already there)' : ''}'
+                '${pics.isEmpty ? '' : ', and $pics'}.';
       _status[file] = _Status.done;
     } catch (e) {
       _message[file] = '$e';
@@ -94,7 +96,7 @@ class _AdminImportScreenState extends State<AdminImportScreen> {
                 child: Text(
                   '$total ready-made chapters in ${groups.length} groups, in English and Assamese. '
                   'They are added as drafts, so readers will not see them until you check and publish each one. '
-                  'Chapters you already have are left as they are.',
+                  'Chapters you already have keep your edits: only new pictures are added to them.',
                 ),
               ),
               Padding(

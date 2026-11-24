@@ -131,11 +131,13 @@ class AdminRepository {
 
     var added = 0;
     var skipped = 0;
+    var pictures = 0;
     for (final ch in group['chapters'] as List) {
       final slug = ch['slug'] as String;
       final existing = await client.from('content').select('id').eq('slug', slug).maybeSingle();
       if (existing != null) {
         skipped++;
+        pictures += await _addPictures(existing['id'] as String, ch['blocks'] as Map<String, dynamic>);
         continue;
       }
       final row = await client
@@ -180,7 +182,48 @@ class AdminRepository {
       }
       added++;
     }
-    return ImportResult(added: added, skipped: skipped, terms: terms.length);
+    return ImportResult(added: added, skipped: skipped, terms: terms.length, pictures: pictures);
+  }
+
+  /// For a chapter that is already in the database: adds any new picture blocks
+  /// (and nothing else, so your own edits stay), then puts the blocks back in
+  /// the order of the ready-made chapter. Returns how many pictures were added.
+  Future<int> _addPictures(String contentId, Map<String, dynamic> blocks) async {
+    final rows = await client.from('content_blocks').select('lang, block_key').eq('content_id', contentId);
+    final have = {for (final r in rows) '${r['lang']}/${r['block_key']}'};
+    var added = 0;
+    for (final e in blocks.entries) {
+      final list = e.value as List;
+      final missing = [
+        for (final b in list)
+          if (b['block_type'] == 'image' && !have.contains('${e.key}/${b['block_key']}')) b,
+      ];
+      if (missing.isEmpty) continue;
+      await client.from('content_blocks').insert([
+        for (final b in missing)
+          {
+            'content_id': contentId,
+            'lang': e.key,
+            'block_key': b['block_key'],
+            'position': list.indexOf(b) + 1,
+            'block_type': 'image',
+            'style': b['style'],
+            'body': b['body'],
+            'image_url': b['image_url'],
+          },
+      ]);
+      added += missing.length;
+      for (final (i, b) in list.indexed) {
+        if (missing.contains(b) || !have.contains('${e.key}/${b['block_key']}')) continue;
+        await client
+            .from('content_blocks')
+            .update({'position': i + 1})
+            .eq('content_id', contentId)
+            .eq('lang', e.key)
+            .eq('block_key', b['block_key'] as String);
+      }
+    }
+    return added;
   }
 
   /// All dictionary terms, including hidden ones.
@@ -242,8 +285,11 @@ class AdminRepository {
 
 /// What one group import did.
 class ImportResult {
-  const ImportResult({required this.added, required this.skipped, required this.terms});
+  const ImportResult({required this.added, required this.skipped, required this.terms, this.pictures = 0});
   final int added;
   final int skipped;
   final int terms;
+
+  /// Pictures added to chapters that were already there.
+  final int pictures;
 }

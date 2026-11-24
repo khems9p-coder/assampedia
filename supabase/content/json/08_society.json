@@ -83,6 +83,13 @@
       "body": "Hindu: 61.47% (1,91,80,759 people)\nMuslim: 34.22% (1,06,79,345)\nChristian: 3.74% (11,65,867)\nBuddhist: 0.18%; Jain: 0.08%; Sikh: 0.07%"
      },
      {
+      "block_key": "img1",
+      "block_type": "image",
+      "style": "normal",
+      "body": "Chart: religions in Assam by share of people (Census of India 2011).",
+      "image_url": "https://raw.githubusercontent.com/khems9p-coder/assampedia/main/supabase/content/images/charts/religion-2011.png"
+     },
+     {
       "block_key": "p2",
       "block_type": "paragraph",
       "style": "normal",
@@ -119,6 +126,13 @@
       "block_type": "list",
       "style": "verified_fact",
       "body": "হিন্দু: ৬১.৪৭% (১,৯১,৮০,৭৫৯ জন)\nমুছলমান: ৩৪.২২% (১,০৬,৭৯,৩৪৫)\nখ্ৰীষ্টান: ৩.৭৪% (১১,৬৫,৮৬৭)\nবৌদ্ধ: ০.১৮%; জৈন: ০.০৮%; শিখ: ০.০৭%"
+     },
+     {
+      "block_key": "img1",
+      "block_type": "image",
+      "style": "normal",
+      "body": "চিত্ৰ: অসমৰ ধৰ্ম অনুসৰি জনসংখ্যাৰ অংশ (ভাৰতৰ লোকপিয়ল ২০১১)।",
+      "image_url": "https://raw.githubusercontent.com/khems9p-coder/assampedia/main/supabase/content/images/charts/religion-2011.png"
      },
      {
       "block_key": "p2",
