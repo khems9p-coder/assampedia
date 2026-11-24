@@ -27,7 +27,10 @@ abstract class ContentRepository {
 extension DailyQuestion on ContentRepository {
   /// Today's question from the "Daily GK challenge" sets, or null if there are none.
   Future<Question?> dailyQuestion(DateTime today) async {
-    final sets = [for (final s in await questionSets()) if (s.kind == QuizKind.daily && s.id != null) s];
+    final sets = [
+      for (final s in await questionSets())
+        if (s.kind == QuizKind.daily && s.id != null) s,
+    ];
     final all = [for (final s in sets) ...await questions(s.id!)];
     final i = dailyIndex(today, all.length);
     return i < 0 ? null : all[i];

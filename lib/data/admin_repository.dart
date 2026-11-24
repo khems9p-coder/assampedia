@@ -61,7 +61,11 @@ class AdminRepository {
             _ => 'gk_chapter',
           },
           // Only exam and career pages use these (added in Phase 4).
-          if (section == 'exam' || section == 'job') ...{'official_url': officialUrl, 'notification_url': notificationUrl, 'applies_to': appliesTo},
+          if (section == 'exam' || section == 'job') ...{
+            'official_url': officialUrl,
+            'notification_url': notificationUrl,
+            'applies_to': appliesTo,
+          },
           // Current-affairs articles carry the date of the event (Phase 5).
           if (section == 'ca') 'event_date': eventDate?.toIso8601String().substring(0, 10),
           'updated_at': DateTime.now().toUtc().toIso8601String(),

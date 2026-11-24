@@ -57,6 +57,19 @@ class _NewStudentAuth extends AuthService {
     saved = p;
     notifyListeners();
   }
+
+  SecurityQuestion? question;
+  String? answer;
+  @override
+  SecurityQuestion? get securityQuestion => question;
+  @override
+  bool get needsSecurityQuestion => question == null;
+  @override
+  Future<void> setSecurityQuestion(SecurityQuestion q, String a) async {
+    question = q;
+    answer = a;
+    notifyListeners();
+  }
 }
 
 class _MemoryCache extends OfflineCache {
@@ -159,6 +172,11 @@ void main() {
     await tester.tap(create);
     await tester.pump();
     expect(find.text('The two passwords are not the same.'), findsOneWidget);
+    // A security question is needed too.
+    await tester.enterText(find.widgetWithText(TextField, 'Re-enter password'), 'abcdefg1!');
+    await tester.tap(create);
+    await tester.pump();
+    expect(find.textContaining('Choose a security question and write an answer'), findsOneWidget);
   });
 
   test('Strong password rule', () {
@@ -194,8 +212,20 @@ void main() {
     await tester.tap(find.text('APSC (CCE)'));
     await tester.tap(find.text('Assam Police'));
     await tester.pump();
+    // Without a security question it can't be saved yet.
+    await tester.tap(find.text('Save and continue'));
+    await tester.pump();
+    expect(find.textContaining('Choose a security question and write an answer'), findsOneWidget);
+    await tester.tap(find.text('Choose a question'));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('What was the name of your first school?').last);
+    await tester.pumpAndSettle();
+    await tester.enterText(find.widgetWithText(TextField, 'Your answer'), 'Don Bosco');
     await tester.tap(find.text('Save and continue'));
     await tester.pumpAndSettle();
+
+    expect(auth.question, SecurityQuestion.school);
+    expect(auth.answer, 'Don Bosco');
 
     expect(auth.saved?.fullName, 'Test Student');
     expect(auth.saved?.education, Education.graduate);

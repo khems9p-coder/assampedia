@@ -3,6 +3,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../core/app_scope.dart';
 import '../../core/i18n/strings.dart';
+import '../../data/student_profile.dart';
 
 final _emailPattern = RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$');
 
@@ -25,6 +26,9 @@ String? checkNewPassword(S s, String password, String again) {
   if (password != again) return s.passwordsDiffer;
   return null;
 }
+
+/// A security question must be chosen and answered (2+ letters).
+String? checkSecurityAnswer(S s, SecurityQuestion? q, String answer) => q == null || answer.trim().length < 2 ? s.answerNeeded : null;
 
 /// Shared behaviour for the sign-in, sign-up, code and password screens:
 /// a busy flag, one message line, and plain wording for server errors.
@@ -152,3 +156,44 @@ class AuthPage extends StatelessWidget {
 /// Goes back to the app's first screen, which by then shows the right step
 /// (profile setup or the content).
 void backToStart(BuildContext context) => Navigator.of(context).popUntil((r) => r.isFirst);
+
+/// Pick a security question and write the answer.
+class SecurityQuestionFields extends StatelessWidget {
+  const SecurityQuestionFields({super.key, required this.question, required this.answer, required this.onQuestion, this.answerHint});
+  final SecurityQuestion? question;
+  final TextEditingController answer;
+  final ValueChanged<SecurityQuestion?> onQuestion;
+  final String? answerHint;
+
+  @override
+  Widget build(BuildContext context) {
+    final s = context.s;
+    final lang = context.lang;
+    final theme = Theme.of(context);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        const SizedBox(height: 8),
+        Text(s.securityQuestion, style: theme.textTheme.titleSmall?.copyWith(color: theme.colorScheme.primary)),
+        const SizedBox(height: 4),
+        Text(s.securityQuestionHint, style: theme.textTheme.bodySmall),
+        const SizedBox(height: 12),
+        DropdownButtonFormField<SecurityQuestion>(
+          initialValue: question,
+          isExpanded: true,
+          decoration: InputDecoration(labelText: s.chooseQuestion, border: const OutlineInputBorder()),
+          items: [
+            for (final q in SecurityQuestion.values)
+              DropdownMenuItem(
+                value: q,
+                child: Text(q.text(lang), overflow: TextOverflow.ellipsis),
+              ),
+          ],
+          onChanged: onQuestion,
+        ),
+        const SizedBox(height: 12),
+        AuthField(controller: answer, label: s.yourAnswer, helper: answerHint, maxLength: 60),
+      ],
+    );
+  }
+}
