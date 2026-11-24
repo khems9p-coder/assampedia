@@ -17,6 +17,7 @@ import 'data/offline_cache.dart';
 import 'data/practice_models.dart';
 import 'data/premium_service.dart';
 import 'data/supabase_content_repository.dart';
+import 'features/account/profile_screen.dart';
 import 'features/onboarding/language_select_screen.dart';
 import 'features/onboarding/welcome_screen.dart';
 import 'features/shell/main_shell.dart';
@@ -92,9 +93,15 @@ class AssampediaApp extends StatelessWidget {
 
   /// After installing, readers sign in first; then they reach the content.
   /// (Without a server, as in the demo, the language picker comes first instead.)
+  /// Then, the first time, they fill in their profile.
   Widget _startScreen() {
     final auth = services.auth;
-    if (auth.available && !auth.isSignedIn) return const WelcomeScreen();
+    if (auth.available) {
+      if (!auth.isSignedIn) return const WelcomeScreen();
+      if (auth.checking) return const Scaffold(body: Center(child: CircularProgressIndicator()));
+      if (auth.needsProfile) return const ProfileScreen(firstTime: true);
+      return const MainShell();
+    }
     return services.language.hasChosen ? const MainShell() : const LanguageSelectScreen();
   }
 }

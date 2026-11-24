@@ -69,6 +69,43 @@ class S {
   String get emailNotConfirmed =>
       _t('আগতে আপোনাৰ ইমেইলত পঠোৱা লিংকটোত টিপি একাউণ্ট নিশ্চিত কৰক।', 'Please confirm your account first using the link sent to your email.');
   String get tooManyTries => _t('বহুবাৰ চেষ্টা কৰা হ’ল। কিছু সময় পিছত পুনৰ চেষ্টা কৰক।', 'Too many tries. Please wait a little and try again.');
+  // Sign-up with an email code, and forgotten passwords.
+  String get strongPasswordRule => _t('অন্ততঃ ৮টা আখৰ: আখৰ, সংখ্যা আৰু এটা বিশেষ চিন (যেনে @ # !) লাগিব।',
+      'At least 8 characters, with letters, numbers and a special character (like @ # !).');
+  String get confirmPassword => _t('পাছৱৰ্ড পুনৰ লিখক', 'Re-enter password');
+  String get passwordsDiffer => _t('দুয়োটা পাছৱৰ্ড একে হোৱা নাই।', 'The two passwords are not the same.');
+  String get forgotPassword => _t('পাছৱৰ্ড পাহৰিলে?', 'Forgot password?');
+  String get noAccountYet => _t('নতুন ছাত্ৰ-ছাত্ৰী?', 'New here?');
+  String get enterCode => _t('ক’ড লিখক', 'Enter the code');
+  String codeSentTo(String email) =>
+      _t('$email লৈ এটা ক’ড পঠোৱা হৈছে। ইমেইল (আৰু স্পাম ফ’ল্ডাৰ) চাওক।', 'We sent a code to $email. Check your email (and the spam folder).');
+  String get code => _t('ক’ড', 'Code');
+  String get badCode => _t('ক’ডটো ভুল বা ইয়াৰ সময় উকলি গৈছে।', 'The code is wrong or has expired.');
+  String get confirm => _t('নিশ্চিত কৰক', 'Confirm');
+  String get resendCode => _t('ক’ড পুনৰ পঠাওক', 'Send the code again');
+  String resendIn(int s) => _t('$s ছেকেণ্ডৰ পিছত পুনৰ পঠাব পাৰিব', 'You can send it again in $s s');
+  String get codeResent => _t('নতুন ক’ড পঠোৱা হ’ল।', 'A new code has been sent.');
+  String get sendCode => _t('ক’ড পঠাওক', 'Send code');
+  String get resetPasswordTitle => _t('নতুন পাছৱৰ্ড', 'New password');
+  String get resetPasswordHint =>
+      _t('আপোনাৰ ইমেইল লিখক। আমি নতুন পাছৱৰ্ড দিবলৈ এটা ক’ড পঠিয়াম।', "Enter your email. We'll send you a code to set a new password.");
+  String get newPassword => _t('নতুন পাছৱৰ্ড', 'New password');
+  String get passwordChanged => _t('পাছৱৰ্ড সলনি হ’ল।', 'Your password has been changed.');
+
+  // Student profile.
+  String get myProfile => _t('মোৰ প্ৰ’ফাইল', 'My profile');
+  String get setUpProfile => _t('আপোনাৰ প্ৰ’ফাইল সাজক', 'Set up your profile');
+  String get profileHint => _t('আপোনাৰ বিষয়ে অলপ কওক, যাতে এপটো আপোনাৰ প্ৰস্তুতিৰ বাবে উপযোগী হয়।',
+      'Tell us a little about yourself so the app can suit your preparation.');
+  String get fullName => _t('সম্পূৰ্ণ নাম', 'Full name');
+  String get nameNeeded => _t('আপোনাৰ নাম লিখক।', 'Please enter your name.');
+  String get education => _t('শিক্ষাগত অৰ্হতা', 'Education');
+  String get examsPreparing => _t('কোনবোৰ পৰীক্ষাৰ বাবে প্ৰস্তুতি চলাইছে?', 'Which exams are you preparing for?');
+  String get district => _t('জিলা / চহৰ (ইচ্ছা অনুসৰি)', 'District / town (optional)');
+  String get saveAndContinue => _t('ছেভ কৰি আগবাঢ়ক', 'Save and continue');
+  String get save => _t('ছেভ কৰক', 'Save');
+  String get profileSaved => _t('প্ৰ’ফাইল ছেভ হ’ল।', 'Profile saved.');
+  String get notSet => _t('দিয়া হোৱা নাই', 'Not set');
   String get checkEmail => _t('নিশ্চিত কৰিবলৈ আপোনাৰ ইমেইল চাওক।', 'Check your email to confirm your account.');
   String signedInAs(String who) => _t('$who হিচাপে ছাইন ইন কৰা হৈছে', 'Signed in as $who');
   String get adminPanel => _t('এডমিন পেনেল', 'Admin panel');
