@@ -46,7 +46,10 @@ class PremiumService extends ChangeNotifier {
   /// Call once at app start (Android only).
   Future<void> start() async {
     if (client == null) return;
-    _auth = client!.auth.onAuthStateChange.listen((_) => refresh());
+    _auth = client!.auth.onAuthStateChange.listen((_) async {
+      await refresh();
+      await _recheck();
+    });
     await refresh();
     if (kIsWeb || defaultTargetPlatform != TargetPlatform.android) return;
     try {
@@ -56,6 +59,7 @@ class PremiumService extends ChangeNotifier {
       if (_storeAvailable) {
         final r = await _store!.queryProductDetails({productId});
         if (r.productDetails.isNotEmpty) _product = r.productDetails.first;
+        await _recheck();
       }
     } catch (e) {
       _storeAvailable = false;
@@ -135,6 +139,18 @@ class PremiumService extends ChangeNotifier {
         notifyListeners();
       }
     });
+  }
+
+  /// Quietly sends this phone's Google Play subscription to the server again,
+  /// so renewals (and checks that failed earlier) update the expiry date.
+  Future<void> _recheck() async {
+    final user = client?.auth.currentUser;
+    if (_store == null || !_storeAvailable || user == null) return;
+    try {
+      await _store!.restorePurchases(applicationUserName: user.id);
+    } catch (_) {
+      // Try again next time the app opens.
+    }
   }
 
   Future<void> _onPurchases(List<PurchaseDetails> list) async {
