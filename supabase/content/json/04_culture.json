@@ -1,0 +1,683 @@
+{
+ "group": "04_culture",
+ "category_slug": "culture",
+ "category_name": "Art, Culture and Heritage",
+ "last_checked": "2026-11-24",
+ "terms": [
+  {
+   "slug": "uruka",
+   "term_en": "Uruka",
+   "term_as": "উৰুকা",
+   "meaning_en": "The night before Magh (Bhogali) Bihu, spent feasting and staying awake around a bonfire.",
+   "meaning_as": "মাঘ (ভোগালী) বিহুৰ আগৰ নিশা, যিটো ভোজ-ভাত খাই আৰু মেজিৰ কাষত সাৰে থাকি পাৰ কৰা হয়।"
+  },
+  {
+   "slug": "meji",
+   "term_en": "Meji",
+   "term_as": "মেজি",
+   "meaning_en": "The bonfire built for Magh Bihu and burnt early on the morning of the festival.",
+   "meaning_as": "মাঘ বিহুৰ বাবে সজা জুইৰ ঘৰ, যিটো বিহুৰ দিনা ৰাতিপুৱা জ্বলোৱা হয়।"
+  },
+  {
+   "slug": "bhelaghar",
+   "term_en": "Bhelaghar",
+   "term_as": "ভেলাঘৰ",
+   "meaning_en": "A temporary hut of straw and bamboo built by young people for the Uruka night feast.",
+   "meaning_as": "উৰুকাৰ ভোজৰ বাবে ডেকা-গাভৰুৱে খেৰ আৰু বাঁহেৰে সজা অস্থায়ী ঘৰ।"
+  },
+  {
+   "slug": "husori",
+   "term_en": "Husori",
+   "term_as": "হুচৰি",
+   "meaning_en": "Groups who go from house to house during Bohag Bihu singing songs and blessing each family.",
+   "meaning_as": "বহাগ বিহুৰ সময়ত ঘৰে ঘৰে গৈ গীত গাই প্ৰতিটো পৰিয়ালক আশীৰ্বাদ দিয়া দল।"
+  },
+  {
+   "slug": "bihuwan",
+   "term_en": "Bihuwan",
+   "term_as": "বিহুৱান",
+   "meaning_en": "A gift, usually a gamosa, given to elders and loved ones at Bohag Bihu.",
+   "meaning_as": "বহাগ বিহুত ডাঙৰ আৰু মৰমৰ মানুহক দিয়া উপহাৰ, সাধাৰণতে এখন গামোচা।"
+  },
+  {
+   "slug": "sattra",
+   "term_en": "Sattra",
+   "term_as": "সত্ৰ",
+   "meaning_en": "A monastery-like centre of Sankardev's Neo-Vaishnavite faith, for prayer, music, dance and learning.",
+   "meaning_as": "শংকৰদেৱৰ নৱ-বৈষ্ণৱ ধৰ্মৰ উপাসনা, গীত-মাত, নৃত্য আৰু শিক্ষাৰ মঠসদৃশ কেন্দ্ৰ।"
+  },
+  {
+   "slug": "namghar",
+   "term_en": "Namghar",
+   "term_as": "নামঘৰ",
+   "meaning_en": "A prayer hall where people gather to sing and pray. Every Sattra has one, and most Assamese villages too.",
+   "meaning_as": "মানুহ গোট খাই নাম-প্ৰসংগ কৰা উপাসনা গৃহ। প্ৰতিখন সত্ৰত আৰু বেছিভাগ অসমীয়া গাঁৱতো নামঘৰ থাকে।"
+  },
+  {
+   "slug": "satradhikar",
+   "term_en": "Satradhikar",
+   "term_as": "সত্ৰাধিকাৰ",
+   "meaning_en": "The head of a Sattra.",
+   "meaning_as": "সত্ৰৰ মুৰব্বী।"
+  },
+  {
+   "slug": "ankiya-naat",
+   "term_en": "Ankiya Naat",
+   "term_as": "অংকীয়া নাট",
+   "meaning_en": "One-act plays created by Sankardev. Their stage performance is called Bhaona.",
+   "meaning_as": "শংকৰদেৱে সৃষ্টি কৰা এক অংকৰ নাট। ইয়াৰ মঞ্চ পৰিৱেশনক ভাওনা বোলা হয়।"
+  },
+  {
+   "slug": "borgeet",
+   "term_en": "Borgeet",
+   "term_as": "বৰগীত",
+   "meaning_en": "Devotional songs composed by Sankardev and Madhavdev.",
+   "meaning_as": "শংকৰদেৱ আৰু মাধৱদেৱে ৰচনা কৰা ভক্তিমূলক গীত।"
+  },
+  {
+   "slug": "classical-dance",
+   "term_en": "Classical dance",
+   "term_as": "শাস্ত্ৰীয় নৃত্য",
+   "meaning_en": "A dance form recognised by the Sangeet Natak Akademi for its old, rule-based tradition. Sattriya is one of them.",
+   "meaning_as": "প্ৰাচীন আৰু নিয়মবদ্ধ পৰম্পৰাৰ বাবে সংগীত নাটক অকাডেমীয়ে স্বীকৃতি দিয়া নৃত্য। সত্ৰীয়া তাৰে এটা।"
+  },
+  {
+   "slug": "geographical-indication",
+   "term_en": "Geographical Indication (GI) tag",
+   "term_as": "ভৌগোলিক সূচক (জি আই) চিহ্ন",
+   "meaning_en": "An official label showing that a product comes from a particular place and has qualities linked to it.",
+   "meaning_as": "কোনো সামগ্ৰী এটা নিৰ্দিষ্ট ঠাইৰ আৰু তাৰ গুণ সেই ঠাইৰ সৈতে জড়িত বুলি দেখুওৱা চৰকাৰী স্বীকৃতি।"
+  },
+  {
+   "slug": "charyapada",
+   "term_en": "Charyapada",
+   "term_as": "চৰ্যাপদ",
+   "meaning_en": "Buddhist songs of about the 8th to 10th century, taken as the earliest examples of Assamese literature.",
+   "meaning_as": "প্ৰায় অষ্টমৰ পৰা দশম শতিকাৰ বৌদ্ধ গীত, যাক অসমীয়া সাহিত্যৰ আটাইতকৈ পুৰণি নিদৰ্শন বুলি ধৰা হয়।"
+  },
+  {
+   "slug": "buranji",
+   "term_en": "Buranji",
+   "term_as": "বুৰঞ্জী",
+   "meaning_en": "Prose chronicles of the Ahom court that recorded events and history.",
+   "meaning_as": "ঘটনা আৰু ইতিহাস লিপিবদ্ধ কৰা আহোম ৰাজসভাৰ গদ্য ইতিহাস গ্ৰন্থ।"
+  },
+  {
+   "slug": "jonaki-era",
+   "term_en": "Jonaki era",
+   "term_as": "জোনাকী যুগ",
+   "meaning_en": "The start of modern Assamese literature, named after the magazine Jonaki (1889).",
+   "meaning_as": "আধুনিক অসমীয়া সাহিত্যৰ আৰম্ভণি, জোনাকী (১৮৮৯) আলোচনীৰ নামেৰে নামকৰণ কৰা।"
+  },
+  {
+   "slug": "jnanpith-award",
+   "term_en": "Jnanpith Award",
+   "term_as": "জ্ঞানপীঠ বঁটা",
+   "meaning_en": "India's highest literary award, given every year to a writer in an Indian language.",
+   "meaning_as": "ভাৰতীয় ভাষাৰ এগৰাকী সাহিত্যিকক প্ৰতি বছৰে দিয়া দেশৰ সৰ্বোচ্চ সাহিত্য বঁটা।"
+  }
+ ],
+ "chapters": [
+  {
+   "slug": "bihu",
+   "position": 1,
+   "sources": "Bihu, Wikipedia: https://en.wikipedia.org/wiki/Bihu",
+   "versions": {
+    "en": {
+     "title": "Bihu",
+     "summary": "The three Bihus of Assam and the customs of each."
+    },
+    "as": {
+     "title": "বিহু",
+     "summary": "অসমৰ তিনিটা বিহু আৰু প্ৰতিটোৰ ৰীতি-নীতি।"
+    }
+   },
+   "blocks": {
+    "en": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "Bihu is the main festival of Assam and its state festival. There are three Bihus in the year, linked to the farming cycle."
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "heritage",
+      "body": "Rongali or Bohag Bihu (April): the spring festival and the Assamese New Year. It is the most important Bihu.\nKongali or Kati Bihu (October or November): a quiet Bihu when lamps are lit near the tulsi plant, the granary and the paddy fields.\nBhogali or Magh Bihu (January): the harvest festival of feasting. 'Bhog' means eating and enjoyment."
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "Bohag Bihu"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "The first day, Goru Bihu (usually 14 April), is for cattle: they are washed and smeared with turmeric. The next day, Manuh Bihu, is New Year's Day, when people give a {{term:bihuwan}} to elders. {{term:husori|Husori}} groups then go singing from house to house."
+     },
+     {
+      "block_key": "h2",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "Magh Bihu"
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "On {{term:uruka}} night, young people build a {{term:bhelaghar}} and a {{term:meji}}, and feast together. The Meji is burnt the next morning."
+     },
+     {
+      "block_key": "p4",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "The Bihu dance is the state dance. It is played with the dhol, the pepa (buffalo-horn pipe) and the taal (cymbals)."
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "Remember for exams: Rongali = Bohag (April), Kongali = Kati (Oct/Nov), Bhogali = Magh (January)."
+     }
+    ],
+    "as": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "বিহু অসমৰ প্ৰধান উৎসৱ আৰু ৰাজ্যিক উৎসৱ। বছৰত তিনিটা বিহু হয়, যিবোৰ কৃষিচক্ৰৰ সৈতে জড়িত।"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "heritage",
+      "body": "ৰঙালী বা বহাগ বিহু (এপ্ৰিল): বসন্তৰ উৎসৱ আৰু অসমীয়া নৱবৰ্ষ। ই আটাইতকৈ গুৰুত্বপূৰ্ণ বিহু।\nকঙালী বা কাতি বিহু (অক্টোবৰ বা নৱেম্বৰ): তুলসীৰ তল, ভঁৰাল আৰু পথাৰত চাকি জ্বলোৱা এক শান্ত বিহু।\nভোগালী বা মাঘ বিহু (জানুৱাৰী): ভোজ-ভাতৰ শস্য চপোৱা উৎসৱ। 'ভোগ' মানে খোৱা-বোৱা আৰু আনন্দ।"
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "বহাগ বিহু"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "প্ৰথম দিনটো গৰু বিহু (সাধাৰণতে ১৪ এপ্ৰিল): গৰুক গা ধুৱাই হালধি-মাহ লগোৱা হয়। পিছদিনা মানুহ বিহু, নৱবৰ্ষৰ দিন, যেতিয়া ডাঙৰসকলক {{term:bihuwan|বিহুৱান}} দিয়া হয়। তাৰ পিছত {{term:husori|হুচৰিৰ}} দলে ঘৰে ঘৰে গীত গাই ফুৰে।"
+     },
+     {
+      "block_key": "h2",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "মাঘ বিহু"
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "{{term:uruka|উৰুকাৰ}} নিশা ডেকা-গাভৰুৱে {{term:bhelaghar|ভেলাঘৰ}} আৰু {{term:meji|মেজি}} সাজি একেলগে ভোজ খায়। পিছদিনা ৰাতিপুৱা মেজি জ্বলোৱা হয়।"
+     },
+     {
+      "block_key": "p4",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "বিহু নাচ ৰাজ্যিক নৃত্য। ইয়াত ঢোল, পেঁপা (ম'হৰ শিঙৰ বাদ্য) আৰু তাল বজোৱা হয়।"
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "পৰীক্ষাৰ বাবে মনত ৰাখক: ৰঙালী = বহাগ (এপ্ৰিল), কঙালী = কাতি (অক্টো/নৱে), ভোগালী = মাঘ (জানুৱাৰী)।"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "sattriya-and-sattra",
+   "position": 2,
+   "sources": "Satra, Wikipedia: https://en.wikipedia.org/wiki/Sattra\nSattriya, Wikipedia: https://en.wikipedia.org/wiki/Sattriya",
+   "versions": {
+    "en": {
+     "title": "Sattriya dance and the Sattra institution",
+     "summary": "The Sattras founded in Sankardev's tradition, and the classical dance that grew in them."
+    },
+    "as": {
+     "title": "সত্ৰীয়া নৃত্য আৰু সত্ৰ অনুষ্ঠান",
+     "summary": "শংকৰদেৱৰ পৰম্পৰাত প্ৰতিষ্ঠিত সত্ৰ, আৰু তাত গঢ় লোৱা শাস্ত্ৰীয় নৃত্য।"
+    }
+   },
+   "blocks": {
+    "en": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "A {{term:sattra}} is a centre of the {{term:neo-vaishnavism|Neo-Vaishnavite}} faith started by Srimanta Sankardev. Sankardev is said to have set up his first Sattra at Bordowa, his birthplace."
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "Every Sattra has a {{term:namghar}} (also called kirtanghar), its prayer hall. Each Sattra is headed by a {{term:satradhikar}}. The Asam Satra Mahasabha counts 862 Sattras in Assam and West Bengal."
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "heritage",
+      "body": "Majuli became the main centre of the Sattra tradition. Well-known Sattras include Auniati, Dakhinpat, Garamur and Kamalabari in Majuli, and the Barpeta Sattra, built by Madhavdev."
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "Sattriya dance"
+     },
+     {
+      "block_key": "p4",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "Sattriya dance was created by Sankardev as part of Bhaona, the stage performance of his {{term:ankiya-naat|Ankiya Naat}}. It was kept alive in the Sattras for centuries."
+     },
+     {
+      "block_key": "p5",
+      "block_type": "paragraph",
+      "style": "event",
+      "body": "On 15 November 2000, the Sangeet Natak Akademi recognised Sattriya as one of the eight {{term:classical-dance|classical dances}} of India."
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "Remember for exams: first Sattra at Bordowa; Sattriya recognised as a classical dance on 15 November 2000."
+     }
+    ],
+    "as": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "{{term:sattra|সত্ৰ}} শ্ৰীমন্ত শংকৰদেৱে প্ৰৱৰ্তন কৰা {{term:neo-vaishnavism|নৱ-বৈষ্ণৱ}} ধৰ্মৰ কেন্দ্ৰ। কোৱা হয় যে শংকৰদেৱে তেওঁৰ জন্মস্থান বৰদোৱাত প্ৰথম সত্ৰ স্থাপন কৰিছিল।"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "প্ৰতিখন সত্ৰত এটা {{term:namghar|নামঘৰ}} (কীৰ্তনঘৰ বুলিও কোৱা হয়) থাকে। প্ৰতিখন সত্ৰৰ মুৰব্বী এগৰাকী {{term:satradhikar|সত্ৰাধিকাৰ}}। অসম সত্ৰ মহাসভাৰ হিচাপমতে অসম আৰু পশ্চিমবংগত ৮৬২ খন সত্ৰ আছে।"
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "heritage",
+      "body": "মাজুলী সত্ৰ পৰম্পৰাৰ মূল কেন্দ্ৰ হৈ পৰে। জনাজাত সত্ৰসমূহৰ ভিতৰত মাজুলীৰ আউনীআটী, দক্ষিণপাট, গড়মূৰ আৰু কমলাবাৰী, আৰু মাধৱদেৱে নিৰ্মাণ কৰা বৰপেটা সত্ৰ উল্লেখযোগ্য।"
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "সত্ৰীয়া নৃত্য"
+     },
+     {
+      "block_key": "p4",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "শংকৰদেৱে তেওঁৰ {{term:ankiya-naat|অংকীয়া নাটৰ}} মঞ্চ পৰিৱেশন ভাওনাৰ অংশ হিচাপে সত্ৰীয়া নৃত্য সৃষ্টি কৰিছিল। শতিকাজুৰি সত্ৰসমূহে ইয়াক জীয়াই ৰাখে।"
+     },
+     {
+      "block_key": "p5",
+      "block_type": "paragraph",
+      "style": "event",
+      "body": "২০০০ চনৰ ১৫ নৱেম্বৰত সংগীত নাটক অকাডেমীয়ে সত্ৰীয়াক ভাৰতৰ আঠটা {{term:classical-dance|শাস্ত্ৰীয় নৃত্যৰ}} এটা হিচাপে স্বীকৃতি দিয়ে।"
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "পৰীক্ষাৰ বাবে মনত ৰাখক: প্ৰথম সত্ৰ বৰদোৱাত; ১৫ নৱেম্বৰ ২০০০ত সত্ৰীয়াই শাস্ত্ৰীয় নৃত্যৰ স্বীকৃতি পায়।"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "folk-dances-and-music",
+   "position": 3,
+   "sources": "Bagurumba, Wikipedia: https://en.wikipedia.org/wiki/Bagurumba\nOjapali, Wikipedia: https://en.wikipedia.org/wiki/Ojapali\nAssamese literature, Wikipedia: https://en.wikipedia.org/wiki/Assamese_literature",
+   "versions": {
+    "en": {
+     "title": "Folk dances and music",
+     "summary": "Bagurumba, Ojapali, Borgeet and other dance and music traditions of Assam."
+    },
+    "as": {
+     "title": "লোকনৃত্য আৰু লোকসংগীত",
+     "summary": "বাগৰুম্বা, ওজাপালি, বৰগীত আৰু অসমৰ অন্যান্য নৃত্য-গীতৰ পৰম্পৰা।"
+    }
+   },
+   "blocks": {
+    "en": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "Each community of Assam has its own dances and songs. These are the ones most often asked about:"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "heritage",
+      "body": "Bihu dance: the state dance, performed at Bohag Bihu.\nBagurumba: a traditional dance of the Bodo (Boro) people, performed by women. It is called the butterfly dance because it copies the movements of butterflies and birds.\nOjapali: a story-telling song and dance led by an Oja (leader) with Palis (chorus). Darrang district is its historic home.\nSattriya: the classical dance of the Sattras."
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "Devotional music"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "{{term:borgeet|Borgeet}} are devotional songs composed by Sankardev and Madhavdev. Madhavdev alone wrote 191 Borgeets."
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "Ojapali has several forms: Byah (Vyas) Ojapali based on the epics, Sukananni (Maroi) Ojapali linked to the goddess Manasa, Ramayani Ojapali and Sattriya Ojapali."
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "Remember for exams: Bagurumba = butterfly dance of the Bodos; Ojapali = Oja and Pali, home district Darrang."
+     }
+    ],
+    "as": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "অসমৰ প্ৰতিটো জনগোষ্ঠীৰ নিজা নৃত্য আৰু গীত আছে। পৰীক্ষাত সঘনাই সোধা কেইটামান এনেধৰণৰ:"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "heritage",
+      "body": "বিহু নাচ: ৰাজ্যিক নৃত্য, বহাগ বিহুত পৰিৱেশন কৰা হয়।\nবাগৰুম্বা: বড়ো জনগোষ্ঠীৰ পৰম্পৰাগত নৃত্য, যিটো মহিলাসকলে পৰিৱেশন কৰে। পখিলা আৰু চৰাইৰ গতিৰ অনুকৰণ কৰা বাবে ইয়াক পখিলা নৃত্য বুলিও কোৱা হয়।\nওজাপালি: ওজা (মুখ্য গায়ক) আৰু পালিৰ (সহযোগী দল) কাহিনী কোৱা গীত-নৃত্য। দৰং জিলা ইয়াৰ ঐতিহাসিক কেন্দ্ৰ।\nসত্ৰীয়া: সত্ৰৰ শাস্ত্ৰীয় নৃত্য।"
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "ভক্তিমূলক সংগীত"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "{{term:borgeet|বৰগীত}} শংকৰদেৱ আৰু মাধৱদেৱে ৰচনা কৰা ভক্তিমূলক গীত। মাধৱদেৱে অকলেই ১৯১ টা বৰগীত ৰচনা কৰিছিল।"
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "ওজাপালিৰ কেইবাটাও ৰূপ আছে: মহাকাব্যভিত্তিক ব্যাহ (ব্যাস) ওজাপালি, মনসা দেৱীৰ সৈতে জড়িত সুকনান্নি (মাৰৈ) ওজাপালি, ৰামায়ণী ওজাপালি আৰু সত্ৰীয়া ওজাপালি।"
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "পৰীক্ষাৰ বাবে মনত ৰাখক: বাগৰুম্বা = বড়োসকলৰ পখিলা নৃত্য; ওজাপালি = ওজা আৰু পালি, কেন্দ্ৰ দৰং জিলা।"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "silk-and-handloom",
+   "position": 4,
+   "sources": "Muga silk, Wikipedia: https://en.wikipedia.org/wiki/Muga_silk\nGamosa, Wikipedia: https://en.wikipedia.org/wiki/Gamosa\nSualkuchi, Wikipedia: https://en.wikipedia.org/wiki/Sualkuchi",
+   "versions": {
+    "en": {
+     "title": "Silk and handloom",
+     "summary": "Muga, Eri and Pat silk, the gamosa, and Sualkuchi, the weaving town."
+    },
+    "as": {
+     "title": "পাট-মুগা আৰু তাঁতশাল",
+     "summary": "মুগা, এৰী আৰু পাট, গামোচা, আৰু বোৱা-কটাৰ নগৰ শোৱালকুছি।"
+    }
+   },
+   "blocks": {
+    "en": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "Weaving is part of daily life in Assam, and the state is famous for three kinds of silk: Muga, Eri and Pat."
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "Muga, the golden silk"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "heritage",
+      "body": "{{term:muga-silk|Muga silk}} has a natural yellowish-golden shine and is produced only in Assam. It comes from the Muga silkworm (Antheraea assamensis), which feeds on Som and Sualu leaves. Muga received a {{term:geographical-indication|GI tag}} in 2007."
+     },
+     {
+      "block_key": "h2",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "The gamosa"
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "The gamosa is a white cloth with red borders. The word means 'something to wipe the body with', but it is much more than a towel: it is offered to guests, given as bihuwan, worn by Bihu dancers and used to cover the scriptures in the namghar. The gamosa of Assam received a GI tag on 13 December 2022."
+     },
+     {
+      "block_key": "h3",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "Sualkuchi"
+     },
+     {
+      "block_key": "p4",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "Sualkuchi, on the north bank of the Brahmaputra in Kamrup district, about 35 km from Guwahati, is a famous silk-weaving town. It is known as the 'Manchester of Assam'."
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "Remember for exams: Muga GI tag 2007; Gamosa GI tag 2022; Sualkuchi = Manchester of Assam."
+     }
+    ],
+    "as": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "অসমত বোৱা-কটা দৈনন্দিন জীৱনৰ অংশ, আৰু ৰাজ্যখন তিনি প্ৰকাৰৰ পাটৰ বাবে বিখ্যাত: মুগা, এৰী আৰু পাট।"
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "মুগা, সোণালী পাট"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "heritage",
+      "body": "{{term:muga-silk|মুগাৰ}} এক প্ৰাকৃতিক সোণালী-হালধীয়া চিকমিকনি আছে আৰু ই কেৱল অসমতহে উৎপাদন হয়। ই মুগা পলুৰ (Antheraea assamensis) পৰা পোৱা যায়, যিয়ে সোম আৰু চোৱালু পাত খায়। ২০০৭ চনত মুগাই {{term:geographical-indication|জি আই চিহ্ন}} লাভ কৰে।"
+     },
+     {
+      "block_key": "h2",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "গামোচা"
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "গামোচা ৰঙা আঁচুৰে বগা কাপোৰ। শব্দটোৰ অৰ্থ 'গা মচা বস্তু', কিন্তু ই কেৱল গা মচা কাপোৰ নহয়: ইয়াৰে অতিথিক সন্মান জনোৱা হয়, বিহুৱান হিচাপে দিয়া হয়, বিহুৱতীয়ে পিন্ধে আৰু নামঘৰত পুথি ঢাকিবলৈ ব্যৱহাৰ কৰা হয়। ২০২২ চনৰ ১৩ ডিচেম্বৰত অসমৰ গামোচাই জি আই চিহ্ন লাভ কৰে।"
+     },
+     {
+      "block_key": "h3",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "শোৱালকুছি"
+     },
+     {
+      "block_key": "p4",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "কামৰূপ জিলাত, ব্ৰহ্মপুত্ৰৰ উত্তৰ পাৰত, গুৱাহাটীৰ পৰা প্ৰায় ৩৫ কিমি দূৰত থকা শোৱালকুছি পাট-মুগা বোৱাৰ বাবে বিখ্যাত। ইয়াক 'অসমৰ মেনচেষ্টাৰ' বুলি কোৱা হয়।"
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "পৰীক্ষাৰ বাবে মনত ৰাখক: মুগাৰ জি আই ২০০৭; গামোচাৰ জি আই ২০২২; শোৱালকুছি = অসমৰ মেনচেষ্টাৰ।"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "assamese-literature",
+   "position": 5,
+   "sources": "Assamese literature, Wikipedia: https://en.wikipedia.org/wiki/Assamese_literature\nJnanpith Award, Wikipedia: https://en.wikipedia.org/wiki/Jnanpith_Award",
+   "versions": {
+    "en": {
+     "title": "A short history of Assamese literature",
+     "summary": "From the Charyapada to the Jonaki era and Assam's Jnanpith winners."
+    },
+    "as": {
+     "title": "অসমীয়া সাহিত্যৰ চমু ইতিহাস",
+     "summary": "চৰ্যাপদৰ পৰা জোনাকী যুগ আৰু অসমৰ জ্ঞানপীঠ বঁটা বিজয়ীলৈ।"
+    }
+   },
+   "blocks": {
+    "en": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "Assamese literature can be traced back to the {{term:charyapada|Charyapada}}, Buddhist songs of about the 8th to 10th century."
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "Early and Vaishnava period"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "event",
+      "body": "Hema Saraswati (14th century): the earliest known Assamese writer; wrote Prahlad Charita.\nMadhav Kandali (14th century): wrote the Saptakanda Ramayana, one of the earliest versions of the Ramayana in an Indo-Aryan language.\nSrimanta Sankardev: his greatest work is the Kirtan Ghosha; he also created {{term:borgeet|Borgeet}} and {{term:ankiya-naat|Ankiya Naat}}.\nMadhavdev: his greatest work is the Naam Ghosha, which has one thousand verses."
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "From the 17th century, the Ahom court wrote many {{term:buranji|Buranjis}}, which are important early works of Assamese prose."
+     },
+     {
+      "block_key": "h2",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "Modern period"
+     },
+     {
+      "block_key": "l2",
+      "block_type": "list",
+      "style": "event",
+      "body": "1846: American Baptist missionaries start the monthly magazine Orunodoi.\n1889: the magazine Jonaki begins the {{term:jonaki-era|Jonaki era}}; Lakshminath Bezbaroa introduces the short story.\n1894: Mirijiyori by Rajanikanta Bordoloi, the first Assamese novel, is published.\n1917: the Asam Sahitya Sabha is formed."
+     },
+     {
+      "block_key": "h3",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "Jnanpith Award winners from Assam"
+     },
+     {
+      "block_key": "l3",
+      "block_type": "list",
+      "style": "verified_fact",
+      "body": "Birendra Kumar Bhattacharya: 1979, for the novel Mrityunjay\nMamoni Raisom Goswami: 2000\nNilmani Phookan: 2020"
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "Remember for exams: three Assamese writers have won the {{term:jnanpith-award|Jnanpith Award}}: Birendra Kumar Bhattacharya (1979), Mamoni Raisom Goswami (2000) and Nilmani Phookan (2020)."
+     }
+    ],
+    "as": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "অসমীয়া সাহিত্যৰ শিপা প্ৰায় অষ্টমৰ পৰা দশম শতিকাৰ বৌদ্ধ গীত {{term:charyapada|চৰ্যাপদলৈকে}} বিস্তৃত।"
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "প্ৰাচীন আৰু বৈষ্ণৱ যুগ"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "event",
+      "body": "হেম সৰস্বতী (চতুৰ্দশ শতিকা): আটাইতকৈ পুৰণি জ্ঞাত অসমীয়া সাহিত্যিক; 'প্ৰহ্লাদ চৰিত' ৰচনা কৰে।\nমাধৱ কন্দলি (চতুৰ্দশ শতিকা): 'সপ্তকাণ্ড ৰামায়ণ' ৰচনা কৰে, যিটো ইণ্ডো-আৰ্য ভাষাত ৰামায়ণৰ আটাইতকৈ পুৰণি ৰূপান্তৰসমূহৰ এটা।\nশ্ৰীমন্ত শংকৰদেৱ: তেওঁৰ শ্ৰেষ্ঠ গ্ৰন্থ 'কীৰ্তন ঘোষা'; তেওঁ {{term:borgeet|বৰগীত}} আৰু {{term:ankiya-naat|অংকীয়া নাটো}} সৃষ্টি কৰে।\nমাধৱদেৱ: তেওঁৰ শ্ৰেষ্ঠ গ্ৰন্থ 'নামঘোষা', যাত এহেজাৰ পদ আছে।"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "সপ্তদশ শতিকাৰ পৰা আহোম ৰাজসভাত বহুতো {{term:buranji|বুৰঞ্জী}} লিখা হয়, যিবোৰ অসমীয়া গদ্যৰ গুৰুত্বপূৰ্ণ প্ৰাচীন নিদৰ্শন।"
+     },
+     {
+      "block_key": "h2",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "আধুনিক যুগ"
+     },
+     {
+      "block_key": "l2",
+      "block_type": "list",
+      "style": "event",
+      "body": "১৮৪৬: আমেৰিকান বেপ্তিষ্ট মিছনেৰীসকলে মাহেকীয়া আলোচনী 'অৰুণোদই' আৰম্ভ কৰে।\n১৮৮৯: 'জোনাকী' আলোচনীৰে {{term:jonaki-era|জোনাকী যুগৰ}} আৰম্ভণি; লক্ষ্মীনাথ বেজবৰুৱাই চুটিগল্পৰ প্ৰৱৰ্তন কৰে।\n১৮৯৪: ৰজনীকান্ত বৰদলৈৰ 'মিৰিজীয়ৰী', প্ৰথম অসমীয়া উপন্যাস, প্ৰকাশ পায়।\n১৯১৭: অসম সাহিত্য সভা গঠন হয়।"
+     },
+     {
+      "block_key": "h3",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "অসমৰ জ্ঞানপীঠ বঁটা বিজয়ীসকল"
+     },
+     {
+      "block_key": "l3",
+      "block_type": "list",
+      "style": "verified_fact",
+      "body": "বীৰেন্দ্ৰ কুমাৰ ভট্টাচাৰ্য: ১৯৭৯, 'মৃত্যুঞ্জয়' উপন্যাসৰ বাবে\nমামণি ৰয়ছম গোস্বামী: ২০০০\nনীলমণি ফুকন: ২০২০"
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "পৰীক্ষাৰ বাবে মনত ৰাখক: তিনিগৰাকী অসমীয়া সাহিত্যিকে {{term:jnanpith-award|জ্ঞানপীঠ বঁটা}} পাইছে: বীৰেন্দ্ৰ কুমাৰ ভট্টাচাৰ্য (১৯৭৯), মামণি ৰয়ছম গোস্বামী (২০০০) আৰু নীলমণি ফুকন (২০২০)।"
+     }
+    ]
+   }
+  }
+ ]
+}

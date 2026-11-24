@@ -29,7 +29,11 @@ class AdminRepository {
   Future<Map<String, dynamic>> loadForEdit(String contentId) async {
     final content = await client.from('content').select().eq('id', contentId).single();
     final versions = await client.from('content_versions').select().eq('content_id', contentId);
-    final blocks = await client.from('content_blocks').select().eq('content_id', contentId).order('position', ascending: true);
+    final blocks = await client
+        .from('content_blocks')
+        .select()
+        .eq('content_id', contentId)
+        .order('position', ascending: true);
     return {'content': content, 'versions': versions, 'blocks': blocks};
   }
 
@@ -103,14 +107,92 @@ class AdminRepository {
 
   Future<void> delete(String contentId) => client.from('content').delete().eq('id', contentId);
 
+  /// Adds one group of ready-made chapters (from the content JSON files) as
+  /// drafts. Chapters and dictionary words that already exist are left alone,
+  /// so importing the same group twice is safe.
+  Future<ImportResult> importGroup(Map<String, dynamic> group) async {
+    final terms = [
+      for (final t in group['terms'] as List)
+        {
+          'slug': t['slug'],
+          'term_en': t['term_en'],
+          'term_as': t['term_as'],
+          'meaning_en': t['meaning_en'],
+          'meaning_as': t['meaning_as'],
+        },
+    ];
+    if (terms.isNotEmpty) {
+      await client.from('terms').upsert(terms, onConflict: 'slug', ignoreDuplicates: true);
+    }
+
+    final cat = await client.from('categories').select('id').eq('slug', group['category_slug'] as String).maybeSingle();
+    if (cat == null) throw StateError('The group "${group['category_name']}" was not found in the database.');
+    final categoryId = cat['id'] as String;
+
+    var added = 0;
+    var skipped = 0;
+    for (final ch in group['chapters'] as List) {
+      final slug = ch['slug'] as String;
+      final existing = await client.from('content').select('id').eq('slug', slug).maybeSingle();
+      if (existing != null) {
+        skipped++;
+        continue;
+      }
+      final row = await client
+          .from('content')
+          .insert({'slug': slug, 'kind': 'gk_chapter', 'category_id': categoryId, 'position': ch['position']})
+          .select('id')
+          .single();
+      final contentId = row['id'] as String;
+      try {
+        final versions = ch['versions'] as Map<String, dynamic>;
+        await client.from('content_versions').insert([
+          for (final e in versions.entries)
+            {
+              'content_id': contentId,
+              'lang': e.key,
+              'title': e.value['title'],
+              'summary': e.value['summary'],
+              'status': 'draft',
+              'sources': ch['sources'],
+              'last_checked': group['last_checked'],
+            },
+        ]);
+        final blocks = ch['blocks'] as Map<String, dynamic>;
+        await client.from('content_blocks').insert([
+          for (final e in blocks.entries)
+            for (final (i, b) in (e.value as List).indexed)
+              {
+                'content_id': contentId,
+                'lang': e.key,
+                'block_key': b['block_key'],
+                'position': i + 1,
+                'block_type': b['block_type'],
+                'style': b['style'],
+                'body': b['body'],
+                'image_url': ?b['image_url'],
+              },
+        ]);
+      } catch (_) {
+        // Don't leave a half-made chapter behind; the next import will retry it.
+        await client.from('content').delete().eq('id', contentId);
+        rethrow;
+      }
+      added++;
+    }
+    return ImportResult(added: added, skipped: skipped, terms: terms.length);
+  }
+
   /// All dictionary terms, including hidden ones.
   Future<List<Term>> terms() async {
     final rows = await client.from('terms').select().order('slug', ascending: true);
     return [for (final r in rows) Term.fromJson(r)];
   }
 
-  Future<void> saveTerm(Term t) =>
-      client.from('terms').upsert({...t.toJson(), 'updated_at': DateTime.now().toUtc().toIso8601String()}, onConflict: 'slug');
+  Future<void> saveTerm(Term t) => client.from('terms').upsert({
+    ...t.toJson(),
+    'updated_at': DateTime.now().toUtc().toIso8601String(),
+  }, onConflict: 'slug');
 
   Future<void> deleteTerm(String slug) => client.from('terms').delete().eq('slug', slug);
 
@@ -127,7 +209,11 @@ class AdminRepository {
 
   /// Every practice set, including drafts.
   Future<List<QuestionSet>> questionSets() async {
-    final rows = await client.from('question_sets').select().order('position', ascending: true).order('id', ascending: true);
+    final rows = await client
+        .from('question_sets')
+        .select()
+        .order('position', ascending: true)
+        .order('id', ascending: true);
     return [for (final r in rows) QuestionSet.fromJson(r)];
   }
 
@@ -152,4 +238,12 @@ class AdminRepository {
       client.from('questions').upsert({...q.toJson(), 'updated_at': DateTime.now().toUtc().toIso8601String()});
 
   Future<void> deleteQuestion(String id) => client.from('questions').delete().eq('id', id);
+}
+
+/// What one group import did.
+class ImportResult {
+  const ImportResult({required this.added, required this.skipped, required this.terms});
+  final int added;
+  final int skipped;
+  final int terms;
 }

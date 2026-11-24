@@ -1,0 +1,76 @@
+{
+ "groups": [
+  {
+   "file": "01_introduction.json",
+   "name": "Introduction to Assam",
+   "chapters": 5,
+   "terms": 24
+  },
+  {
+   "file": "02_history.json",
+   "name": "History of Assam",
+   "chapters": 8,
+   "terms": 17
+  },
+  {
+   "file": "03_geography.json",
+   "name": "Geography of Assam",
+   "chapters": 5,
+   "terms": 11
+  },
+  {
+   "file": "04_culture.json",
+   "name": "Art, Culture and Heritage",
+   "chapters": 5,
+   "terms": 16
+  },
+  {
+   "file": "05_wildlife.json",
+   "name": "Wildlife and Environment",
+   "chapters": 4,
+   "terms": 12
+  },
+  {
+   "file": "06_economy.json",
+   "name": "Economy of Assam",
+   "chapters": 4,
+   "terms": 7
+  },
+  {
+   "file": "07_polity.json",
+   "name": "Polity and Administration",
+   "chapters": 4,
+   "terms": 10
+  },
+  {
+   "file": "08_society.json",
+   "name": "Society and Demography",
+   "chapters": 4,
+   "terms": 6
+  },
+  {
+   "file": "09_personalities.json",
+   "name": "Important Personalities",
+   "chapters": 8,
+   "terms": 8
+  },
+  {
+   "file": "10_development.json",
+   "name": "Assam Current Development",
+   "chapters": 1,
+   "terms": 2
+  },
+  {
+   "file": "11_districts.json",
+   "name": "District-wise Assam GK",
+   "chapters": 1,
+   "terms": 3
+  },
+  {
+   "file": "12_places.json",
+   "name": "Important Places and Tourism",
+   "chapters": 5,
+   "terms": 5
+  }
+ ]
+}

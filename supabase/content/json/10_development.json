@@ -1,0 +1,165 @@
+{
+ "group": "10_development",
+ "category_slug": "development",
+ "category_name": "Assam Current Development",
+ "last_checked": "2026-11-24",
+ "terms": [
+  {
+   "slug": "road-cum-rail-bridge",
+   "term_en": "Road-cum-rail bridge",
+   "term_as": "পথ-ৰেল দলং",
+   "meaning_en": "A bridge that carries both a road and a railway line, often on two levels (decks).",
+   "meaning_as": "পথ আৰু ৰেলপথ দুয়োটা কঢ়িয়াই নিয়া দলং, প্ৰায়ে দুটা মহলাত।"
+  },
+  {
+   "slug": "double-decker-bridge",
+   "term_en": "Double-decker bridge",
+   "term_as": "দুমহলীয়া দলং",
+   "meaning_en": "A bridge with two levels, one above the other.",
+   "meaning_as": "এটাৰ ওপৰত আনটো থকা দুটা মহলাৰ দলং।"
+  }
+ ],
+ "chapters": [
+  {
+   "slug": "major-bridges-of-assam",
+   "position": 1,
+   "sources": "Saraighat Bridge, Wikipedia: https://en.wikipedia.org/wiki/Saraighat_Bridge\nBogibeel Bridge, Wikipedia: https://en.wikipedia.org/wiki/Bogibeel_Bridge\nDhola-Sadiya Bridge, Wikipedia: https://en.wikipedia.org/wiki/Dhola%E2%80%93Sadiya_Bridge\nTezpur, Wikipedia: https://en.wikipedia.org/wiki/Tezpur",
+   "versions": {
+    "en": {
+     "title": "Major bridges of Assam",
+     "summary": "Saraighat, Bogibeel, Dhola-Sadiya and Kolia Bhomora: the bridges that join Assam's two banks."
+    },
+    "as": {
+     "title": "অসমৰ প্ৰধান দলংসমূহ",
+     "summary": "শৰাইঘাট, বগীবিল, ঢোলা-শদিয়া আৰু কলীয়াভোমোৰা: অসমৰ দুই পাৰ সংযোগ কৰা দলংসমূহ।"
+    }
+   },
+   "blocks": {
+    "en": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "The Brahmaputra and its tributaries divide Assam into north and south banks, so bridges are vital for travel and trade."
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "Saraighat Bridge (1962)"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "verified_fact",
+      "body": "The Saraighat Bridge joins Guwahati and North Guwahati. Completed in 1962, it was the first {{term:road-cum-rail-bridge|road-cum-rail bridge}} of its kind across the Brahmaputra in Assam. It is 1,298 metres long. A New Saraighat Bridge was opened beside it in January 2017."
+     },
+     {
+      "block_key": "h2",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "Bogibeel Bridge (2018)"
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "verified_fact",
+      "body": "The Bogibeel Bridge over the Brahmaputra joins Dibrugarh and Dhemaji. It is a {{term:double-decker-bridge|double-decker}} bridge, with two railway lines below and a three-lane road above, and is 4.94 km long. Its foundation was laid in January 1997, and Prime Minister Narendra Modi inaugurated it on 25 December 2018. It is the longest road-cum-rail bridge in India."
+     },
+     {
+      "block_key": "h3",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "Dhola-Sadiya Bridge, Bhupen Hazarika Setu (2017)"
+     },
+     {
+      "block_key": "p4",
+      "block_type": "paragraph",
+      "style": "verified_fact",
+      "body": "The Dhola-Sadiya Bridge crosses the Lohit, a {{term:tributary}} of the Brahmaputra, in Tinsukia district. It is 9.15 km long and was opened on 26 May 2017. It is named after Bhupen Hazarika and gives easier access to Arunachal Pradesh."
+     },
+     {
+      "block_key": "h4",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "Kolia Bhomora Setu"
+     },
+     {
+      "block_key": "p5",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "The 3.015 km Kolia Bhomora Setu over the Brahmaputra links Tezpur with Silghat in Nagaon district. It is named after the Ahom general Kalia Bhomora Borphukan."
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "Remember for exams: Saraighat 1962; Dhola-Sadiya (Bhupen Hazarika Setu) 2017, 9.15 km; Bogibeel 2018, longest road-cum-rail bridge in India."
+     }
+    ],
+    "as": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "ব্ৰহ্মপুত্ৰ আৰু ইয়াৰ উপনৈসমূহে অসমক উত্তৰ আৰু দক্ষিণ পাৰত ভগাই ৰাখিছে, সেয়েহে যাতায়াত আৰু বাণিজ্যৰ বাবে দলং অতি গুৰুত্বপূৰ্ণ।"
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "শৰাইঘাট দলং (১৯৬২)"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "verified_fact",
+      "body": "শৰাইঘাট দলঙে গুৱাহাটী আৰু উত্তৰ গুৱাহাটী সংযোগ কৰে। ১৯৬২ চনত সম্পূৰ্ণ হোৱা এই দলং অসমত ব্ৰহ্মপুত্ৰৰ ওপৰত এনেধৰণৰ প্ৰথম {{term:road-cum-rail-bridge|পথ-ৰেল দলং}}। ইয়াৰ দৈৰ্ঘ্য ১,২৯৮ মিটাৰ। ২০১৭ চনৰ জানুৱাৰীত ইয়াৰ কাষতে নতুন শৰাইঘাট দলং মুকলি কৰা হয়।"
+     },
+     {
+      "block_key": "h2",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "বগীবিল দলং (২০১৮)"
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "verified_fact",
+      "body": "ব্ৰহ্মপুত্ৰৰ ওপৰৰ বগীবিল দলঙে ডিব্ৰুগড় আৰু ধেমাজি সংযোগ কৰে। ই এখন {{term:double-decker-bridge|দুমহলীয়া}} দলং, তলত দুটা ৰেললাইন আৰু ওপৰত তিনি লেনৰ পথ, আৰু ইয়াৰ দৈৰ্ঘ্য ৪.৯৪ কিমি। ১৯৯৭ চনৰ জানুৱাৰীত ইয়াৰ আধাৰশিলা স্থাপন কৰা হয়, আৰু ২০১৮ চনৰ ২৫ ডিচেম্বৰত প্ৰধানমন্ত্ৰী নৰেন্দ্ৰ মোদীয়ে ইয়াৰ উদ্বোধন কৰে। ই ভাৰতৰ দীৰ্ঘতম পথ-ৰেল দলং।"
+     },
+     {
+      "block_key": "h3",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "ঢোলা-শদিয়া দলং, ভূপেন হাজৰিকা সেতু (২০১৭)"
+     },
+     {
+      "block_key": "p4",
+      "block_type": "paragraph",
+      "style": "verified_fact",
+      "body": "ঢোলা-শদিয়া দলঙে তিনিচুকীয়া জিলাত ব্ৰহ্মপুত্ৰৰ {{term:tributary|উপনৈ}} লুইত পাৰ হৈছে। ইয়াৰ দৈৰ্ঘ্য ৯.১৫ কিমি আৰু ই ২০১৭ চনৰ ২৬ মে'ত মুকলি হয়। ইয়াক ভূপেন হাজৰিকাৰ নামেৰে নামকৰণ কৰা হৈছে আৰু ই অৰুণাচল প্ৰদেশলৈ যাতায়াত সহজ কৰিছে।"
+     },
+     {
+      "block_key": "h4",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "কলীয়াভোমোৰা সেতু"
+     },
+     {
+      "block_key": "p5",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "ব্ৰহ্মপুত্ৰৰ ওপৰৰ ৩.০১৫ কিমি দীঘল কলীয়াভোমোৰা সেতুৱে তেজপুৰক নগাঁও জিলাৰ শিলঘাটৰ সৈতে সংযোগ কৰে। ইয়াক আহোম সেনাপতি কলীয়াভোমোৰা বৰফুকনৰ নামেৰে নামকৰণ কৰা হৈছে।"
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "পৰীক্ষাৰ বাবে মনত ৰাখক: শৰাইঘাট ১৯৬২; ঢোলা-শদিয়া (ভূপেন হাজৰিকা সেতু) ২০১৭, ৯.১৫ কিমি; বগীবিল ২০১৮, ভাৰতৰ দীৰ্ঘতম পথ-ৰেল দলং।"
+     }
+    ]
+   }
+  }
+ ]
+}

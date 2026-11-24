@@ -1,0 +1,443 @@
+{
+ "group": "06_economy",
+ "category_slug": "economy",
+ "category_name": "Economy of Assam",
+ "last_checked": "2026-11-24",
+ "terms": [
+  {
+   "slug": "gsdp",
+   "term_en": "GSDP",
+   "term_as": "জি এছ ডি পি",
+   "meaning_en": "Gross State Domestic Product: the total value of all goods and services produced in a state in a year.",
+   "meaning_as": "মুঠ ৰাজ্যিক ঘৰুৱা উৎপাদন: এবছৰত এখন ৰাজ্যত উৎপাদিত সকলো সামগ্ৰী আৰু সেৱাৰ মুঠ মূল্য।"
+  },
+  {
+   "slug": "agrarian-economy",
+   "term_en": "Agrarian economy",
+   "term_as": "কৃষিভিত্তিক অৰ্থনীতি",
+   "meaning_en": "An economy in which most people earn their living from farming.",
+   "meaning_as": "যি অৰ্থনীতিত বেছিভাগ মানুহে কৃষিৰ পৰা জীৱিকা উলিয়ায়।"
+  },
+  {
+   "slug": "staple-food",
+   "term_en": "Staple food",
+   "term_as": "প্ৰধান খাদ্য",
+   "meaning_en": "The main food that people eat every day. In Assam it is rice.",
+   "meaning_as": "মানুহে প্ৰতিদিনে খোৱা মূল খাদ্য। অসমত ই ভাত।"
+  },
+  {
+   "slug": "camellia-assamica",
+   "term_en": "Camellia sinensis var. assamica",
+   "term_as": "কেমেলিয়া চিনেনচিছ ভেৰ. আছামিকা",
+   "meaning_en": "The scientific name of the Assam tea plant, a variety native to Assam.",
+   "meaning_as": "অসমৰ চাহ গছৰ বৈজ্ঞানিক নাম, অসমৰ নিজা এবিধ জাত।"
+  },
+  {
+   "slug": "refinery",
+   "term_en": "Refinery",
+   "term_as": "শোধনাগাৰ",
+   "meaning_en": "A factory where crude oil is cleaned and turned into petrol, diesel, kerosene and other products.",
+   "meaning_as": "খাৰুৱা তেল শোধন কৰি পেট্ৰ'ল, ডিজেল, কেৰাচিন আদি সামগ্ৰী উৎপাদন কৰা কাৰখানা।"
+  },
+  {
+   "slug": "crude-oil",
+   "term_en": "Crude oil",
+   "term_as": "খাৰুৱা তেল",
+   "meaning_en": "Petroleum as it comes out of the ground, before it is refined.",
+   "meaning_as": "শোধন কৰাৰ আগতে মাটিৰ তলৰ পৰা উলিওৱা পেট্ৰ'লিয়াম।"
+  },
+  {
+   "slug": "sericulture",
+   "term_en": "Sericulture",
+   "term_as": "পলুপোহা",
+   "meaning_en": "Rearing silkworms to produce silk.",
+   "meaning_as": "পাট উৎপাদনৰ বাবে পলু পোহা।"
+  }
+ ],
+ "chapters": [
+  {
+   "slug": "agriculture-and-crops",
+   "position": 1,
+   "sources": "Economy of Assam, Wikipedia: https://en.wikipedia.org/wiki/Economy_of_Assam\nTO VERIFY before publishing: the three paddy seasons (Ahu, Sali, Boro) in l1.",
+   "versions": {
+    "en": {
+     "title": "Agriculture and main crops",
+     "summary": "How farming supports Assam, the share of each sector, and the main crops."
+    },
+    "as": {
+     "title": "কৃষি আৰু প্ৰধান শস্য",
+     "summary": "কৃষিয়ে অসমক কেনেকৈ চলাই ৰাখিছে, প্ৰতিটো খণ্ডৰ অংশ আৰু প্ৰধান শস্যসমূহ।"
+    }
+   },
+   "blocks": {
+    "en": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "Assam has a largely {{term:agrarian-economy|agrarian economy}}. Farming gives work to most of its people."
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "verified_fact",
+      "body": "In 2021-22, agriculture made up about 25 percent of Assam's economy, industry about 30 percent and services about 45 percent."
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "Main crops"
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "Rice is the {{term:staple-food|staple food}} of Assam and its main crop. It is grown in three seasons:"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "geography",
+      "body": "Ahu: the autumn paddy\nSali: the winter paddy, the main rice crop\nBoro: the summer paddy"
+     },
+     {
+      "block_key": "p4",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "Tea is the most important cash crop. Other crops include jute, mustard, pulses, sugarcane, vegetables and fruits."
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "Remember for exams: sector shares 2021-22: agriculture 25%, industry 30%, services 45%."
+     }
+    ],
+    "as": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "অসমৰ অৰ্থনীতি মূলতঃ {{term:agrarian-economy|কৃষিভিত্তিক}}। কৃষিয়ে ইয়াৰ বেছিভাগ মানুহক সংস্থাপন দিয়ে।"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "verified_fact",
+      "body": "২০২১-২২ চনত অসমৰ অৰ্থনীতিত কৃষিৰ অংশ প্ৰায় ২৫ শতাংশ, উদ্যোগৰ প্ৰায় ৩০ শতাংশ আৰু সেৱা খণ্ডৰ প্ৰায় ৪৫ শতাংশ আছিল।"
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "প্ৰধান শস্য"
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "ধান অসমৰ {{term:staple-food|প্ৰধান খাদ্য}} আৰু প্ৰধান শস্য। তিনিটা বতৰত ধান খেতি কৰা হয়:"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "geography",
+      "body": "আহু: শৰৎকালীন ধান\nশালি: শীতকালীন ধান, মূল ধান খেতি\nবাও/বোৰো: গ্ৰীষ্মকালীন ধান"
+     },
+     {
+      "block_key": "p4",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "চাহ আটাইতকৈ গুৰুত্বপূৰ্ণ বাণিজ্যিক শস্য। আন শস্যৰ ভিতৰত আছে মৰাপাট, সৰিয়হ, মাহজাতীয় শস্য, কুঁহিয়াৰ, শাক-পাচলি আৰু ফল-মূল।"
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "পৰীক্ষাৰ বাবে মনত ৰাখক: ২০২১-২২ত খণ্ডসমূহৰ অংশ: কৃষি ২৫%, উদ্যোগ ৩০%, সেৱা ৪৫%।"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "tea-industry",
+   "position": 2,
+   "sources": "Assam tea, Wikipedia: https://en.wikipedia.org/wiki/Assam_tea\nEconomy of Assam, Wikipedia: https://en.wikipedia.org/wiki/Economy_of_Assam\nManiram Dewan, Wikipedia: https://en.wikipedia.org/wiki/Maniram_Dewan\nTO VERIFY before publishing: p4 (Tocklai Tea Research Institute, Jorhat, 1911).",
+   "versions": {
+    "en": {
+     "title": "The tea industry",
+     "summary": "How Assam tea was found, the Assam Company, and Assam's place in tea today."
+    },
+    "as": {
+     "title": "চাহ উদ্যোগ",
+     "summary": "অসমৰ চাহ কেনেকৈ পোৱা গ'ল, আসাম কোম্পানী, আৰু আজিৰ চাহ উদ্যোগত অসমৰ স্থান।"
+    }
+   },
+   "blocks": {
+    "en": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "Assam is the world's largest tea-growing region by production. It grows about 680 million kg of tea a year, and in 2015 it produced about 60 percent of India's tea."
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "How Assam tea was found"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "event",
+      "body": "In 1823 a Scottish trader, Robert Bruce, came across the tea plant in Assam. Maniram Dewan directed him to the Singpho chief Bessa Gam, whose people used the plant. The Assam tea plant is a local variety, {{term:camellia-assamica|Camellia sinensis var. assamica}}."
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "event",
+      "body": "The first Assam tea was shipped to London in 1838 and auctioned in January 1839. In 1839 the Assam Company was formed, and Maniram became its {{term:dewan|Dewan}} at Nazira."
+     },
+     {
+      "block_key": "p4",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "The Tocklai Tea Research Institute at Jorhat, set up in 1911, is one of the oldest tea research centres in the world."
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "Remember for exams: Robert Bruce found Assam tea in 1823; Assam Company formed in 1839."
+     }
+    ],
+    "as": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "উৎপাদনৰ হিচাপত অসম পৃথিৱীৰ বৃহত্তম চাহ উৎপাদনকাৰী অঞ্চল। ইয়াত বছৰি প্ৰায় ৬৮ কোটি কিলোগ্ৰাম চাহ উৎপাদন হয়, আৰু ২০১৫ চনত ভাৰতৰ মুঠ চাহৰ প্ৰায় ৬০ শতাংশ অসমত উৎপাদন হৈছিল।"
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "অসমৰ চাহ কেনেকৈ পোৱা গ'ল"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "event",
+      "body": "১৮২৩ চনত স্কটলেণ্ডৰ বেপাৰী ৰবাৰ্ট ব্ৰুছে অসমত চাহ গছ দেখা পায়। মণিৰাম দেৱানে তেওঁক চিংফৌ মুখিয়াল বিছা গামৰ ওচৰলৈ পঠায়, যাৰ লোকসকলে এই গছ ব্যৱহাৰ কৰিছিল। অসমৰ চাহ গছ এবিধ স্থানীয় জাত, {{term:camellia-assamica|কেমেলিয়া চিনেনচিছ ভেৰ. আছামিকা}}।"
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "event",
+      "body": "১৮৩৮ চনত প্ৰথম অসমৰ চাহ লণ্ডনলৈ পঠোৱা হয় আৰু ১৮৩৯ চনৰ জানুৱাৰীত নিলাম হয়। ১৮৩৯ চনত আসাম কোম্পানী গঠন হয়, আৰু মণিৰাম নাজিৰাত ইয়াৰ {{term:dewan|দেৱান}} হয়।"
+     },
+     {
+      "block_key": "p4",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "১৯১১ চনত স্থাপিত যোৰহাটৰ টোকলাই চাহ গৱেষণা প্ৰতিষ্ঠান পৃথিৱীৰ আটাইতকৈ পুৰণি চাহ গৱেষণা কেন্দ্ৰসমূহৰ এটা।"
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "পৰীক্ষাৰ বাবে মনত ৰাখক: ১৮২৩ চনত ৰবাৰ্ট ব্ৰুছে অসমৰ চাহ পায়; ১৮৩৯ চনত আসাম কোম্পানী গঠন।"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "oil-and-natural-gas",
+   "position": 3,
+   "sources": "Digboi Refinery, Wikipedia: https://en.wikipedia.org/wiki/Digboi_Refinery\nNumaligarh Refinery, Wikipedia: https://en.wikipedia.org/wiki/Numaligarh_Refinery\nEconomy of Assam, Wikipedia: https://en.wikipedia.org/wiki/Economy_of_Assam\nGeography of Assam, Wikipedia: https://en.wikipedia.org/wiki/Geography_of_Assam",
+   "versions": {
+    "en": {
+     "title": "Oil and natural gas",
+     "summary": "Digboi, Asia's first refinery, and the four refineries of Assam."
+    },
+    "as": {
+     "title": "খাৰুৱা তেল আৰু প্ৰাকৃতিক গেছ",
+     "summary": "এছিয়াৰ প্ৰথম শোধনাগাৰ ডিগবৈ, আৰু অসমৰ চাৰিটা শোধনাগাৰ।"
+    }
+   },
+   "blocks": {
+    "en": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "Oil was first found by accident in the Digboi area in 1867, while a railway line was being laid. Drilling for oil began in 1889."
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "event",
+      "body": "The Digboi {{term:refinery}} was started by the Assam Oil Company and commissioned on 11 December 1901. It is Asia's first refinery and India's oldest refinery still working."
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "Refineries of Assam"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "verified_fact",
+      "body": "Digboi (Tinsukia district), 1901\nGuwahati\nBongaigaon\nNumaligarh (Golaghat district): commercial production from 1 October 2000"
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "Together the four refineries can process about 7 million tonnes of {{term:crude-oil|crude oil}} a year. The oil and gas fields are in the districts of Upper Assam."
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "Remember for exams: Digboi refinery, 1901, Asia's first; drilling began 1889; Assam has 4 refineries."
+     }
+    ],
+    "as": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "১৮৬৭ চনত ৰেলপথ নিৰ্মাণৰ সময়ত ডিগবৈ অঞ্চলত আকস্মিকভাৱে প্ৰথম তেল পোৱা যায়। ১৮৮৯ চনত তেলৰ বাবে খনন আৰম্ভ হয়।"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "event",
+      "body": "আসাম অইল কোম্পানীয়ে আৰম্ভ কৰা ডিগবৈ {{term:refinery|শোধনাগাৰ}} ১৯০১ চনৰ ১১ ডিচেম্বৰত চালু হয়। ই এছিয়াৰ প্ৰথম শোধনাগাৰ আৰু এতিয়াও চলি থকা ভাৰতৰ আটাইতকৈ পুৰণি শোধনাগাৰ।"
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "অসমৰ শোধনাগাৰসমূহ"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "verified_fact",
+      "body": "ডিগবৈ (তিনিচুকীয়া জিলা), ১৯০১\nগুৱাহাটী\nবঙাইগাঁও\nনুমলীগড় (গোলাঘাট জিলা): ১ অক্টোবৰ ২০০০ৰ পৰা বাণিজ্যিক উৎপাদন"
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "চাৰিওটা শোধনাগাৰে একেলগে বছৰি প্ৰায় ৭০ লাখ টন {{term:crude-oil|খাৰুৱা তেল}} শোধন কৰিব পাৰে। তেল আৰু গেছৰ ক্ষেত্ৰসমূহ উজনি অসমৰ জিলাসমূহত আছে।"
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "পৰীক্ষাৰ বাবে মনত ৰাখক: ডিগবৈ শোধনাগাৰ, ১৯০১, এছিয়াৰ প্ৰথম; খনন আৰম্ভ ১৮৮৯; অসমত ৪ টা শোধনাগাৰ।"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "industries-and-sericulture",
+   "position": 4,
+   "sources": "Economy of Assam, Wikipedia: https://en.wikipedia.org/wiki/Economy_of_Assam\nGeography of Assam, Wikipedia: https://en.wikipedia.org/wiki/Geography_of_Assam\nMuga silk, Wikipedia: https://en.wikipedia.org/wiki/Muga_silk",
+   "versions": {
+    "en": {
+     "title": "Industries and sericulture",
+     "summary": "Fertiliser, paper, coal and silk: the other industries of Assam."
+    },
+    "as": {
+     "title": "উদ্যোগ আৰু পলুপোহা",
+     "summary": "সাৰ, কাগজ, কয়লা আৰু পাট-মুগা: অসমৰ অন্যান্য উদ্যোগ।"
+    }
+   },
+   "blocks": {
+    "en": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "Apart from tea and oil, Assam has several other industries:"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "normal",
+      "body": "Fertiliser: a chemical fertiliser plant at Namrup.\nPaper: paper mills at Jagiroad, Panchgram and Jogighopa.\nCoal: mined in the {{term:tertiary-coal|Tertiary coal}} belt of Upper Assam and the hill districts.\nTextiles: silk, jute and yarn mills, and household handlooms."
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "Sericulture"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "heritage",
+      "body": "{{term:sericulture|Sericulture}} is a major rural occupation. Assam rears Muga, Eri and Pat silkworms. {{term:muga-silk|Muga silk}} is produced only in Assam."
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "The economy of Assam grew at about 7 percent a year between 2016 and 2025 (at constant 2011-12 prices), measured by its {{term:gsdp|GSDP}}."
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "Remember for exams: fertiliser plant at Namrup; paper mills at Jagiroad, Panchgram and Jogighopa."
+     }
+    ],
+    "as": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "চাহ আৰু তেলৰ উপৰিও অসমত আন কেইবাটাও উদ্যোগ আছে:"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "normal",
+      "body": "সাৰ: নামৰূপত ৰাসায়নিক সাৰৰ কাৰখানা।\nকাগজ: জাগীৰোড, পাঁচগ্ৰাম আৰু যোগীঘোপাত কাগজ কল।\nকয়লা: উজনি অসম আৰু পাহাৰীয়া জিলাসমূহৰ {{term:tertiary-coal|টাৰ্চিয়াৰী কয়লাৰ}} বলয়ৰ পৰা উত্তোলন কৰা হয়।\nবস্ত্ৰ: পাট, মৰাপাট আৰু সূতা কল, আৰু ঘৰুৱা তাঁতশাল।"
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "পলুপোহা"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "heritage",
+      "body": "{{term:sericulture|পলুপোহা}} এক প্ৰধান গ্ৰাম্য বৃত্তি। অসমত মুগা, এৰী আৰু পাট পলু পোহা হয়। {{term:muga-silk|মুগা}} কেৱল অসমতহে উৎপাদন হয়।"
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "{{term:gsdp|জি এছ ডি পি}}ৰ হিচাপত ২০১৬ ৰ পৰা ২০২৫ চনৰ ভিতৰত অসমৰ অৰ্থনীতি বছৰি প্ৰায় ৭ শতাংশ হাৰত (২০১১-১২ৰ স্থিৰ মূল্যত) বৃদ্ধি পাইছিল।"
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "পৰীক্ষাৰ বাবে মনত ৰাখক: নামৰূপত সাৰৰ কাৰখানা; জাগীৰোড, পাঁচগ্ৰাম আৰু যোগীঘোপাত কাগজ কল।"
+     }
+    ]
+   }
+  }
+ ]
+}
