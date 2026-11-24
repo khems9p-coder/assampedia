@@ -1,0 +1,4 @@
+-- ASSAMPEDIA: publish Society and Demography (both languages).
+-- Run this ONLY after you have checked the drafts in Admin.
+update public.content_versions set status = 'published', updated_at = now()
+where content_id in (select id from public.content where slug in ($t$population-census-2011$t$, $t$communities-of-assam$t$, $t$languages-of-assam$t$, $t$education-institutions$t$));
