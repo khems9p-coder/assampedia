@@ -51,6 +51,7 @@ IconData categoryIcon(String? name) => switch (name) {
       'gavel' => Icons.gavel_outlined,
       'shield' => Icons.shield_outlined,
       'work' => Icons.work_outline,
+      'public' => Icons.public,
       _ => Icons.menu_book_outlined,
     };
 

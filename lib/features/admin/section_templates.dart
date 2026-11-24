@@ -54,9 +54,23 @@ const List<SectionTemplate> jobSections = [
   (en: 'How it differs from similar posts', as: 'একে ধৰণৰ পদৰ সৈতে পাৰ্থক্য', suggested: false),
 ];
 
+/// The nine sections of a current-affairs article (master plan, Part 8).
+const List<SectionTemplate> newsSections = [
+  (en: 'Introduction', as: 'পৰিচয়', suggested: false),
+  (en: 'Background', as: 'পটভূমি', suggested: false),
+  (en: 'What happened?', as: 'কি ঘটিল?', suggested: false),
+  (en: 'Why is it important?', as: 'ইয়াৰ গুৰুত্ব কি?', suggested: false),
+  (en: 'Relevance to Assam and India', as: 'অসম আৰু ভাৰতৰ বাবে প্ৰাসংগিকতা', suggested: false),
+  (en: 'Examination relevance', as: 'পৰীক্ষাৰ বাবে প্ৰাসংগিকতা', suggested: false),
+  (en: 'Important facts', as: 'গুৰুত্বপূৰ্ণ তথ্য', suggested: false),
+  (en: 'Conclusion', as: 'সামৰণি', suggested: false),
+  (en: 'References and source links', as: 'তথ্যসূত্ৰ আৰু উৎসৰ লিংক', suggested: false),
+];
+
 List<SectionTemplate> sectionsFor(String section) => switch (section) {
   'exam' => examSections,
   'job' => jobSections,
+  'ca' => newsSections,
   _ => const [],
 };
 

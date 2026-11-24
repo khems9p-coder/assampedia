@@ -10,6 +10,7 @@ import 'package:assampedia/data/bookmark_store.dart';
 import 'package:assampedia/data/cached_content_repository.dart';
 import 'package:assampedia/data/content_repository.dart';
 import 'package:assampedia/data/demo_content_repository.dart';
+import 'package:assampedia/data/jobs_models.dart';
 import 'package:assampedia/data/models.dart';
 import 'package:assampedia/data/offline_cache.dart';
 import 'package:assampedia/features/admin/section_templates.dart';
@@ -53,6 +54,10 @@ class _Switchable implements ContentRepository {
   Future<List<Term>> terms() => _go(inner.terms);
   @override
   Future<SearchResults> search(String q) => _go(() => inner.search(q));
+  @override
+  Future<List<Vacancy>> vacancies() => _go(inner.vacancies);
+  @override
+  Future<List<NewsItem>> currentAffairs() => _go(inner.currentAffairs);
 }
 
 void main() {
@@ -291,6 +296,83 @@ void main() {
       expect(find.text('Official website'), findsOneWidget);
       await tester.scrollUntilVisible(find.text('Suggestion: not official information'), 300);
       expect(find.text('Suggestion: not official information'), findsOneWidget);
+    });
+  });
+
+  group('Phase 5: vacancies and current affairs', () {
+    final today = DateTime(2026, 6, 15);
+    VacancyStatus st(int closesIn, {int? startsIn, String stage = 'notification'}) => vacancyStatus(
+          stage: stage,
+          startDate: startsIn == null ? null : today.add(Duration(days: startsIn)),
+          closingDate: today.add(Duration(days: closesIn)),
+          today: today,
+        );
+
+    test('Status comes from the dates, so expired vacancies never show as open', () {
+      expect(st(30), VacancyStatus.open);
+      expect(st(7), VacancyStatus.closingSoon);
+      expect(st(0), VacancyStatus.closingSoon);
+      expect(st(-1), VacancyStatus.closed);
+      expect(st(30, startsIn: 3), VacancyStatus.newNotification);
+      expect(st(-10, stage: 'result'), VacancyStatus.result);
+      expect(st(-10, stage: 'admit_card'), VacancyStatus.admitCard);
+      expect(VacancyStatus.closed.canApply, isFalse);
+      expect(VacancyStatus.open.canApply, isTrue);
+    });
+
+    test('News period filters', () {
+      expect(inPeriod(today, NewsPeriod.today, today), isTrue);
+      expect(inPeriod(today.subtract(const Duration(days: 1)), NewsPeriod.today, today), isFalse);
+      expect(inPeriod(today.subtract(const Duration(days: 6)), NewsPeriod.week, today), isTrue);
+      expect(inPeriod(today.subtract(const Duration(days: 7)), NewsPeriod.week, today), isFalse);
+      expect(inPeriod(DateTime(2026, 6, 1), NewsPeriod.month, today), isTrue);
+      expect(inPeriod(DateTime(2026, 5, 31), NewsPeriod.month, today), isFalse);
+      expect(inPeriod(null, NewsPeriod.all, today), isTrue);
+    });
+
+    test('Vacancy survives saving and loading', () {
+      final v = Vacancy(
+        id: 'x',
+        category: JobCategory.banking,
+        text: {'post_en': 'Clerk', 'post_as': 'কেৰানী'},
+        count: 12,
+        startDate: DateTime(2026, 6, 1),
+        closingDate: DateTime(2026, 6, 30),
+        notificationUrl: 'https://example.org/n.pdf',
+        lastVerified: DateTime(2026, 6, 2),
+        isPublished: true,
+      );
+      final back = Vacancy.fromJson(v.toJson());
+      expect(back.post(AppLang.english), 'Clerk');
+      expect(back.post(AppLang.assamese), 'কেৰানী');
+      expect(back.category, JobCategory.banking);
+      expect(back.count, 12);
+      expect(back.closingDate, DateTime(2026, 6, 30));
+      expect(back.toJson()['closing_date'], '2026-06-30');
+      expect(back.get('qualification', AppLang.english), isNull);
+    });
+
+    test('Current affairs pages get the nine standard sections', () {
+      expect(sectionsFor('ca').length, 9);
+      expect(sectionsFor('ca').last.en, 'References and source links');
+    });
+
+    testWidgets('Jobs tab lists open vacancies and current affairs', (tester) async {
+      tester.view.physicalSize = const Size(1200, 2400);
+      tester.view.devicePixelRatio = 1.0;
+      addTearDown(tester.view.reset);
+      final services = await _services(lang: 'en');
+      await tester.pumpWidget(AssampediaApp(services: services));
+      await tester.pumpAndSettle();
+      await tester.tap(find.byIcon(Icons.work_outline));
+      await tester.pumpAndSettle();
+      expect(find.text('Sample vacancy A (layout test)'), findsOneWidget);
+      expect(find.text('Sample vacancy B (layout test)'), findsOneWidget);
+      expect(find.text('Sample vacancy C (layout test)'), findsNothing);
+
+      await tester.tap(find.text('Current Affairs'));
+      await tester.pumpAndSettle();
+      expect(find.text('Sample chapter (layout test)'), findsOneWidget);
     });
   });
 }

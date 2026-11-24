@@ -1,4 +1,5 @@
 import 'content_repository.dart';
+import 'jobs_models.dart';
 import 'models.dart';
 import 'offline_cache.dart';
 
@@ -70,4 +71,20 @@ class CachedContentRepository implements ContentRepository {
       return searchLocally(chapters, terms, query, offline: true);
     }
   }
+
+  @override
+  Future<List<Vacancy>> vacancies() => _try(
+    'vacancies',
+    remote.vacancies,
+    (v) => [for (final x in v) x.toJson()],
+    (j) => [for (final x in j as List) Vacancy.fromJson(x as Map<String, dynamic>)],
+  );
+
+  @override
+  Future<List<NewsItem>> currentAffairs() => _try(
+    'current_affairs',
+    remote.currentAffairs,
+    (v) => [for (final x in v) x.toJson()],
+    (j) => [for (final x in j as List) NewsItem.fromJson(x as Map<String, dynamic>)],
+  );
 }

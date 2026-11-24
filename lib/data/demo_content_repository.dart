@@ -1,5 +1,6 @@
 import '../core/i18n/app_lang.dart';
 import 'content_repository.dart';
+import 'jobs_models.dart';
 import 'models.dart';
 
 /// Layout-testing content only. Every text says it is sample text, so it can
@@ -18,6 +19,7 @@ class DemoContentRepository implements ContentRepository {
     ),
     Category(id: 'c4', slug: 'wildlife', position: 4, icon: 'pets', nameEn: 'Wildlife and Environment', nameAs: 'বন্যপ্ৰাণী আৰু পৰিৱেশ'),
     Category(id: 'e1', slug: 'exams-sample', position: 1, icon: 'flag', section: 'exam', nameEn: 'Sample exam group', nameAs: 'নমুনা পৰীক্ষাৰ গোট'),
+    Category(id: 'n1', slug: 'ca-sample', position: 1, icon: 'flag', section: 'ca', nameEn: 'Sample news group', nameAs: 'নমুনা বাতৰিৰ গোট'),
     Category(id: 'j1', slug: 'careers-sample', position: 1, icon: 'gavel', section: 'job', nameEn: 'Sample career group', nameAs: 'নমুনা কেৰিয়াৰৰ গোট'),
   ];
 
@@ -82,4 +84,40 @@ class DemoContentRepository implements ContentRepository {
 
   @override
   Future<SearchResults> search(String query) async => searchLocally([await chapter('demo')], _terms, query);
+
+  @override
+  Future<List<Vacancy>> vacancies() async {
+    final now = DateTime.now();
+    Vacancy sample(String id, int closesInDays, {String stage = 'notification'}) => Vacancy(
+      id: id,
+      category: JobCategory.assam,
+      text: {
+        'post_en': 'Sample vacancy $id (layout test)',
+        'post_as': 'নমুনা খালী পদ $id (পৰীক্ষা)',
+        'organisation_en': 'Sample organisation (not real)',
+        'organisation_as': 'নমুনা প্ৰতিষ্ঠান (প্ৰকৃত নহয়)',
+        'qualification_en': 'Sample qualification text',
+        'qualification_as': 'নমুনা অৰ্হতা',
+      },
+      state: 'Assam',
+      count: 10,
+      startDate: now.subtract(const Duration(days: 5)),
+      closingDate: now.add(Duration(days: closesInDays)),
+      stage: stage,
+      notificationUrl: 'https://example.org/',
+      lastVerified: now,
+      isPublished: true,
+    );
+    return [sample('A', 20), sample('B', 3), sample('C', -2)];
+  }
+
+  @override
+  Future<List<NewsItem>> currentAffairs() async => [
+    NewsItem(
+      id: 'demo',
+      categoryId: 'n1',
+      date: DateTime.now(),
+      titles: {AppLang.english: 'Sample chapter (layout test)', AppLang.assamese: 'নমুনা অধ্যায় (পৰীক্ষা)'},
+    ),
+  ];
 }

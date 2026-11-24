@@ -2,6 +2,7 @@ import 'package:supabase_flutter/supabase_flutter.dart' hide User;
 
 import '../core/i18n/app_lang.dart';
 import 'content_repository.dart';
+import 'jobs_models.dart';
 import 'models.dart';
 
 /// Reads content from Supabase. The database's security rules make sure
@@ -145,5 +146,25 @@ class SupabaseContentRepository implements ContentRepository {
           if (termMatches(t, q)) t,
       ],
     );
+  }
+
+  @override
+  Future<List<Vacancy>> vacancies() async {
+    final rows = await client.from('vacancies').select().eq('is_published', true).order('closing_date', ascending: true).limit(500);
+    return [for (final r in rows) Vacancy.fromJson(r)];
+  }
+
+  @override
+  Future<List<NewsItem>> currentAffairs() async {
+    final rows = await client
+        .from('content')
+        .select('id, event_date, category_id, content_versions(lang, title)')
+        .eq('kind', 'current_affairs')
+        .order('event_date', ascending: false)
+        .limit(300);
+    return [
+      for (final r in rows)
+        if ((r['content_versions'] as List).isNotEmpty) NewsItem.fromJson(r),
+    ];
   }
 }

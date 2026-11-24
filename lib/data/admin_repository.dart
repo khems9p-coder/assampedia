@@ -1,6 +1,7 @@
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../core/i18n/app_lang.dart';
+import 'jobs_models.dart';
 import 'models.dart';
 
 /// Everything the admin screens can change. The database only accepts these
@@ -43,6 +44,7 @@ class AdminRepository {
     String? officialUrl,
     String? notificationUrl,
     String? appliesTo,
+    DateTime? eventDate,
   }) async {
     final row = await client
         .from('content')
@@ -54,10 +56,13 @@ class AdminRepository {
           'kind': switch (section) {
             'exam' => 'exam',
             'job' => 'job_profile',
+            'ca' => 'current_affairs',
             _ => 'gk_chapter',
           },
           // Only exam and career pages use these (added in Phase 4).
-          if (section != 'gk') ...{'official_url': officialUrl, 'notification_url': notificationUrl, 'applies_to': appliesTo},
+          if (section == 'exam' || section == 'job') ...{'official_url': officialUrl, 'notification_url': notificationUrl, 'applies_to': appliesTo},
+          // Current-affairs articles carry the date of the event (Phase 5).
+          if (section == 'ca') 'event_date': eventDate?.toIso8601String().substring(0, 10),
           'updated_at': DateTime.now().toUtc().toIso8601String(),
         })
         .select('id')
@@ -103,4 +108,15 @@ class AdminRepository {
       client.from('terms').upsert({...t.toJson(), 'updated_at': DateTime.now().toUtc().toIso8601String()}, onConflict: 'slug');
 
   Future<void> deleteTerm(String slug) => client.from('terms').delete().eq('slug', slug);
+
+  /// Every vacancy, including drafts, soonest deadline first.
+  Future<List<Vacancy>> vacancies() async {
+    final rows = await client.from('vacancies').select().order('closing_date', ascending: true);
+    return [for (final r in rows) Vacancy.fromJson(r)];
+  }
+
+  Future<void> saveVacancy(Vacancy v) =>
+      client.from('vacancies').upsert({...v.toJson(), 'updated_at': DateTime.now().toUtc().toIso8601String()});
+
+  Future<void> deleteVacancy(String id) => client.from('vacancies').delete().eq('id', id);
 }

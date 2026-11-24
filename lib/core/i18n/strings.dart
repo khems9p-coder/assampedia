@@ -97,4 +97,45 @@ class S {
       'Always check the official notification before you apply.');
   String get suggestedLabel => _t('পৰামৰ্শ: চৰকাৰী তথ্য নহয়', 'Suggestion: not official information');
   String get cantOpenLink => _t('লিংকটো খুলিব পৰা নগ’ল।', "Couldn't open the link.");
+
+  // Phase 5: vacancies and current affairs
+  String get vacanciesTab => _t('খালী পদ', 'Vacancies');
+  String get newsTab => _t('সাম্প্ৰতিক ঘটনা', 'Current Affairs');
+  String get openNow => _t('আবেদন কৰিব পাৰি', 'Open');
+  String get closedAndResults => _t('বন্ধ আৰু ফলাফল', 'Closed & results');
+  String get allCategories => _t('সকলো শ্ৰেণী', 'All categories');
+  String get allStates => _t('সকলো ৰাজ্য', 'All states');
+  String get searchJobs => _t('পদ, প্ৰতিষ্ঠান বা অৰ্হতা বিচাৰক', 'Search post, organisation or qualification');
+  String get noVacancies => _t('এই মুহূৰ্তত দেখুৱাবলৈ কোনো খালী পদ নাই।', 'No vacancies to show right now.');
+  String lastDate(String d) => _t('শেষ তাৰিখ: $d', 'Last date: $d');
+  String daysLeft(int n) => n == 0 ? _t('আজি শেষ দিন', 'Last day today') : _t('আৰু $n দিন', '$n days left');
+  String posts(int n) => _t('$nটা পদ', '$n posts');
+  String lastVerified(String d) => _t('চৰকাৰী উৎসৰ সৈতে শেষবাৰ মিলোৱা: $d', 'Last verified with the official source: $d');
+  String get fOrganisation => _t('নিযুক্তি কৰ্তৃপক্ষ', 'Recruitment organisation');
+  String get fDepartment => _t('বিভাগ', 'Department');
+  String get fPost => _t('পদৰ নাম', 'Post name');
+  String get fCount => _t('খালী পদৰ সংখ্যা', 'Number of vacancies');
+  String get fQualification => _t('শৈক্ষিক অৰ্হতা', 'Educational qualification');
+  String get fAge => _t('বয়সৰ সীমা', 'Age limit');
+  String get fPay => _t('দৰমহা আৰু বেতনক্ৰম', 'Salary and pay scale');
+  String get fStart => _t('আবেদন আৰম্ভ', 'Application starts');
+  String get fClose => _t('আবেদনৰ শেষ তাৰিখ', 'Application closes');
+  String get fFee => _t('আবেদন মাচুল', 'Application fee');
+  String get fSelection => _t('বাছনি প্ৰক্ৰিয়া', 'Selection procedure');
+  String get fLocation => _t('কৰ্মস্থান', 'Job location');
+  String get fNotes => _t('অন্যান্য তথ্য', 'Other details');
+  String get fStatus => _t('নিযুক্তিৰ স্থিতি', 'Recruitment status');
+  String get examSyllabus => _t('পৰীক্ষাৰ পাঠ্যক্ৰম', 'Examination syllabus');
+  String get applyOnline => _t('চৰকাৰী আবেদন লিংক', 'Official application link');
+  String get notificationPdf => _t('চৰকাৰী জাননী (PDF)', 'Official notification (PDF)');
+  String get closedNote => _t('এই নিযুক্তিৰ আবেদন বন্ধ হৈ গৈছে।', 'Applications for this recruitment are closed.');
+  String get jobSaved => _t('চাকৰিটো সংৰক্ষণ কৰা হ’ল।', 'Job saved.');
+  String get saveJob => _t('চাকৰিটো সংৰক্ষণ কৰক', 'Save this job');
+  String get noSavedJobs => _t('এতিয়ালৈকে কোনো চাকৰি সংৰক্ষণ কৰা হোৱা নাই।', 'No saved jobs yet.');
+  String get periodToday => _t('আজি', 'Today');
+  String get periodWeek => _t('এই সপ্তাহ', 'This week');
+  String get periodMonth => _t('এই মাহ', 'This month');
+  String get periodAll => _t('সকলো', 'All');
+  String get allGroups => _t('সকলো', 'All');
+  String get noNews => _t('এই সময়ছোৱাৰ কোনো সাম্প্ৰতিক ঘটনা এতিয়াও নাই।', 'No current affairs for this period yet.');
 }
