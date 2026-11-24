@@ -1,3 +1,5 @@
+import 'dart:typed_data';
+
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../core/i18n/app_lang.dart';
@@ -292,4 +294,23 @@ class ImportResult {
 
   /// Pictures added to chapters that were already there.
   final int pictures;
+}
+
+/// Pictures for chapters and current affairs, kept in the public 'media'
+/// storage bucket (only admins can upload).
+extension AdminImages on AdminRepository {
+  /// Uploads a picture and returns its public web address.
+  Future<String> uploadImage(Uint8List bytes, String fileName) async {
+    final safe = fileName.toLowerCase().replaceAll(RegExp(r'[^a-z0-9.]+'), '-');
+    final ext = safe.contains('.') ? safe.split('.').last : 'jpg';
+    final type = switch (ext) {
+      'png' => 'image/png',
+      'webp' => 'image/webp',
+      'gif' => 'image/gif',
+      _ => 'image/jpeg',
+    };
+    final path = 'images/${DateTime.now().millisecondsSinceEpoch}-$safe';
+    await client.storage.from('media').uploadBinary(path, bytes, fileOptions: FileOptions(contentType: type, upsert: false));
+    return client.storage.from('media').getPublicUrl(path);
+  }
 }
