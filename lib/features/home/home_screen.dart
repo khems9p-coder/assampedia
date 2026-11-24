@@ -4,11 +4,8 @@ import 'package:flutter/material.dart';
 
 import '../../core/app_scope.dart';
 import '../../core/i18n/app_lang.dart';
-import '../../core/widgets/common.dart';
-import '../../data/models.dart';
 import '../dictionary/dictionary_screen.dart';
 import 'home_drawer.dart';
-import '../learn/chapter_list_screen.dart';
 import '../notifications/notifications_screen.dart';
 import '../practice/daily_question_card.dart';
 import '../practice/practice_screen.dart';
@@ -28,14 +25,11 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  Future<List<Category>>? _cats;
   List<String>? _last;
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    final repo = context.services.content;
-    _cats ??= repo?.categories();
     _loadLast();
     _jobsChecked ??= _checkJobs();
   }
@@ -122,7 +116,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       body: RefreshIndicator(
         onRefresh: () async {
-          setState(() => _cats = context.services.content?.categories());
           await _loadLast();
         },
         child: ListView(
@@ -177,42 +170,6 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             const SizedBox(height: 16),
             const DailyQuestionCard(),
-            const SizedBox(height: 8),
-            Row(
-              children: [
-                Expanded(
-                  child: Text(s.categories, style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600)),
-                ),
-                TextButton(onPressed: () => widget.openTab(Tabs.learn), child: Text(s.seeAll)),
-              ],
-            ),
-            if (_cats == null)
-              Padding(padding: const EdgeInsets.all(16), child: Text(s.notConnected))
-            else
-              FutureBuilder<List<Category>>(
-                future: _cats,
-                builder: (context, snap) {
-                  if (snap.hasError) {
-                    return LoadError(message: s.loadFailed, onRetry: () => setState(() => _cats = context.services.content?.categories()));
-                  }
-                  if (!snap.hasData) {
-                    return const Padding(
-                      padding: EdgeInsets.all(24),
-                      child: Center(child: CircularProgressIndicator()),
-                    );
-                  }
-                  final cats = snap.data!.take(6).toList();
-                  return GridView.count(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    crossAxisCount: columns,
-                    mainAxisSpacing: 10,
-                    crossAxisSpacing: 10,
-                    childAspectRatio: width > 600 ? 2.2 : 1.5,
-                    children: [for (final c in cats) _CategoryTile(category: c)],
-                  );
-                },
-              ),
           ],
         ),
       ),
@@ -408,38 +365,6 @@ class _HomeSlidesState extends State<HomeSlides> {
           ],
         ),
       ],
-    );
-  }
-}
-
-class _CategoryTile extends StatelessWidget {
-  const _CategoryTile({required this.category});
-  final Category category;
-
-  @override
-  Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    return Card(
-      clipBehavior: Clip.antiAlias,
-      child: InkWell(
-        onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => ChapterListScreen(category: category))),
-        child: Padding(
-          padding: const EdgeInsets.all(12),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Icon(categoryIcon(category.icon), color: scheme.primary, size: 28),
-              Text(
-                category.name(context.lang),
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: Theme.of(context).textTheme.titleSmall,
-              ),
-            ],
-          ),
-        ),
-      ),
     );
   }
 }
