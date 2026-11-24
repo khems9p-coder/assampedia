@@ -31,6 +31,15 @@ class AuthService extends ChangeNotifier {
   /// (If the profile can't be loaded, for example offline, nobody is held up.)
   bool get needsProfile => isSignedIn && _profile != null && !_profile!.isComplete;
 
+  /// The security question the student chose, or null.
+  SecurityQuestion? get securityQuestion => _securityQuestion;
+  SecurityQuestion? _securityQuestion;
+  bool _securityChecked = false;
+
+  /// True when a signed-in student has not chosen a security question yet.
+  /// (If it can't be checked, for example offline, nobody is held up.)
+  bool get needsSecurityQuestion => isSignedIn && _securityChecked && _securityQuestion == null;
+
   /// True just after signing in, while the account details are still loading.
   bool get checking => isSignedIn && _checkedFor != user!.id;
   String? _checkedFor;
@@ -70,7 +79,19 @@ class AuthService extends ChangeNotifier {
         // Columns missing (0008 not run yet) or offline: don't block the student.
       }
     }
+    SecurityQuestion? question;
+    var securityChecked = false;
+    if (u != null) {
+      try {
+        question = SecurityQuestion.fromCode(await client!.rpc('my_security_question') as String?);
+        securityChecked = true;
+      } catch (_) {
+        // 0009 not run yet, or offline.
+      }
+    }
     if (user?.id != u?.id) return; // Someone else signed in meanwhile.
+    _securityQuestion = question;
+    _securityChecked = securityChecked;
     _isAdmin = admin;
     _adminCheckError = error;
     _profile = profile;
@@ -94,6 +115,23 @@ class AuthService extends ChangeNotifier {
     final res = await client!.auth.signUp(email: email.trim(), password: password);
     return res.session != null;
   }
+
+  /// Saves the signed-in student's security question and answer.
+  Future<void> setSecurityQuestion(SecurityQuestion q, String answer) async {
+    await client!.rpc('set_security_question', params: {'q': q.code, 'answer': answer});
+    _securityQuestion = q;
+    _securityChecked = true;
+    notifyListeners();
+  }
+
+  /// The security question for an email address, or null if there is none.
+  Future<SecurityQuestion?> securityQuestionFor(String email) async =>
+      SecurityQuestion.fromCode(await client!.rpc('security_question_for', params: {'email': email.trim()}) as String?);
+
+  /// Sets a new password if the answer is right.
+  /// Returns 'ok', 'wrong', 'locked', 'weak' or 'none'.
+  Future<String> resetPasswordWithAnswer(String email, String answer, String newPassword) async =>
+      '${await client!.rpc('reset_password_with_answer', params: {'email': email.trim(), 'answer': answer, 'new_password': newPassword})}';
 
   /// Confirms a new account with the code from the email.
   Future<void> verifySignUpCode(String email, String code) async {

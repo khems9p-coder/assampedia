@@ -21,25 +21,39 @@ class _ProfileScreenState extends State<ProfileScreen> with AuthFormMixin {
   late final _district = TextEditingController(text: _start.district ?? '');
   late Education? _education = _start.education;
   late final Set<ExamTarget> _exams = {..._start.exams};
+  late final SecurityQuestion? _savedQuestion = context.services.auth.securityQuestion;
+  late SecurityQuestion? _question = _savedQuestion;
+  final _answer = TextEditingController();
+
+  /// A new question and answer must be saved when none exists yet, or when
+  /// the student changes them.
+  bool get _questionChanging => _savedQuestion == null || _question != _savedQuestion || _answer.text.trim().isNotEmpty;
 
   @override
   void dispose() {
     _name.dispose();
     _district.dispose();
+    _answer.dispose();
     super.dispose();
   }
 
-  Future<void> _save() => run(problem: _name.text.trim().isEmpty ? context.s.nameNeeded : null, () async {
-    await context.services.auth.saveProfile(
-      StudentProfile(fullName: _name.text.trim(), education: _education, exams: _exams, district: _district.text),
-    );
-    if (!mounted) return;
-    if (!widget.firstTime) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(context.s.profileSaved)));
-      Navigator.of(context).pop();
-    }
-    // First time: the app's first screen switches to the content by itself.
-  });
+  Future<void> _save() => run(
+    problem: _name.text.trim().isEmpty
+        ? context.s.nameNeeded
+        : (_questionChanging ? checkSecurityAnswer(context.s, _question, _answer.text) : null),
+    () async {
+      final auth = context.services.auth;
+      final changeQuestion = _questionChanging;
+      await auth.saveProfile(StudentProfile(fullName: _name.text.trim(), education: _education, exams: _exams, district: _district.text));
+      if (changeQuestion) await auth.setSecurityQuestion(_question!, _answer.text);
+      if (!mounted) return;
+      if (!widget.firstTime) {
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(context.s.profileSaved)));
+        Navigator.of(context).pop();
+      }
+      // First time: the app's first screen switches to the content by itself.
+    },
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -94,6 +108,12 @@ class _ProfileScreenState extends State<ProfileScreen> with AuthFormMixin {
                 ),
                 const SizedBox(height: 20),
                 AuthField(controller: _district, label: s.district, maxLength: 60),
+                SecurityQuestionFields(
+                  question: _question,
+                  answer: _answer,
+                  onQuestion: (q) => setState(() => _question = q),
+                  answerHint: _savedQuestion == null ? null : s.changeAnswerHint,
+                ),
                 messageLine(),
                 const SizedBox(height: 12),
                 FilledButton(

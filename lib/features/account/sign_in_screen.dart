@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 import '../../core/app_scope.dart';
+import '../../data/student_profile.dart';
 import 'auth_form.dart';
 
 /// Sign in from inside the app (for example from the Premium page).
@@ -95,12 +96,15 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> with AuthForm
   final _email = TextEditingController();
   final _password = TextEditingController();
   final _again = TextEditingController();
+  final _answer = TextEditingController();
+  SecurityQuestion? _question;
 
   @override
   void dispose() {
     _email.dispose();
     _password.dispose();
     _again.dispose();
+    _answer.dispose();
     super.dispose();
   }
 
@@ -127,23 +131,37 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> with AuthForm
             ],
           ),
         ),
+        SecurityQuestionFields(question: _question, answer: _answer, onQuestion: (q) => setState(() => _question = q)),
         messageLine(),
         const SizedBox(height: 12),
         FilledButton(
           style: FilledButton.styleFrom(minimumSize: const Size.fromHeight(48)),
           onPressed: busy
               ? null
-              : () => run(problem: checkEmail(s, _email.text) ?? checkNewPassword(s, _password.text, _again.text), () async {
-                  final email = _email.text.trim();
-                  final ready = await auth.signUp(email, _password.text);
-                  if (!mounted) return;
-                  if (ready) {
-                    // Email confirmation is switched off in Supabase: already signed in.
-                    backToStart(this.context);
-                  } else {
-                    await Navigator.of(this.context).push(MaterialPageRoute(builder: (_) => VerifyCodeScreen(email: email)));
-                  }
-                }),
+              : () => run(
+                  problem:
+                      checkEmail(s, _email.text) ??
+                      checkNewPassword(s, _password.text, _again.text) ??
+                      checkSecurityAnswer(s, _question, _answer.text),
+                  () async {
+                    final email = _email.text.trim();
+                    final question = _question!;
+                    final answer = _answer.text;
+                    final ready = await auth.signUp(email, _password.text);
+                    if (!mounted) return;
+                    if (ready) {
+                      // Email confirmation is switched off in Supabase: already signed in.
+                      await auth.setSecurityQuestion(question, answer);
+                      if (mounted) backToStart(this.context);
+                    } else {
+                      await Navigator.of(this.context).push(
+                        MaterialPageRoute(
+                          builder: (_) => VerifyCodeScreen(email: email, question: question, answer: answer),
+                        ),
+                      );
+                    }
+                  },
+                ),
           child: Text(s.createAccount),
         ),
       ],
@@ -151,10 +169,13 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> with AuthForm
   }
 }
 
-/// Enter the code that was emailed after creating an account.
+/// Enter the code that was emailed after creating an account. The security
+/// question is saved once the account is confirmed.
 class VerifyCodeScreen extends StatefulWidget {
-  const VerifyCodeScreen({super.key, required this.email});
+  const VerifyCodeScreen({super.key, required this.email, this.question, this.answer});
   final String email;
+  final SecurityQuestion? question;
+  final String? answer;
 
   @override
   State<VerifyCodeScreen> createState() => _VerifyCodeScreenState();
@@ -193,6 +214,7 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> with AuthFormMixin,
               ? null
               : () => run(problem: _checkCode(context, _code.text), () async {
                   await auth.verifySignUpCode(widget.email, _code.text);
+                  if (widget.question != null) await auth.setSecurityQuestion(widget.question!, widget.answer ?? '');
                   if (mounted) backToStart(this.context);
                 }),
           child: Text(s.confirm),
@@ -204,7 +226,10 @@ class _VerifyCodeScreenState extends State<VerifyCodeScreen> with AuthFormMixin,
   }
 }
 
-/// Forgotten password: email a code, then enter it with a new password.
+enum _ResetStep { email, question, code }
+
+/// Forgotten password: answer the security question (or use an email code),
+/// then choose a new password.
 class ForgotPasswordScreen extends StatefulWidget {
   const ForgotPasswordScreen({super.key, this.email = ''});
   final String email;
@@ -216,67 +241,140 @@ class ForgotPasswordScreen extends StatefulWidget {
 class _ForgotPasswordScreenState extends State<ForgotPasswordScreen> with AuthFormMixin, _ResendTimer {
   late final _email = TextEditingController(text: widget.email.trim());
   final _code = TextEditingController();
+  final _answer = TextEditingController();
   final _password = TextEditingController();
   final _again = TextEditingController();
-  bool _codeSent = false;
+  _ResetStep _step = _ResetStep.email;
+  SecurityQuestion? _question;
 
   @override
   void dispose() {
     _email.dispose();
     _code.dispose();
+    _answer.dispose();
     _password.dispose();
     _again.dispose();
     super.dispose();
   }
 
+  Future<void> _sendEmailCode() async {
+    await context.services.auth.sendPasswordResetCode(_email.text);
+    setState(() => _step = _ResetStep.code);
+    startResendTimer();
+  }
+
+  void _done() {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(context.s.passwordChanged)));
+    Navigator.of(context).pop();
+  }
+
   @override
   Widget build(BuildContext context) {
     final s = context.s;
+    final lang = context.lang;
     final auth = context.services.auth;
-    final full = Size.fromHeight(48);
+    const full = Size.fromHeight(48);
+    final newPassword = [
+      AuthField(controller: _password, label: s.newPassword, password: true, helper: s.strongPasswordRule),
+      AuthField(controller: _again, label: s.confirmPassword, password: true),
+    ];
     return AuthPage(
       title: s.resetPasswordTitle,
       children: [
-        if (!_codeSent) ...[
-          Text(s.resetPasswordHint),
-          const SizedBox(height: 16),
-          AuthField(controller: _email, label: s.email, email: true, hints: const [AutofillHints.email]),
-          messageLine(),
-          const SizedBox(height: 12),
-          FilledButton(
-            style: FilledButton.styleFrom(minimumSize: full),
-            onPressed: busy
-                ? null
-                : () => run(problem: checkEmail(s, _email.text), () async {
-                    await auth.sendPasswordResetCode(_email.text);
-                    setState(() => _codeSent = true);
-                    startResendTimer();
-                  }),
-            child: Text(s.sendCode),
+        switch (_step) {
+          _ResetStep.email => Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(s.resetPasswordHint),
+              const SizedBox(height: 16),
+              AuthField(controller: _email, label: s.email, email: true, hints: const [AutofillHints.email]),
+              messageLine(),
+              const SizedBox(height: 12),
+              FilledButton(
+                style: FilledButton.styleFrom(minimumSize: full),
+                onPressed: busy
+                    ? null
+                    : () => run(problem: checkEmail(s, _email.text), () async {
+                        final q = await auth.securityQuestionFor(_email.text);
+                        if (q != null) {
+                          setState(() {
+                            _question = q;
+                            _step = _ResetStep.question;
+                          });
+                        } else {
+                          await _sendEmailCode();
+                        }
+                      }),
+                child: Text(s.next),
+              ),
+            ],
           ),
-        ] else ...[
-          Text(s.codeSentTo(_email.text.trim())),
-          const SizedBox(height: 16),
-          _CodeField(controller: _code, label: s.code),
-          AuthField(controller: _password, label: s.newPassword, password: true, helper: s.strongPasswordRule),
-          AuthField(controller: _again, label: s.confirmPassword, password: true),
-          messageLine(),
-          const SizedBox(height: 12),
-          FilledButton(
-            style: FilledButton.styleFrom(minimumSize: full),
-            onPressed: busy
-                ? null
-                : () => run(problem: _checkCode(context, _code.text) ?? checkNewPassword(s, _password.text, _again.text), () async {
-                    await auth.resetPassword(_email.text, _code.text, _password.text);
-                    if (!mounted) return;
-                    ScaffoldMessenger.of(this.context).showSnackBar(SnackBar(content: Text(s.passwordChanged)));
-                    backToStart(this.context);
-                  }),
-            child: Text(s.save),
+          _ResetStep.question => Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(s.answerYourQuestion),
+              const SizedBox(height: 12),
+              Text(_question!.text(lang), style: Theme.of(context).textTheme.titleMedium),
+              const SizedBox(height: 12),
+              AuthField(controller: _answer, label: s.yourAnswer),
+              ...newPassword,
+              messageLine(),
+              const SizedBox(height: 12),
+              FilledButton(
+                style: FilledButton.styleFrom(minimumSize: full),
+                onPressed: busy
+                    ? null
+                    : () => run(
+                        problem: _answer.text.trim().isEmpty ? s.answerNeeded : checkNewPassword(s, _password.text, _again.text),
+                        () async {
+                          final r = await auth.resetPasswordWithAnswer(_email.text, _answer.text, _password.text);
+                          if (!mounted) return;
+                          switch (r) {
+                            case 'ok':
+                              _done();
+                            case 'wrong':
+                              showMessage(s.wrongAnswer);
+                            case 'locked':
+                              showMessage(s.answerLocked);
+                            case 'weak':
+                              showMessage(s.strongPasswordRule);
+                            default:
+                              showMessage(s.loadFailed);
+                          }
+                        },
+                      ),
+                child: Text(s.save),
+              ),
+              const SizedBox(height: 8),
+              TextButton(onPressed: busy ? null : () => run(_sendEmailCode), child: Text(s.useEmailCode)),
+            ],
           ),
-          const SizedBox(height: 8),
-          resendButton(() => auth.sendPasswordResetCode(_email.text)),
-        ],
+          _ResetStep.code => Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(s.codeSentTo(_email.text.trim())),
+              const SizedBox(height: 16),
+              _CodeField(controller: _code, label: s.code),
+              ...newPassword,
+              messageLine(),
+              const SizedBox(height: 12),
+              FilledButton(
+                style: FilledButton.styleFrom(minimumSize: full),
+                onPressed: busy
+                    ? null
+                    : () => run(problem: _checkCode(context, _code.text) ?? checkNewPassword(s, _password.text, _again.text), () async {
+                        await auth.resetPassword(_email.text, _code.text, _password.text);
+                        if (!mounted) return;
+                        ScaffoldMessenger.of(this.context).showSnackBar(SnackBar(content: Text(s.passwordChanged)));
+                        backToStart(this.context);
+                      }),
+                child: Text(s.save),
+              ),
+              const SizedBox(height: 8),
+              resendButton(() => auth.sendPasswordResetCode(_email.text)),
+            ],
+          ),
+        },
       ],
     );
   }

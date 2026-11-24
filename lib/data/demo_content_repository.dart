@@ -19,13 +19,40 @@ class DemoContentRepository implements ContentRepository {
       nameAs: 'কলা, সংস্কৃতি আৰু ঐতিহ্য',
     ),
     Category(id: 'c4', slug: 'wildlife', position: 4, icon: 'pets', nameEn: 'Wildlife and Environment', nameAs: 'বন্যপ্ৰাণী আৰু পৰিৱেশ'),
-    Category(id: 'e1', slug: 'exams-sample', position: 1, icon: 'flag', section: 'exam', nameEn: 'Sample exam group', nameAs: 'নমুনা পৰীক্ষাৰ গোট'),
-    Category(id: 'n1', slug: 'ca-sample', position: 1, icon: 'flag', section: 'ca', nameEn: 'Sample news group', nameAs: 'নমুনা বাতৰিৰ গোট'),
-    Category(id: 'j1', slug: 'careers-sample', position: 1, icon: 'gavel', section: 'job', nameEn: 'Sample career group', nameAs: 'নমুনা কেৰিয়াৰৰ গোট'),
+    Category(
+      id: 'e1',
+      slug: 'exams-sample',
+      position: 1,
+      icon: 'flag',
+      section: 'exam',
+      nameEn: 'Sample exam group',
+      nameAs: 'নমুনা পৰীক্ষাৰ গোট',
+    ),
+    Category(
+      id: 'n1',
+      slug: 'ca-sample',
+      position: 1,
+      icon: 'flag',
+      section: 'ca',
+      nameEn: 'Sample news group',
+      nameAs: 'নমুনা বাতৰিৰ গোট',
+    ),
+    Category(
+      id: 'j1',
+      slug: 'careers-sample',
+      position: 1,
+      icon: 'gavel',
+      section: 'job',
+      nameEn: 'Sample career group',
+      nameAs: 'নমুনা কেৰিয়াৰৰ গোট',
+    ),
   ];
 
   @override
-  Future<List<Category>> categories({String section = 'gk'}) async => [for (final c in _cats) if (c.section == section) c];
+  Future<List<Category>> categories({String section = 'gk'}) async => [
+    for (final c in _cats)
+      if (c.section == section) c,
+  ];
 
   @override
   Future<List<ChapterSummary>> chapters(String categoryId) async => [

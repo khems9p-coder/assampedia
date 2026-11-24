@@ -92,6 +92,18 @@ class S {
   String get newPassword => _t('নতুন পাছৱৰ্ড', 'New password');
   String get passwordChanged => _t('পাছৱৰ্ড সলনি হ’ল।', 'Your password has been changed.');
 
+  // Security question.
+  String get securityQuestion => _t('সুৰক্ষা প্ৰশ্ন', 'Security question');
+  String get securityQuestionHint => _t('পাছৱৰ্ড পাহৰিলে এই প্ৰশ্নৰ উত্তৰ দি নতুন পাছৱৰ্ড দিব পাৰিব।',
+      'If you forget your password, you can answer this question to set a new one.');
+  String get chooseQuestion => _t('এটা প্ৰশ্ন বাছক', 'Choose a question');
+  String get answerNeeded => _t('সুৰক্ষা প্ৰশ্ন বাছি উত্তৰ লিখক (অন্ততঃ ২টা আখৰ)।', 'Choose a security question and write an answer (at least 2 letters).');
+  String get answerYourQuestion => _t('আপোনাৰ সুৰক্ষা প্ৰশ্নৰ উত্তৰ দিয়ক আৰু নতুন পাছৱৰ্ড বাছক।', 'Answer your security question and choose a new password.');
+  String get wrongAnswer => _t('উত্তৰ মিলা নাই। পুনৰ চেষ্টা কৰক।', "That answer doesn't match. Please try again.");
+  String get answerLocked => _t('বহুবাৰ ভুল উত্তৰ দিয়া হ’ল। ১ ঘণ্টাৰ পিছত পুনৰ চেষ্টা কৰক।', 'Too many wrong answers. Please try again after 1 hour.');
+  String get useEmailCode => _t('ইয়াৰ সলনি ইমেইল ক’ড ব্যৱহাৰ কৰক', 'Use an email code instead');
+  String get changeAnswerHint => _t('সলনি কৰিবলৈ হে নতুন উত্তৰ লিখক।', 'Write a new answer only if you want to change it.');
+
   // Student profile.
   String get myProfile => _t('মোৰ প্ৰ’ফাইল', 'My profile');
   String get setUpProfile => _t('আপোনাৰ প্ৰ’ফাইল সাজক', 'Set up your profile');

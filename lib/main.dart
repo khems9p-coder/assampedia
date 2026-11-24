@@ -99,7 +99,7 @@ class AssampediaApp extends StatelessWidget {
     if (auth.available) {
       if (!auth.isSignedIn) return const WelcomeScreen();
       if (auth.checking) return const Scaffold(body: Center(child: CircularProgressIndicator()));
-      if (auth.needsProfile) return const ProfileScreen(firstTime: true);
+      if (auth.needsProfile || auth.needsSecurityQuestion) return const ProfileScreen(firstTime: true);
       return const MainShell();
     }
     return services.language.hasChosen ? const MainShell() : const LanguageSelectScreen();

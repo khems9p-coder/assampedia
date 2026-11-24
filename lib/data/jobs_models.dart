@@ -200,7 +200,9 @@ class NewsItem {
     'id': id,
     'event_date': _iso(date),
     'category_id': categoryId,
-    'content_versions': [for (final e in titles.entries) {'lang': e.key.code, 'title': e.value}],
+    'content_versions': [
+      for (final e in titles.entries) {'lang': e.key.code, 'title': e.value},
+    ],
   };
 }
 
