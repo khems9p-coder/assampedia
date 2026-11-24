@@ -28,25 +28,46 @@ class CachedContentRepository implements ContentRepository {
 
   @override
   Future<List<Category>> categories() => _try(
-        'categories',
-        remote.categories,
-        (v) => [for (final c in v) c.toJson()],
-        (j) => [for (final c in j as List) Category.fromJson(c as Map<String, dynamic>)],
-      );
+    'categories',
+    remote.categories,
+    (v) => [for (final c in v) c.toJson()],
+    (j) => [for (final c in j as List) Category.fromJson(c as Map<String, dynamic>)],
+  );
 
   @override
   Future<List<ChapterSummary>> chapters(String categoryId) => _try(
-        'chapters_$categoryId',
-        () => remote.chapters(categoryId),
-        (v) => [for (final c in v) c.toJson()],
-        (j) => [for (final c in j as List) ChapterSummary.fromJson(c as Map<String, dynamic>)],
-      );
+    'chapters_$categoryId',
+    () => remote.chapters(categoryId),
+    (v) => [for (final c in v) c.toJson()],
+    (j) => [for (final c in j as List) ChapterSummary.fromJson(c as Map<String, dynamic>)],
+  );
 
   @override
-  Future<Chapter> chapter(String contentId) => _try(
-        'chapter_$contentId',
-        () => remote.chapter(contentId),
-        (v) => v.toJson(),
-        (j) => Chapter.fromJson(j as Map<String, dynamic>),
-      );
+  Future<Chapter> chapter(String contentId) =>
+      _try('chapter_$contentId', () => remote.chapter(contentId), (v) => v.toJson(), (j) => Chapter.fromJson(j as Map<String, dynamic>));
+
+  @override
+  Future<List<Term>> terms() => _try(
+    'terms',
+    remote.terms,
+    (v) => [for (final t in v) t.toJson()],
+    (j) => [for (final t in j as List) Term.fromJson(t as Map<String, dynamic>)],
+  );
+
+  /// Searches online; without internet, searches the chapters saved on this phone.
+  @override
+  Future<SearchResults> search(String query) async {
+    try {
+      final r = await remote.search(query);
+      lastWasOffline = false;
+      return r;
+    } catch (_) {
+      final saved = await cache.readAll('chapter_');
+      final chapters = [for (final j in saved) Chapter.fromJson(j as Map<String, dynamic>)];
+      final savedTerms = await cache.read('terms');
+      final terms = savedTerms == null ? <Term>[] : [for (final t in savedTerms as List) Term.fromJson(t as Map<String, dynamic>)];
+      lastWasOffline = true;
+      return searchLocally(chapters, terms, query, offline: true);
+    }
+  }
 }

@@ -1,63 +1,88 @@
 import 'package:flutter/material.dart';
 
 import '../../core/theme/app_colors.dart';
+import '../../core/app_scope.dart';
+import '../../core/i18n/app_lang.dart';
 import '../../data/models.dart';
+import '../dictionary/term_text.dart';
 
 ContentColor? contentColorFor(BlockStyle s) => switch (s) {
-      BlockStyle.normal => null,
-      BlockStyle.definition => ContentColor.definition,
-      BlockStyle.verifiedFact => ContentColor.verifiedFact,
-      BlockStyle.event => ContentColor.event,
-      BlockStyle.personality => ContentColor.personality,
-      BlockStyle.examFact => ContentColor.examFact,
-      BlockStyle.geography => ContentColor.geography,
-      BlockStyle.heritage => ContentColor.heritage,
-    };
+  BlockStyle.normal => null,
+  BlockStyle.definition => ContentColor.definition,
+  BlockStyle.verifiedFact => ContentColor.verifiedFact,
+  BlockStyle.event => ContentColor.event,
+  BlockStyle.personality => ContentColor.personality,
+  BlockStyle.examFact => ContentColor.examFact,
+  BlockStyle.geography => ContentColor.geography,
+  BlockStyle.heritage => ContentColor.heritage,
+};
 
 /// Draws one paragraph, heading, list, image or coloured fact box.
 class BlockView extends StatelessWidget {
-  const BlockView({super.key, required this.block});
+  const BlockView({super.key, required this.block, this.terms = const {}, this.onTerm, this.lang});
   final Block block;
+  final Map<String, Term> terms;
+  final void Function(String slug)? onTerm;
+  final AppLang? lang;
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final body = theme.textTheme.bodyLarge?.copyWith(height: 1.65, fontSize: 17);
     final color = contentColorFor(block.style)?.of(context);
+    final lang = this.lang ?? context.lang;
+    Widget rich(String text, TextStyle? style) => TermText(text, style: style, terms: terms, onTerm: onTerm, lang: lang);
 
     Widget child = switch (block.type) {
       BlockType.heading => Padding(
-          padding: const EdgeInsets.only(top: 12),
-          child: Text(block.body,
-              style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700, color: color ?? theme.colorScheme.primary)),
+        padding: const EdgeInsets.only(top: 12),
+        child: Text(
+          plainText(block.body, terms, lang),
+          style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700, color: color ?? theme.colorScheme.primary),
         ),
+      ),
       BlockType.list => Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            for (final line in block.body.split('\n').where((l) => l.trim().isNotEmpty))
-              Padding(
-                padding: const EdgeInsets.only(bottom: 6),
-                child: Row(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          for (final line in block.body.split('\n').where((l) => l.trim().isNotEmpty))
+            Padding(
+              padding: const EdgeInsets.only(bottom: 6),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
                   Padding(
                     padding: const EdgeInsets.only(top: 10, right: 10),
-                    child: Container(width: 6, height: 6, decoration: BoxDecoration(color: color ?? theme.colorScheme.primary, shape: BoxShape.circle)),
+                    child: Container(
+                      width: 6,
+                      height: 6,
+                      decoration: BoxDecoration(color: color ?? theme.colorScheme.primary, shape: BoxShape.circle),
+                    ),
                   ),
-                  Expanded(child: Text(line.trim(), style: body)),
-                ]),
+                  Expanded(child: rich(line.trim(), body)),
+                ],
               ),
-          ],
-        ),
-      BlockType.image => Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            ),
+        ],
+      ),
+      BlockType.image => Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
           if (block.imageUrl != null && block.imageUrl!.isNotEmpty)
             ClipRRect(
               borderRadius: BorderRadius.circular(12),
-              child: Image.network(block.imageUrl!,
-                  errorBuilder: (_, _, _) => const SizedBox(height: 80, child: Center(child: Icon(Icons.broken_image_outlined)))),
+              child: Image.network(
+                block.imageUrl!,
+                errorBuilder: (_, _, _) => const SizedBox(height: 80, child: Center(child: Icon(Icons.broken_image_outlined))),
+              ),
             ),
           if (block.body.isNotEmpty)
-            Padding(padding: const EdgeInsets.only(top: 6), child: Text(block.body, style: theme.textTheme.bodySmall)),
-        ]),
-      _ => Text(block.body, style: body),
+            Padding(
+              padding: const EdgeInsets.only(top: 6),
+              child: Text(plainText(block.body, terms, lang), style: theme.textTheme.bodySmall),
+            ),
+        ],
+      ),
+      _ => rich(block.body, body),
     };
 
     if (block.type == BlockType.factBox || (color != null && block.type == BlockType.paragraph)) {

@@ -9,11 +9,9 @@ class S {
 
   String _t(String as, String en) => lang == AppLang.assamese ? as : en;
 
-  String get tagline => _t('অসম অন্বেষণ কৰক। শিকক। প্ৰস্তুত হওক। সফল হওক।',
-      'Explore Assam. Learn. Prepare. Succeed.');
+  String get tagline => _t('অসম অন্বেষণ কৰক। শিকক। প্ৰস্তুত হওক। সফল হওক।', 'Explore Assam. Learn. Prepare. Succeed.');
   String get chooseLanguage => 'আপোনাৰ ভাষা বাছনি কৰক\nChoose your language';
-  String get changeLaterHint =>
-      _t('আপুনি যিকোনো সময়ত ভাষা সলনি কৰিব পাৰে।', 'You can switch language at any time.');
+  String get changeLaterHint => _t('আপুনি যিকোনো সময়ত ভাষা সলনি কৰিব পাৰে।', 'You can switch language at any time.');
   String get continueLabel => _t('আগবাঢ়ক', 'Continue');
 
   String get navHome => _t('মূল পৃষ্ঠা', 'Home');
@@ -23,20 +21,16 @@ class S {
   String get navMe => _t('মোৰ', 'Me');
 
   String get encyclopedia => _t('অসমৰ সাধাৰণ জ্ঞান', 'Assam GK Encyclopedia');
-  String get encyclopediaHint =>
-      _t('ইতিহাস, ভূগোল, সংস্কৃতি আৰু অধিক', 'History, geography, culture and more');
+  String get encyclopediaHint => _t('ইতিহাস, ভূগোল, সংস্কৃতি আৰু অধিক', 'History, geography, culture and more');
   String get continueLearning => _t('য’ত এৰিছিল তাৰ পৰা পঢ়ক', 'Continue learning');
   String get categories => _t('শ্ৰেণীসমূহ', 'Categories');
   String get seeAll => _t('সকলো চাওক', 'See all');
 
   String get noChapters => _t('এতিয়ালৈকে কোনো অধ্যায় প্ৰকাশ হোৱা নাই।', 'No chapters published yet.');
-  String get offlineNotice =>
-      _t('আপুনি অফলাইন। সংৰক্ষিত কপি দেখুওৱা হৈছে।', "You're offline. Showing your saved copy.");
-  String get loadFailed => _t('ল’ড কৰিব পৰা নগ’ল। ইণ্টাৰনেট পৰীক্ষা কৰক।',
-      "Couldn't load. Please check your internet connection.");
+  String get offlineNotice => _t('আপুনি অফলাইন। সংৰক্ষিত কপি দেখুওৱা হৈছে।', "You're offline. Showing your saved copy.");
+  String get loadFailed => _t('ল’ড কৰিব পৰা নগ’ল। ইণ্টাৰনেট পৰীক্ষা কৰক।', "Couldn't load. Please check your internet connection.");
   String get retry => _t('পুনৰ চেষ্টা কৰক', 'Try again');
-  String get notConnected => _t('বিষয়বস্তুৰ চাৰ্ভাৰ এতিয়াও সংযোগ কৰা হোৱা নাই।',
-      'The content server is not connected yet.');
+  String get notConnected => _t('বিষয়বস্তুৰ চাৰ্ভাৰ এতিয়াও সংযোগ কৰা হোৱা নাই।', 'The content server is not connected yet.');
 
   String notAvailableIn(AppLang l) => l == AppLang.english
       ? _t('এই অধ্যায়টো এতিয়াও ইংৰাজীত উপলব্ধ নহয়।', 'This chapter is not yet available in English.')
@@ -61,9 +55,31 @@ class S {
   String get createAccount => _t('নতুন একাউণ্ট খোলক', 'Create account');
   String get email => _t('ইমেইল', 'Email');
   String get password => _t('পাছৱৰ্ড', 'Password');
-  String get signInHint => _t('ছাইন ইন কৰিলে আপোনাৰ প্ৰগতি সুৰক্ষিত থাকিব।',
-      'Sign in to keep your progress safe on any phone.');
+  String get signInHint => _t('ছাইন ইন কৰিলে আপোনাৰ প্ৰগতি সুৰক্ষিত থাকিব।', 'Sign in to keep your progress safe on any phone.');
   String get checkEmail => _t('নিশ্চিত কৰিবলৈ আপোনাৰ ইমেইল চাওক।', 'Check your email to confirm your account.');
   String signedInAs(String who) => _t('$who হিচাপে ছাইন ইন কৰা হৈছে', 'Signed in as $who');
   String get adminPanel => _t('এডমিন পেনেল', 'Admin panel');
+
+  // Phase 3: search, dictionary, saved chapters, side-by-side
+  String get search => _t('বিচাৰক', 'Search');
+  String get searchHint => _t('অধ্যায়, শব্দ বা তথ্য বিচাৰক', 'Search chapters, terms and facts');
+  String get typeMore => _t('কমেও ২টা আখৰ লিখক।', 'Type at least 2 letters.');
+  String get noResults => _t('একো পোৱা নগ’ল।', 'Nothing found.');
+  String get searchOffline =>
+      _t('অফলাইন: এই ফোনত সংৰক্ষিত অধ্যায়তহে বিচৰা হৈছে।', 'Offline: only chapters saved on this phone were searched.');
+  String get chaptersHeading => _t('অধ্যায়', 'Chapters');
+  String get dictionary => _t('শব্দকোষ', 'Dictionary');
+  String get dictionaryHint => _t('গুৰুত্বপূৰ্ণ শব্দৰ অৰ্থ', 'Meanings of key terms');
+  String get noTerms => _t('শব্দকোষত এতিয়ালৈকে কোনো শব্দ নাই।', 'No terms in the dictionary yet.');
+  String get termMissing => _t('এই শব্দটো এতিয়াও শব্দকোষত নাই।', 'This term is not in the dictionary yet.');
+  String get openDictionary => _t('শব্দকোষ খোলক', 'Open dictionary');
+  String get saved => _t('সংৰক্ষিত', 'Saved');
+  String get savedHint => _t('আপুনি সাঁচি থোৱা অধ্যায়', 'Chapters you saved');
+  String get noSaved =>
+      _t('এতিয়ালৈকে একো সংৰক্ষণ কৰা হোৱা নাই। পঢ়োঁতে বুকমাৰ্ক চিহ্নত টিপক।', 'Nothing saved yet. Tap the bookmark icon while reading.');
+  String get saveChapter => _t('অধ্যায়টো সংৰক্ষণ কৰক', 'Save this chapter');
+  String get savedDone => _t('সংৰক্ষণ কৰা হ’ল। আপুনি পঢ়ি থকা ঠাইখিনিও মনত ৰখা হ’ল।', 'Saved, along with the place you were reading.');
+  String get removedSaved => _t('সংৰক্ষিত তালিকাৰ পৰা আঁতৰোৱা হ’ল।', 'Removed from Saved.');
+  String get remove => _t('আঁতৰাওক', 'Remove');
+  String get sideBySide => _t('দুয়োটা ভাষা একেলগে', 'Both languages side by side');
 }

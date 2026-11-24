@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../core/app_scope.dart';
 import '../../core/widgets/common.dart';
 import '../../data/models.dart';
+import '../search/search_screen.dart';
 import 'chapter_list_screen.dart';
 
 /// All Assam GK categories.
@@ -26,7 +27,17 @@ class _LearnScreenState extends State<LearnScreen> {
   Widget build(BuildContext context) {
     final s = context.s;
     return Scaffold(
-      appBar: AppBar(title: Text(s.encyclopedia), actions: const [Padding(padding: EdgeInsets.only(right: 8), child: LanguageSwitch())]),
+      appBar: AppBar(
+        title: Text(s.encyclopedia),
+        actions: [
+          IconButton(
+            tooltip: s.search,
+            icon: const Icon(Icons.search),
+            onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const SearchScreen())),
+          ),
+          const Padding(padding: EdgeInsets.only(right: 8), child: LanguageSwitch()),
+        ],
+      ),
       body: _cats == null
           ? Center(child: Text(s.notConnected))
           : FutureBuilder<List<Category>>(

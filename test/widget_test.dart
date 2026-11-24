@@ -6,11 +6,13 @@ import 'package:assampedia/core/app_scope.dart';
 import 'package:assampedia/core/i18n/app_lang.dart';
 import 'package:assampedia/core/theme/theme_controller.dart';
 import 'package:assampedia/data/auth_service.dart';
+import 'package:assampedia/data/bookmark_store.dart';
 import 'package:assampedia/data/cached_content_repository.dart';
 import 'package:assampedia/data/content_repository.dart';
 import 'package:assampedia/data/demo_content_repository.dart';
 import 'package:assampedia/data/models.dart';
 import 'package:assampedia/data/offline_cache.dart';
+import 'package:assampedia/features/reader/reader_screen.dart';
 import 'package:assampedia/main.dart';
 
 Future<AppServices> _services({String? lang}) async {
@@ -28,6 +30,11 @@ class _MemoryCache extends OfflineCache {
   Future<void> write(String key, Object json) async => store[key] = json;
   @override
   Future<dynamic> read(String key) async => store[key];
+  @override
+  Future<List<dynamic>> readAll(String prefix) async => [
+        for (final e in store.entries)
+          if (e.key.startsWith(prefix)) e.value,
+      ];
 }
 
 class _Switchable implements ContentRepository {
@@ -41,6 +48,10 @@ class _Switchable implements ContentRepository {
   Future<List<ChapterSummary>> chapters(String id) => _go(() => inner.chapters(id));
   @override
   Future<Chapter> chapter(String id) => _go(() => inner.chapter(id));
+  @override
+  Future<List<Term>> terms() => _go(inner.terms);
+  @override
+  Future<SearchResults> search(String q) => _go(() => inner.search(q));
 }
 
 void main() {
@@ -84,6 +95,9 @@ void main() {
   });
 
   testWidgets('Reader switches language instantly', (tester) async {
+    tester.view.physicalSize = const Size(1200, 2400);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(tester.view.reset);
     final services = await _services(lang: 'en');
     await tester.pumpWidget(AssampediaApp(services: services));
     await tester.pumpAndSettle();
@@ -141,5 +155,95 @@ void main() {
     expect(b.type, BlockType.factBox);
     expect(b.style, BlockStyle.examFact);
     expect(back.has(AppLang.assamese), isFalse);
+  });
+
+  group('Phase 3', () {
+    test('term markers are split into tappable parts', () {
+      final parts = parseInline('The {{term:ahom-kingdom}} and {{term:majuli|the river island}}.');
+      expect(parts.length, 5);
+      expect(parts[1].termSlug, 'ahom-kingdom');
+      expect(parts[1].text, isNull);
+      expect(parts[3].termSlug, 'majuli');
+      expect(parts[3].text, 'the river island');
+      final terms = {'ahom-kingdom': Term(slug: 'ahom-kingdom', termEn: 'Ahom kingdom', termAs: 'আহোম ৰাজ্য')};
+      expect(plainText('The {{term:ahom-kingdom}}.', terms, AppLang.assamese), 'The আহোম ৰাজ্য.');
+      expect(plainText('No terms here'), 'No terms here');
+    });
+
+    test('search finds paragraphs and terms, and cleans risky characters', () async {
+      final r = await DemoContentRepository().search('sample text');
+      expect(r.chapters, isNotEmpty);
+      expect(r.chapters.first.blockKey, isNotNull);
+      final t = await DemoContentRepository().search('sample term');
+      expect(t.terms.single.slug, 'sample-term');
+      expect(cleanQuery(' a,b%(c) '), 'a b c');
+    });
+
+    test('offline search looks in chapters saved on the phone', () async {
+      final remote = _Switchable(DemoContentRepository());
+      final repo = CachedContentRepository(remote, _MemoryCache());
+      await repo.chapter('demo');
+      await repo.terms();
+      remote.online = false;
+      final r = await repo.search('নমুনা');
+      expect(r.offline, isTrue);
+      expect(r.chapters, isNotEmpty);
+      expect(r.terms.single.slug, 'sample-term');
+    });
+
+    test('saved chapters are remembered', () async {
+      SharedPreferences.setMockInitialValues({});
+      final store = BookmarkStore();
+      await store.save(Bookmark(contentId: 'c1', blockKey: 'p3', titleAs: 'ক', titleEn: 'A', savedAt: DateTime(2026)));
+      final again = BookmarkStore();
+      await again.load();
+      expect(again.find('c1')!.blockKey, 'p3');
+      await again.remove('c1');
+      expect(again.contains('c1'), isFalse);
+    });
+
+    test('side-by-side pairs paragraphs by key and keeps your place', () {
+      Block b(String k) => Block(key: k, position: 0, body: k);
+      final ch = Chapter(id: 'x', slug: 'x', versions: {
+        AppLang.english: ChapterVersion(title: 'E', blocks: [b('p1'), b('p2'), b('p3')]),
+        AppLang.assamese: ChapterVersion(title: 'A', blocks: [b('p1'), b('p3'), b('extra')]),
+      });
+      final side = buildReaderRows(ch, AppLang.english, true);
+      expect(side.map((r) => r.key), ['p1', 'p2', 'p3', 'extra']);
+      expect(side[1].secondary, isNull);
+      expect(side[3].primary, isNull);
+      final single = buildReaderRows(ch, AppLang.assamese, false);
+      // Reading p3 (list item 3) in English side-by-side, then switching to Assamese.
+      expect(mapReaderIndex(side, 3, single), 2);
+    });
+
+    testWidgets('Tapping a word shows its meaning; saving a chapter works', (tester) async {
+      tester.view.physicalSize = const Size(1200, 2400);
+      tester.view.devicePixelRatio = 1.0;
+      addTearDown(tester.view.reset);
+      final services = await _services(lang: 'en');
+      await tester.pumpWidget(AssampediaApp(services: services));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('History of Assam'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Sample chapter (layout test)'));
+      await tester.pumpAndSettle();
+
+      await tester.tapOnText(find.textRange.ofSubstring('Sample term').first);
+      await tester.pumpAndSettle();
+      expect(find.textContaining('A sample dictionary entry'), findsOneWidget);
+      expect(find.text('নমুনা শব্দ'), findsOneWidget);
+      await tester.tapAt(const Offset(10, 10));
+      await tester.pumpAndSettle();
+
+      await tester.tap(find.byIcon(Icons.bookmark_border));
+      await tester.pumpAndSettle();
+      expect(services.bookmarks.contains('demo'), isTrue);
+
+      await tester.tap(find.byIcon(Icons.vertical_split_outlined));
+      await tester.pumpAndSettle();
+      expect(find.text('নমুনা অধ্যায় (পৰীক্ষা)'), findsOneWidget);
+      expect(find.text('Sample chapter (layout test)'), findsOneWidget);
+    });
   });
 }

@@ -3,8 +3,11 @@ import 'package:flutter/material.dart';
 import '../../core/app_scope.dart';
 import '../../core/widgets/common.dart';
 import '../../data/models.dart';
+import '../dictionary/dictionary_screen.dart';
 import '../learn/chapter_list_screen.dart';
 import '../reader/reader_screen.dart';
+import '../saved/saved_screen.dart';
+import '../search/search_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key, required this.openLearn});
@@ -47,16 +50,24 @@ class _HomeScreenState extends State<HomeScreen> {
           child: ListView(
             padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
             children: [
-              Row(children: [
-                Image.asset('assets/brand/logo.png', width: 40, height: 40),
-                const SizedBox(width: 10),
-                Expanded(
-                  child: Text('ASSAMPEDIA',
-                      style: theme.textTheme.titleLarge
-                          ?.copyWith(fontWeight: FontWeight.w700, color: scheme.primary, letterSpacing: 1.2)),
-                ),
-                const LanguageSwitch(),
-              ]),
+              Row(
+                children: [
+                  Image.asset('assets/brand/logo.png', width: 40, height: 40),
+                  const SizedBox(width: 10),
+                  Expanded(
+                    child: Text(
+                      'ASSAMPEDIA',
+                      style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700, color: scheme.primary, letterSpacing: 1.2),
+                    ),
+                  ),
+                  IconButton(
+                    tooltip: s.search,
+                    icon: const Icon(Icons.search),
+                    onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const SearchScreen())),
+                  ),
+                  const LanguageSwitch(),
+                ],
+              ),
               const SizedBox(height: 16),
               _Banner(text: s.tagline),
               const SizedBox(height: 16),
@@ -66,9 +77,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     leading: Icon(Icons.play_circle_outline, color: scheme.primary),
                     title: Text(s.continueLearning, style: theme.textTheme.labelLarge),
                     subtitle: Text(lang.code == 'as' ? _last![1] : _last![2], maxLines: 2, overflow: TextOverflow.ellipsis),
-                    onTap: () => Navigator.of(context)
-                        .push(MaterialPageRoute(builder: (_) => ReaderScreen(contentId: _last![0])))
-                        .then((_) => _loadLast()),
+                    onTap: () =>
+                        Navigator.of(context)
+                            .push(MaterialPageRoute(builder: (_) => ReaderScreen(contentId: _last![0])))
+                            .then((_) => _loadLast()),
                   ),
                 ),
                 const SizedBox(height: 12),
@@ -78,18 +90,46 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: ListTile(
                   contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   leading: Icon(Icons.auto_stories, color: scheme.onPrimaryContainer, size: 32),
-                  title: Text(s.encyclopedia,
-                      style: theme.textTheme.titleMedium?.copyWith(color: scheme.onPrimaryContainer, fontWeight: FontWeight.w600)),
+                  title: Text(
+                    s.encyclopedia,
+                    style: theme.textTheme.titleMedium?.copyWith(color: scheme.onPrimaryContainer, fontWeight: FontWeight.w600),
+                  ),
                   subtitle: Text(s.encyclopediaHint, style: TextStyle(color: scheme.onPrimaryContainer)),
                   trailing: Icon(Icons.chevron_right, color: scheme.onPrimaryContainer),
                   onTap: widget.openLearn,
                 ),
               ),
+              const SizedBox(height: 8),
+              Row(
+                children: [
+                  Expanded(
+                    child: _QuickTile(
+                      icon: Icons.translate,
+                      title: s.dictionary,
+                      subtitle: s.dictionaryHint,
+                      onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const DictionaryScreen())),
+                    ),
+                  ),
+                  const SizedBox(width: 8),
+                  Expanded(
+                    child: _QuickTile(
+                      icon: Icons.bookmarks_outlined,
+                      title: s.saved,
+                      subtitle: s.savedHint,
+                      onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const SavedScreen())),
+                    ),
+                  ),
+                ],
+              ),
               const SizedBox(height: 20),
-              Row(children: [
-                Expanded(child: Text(s.categories, style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600))),
-                TextButton(onPressed: widget.openLearn, child: Text(s.seeAll)),
-              ]),
+              Row(
+                children: [
+                  Expanded(
+                    child: Text(s.categories, style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600)),
+                  ),
+                  TextButton(onPressed: widget.openLearn, child: Text(s.seeAll)),
+                ],
+              ),
               if (_cats == null)
                 Padding(padding: const EdgeInsets.all(16), child: Text(s.notConnected))
               else
@@ -97,17 +137,22 @@ class _HomeScreenState extends State<HomeScreen> {
                   future: _cats,
                   builder: (context, snap) {
                     if (snap.hasError) {
-                      return LoadError(message: s.loadFailed, onRetry: () => setState(() => _cats = context.services.content?.categories()));
+                      return LoadError(
+                        message: s.loadFailed,
+                        onRetry: () => setState(() => _cats = context.services.content?.categories()),
+                      );
                     }
-                    if (!snap.hasData) return const Padding(padding: EdgeInsets.all(24), child: Center(child: CircularProgressIndicator()));
+                    if (!snap.hasData) {
+                      return const Padding(padding: EdgeInsets.all(24), child: Center(child: CircularProgressIndicator()));
+                    }
                     final cats = snap.data!.take(6).toList();
                     return GridView.count(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
-                      crossAxisCount: MediaQuery.sizeOf(context).width > 600 ? 3 : 2,
+                      crossAxisCount: MediaQuery.sizeOf(context).width > 900 ? 4 : (MediaQuery.sizeOf(context).width > 600 ? 3 : 2),
                       mainAxisSpacing: 10,
                       crossAxisSpacing: 10,
-                      childAspectRatio: 1.5,
+                      childAspectRatio: MediaQuery.sizeOf(context).width > 600 ? 2.2 : 1.5,
                       children: [for (final c in cats) _CategoryTile(category: c)],
                     );
                   },
@@ -133,14 +178,18 @@ class _Banner extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         gradient: const LinearGradient(colors: [Color(0xFF1E6B3C), Color(0xFF1B5E8C)]),
       ),
-      child: Row(children: [
-        Expanded(
-          child: Text(text,
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white, fontWeight: FontWeight.w600, height: 1.4)),
-        ),
-        const SizedBox(width: 12),
-        Icon(Icons.water, color: scheme.tertiary, size: 36),
-      ]),
+      child: Row(
+        children: [
+          Expanded(
+            child: Text(
+              text,
+              style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white, fontWeight: FontWeight.w600, height: 1.4),
+            ),
+          ),
+          const SizedBox(width: 12),
+          Icon(Icons.water, color: scheme.tertiary, size: 36),
+        ],
+      ),
     );
   }
 }
@@ -158,11 +207,56 @@ class _CategoryTile extends StatelessWidget {
         onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => ChapterListScreen(category: category))),
         child: Padding(
           padding: const EdgeInsets.all(12),
-          child: Column(crossAxisAlignment: CrossAxisAlignment.start, mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-            Icon(categoryIcon(category.icon), color: scheme.primary, size: 28),
-            Text(category.name(context.lang),
-                maxLines: 2, overflow: TextOverflow.ellipsis, style: Theme.of(context).textTheme.titleSmall),
-          ]),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Icon(categoryIcon(category.icon), color: scheme.primary, size: 28),
+              Text(
+                category.name(context.lang),
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.titleSmall,
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class _QuickTile extends StatelessWidget {
+  const _QuickTile({required this.icon, required this.title, required this.subtitle, required this.onTap});
+  final IconData icon;
+  final String title;
+  final String subtitle;
+  final VoidCallback onTap;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Card(
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        onTap: onTap,
+        child: Padding(
+          padding: const EdgeInsets.all(12),
+          child: Row(
+            children: [
+              Icon(icon, color: theme.colorScheme.primary),
+              const SizedBox(width: 10),
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(title, style: theme.textTheme.titleSmall),
+                    Text(subtitle, maxLines: 1, overflow: TextOverflow.ellipsis, style: theme.textTheme.bodySmall),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

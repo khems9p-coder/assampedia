@@ -5,6 +5,7 @@ import '../../core/i18n/app_lang.dart';
 import '../../data/models.dart';
 import '../reader/block_view.dart';
 import '../reader/reader_screen.dart';
+import 'admin_terms_screen.dart';
 
 /// One paragraph/box being edited, with its Assamese and English text side by side.
 class _EditBlock {
@@ -193,6 +194,28 @@ class _ChapterEditorScreenState extends State<ChapterEditorScreen> {
     if (mounted) setState(() => _saving = false);
   }
 
+  /// Adds a tappable term to both languages of a paragraph, where the cursor is
+  /// (or at the end). The reader shows the word in their language.
+  Future<void> _insertTerm(_EditBlock b) async {
+    final t = await pickTerm(context);
+    if (t == null || !mounted) return;
+    for (final l in AppLang.values) {
+      final c = b.text(l);
+      final marker = '{{term:${t.slug}}}';
+      final sel = c.selection;
+      final at = (sel.isValid && sel.start >= 0 && sel.start <= c.text.length) ? sel.start : c.text.length;
+      final end = (sel.isValid && sel.end >= at && sel.end <= c.text.length) ? sel.end : at;
+      final before = c.text.substring(0, at);
+      final pad = before.isEmpty || before.endsWith(' ') ? '' : ' ';
+      c.value = TextEditingValue(
+        text: '$before$pad$marker${c.text.substring(end)}',
+        selection: TextSelection.collapsed(offset: at + pad.length + marker.length),
+      );
+    }
+    setState(() {});
+    _snack('Added "${t.termEn ?? t.slug}" to both languages. Readers can tap it.');
+  }
+
   void _preview() {
     final versions = _build();
     if (versions.isEmpty) {
@@ -256,6 +279,8 @@ class _ChapterEditorScreenState extends State<ChapterEditorScreen> {
                 const SizedBox(height: 24),
                 Text('Paragraphs and boxes', style: Theme.of(context).textTheme.titleLarge),
                 const Text('Each item has the same place in both languages, so readers keep their place when they switch.'),
+                const Text('Tap the translate icon on a paragraph to insert a dictionary word. It appears as {{term:name}} here '
+                    'and as a tappable word for readers. To show different words, write {{term:name|your words}}.'),
                 const SizedBox(height: 8),
                 for (var i = 0; i < _blocks.length; i++) _blockCard(i, wide),
                 const SizedBox(height: 8),
@@ -362,6 +387,12 @@ class _ChapterEditorScreenState extends State<ChapterEditorScreen> {
                   ),
               ],
             ),
+            if (b.type != BlockType.image)
+              IconButton(
+                tooltip: 'Insert dictionary term',
+                onPressed: () => _insertTerm(b),
+                icon: const Icon(Icons.translate),
+              ),
             IconButton(
               tooltip: 'Move up',
               onPressed: i == 0 ? null : () => setState(() => _blocks.insert(i - 1, _blocks.removeAt(i))),

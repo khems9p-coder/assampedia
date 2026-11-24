@@ -83,4 +83,15 @@ class AdminRepository {
   }
 
   Future<void> delete(String contentId) => client.from('content').delete().eq('id', contentId);
+
+  /// All dictionary terms, including hidden ones.
+  Future<List<Term>> terms() async {
+    final rows = await client.from('terms').select().order('slug');
+    return [for (final r in rows) Term.fromJson(r)];
+  }
+
+  Future<void> saveTerm(Term t) =>
+      client.from('terms').upsert({...t.toJson(), 'updated_at': DateTime.now().toUtc().toIso8601String()}, onConflict: 'slug');
+
+  Future<void> deleteTerm(String slug) => client.from('terms').delete().eq('slug', slug);
 }
