@@ -46,6 +46,14 @@ void main() {
         expect(slugs.add(ch['slug'] as String), isTrue, reason: 'duplicate chapter ${ch['slug']}');
         final blocks = ch['blocks'] as Map<String, dynamic>;
         expect(blocks.keys.toSet(), {'en', 'as'});
+        for (final b in [...blocks['en'] as List, ...blocks['as'] as List]) {
+          if (b['block_type'] != 'image') continue;
+          const base = 'https://raw.githubusercontent.com/khems9p-coder/assampedia/main/supabase/content/images/';
+          final url = b['image_url'] as String;
+          expect(url, startsWith(base));
+          expect(File('supabase/content/images/${url.substring(base.length)}').existsSync(), isTrue, reason: url);
+          expect(b['body'] as String, isNotEmpty, reason: 'pictures need a caption');
+        }
         expect(
           [for (final b in blocks['en'] as List) b['block_key']],
           [for (final b in blocks['as'] as List) b['block_key']],

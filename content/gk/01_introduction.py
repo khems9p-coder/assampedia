@@ -123,6 +123,12 @@ CHAPTERS = [
                  "{{term:sex-ratio|Sex ratio}}: 958 females per 1,000 males\n"
                  "{{term:literacy-rate|Literacy rate}}: 72.19% (males 77.85%, females 66.27%)\n"
                  "{{term:decadal-growth|Decadal growth}} 2001 to 2011: 17.07%"),
+                ("img1", "image", "normal",
+                 "Chart: about 86% of the people of Assam lived in villages in 2011 (Census of India 2011).",
+                 "charts/rural-urban-2011.png"),
+                ("img2", "image", "normal",
+                 "Chart: literacy rate of Assam in 2011, for all people, males and females (Census of India 2011).",
+                 "charts/literacy-2011.png"),
                 ("p5", "paragraph", "normal",
                  "In 2011, Assam had 2.58 percent of India's population."),
                 ("exam1", "fact_box", "exam_fact",
@@ -152,6 +158,12 @@ CHAPTERS = [
                  "{{term:sex-ratio|লিংগ অনুপাত}}: প্ৰতি ১,০০০ জন পুৰুষৰ বিপৰীতে ৯৫৮ গৰাকী মহিলা\n"
                  "{{term:literacy-rate|সাক্ষৰতাৰ হাৰ}}: ৭২.১৯% (পুৰুষ ৭৭.৮৫%, মহিলা ৬৬.২৭%)\n"
                  "২০০১ৰ পৰা ২০১১লৈ {{term:decadal-growth|দশকীয় বৃদ্ধি}}: ১৭.০৭%"),
+                ("img1", "image", "normal",
+                 "চিত্ৰ: ২০১১ চনত অসমৰ প্ৰায় ৮৬% মানুহ গাঁৱত বাস কৰিছিল (ভাৰতৰ লোকপিয়ল ২০১১)।",
+                 "charts/rural-urban-2011.png"),
+                ("img2", "image", "normal",
+                 "চিত্ৰ: ২০১১ চনত অসমৰ সাক্ষৰতাৰ হাৰ: মুঠ, পুৰুষ আৰু মহিলা (ভাৰতৰ লোকপিয়ল ২০১১)।",
+                 "charts/literacy-2011.png"),
                 ("p5", "paragraph", "normal",
                  "২০১১ চনত ভাৰতৰ মুঠ জনসংখ্যাৰ ২.৫৮ শতাংশ অসমত আছিল।"),
                 ("exam1", "fact_box", "exam_fact",

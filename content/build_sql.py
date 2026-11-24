@@ -25,6 +25,21 @@ def q(text):
     return f"$t${text}$t$"
 
 
+IMAGE_BASE = "https://raw.githubusercontent.com/khems9p-coder/assampedia/main/supabase/content/images/"
+
+
+def blocks(ch, lang):
+    """Each block is (key, type, style, body) or, for pictures, (key, "image", style, caption, url).
+    A url that is not a full https address is a file in supabase/content/images/."""
+    for b in ch["blocks"][lang]:
+        key, btype, style, body = b[:4]
+        url = b[4] if len(b) > 4 else None
+        if url and not url.startswith("https://"):
+            assert (pathlib.Path(__file__).resolve().parent.parent / "supabase" / "content" / "images" / url).exists(), url
+            url = IMAGE_BASE + url
+        yield key, btype, style, body, url
+
+
 def load(path):
     spec = importlib.util.spec_from_file_location("chapters", path)
     mod = importlib.util.module_from_spec(spec)
@@ -43,8 +58,9 @@ def check(mod):
             sys.exit(f"{ch['slug']}: English and Assamese blocks differ: {keys}")
         for lang in LANGS:
             assert ch["title"][lang] and ch["summary"][lang]
-            for key, btype, style, body in ch["blocks"][lang]:
+            for key, btype, style, body, url in blocks(ch, lang):
                 assert btype in TYPES and style in STYLES, (ch["slug"], key)
+                assert (btype == "image") == bool(url), (ch["slug"], key, "image blocks need a url")
                 assert "{{" not in TERM.sub("", body), (ch["slug"], key, "broken term marker")
                 assert "\ufffd" not in body, (ch["slug"], key, "garbled character")
                 for slug in TERM.findall(body):
@@ -87,10 +103,10 @@ def build(mod):
                 f"select id, '{lang}', {q(ch['title'][lang])}, {q(ch['summary'][lang])}, 'draft', "
                 f"{q(ch['sources'])}, date '{mod.LAST_CHECKED}' {sel} on conflict do nothing;"
             )
-            for pos, (key, btype, style, body) in enumerate(ch["blocks"][lang], start=1):
+            for pos, (key, btype, style, body, url) in enumerate(blocks(ch, lang), start=1):
                 out.append(
-                    "insert into public.content_blocks (content_id, lang, block_key, position, block_type, style, body) "
-                    f"select id, '{lang}', '{key}', {pos}, '{btype}', '{style}', {q(body)} {sel} "
+                    "insert into public.content_blocks (content_id, lang, block_key, position, block_type, style, body, image_url) "
+                    f"select id, '{lang}', '{key}', {pos}, '{btype}', '{style}', {q(body)}, {q(url)} {sel} "
                     "on conflict do nothing;"
                 )
     out += ["", "commit;", ""]
@@ -122,8 +138,8 @@ def build_json(mod, stem):
             "position": ch["position"],
             "sources": ch["sources"],
             "versions": {lang: {"title": ch["title"][lang], "summary": ch["summary"][lang]} for lang in LANGS},
-            "blocks": {lang: [{"block_key": k, "block_type": t, "style": st, "body": b}
-                              for (k, t, st, b) in ch["blocks"][lang]] for lang in LANGS},
+            "blocks": {lang: [{"block_key": k, "block_type": t, "style": st, "body": b, **({"image_url": u} if u else {})}
+                              for (k, t, st, b, u) in blocks(ch, lang)] for lang in LANGS},
         } for ch in mod.CHAPTERS],
     }
 

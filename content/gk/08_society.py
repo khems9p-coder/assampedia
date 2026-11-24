@@ -55,6 +55,9 @@ CHAPTERS = [
                 ("l1", "list", "verified_fact",
                  "Hindu: 61.47% (1,91,80,759 people)\nMuslim: 34.22% (1,06,79,345)\nChristian: 3.74% (11,65,867)\n"
                  "Buddhist: 0.18%; Jain: 0.08%; Sikh: 0.07%"),
+                ("img1", "image", "normal",
+                 "Chart: religions in Assam by share of people (Census of India 2011).",
+                 "charts/religion-2011.png"),
                 ("p2", "paragraph", "normal",
                  "Christians in Assam are found mostly among the tribal communities."),
                 ("p3", "paragraph", "normal",
@@ -70,6 +73,9 @@ CHAPTERS = [
                 ("l1", "list", "verified_fact",
                  "হিন্দু: ৬১.৪৭% (১,৯১,৮০,৭৫৯ জন)\nমুছলমান: ৩৪.২২% (১,০৬,৭৯,৩৪৫)\nখ্ৰীষ্টান: ৩.৭৪% (১১,৬৫,৮৬৭)\n"
                  "বৌদ্ধ: ০.১৮%; জৈন: ০.০৮%; শিখ: ০.০৭%"),
+                ("img1", "image", "normal",
+                 "চিত্ৰ: অসমৰ ধৰ্ম অনুসৰি জনসংখ্যাৰ অংশ (ভাৰতৰ লোকপিয়ল ২০১১)।",
+                 "charts/religion-2011.png"),
                 ("p2", "paragraph", "normal",
                  "অসমৰ খ্ৰীষ্টানসকল বেছিভাগেই জনজাতীয় সম্প্ৰদায়ৰ মাজত আছে।"),
                 ("p3", "paragraph", "normal",
