@@ -21,6 +21,7 @@ Do this once, in the Supabase dashboard.
 
 - `migrations/0002_terms.sql` (Phase 3): the dictionary of tappable terms and faster search.
 - `migrations/0003_api_access.sql`: lets the app read and write the tables (newer Supabase projects need this).
+- `migrations/0004_exams_careers.sql` (Phase 4): exam and career groups, official links, and the "suggested, not official" box style.
 
 ## How content is stored
 

@@ -11,13 +11,25 @@ class SupabaseContentRepository implements ContentRepository {
   final SupabaseClient client;
 
   @override
-  Future<List<Category>> categories() async {
-    final rows = await client
-        .from('categories')
-        .select('id, slug, position, icon, name_as, name_en, is_published')
-        .isFilter('parent_id', null)
-        .order('position');
-    return [for (final r in rows) Category.fromJson(r)];
+  Future<List<Category>> categories({String section = 'gk'}) async {
+    try {
+      final rows = await client
+          .from('categories')
+          .select('id, slug, position, icon, name_as, name_en, is_published, section')
+          .eq('section', section)
+          .isFilter('parent_id', null)
+          .order('position');
+      return [for (final r in rows) Category.fromJson(r)];
+    } on PostgrestException {
+      // Database not updated for Phase 4 yet: the encyclopedia still works.
+      if (section != 'gk') rethrow;
+      final rows = await client
+          .from('categories')
+          .select('id, slug, position, icon, name_as, name_en, is_published')
+          .isFilter('parent_id', null)
+          .order('position');
+      return [for (final r in rows) Category.fromJson(r)];
+    }
   }
 
   @override
@@ -35,7 +47,8 @@ class SupabaseContentRepository implements ContentRepository {
 
   @override
   Future<Chapter> chapter(String contentId) async {
-    final content = await client.from('content').select('id, slug, category_id').eq('id', contentId).single();
+    // select('*') keeps older databases (without the Phase 4 link columns) working.
+    final content = await client.from('content').select().eq('id', contentId).single();
     final versions = await client
         .from('content_versions')
         .select('lang, title, summary, sources, last_checked, status')
@@ -66,6 +79,9 @@ class SupabaseContentRepository implements ContentRepository {
       slug: content['slug'] as String,
       categoryId: content['category_id'] as String?,
       versions: map,
+      officialUrl: content['official_url'] as String?,
+      notificationUrl: content['notification_url'] as String?,
+      appliesTo: content['applies_to'] as String?,
     );
   }
 

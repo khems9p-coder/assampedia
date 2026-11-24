@@ -9,6 +9,7 @@ import '../../data/cached_content_repository.dart';
 import '../../data/models.dart';
 import '../dictionary/term_sheet.dart';
 import 'block_view.dart';
+import 'official_info.dart';
 
 /// One row of the reading list: a paragraph in the reading language and,
 /// in side-by-side mode, the same paragraph in the other language.
@@ -256,7 +257,7 @@ class _ReaderScreenState extends State<ReaderScreen> {
                           padding: const EdgeInsets.fromLTRB(20, 8, 20, 40),
                           itemCount: rows.length + 2,
                           itemBuilder: (context, i) {
-                            if (i == 0) return _Header(version: version, other: other, lang: lang, wide: wide);
+                            if (i == 0) return _Header(version: version, other: other, lang: lang, wide: wide, chapter: ch);
                             if (i == rows.length + 1) return _Footer(version: version);
                             final r = rows[i - 1];
                             final main = r.primary == null
@@ -321,7 +322,8 @@ class _SidePair extends StatelessWidget {
 }
 
 class _Header extends StatelessWidget {
-  const _Header({required this.version, this.other, required this.lang, required this.wide});
+  const _Header({required this.version, this.other, required this.lang, required this.wide, required this.chapter});
+  final Chapter chapter;
   final ChapterVersion version;
   final ChapterVersion? other;
   final AppLang lang;
@@ -373,7 +375,17 @@ class _Header extends StatelessWidget {
     }
     return Padding(
       padding: const EdgeInsets.only(bottom: 8),
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [body, const Divider(height: 28)]),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          body,
+          if (chapter.appliesTo != null || chapter.officialUrl != null || chapter.notificationUrl != null) ...[
+            const SizedBox(height: 12),
+            OfficialInfo(chapter: chapter),
+          ],
+          const Divider(height: 28),
+        ],
+      ),
     );
   }
 }
