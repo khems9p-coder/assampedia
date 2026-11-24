@@ -5,8 +5,9 @@ import '../data/admin_repository.dart';
 import '../data/auth_service.dart';
 import '../data/bookmark_store.dart';
 import '../data/content_repository.dart';
-import '../data/saved_jobs_store.dart';
 import '../data/models.dart';
+import '../data/practice_models.dart';
+import '../data/saved_jobs_store.dart';
 import 'i18n/app_lang.dart';
 import 'i18n/strings.dart';
 import 'theme/theme_controller.dart';
@@ -21,8 +22,10 @@ class AppServices {
     this.admin,
     BookmarkStore? bookmarks,
     SavedJobsStore? savedJobs,
+    PracticeProgressStore? progress,
   }) : bookmarks = bookmarks ?? BookmarkStore(),
-       savedJobs = savedJobs ?? SavedJobsStore();
+       savedJobs = savedJobs ?? SavedJobsStore(),
+       progress = progress ?? PracticeProgressStore();
 
   final LanguageController language;
   final ThemeController theme;
@@ -31,6 +34,9 @@ class AppServices {
   final AdminRepository? admin;
   final BookmarkStore bookmarks;
   final SavedJobsStore savedJobs;
+
+  /// Quiz scores, kept on this phone.
+  final PracticeProgressStore progress;
 
   Future<List<Term>>? _terms;
 

@@ -4,6 +4,7 @@ import '../../core/app_scope.dart';
 import '../../core/widgets/common.dart';
 import '../../data/models.dart';
 import 'admin_chapter_list_screen.dart';
+import 'admin_practice_screen.dart';
 import 'admin_terms_screen.dart';
 import 'admin_vacancies_screen.dart';
 
@@ -54,6 +55,16 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                 subtitle: const Text('Recruitment notices from official notifications'),
                 trailing: const Icon(Icons.chevron_right),
                 onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AdminVacanciesScreen())),
+              ),
+            ),
+            Card(
+              margin: const EdgeInsets.fromLTRB(12, 4, 12, 4),
+              child: ListTile(
+                leading: const Icon(Icons.quiz_outlined),
+                title: const Text('Practice Zone'),
+                subtitle: const Text('Quizzes, mock tests and the daily question'),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AdminPracticeScreen())),
               ),
             ),
             const Padding(

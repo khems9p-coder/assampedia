@@ -138,4 +138,47 @@ class S {
   String get periodAll => _t('সকলো', 'All');
   String get allGroups => _t('সকলো', 'All');
   String get noNews => _t('এই সময়ছোৱাৰ কোনো সাম্প্ৰতিক ঘটনা এতিয়াও নাই।', 'No current affairs for this period yet.');
+
+  // Phase 6: practice zone
+  String get practiceZone => _t('অনুশীলন কক্ষ', 'Practice Zone');
+  String get practiceHint => _t('কুইজ, আদৰ্শ পৰীক্ষা আৰু পুনৰীক্ষণ', 'Quizzes, mock tests and revision');
+  String get dailyQuestion => _t('আজিৰ অসমৰ সাধাৰণ জ্ঞানৰ প্ৰশ্ন', 'Daily Assam GK question');
+  String get allLevels => _t('সকলো স্তৰ', 'All levels');
+  String get noQuizzes => _t('এতিয়ালৈকে কোনো কুইজ প্ৰকাশ হোৱা নাই।', 'No quizzes published yet.');
+  String get noQuestions => _t('এই কুইজত এতিয়াও কোনো প্ৰশ্ন নাই।', 'This quiz has no questions yet.');
+  String questionsCount(int n) => _t('$nটা প্ৰশ্ন', '$n questions');
+  String minutes(int n) => _t('$n মিনিট', '$n min');
+  String bestScore(int a, int b) => _t('শ্ৰেষ্ঠ: $a/$b', 'Best: $a/$b');
+  String questionOf(int a, int b) => _t('প্ৰশ্ন $a / $b', 'Question $a of $b');
+  String get correct => _t('শুদ্ধ!', 'Correct!');
+  String get wrong => _t('অশুদ্ধ', 'Not correct');
+  String rightAnswer(String a) => _t('শুদ্ধ উত্তৰ: $a', 'Correct answer: $a');
+  String get explanation => _t('ব্যাখ্যা', 'Explanation');
+  String get background => _t('পটভূমি', 'Background');
+  String get examRelevance => _t('পৰীক্ষাৰ বাবে প্ৰাসংগিকতা', 'Examination relevance');
+  String source(String s) => _t('উৎস: $s', 'Source: $s');
+  String get next => _t('পৰৱৰ্তী', 'Next');
+  String get previous => _t('আগৰ', 'Previous');
+  String get finish => _t('শেষ কৰক', 'Finish');
+  String get submitTest => _t('পৰীক্ষা জমা দিয়ক', 'Submit test');
+  String timeLeft(String t) => _t('বাকী সময়: $t', 'Time left: $t');
+  String get timeUp => _t('সময় শেষ। আপোনাৰ উত্তৰ জমা দিয়া হ’ল।', 'Time is up. Your answers were submitted.');
+  String get yourResult => _t('আপোনাৰ ফলাফল', 'Your result');
+  String scoreLine(int a, int b) => _t('$b টাৰ ভিতৰত $aটা শুদ্ধ', '$a of $b correct');
+  String accuracy(int p) => _t('শুদ্ধতা: $p%', 'Accuracy: $p%');
+  String get yourAnswer => _t('আপোনাৰ উত্তৰ', 'Your answer');
+  String get notAnswered => _t('উত্তৰ দিয়া হোৱা নাই', 'Not answered');
+  String get tryAgain => _t('পুনৰ দিয়ক', 'Try again');
+  String get practiseWrong => _t('ভুলবোৰ পুনৰ অনুশীলন কৰক', 'Practise the wrong ones');
+  String get done => _t('হ’ল', 'Done');
+  String get myProgress => _t('মোৰ অগ্ৰগতি', 'My progress');
+  String progressLine(int quizzes, int answered, int pct) =>
+      _t('$quizzesটা কুইজ · $answeredটা প্ৰশ্ন · $pct% শুদ্ধ', '$quizzes quizzes · $answered questions · $pct% correct');
+  String get noProgress => _t('এটা কুইজ দিয়ক, আপোনাৰ নম্বৰ ইয়াত দেখা যাব।', 'Take a quiz and your scores will appear here.');
+  String get leaveQuiz => _t('কুইজৰ পৰা ওলাই যাবনে?', 'Leave this quiz?');
+  String get leaveQuizHint => _t('আপোনাৰ উত্তৰবোৰ সংৰক্ষণ নহ’ব।', 'Your answers will not be saved.');
+  String get stay => _t('থাকক', 'Stay');
+  String get leave => _t('ওলাই যাওক', 'Leave');
+  String get timedTest => _t('সময়সীমা থকা পৰীক্ষা', 'Timed test');
+  String get mockHint => _t('শেষত উত্তৰ আৰু ব্যাখ্যা দেখুওৱা হ’ব।', 'Answers and explanations are shown at the end.');
 }

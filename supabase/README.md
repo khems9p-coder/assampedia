@@ -23,6 +23,7 @@ Do this once, in the Supabase dashboard.
 - `migrations/0003_api_access.sql`: lets the app read and write the tables (newer Supabase projects need this).
 - `migrations/0004_exams_careers.sql` (Phase 4): exam and career groups, official links, and the "suggested, not official" box style.
 - `migrations/0005_current_affairs_jobs.sql` (Phase 5): current-affairs groups and event dates, and the job vacancies table.
+- `migrations/0006_practice.sql` (Phase 6): Practice Zone quizzes and questions.
 
 ## How content is stored
 

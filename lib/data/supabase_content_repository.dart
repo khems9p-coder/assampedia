@@ -4,6 +4,7 @@ import '../core/i18n/app_lang.dart';
 import 'content_repository.dart';
 import 'jobs_models.dart';
 import 'models.dart';
+import 'practice_models.dart';
 
 /// Reads content from Supabase. The database's security rules make sure
 /// readers only receive published language versions.
@@ -166,5 +167,22 @@ class SupabaseContentRepository implements ContentRepository {
       for (final r in rows)
         if ((r['content_versions'] as List).isNotEmpty) NewsItem.fromJson(r),
     ];
+  }
+
+  @override
+  Future<List<QuestionSet>> questionSets() async {
+    final rows = await client
+        .from('question_sets')
+        .select('*, questions(count)')
+        .eq('is_published', true)
+        .order('position', ascending: true)
+        .limit(500);
+    return [for (final r in rows) QuestionSet.fromJson(r)];
+  }
+
+  @override
+  Future<List<Question>> questions(String setId) async {
+    final rows = await client.from('questions').select().eq('set_id', setId).order('position', ascending: true);
+    return [for (final r in rows) Question.fromJson(r)];
   }
 }
