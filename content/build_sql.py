@@ -45,6 +45,7 @@ def check(mod):
             for key, btype, style, body in ch["blocks"][lang]:
                 assert btype in TYPES and style in STYLES, (ch["slug"], key)
                 assert "{{" not in TERM.sub("", body), (ch["slug"], key, "broken term marker")
+                assert "\ufffd" not in body, (ch["slug"], key, "garbled character")
                 for slug in TERM.findall(body):
                     if slug not in known:
                         sys.exit(f"{ch['slug']}: unknown term {slug}")
