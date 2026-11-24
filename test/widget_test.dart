@@ -96,6 +96,9 @@ void main() {
     await theme.load();
     await language.load();
     final services = AppServices(language: language, theme: theme, content: DemoContentRepository(), auth: _SignedOutAuth());
+    tester.view.physicalSize = const Size(1200, 2000);
+    tester.view.devicePixelRatio = 1.5;
+    addTearDown(tester.view.reset);
     await tester.pumpWidget(AssampediaApp(services: services));
     await tester.pumpAndSettle();
 
@@ -109,6 +112,16 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Welcome'), findsOneWidget);
     expect(find.text('Create account'), findsOneWidget);
+
+    // Empty or short entries get a clear message instead of a server error.
+    await tester.tap(find.text('Create account'));
+    await tester.pump();
+    expect(find.text('Please enter your email and a password.'), findsOneWidget);
+    await tester.enterText(find.widgetWithText(TextField, 'Email'), 'reader@example.com');
+    await tester.enterText(find.widgetWithText(TextField, 'Password'), '123');
+    await tester.tap(find.text('Create account'));
+    await tester.pump();
+    expect(find.text('The password must be at least 6 characters.'), findsOneWidget);
   });
 
   testWidgets('First launch asks for a language and remembers it', (tester) async {

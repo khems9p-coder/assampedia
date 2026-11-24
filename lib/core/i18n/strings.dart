@@ -60,6 +60,15 @@ class S {
   String get inspiration =>
       _t('জ্ঞানেই শক্তি। আজিৰ অধ্যয়নেই কাইলৈৰ সফলতা।', "Knowledge is power. What you learn today is tomorrow's success.");
   String get signInToStart => _t('শিকিবলৈ আৰম্ভ কৰিবলৈ ছাইন ইন কৰক বা নতুন একাউণ্ট খোলক।', 'Sign in or create an account to start learning.');
+  String get enterEmailPassword => _t('ইমেইল আৰু পাছৱৰ্ড দুয়োটা লিখক।', 'Please enter your email and a password.');
+  String get badEmail => _t('শুদ্ধ ইমেইল ঠিকনা লিখক।', 'Please enter a valid email address.');
+  String get shortPassword => _t('পাছৱৰ্ড অন্ততঃ ৬টা আখৰৰ হ’ব লাগিব।', 'The password must be at least 6 characters.');
+  String get wrongLogin => _t('ইমেইল বা পাছৱৰ্ড ভুল।', 'Wrong email or password.');
+  String get accountExists =>
+      _t('এই ইমেইলেৰে একাউণ্ট আগতেই আছে। ছাইন ইন কৰক।', 'An account with this email already exists. Please sign in.');
+  String get emailNotConfirmed =>
+      _t('আগতে আপোনাৰ ইমেইলত পঠোৱা লিংকটোত টিপি একাউণ্ট নিশ্চিত কৰক।', 'Please confirm your account first using the link sent to your email.');
+  String get tooManyTries => _t('বহুবাৰ চেষ্টা কৰা হ’ল। কিছু সময় পিছত পুনৰ চেষ্টা কৰক।', 'Too many tries. Please wait a little and try again.');
   String get checkEmail => _t('নিশ্চিত কৰিবলৈ আপোনাৰ ইমেইল চাওক।', 'Check your email to confirm your account.');
   String signedInAs(String who) => _t('$who হিচাপে ছাইন ইন কৰা হৈছে', 'Signed in as $who');
   String get adminPanel => _t('এডমিন পেনেল', 'Admin panel');
