@@ -5,6 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../core/app_scope.dart';
 import '../account/profile_screen.dart';
 import '../dictionary/dictionary_screen.dart';
+import '../notifications/notifications_screen.dart';
 import '../practice/practice_screen.dart';
 import '../premium/paywall_screen.dart';
 import '../saved/saved_screen.dart';
@@ -83,6 +84,7 @@ class HomeDrawer extends StatelessWidget {
             const SizedBox(height: 8),
             item(Icons.home_outlined, s.navHome, close, selected: true),
             if (auth.isSignedIn) item(Icons.account_circle_outlined, s.myProfile, () => push(const ProfileScreen())),
+            item(Icons.notifications_outlined, s.notifications, () => push(const NotificationsScreen())),
             item(Icons.workspace_premium_outlined, s.premium, () => push(const PaywallScreen())),
             item(Icons.quiz_outlined, s.practiceZone, () => push(const PracticeScreen())),
             item(Icons.translate, s.dictionary, () => push(const DictionaryScreen())),
