@@ -256,8 +256,10 @@ void main() {
     await tester.pumpWidget(AssampediaApp(services: services));
     await tester.pumpAndSettle();
     expect(find.text('অসমৰ সাধাৰণ জ্ঞান'), findsOneWidget);
-    // Home is longer now (daily question, Practice Zone), so scroll to the categories.
-    await tester.scrollUntilVisible(find.text('অসমৰ ইতিহাস'), 200, scrollable: find.byType(Scrollable).first);
+    // The groups are on the Learn tab (Home no longer repeats them).
+    expect(find.text('অসমৰ ইতিহাস'), findsNothing);
+    await tester.tap(find.text('শিকক').last);
+    await tester.pumpAndSettle();
     expect(find.text('অসমৰ ইতিহাস'), findsOneWidget);
   });
 
@@ -267,6 +269,8 @@ void main() {
     addTearDown(tester.view.reset);
     final services = await _services(lang: 'en');
     await tester.pumpWidget(AssampediaApp(services: services));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Learn').last);
     await tester.pumpAndSettle();
     await tester.tap(find.text('History of Assam'));
     await tester.pumpAndSettle();
@@ -400,6 +404,8 @@ void main() {
       addTearDown(tester.view.reset);
       final services = await _services(lang: 'en');
       await tester.pumpWidget(AssampediaApp(services: services));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Learn').last);
       await tester.pumpAndSettle();
       await tester.tap(find.text('History of Assam'));
       await tester.pumpAndSettle();
