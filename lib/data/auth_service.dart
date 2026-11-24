@@ -21,18 +21,32 @@ class AuthService extends ChangeNotifier {
   bool get isSignedIn => user != null;
   bool get isAdmin => _isAdmin;
 
+  /// Why the admin check failed last time, if it did (shown on the Me tab).
+  String? get adminCheckError => _adminCheckError;
+  String? _adminCheckError;
+
+  /// Checks again whether the signed-in account is an admin.
+  Future<void> refresh() => _refresh();
+
   Future<void> _refresh() async {
     final u = user;
     var admin = false;
+    String? error;
     if (u != null) {
       try {
-        final row = await client!.from('profiles').select('role').eq('id', u.id).maybeSingle();
-        admin = row?['role'] == 'admin';
-      } catch (_) {
-        admin = false;
+        // Ask the database directly; this works even if the profile row is hidden.
+        admin = await client!.rpc('is_admin') == true;
+      } catch (e) {
+        try {
+          final row = await client!.from('profiles').select('role').eq('id', u.id).maybeSingle();
+          admin = row?['role'] == 'admin';
+        } catch (e2) {
+          error = '$e2';
+        }
       }
     }
     _isAdmin = admin;
+    _adminCheckError = error;
     notifyListeners();
   }
 

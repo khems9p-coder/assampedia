@@ -20,6 +20,7 @@ Do this once, in the Supabase dashboard.
 ## Updates (run each file once, in order, each in its own New query)
 
 - `migrations/0002_terms.sql` (Phase 3): the dictionary of tappable terms and faster search.
+- `migrations/0003_api_access.sql`: lets the app read and write the tables (newer Supabase projects need this).
 
 ## How content is stored
 
