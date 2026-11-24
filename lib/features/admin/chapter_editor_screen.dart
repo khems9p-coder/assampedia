@@ -122,7 +122,7 @@ class _ChapterEditorScreenState extends State<ChapterEditorScreen> {
         e.published = v['status'] == 'published';
       }
       final byKey = <String, _EditBlock>{};
-      for (final raw in data['blocks'] as List) {
+      for (final raw in [...data['blocks'] as List]..sort((a, b) => ((a['position'] as num?) ?? 0).compareTo((b['position'] as num?) ?? 0))) {
         final b = Block.fromJson(raw as Map<String, dynamic>);
         final l = AppLang.fromCode(raw['lang'] as String?);
         final eb = byKey.putIfAbsent(b.key, () {

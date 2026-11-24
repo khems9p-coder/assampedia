@@ -18,7 +18,7 @@ class SupabaseContentRepository implements ContentRepository {
           .select('id, slug, position, icon, name_as, name_en, is_published, section')
           .eq('section', section)
           .isFilter('parent_id', null)
-          .order('position');
+          .order('position', ascending: true);
       return [for (final r in rows) Category.fromJson(r)];
     } on PostgrestException {
       // Database not updated for Phase 4 yet: the encyclopedia still works.
@@ -27,7 +27,7 @@ class SupabaseContentRepository implements ContentRepository {
           .from('categories')
           .select('id, slug, position, icon, name_as, name_en, is_published')
           .isFilter('parent_id', null)
-          .order('position');
+          .order('position', ascending: true);
       return [for (final r in rows) Category.fromJson(r)];
     }
   }
@@ -38,7 +38,7 @@ class SupabaseContentRepository implements ContentRepository {
         .from('content')
         .select('id, slug, position, content_versions(lang, title, status)')
         .eq('category_id', categoryId)
-        .order('position');
+        .order('position', ascending: true);
     return [
       for (final r in rows)
         if ((r['content_versions'] as List).isNotEmpty) ChapterSummary.fromJson(r),
@@ -57,7 +57,7 @@ class SupabaseContentRepository implements ContentRepository {
         .from('content_blocks')
         .select('lang, block_key, position, block_type, style, body, image_url')
         .eq('content_id', contentId)
-        .order('position');
+        .order('position', ascending: true);
     final map = <AppLang, ChapterVersion>{};
     for (final v in versions) {
       final l = AppLang.fromCode(v['lang'] as String?);
@@ -71,7 +71,7 @@ class SupabaseContentRepository implements ContentRepository {
         blocks: [
           for (final b in blocks)
             if (b['lang'] == l.code) Block.fromJson(b),
-        ],
+        ]..sort((a, b) => a.position.compareTo(b.position)),
       );
     }
     return Chapter(
@@ -87,7 +87,10 @@ class SupabaseContentRepository implements ContentRepository {
 
   @override
   Future<List<Term>> terms() async {
-    final rows = await client.from('terms').select('id, slug, term_as, term_en, meaning_as, meaning_en, is_published').order('slug');
+    final rows = await client
+        .from('terms')
+        .select('id, slug, term_as, term_en, meaning_as, meaning_en, is_published')
+        .order('slug', ascending: true);
     return [for (final r in rows) Term.fromJson(r)];
   }
 

@@ -11,7 +11,7 @@ class AdminRepository {
 
   /// Every category in all three sections (GK, exams, careers).
   Future<List<Category>> categories() async {
-    final rows = await client.from('categories').select().order('position');
+    final rows = await client.from('categories').select().order('position', ascending: true);
     return [for (final r in rows) Category.fromJson(r)];
   }
 
@@ -20,14 +20,14 @@ class AdminRepository {
         .from('content')
         .select('id, slug, position, content_versions(lang, title, status)')
         .eq('category_id', categoryId)
-        .order('position');
+        .order('position', ascending: true);
     return [for (final r in rows) ChapterSummary.fromJson(r)];
   }
 
   Future<Map<String, dynamic>> loadForEdit(String contentId) async {
     final content = await client.from('content').select().eq('id', contentId).single();
     final versions = await client.from('content_versions').select().eq('content_id', contentId);
-    final blocks = await client.from('content_blocks').select().eq('content_id', contentId).order('position');
+    final blocks = await client.from('content_blocks').select().eq('content_id', contentId).order('position', ascending: true);
     return {'content': content, 'versions': versions, 'blocks': blocks};
   }
 
@@ -95,7 +95,7 @@ class AdminRepository {
 
   /// All dictionary terms, including hidden ones.
   Future<List<Term>> terms() async {
-    final rows = await client.from('terms').select().order('slug');
+    final rows = await client.from('terms').select().order('slug', ascending: true);
     return [for (final r in rows) Term.fromJson(r)];
   }
 
