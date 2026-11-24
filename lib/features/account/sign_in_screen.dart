@@ -46,7 +46,38 @@ class _SignInFormState extends State<SignInForm> {
     super.dispose();
   }
 
+  /// A problem with what was typed, checked before asking the server.
+  String? _checkInput() {
+    final s = context.s;
+    final email = _email.text.trim();
+    if (email.isEmpty || _password.text.isEmpty) return s.enterEmailPassword;
+    if (!RegExp(r'^[^@\s]+@[^@\s]+\.[^@\s]+$').hasMatch(email)) return s.badEmail;
+    if (_password.text.length < 6) return s.shortPassword;
+    return null;
+  }
+
+  /// A clear message for the errors readers are likely to meet.
+  String _authMessage(AuthException e) {
+    final s = context.s;
+    final network = e.message.contains('SocketException') || e.message.contains('ClientException');
+    if (network) return s.loadFailed;
+    return switch (e.code) {
+      'invalid_credentials' => s.wrongLogin,
+      'user_already_exists' || 'email_exists' => s.accountExists,
+      'email_not_confirmed' => s.emailNotConfirmed,
+      'weak_password' => s.shortPassword,
+      'email_address_invalid' || 'validation_failed' => s.badEmail,
+      'over_email_send_rate_limit' || 'over_request_rate_limit' => s.tooManyTries,
+      _ => e.message,
+    };
+  }
+
   Future<void> _run(Future<void> Function() action) async {
+    final problem = _checkInput();
+    if (problem != null) {
+      setState(() => _message = problem);
+      return;
+    }
     setState(() {
       _busy = true;
       _message = null;
@@ -57,8 +88,7 @@ class _SignInFormState extends State<SignInForm> {
       // Network problem (no internet / server unreachable).
       if (mounted) setState(() => _message = context.s.loadFailed);
     } on AuthException catch (e) {
-      final network = e.message.contains('SocketException') || e.message.contains('ClientException');
-      if (mounted) setState(() => _message = network ? context.s.loadFailed : e.message);
+      if (mounted) setState(() => _message = _authMessage(e));
     } catch (e) {
       if (mounted) setState(() => _message = context.s.loadFailed);
     } finally {
