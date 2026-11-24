@@ -5,6 +5,7 @@ Writes  supabase/content/NN_name.sql          (adds the chapters as drafts)
 and     supabase/content/NN_name_publish.sql  (publishes the whole group after checking)
 """
 import importlib.util
+import json
 import pathlib
 import re
 import sys
@@ -107,6 +108,36 @@ def build_publish(mod):
     ])
 
 
+def build_json(mod, stem):
+    """The same chapters as JSON, read by the app's Admin > Import chapters screen."""
+    return {
+        "group": stem,
+        "category_slug": mod.CATEGORY_SLUG,
+        "category_name": mod.CATEGORY_NAME,
+        "last_checked": mod.LAST_CHECKED,
+        "terms": [{"slug": t["slug"], "term_en": t["en"], "term_as": t["as"],
+                   "meaning_en": t["meaning_en"], "meaning_as": t["meaning_as"]} for t in mod.TERMS],
+        "chapters": [{
+            "slug": ch["slug"],
+            "position": ch["position"],
+            "sources": ch["sources"],
+            "versions": {lang: {"title": ch["title"][lang], "summary": ch["summary"][lang]} for lang in LANGS},
+            "blocks": {lang: [{"block_key": k, "block_type": t, "style": st, "body": b}
+                              for (k, t, st, b) in ch["blocks"][lang]] for lang in LANGS},
+        } for ch in mod.CHAPTERS],
+    }
+
+
+def write_index(dest):
+    """index.json lists every group file in order, for the import screen."""
+    groups = []
+    for f in sorted((dest / "json").glob("[0-9]*.json")):
+        data = json.loads(f.read_text(encoding="utf-8"))
+        groups.append({"file": f.name, "name": data["category_name"], "chapters": len(data["chapters"]),
+                       "terms": len(data["terms"])})
+    (dest / "json" / "index.json").write_text(json.dumps({"groups": groups}, ensure_ascii=False, indent=1), encoding="utf-8")
+
+
 if __name__ == "__main__":
     src = pathlib.Path(sys.argv[1])
     mod = load(src)
@@ -115,4 +146,8 @@ if __name__ == "__main__":
     dest.mkdir(parents=True, exist_ok=True)
     (dest / f"{src.stem}.sql").write_text(build(mod), encoding="utf-8")
     (dest / f"{src.stem}_publish.sql").write_text(build_publish(mod), encoding="utf-8")
+    (dest / "json").mkdir(exist_ok=True)
+    (dest / "json" / f"{src.stem}.json").write_text(
+        json.dumps(build_json(mod, src.stem), ensure_ascii=False, indent=1), encoding="utf-8")
+    write_index(dest)
     print(f"wrote {src.stem}.sql and {src.stem}_publish.sql: {len(mod.CHAPTERS)} chapters, {len(mod.TERMS)} terms")

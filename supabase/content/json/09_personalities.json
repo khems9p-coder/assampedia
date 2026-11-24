@@ -1,0 +1,690 @@
+{
+ "group": "09_personalities",
+ "category_slug": "personalities",
+ "category_name": "Important Personalities",
+ "last_checked": "2026-11-24",
+ "terms": [
+  {
+   "slug": "maidam",
+   "term_en": "Maidam",
+   "term_as": "মৈদাম",
+   "meaning_en": "A burial mound of the Ahom royals and nobles. The Charaideo Maidams are the best known.",
+   "meaning_as": "আহোম ৰজা আৰু বিষয়াসকলৰ সমাধিস্থল। চৰাইদেউৰ মৈদামসমূহ আটাইতকৈ জনাজাত।"
+  },
+  {
+   "slug": "rasaraj",
+   "term_en": "Rasaraj",
+   "term_as": "ৰসৰাজ",
+   "meaning_en": "'King of humour', the title given to Lakshminath Bezbaroa.",
+   "meaning_as": "'হাস্যৰসৰ ৰজা', লক্ষ্মীনাথ বেজবৰুৱাক দিয়া উপাধি।"
+  },
+  {
+   "slug": "rupkonwar",
+   "term_en": "Rupkonwar",
+   "term_as": "ৰূপকোঁৱৰ",
+   "meaning_en": "'Prince of beauty', the title by which Jyoti Prasad Agarwala is known.",
+   "meaning_as": "'সৌন্দৰ্যৰ কোঁৱৰ', জ্যোতিপ্ৰসাদ আগৰৱালাক জনা উপাধি।"
+  },
+  {
+   "slug": "shilpi-divas",
+   "term_en": "Shilpi Divas",
+   "term_as": "শিল্পী দিৱস",
+   "meaning_en": "Artists' Day, observed in Assam on 17 January, the death anniversary of Jyoti Prasad Agarwala.",
+   "meaning_as": "জ্যোতিপ্ৰসাদ আগৰৱালাৰ মৃত্যু দিৱস ১৭ জানুৱাৰীত অসমত পালন কৰা শিল্পী দিৱস।"
+  },
+  {
+   "slug": "sudhakantha",
+   "term_en": "Sudhakantha",
+   "term_as": "সুধাকণ্ঠ",
+   "meaning_en": "'Nectar-voiced', the title by which Bhupen Hazarika is known.",
+   "meaning_as": "'অমৃতকণ্ঠ', ড° ভূপেন হাজৰিকাক জনা উপাধি।"
+  },
+  {
+   "slug": "bharat-ratna",
+   "term_en": "Bharat Ratna",
+   "term_as": "ভাৰতৰত্ন",
+   "meaning_en": "India's highest civilian award.",
+   "meaning_as": "ভাৰতৰ সৰ্বোচ্চ অসামৰিক সন্মান।"
+  },
+  {
+   "slug": "dadasaheb-phalke-award",
+   "term_en": "Dadasaheb Phalke Award",
+   "term_as": "দাদাচাহেব ফাল্কে বঁটা",
+   "meaning_en": "India's highest award in cinema.",
+   "meaning_as": "চলচ্চিত্ৰৰ ক্ষেত্ৰত ভাৰতৰ সৰ্বোচ্চ বঁটা।"
+  },
+  {
+   "slug": "lachit-divas",
+   "term_en": "Lachit Divas",
+   "term_as": "লাচিত দিৱস",
+   "meaning_en": "24 November, the birth anniversary of Lachit Borphukan, celebrated in Assam.",
+   "meaning_as": "লাচিত বৰফুকনৰ জন্মদিন ২৪ নৱেম্বৰ, যিটো অসমত পালন কৰা হয়।"
+  }
+ ],
+ "chapters": [
+  {
+   "slug": "srimanta-sankardev",
+   "position": 1,
+   "sources": "Sankardev, Wikipedia: https://en.wikipedia.org/wiki/Sankardev",
+   "versions": {
+    "en": {
+     "title": "Srimanta Sankardev",
+     "summary": "Saint, poet, playwright and social reformer who founded Neo-Vaishnavism in Assam."
+    },
+    "as": {
+     "title": "শ্ৰীমন্ত শংকৰদেৱ",
+     "summary": "অসমত নৱ-বৈষ্ণৱ ধৰ্ম প্ৰৱৰ্তন কৰা সন্ত, কবি, নাট্যকাৰ আৰু সমাজ সংস্কাৰক।"
+    }
+   },
+   "blocks": {
+    "en": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "personality",
+      "body": "Srimanta Sankardev was a saint, poet, playwright, musician and social reformer. He was born at Bordowa in present-day Nagaon district. By tradition he was born in 1449; some historians suggest a later year. He died in 1568 at Bheladonga, in present-day Cooch Behar."
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "He founded {{term:neo-vaishnavism|Ekasarana Dharma (Neo-Vaishnavism)}}, which teaches devotion to one God through prayer and singing. He set up the {{term:sattra|Sattra}} and namghar system."
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "heritage",
+      "body": "Greatest work: Kirtan Ghosha\nOther works: Gunamala, Rukmini Haran, Parijat Haran, Keli Gopal\nCreated: {{term:borgeet|Borgeet}}, {{term:ankiya-naat|Ankiya Naat}} and Sattriya dance\nHis play Chihna Yatra is one of the earliest open-air performances; its text is lost"
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "At Dhuwahat in Majuli he met Madhavdev, who became his chief disciple. Later he lived in the Koch kingdom under King Nara Narayan."
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "Remember for exams: born at Bordowa (Nagaon); greatest work Kirtan Ghosha; chief disciple Madhavdev."
+     }
+    ],
+    "as": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "personality",
+      "body": "শ্ৰীমন্ত শংকৰদেৱ আছিল এগৰাকী সন্ত, কবি, নাট্যকাৰ, সংগীতজ্ঞ আৰু সমাজ সংস্কাৰক। তেওঁৰ জন্ম বৰ্তমানৰ নগাঁও জিলাৰ বৰদোৱাত। পৰম্পৰা অনুসৰি তেওঁৰ জন্ম ১৪৪৯ চনত; কিছুমান ইতিহাসবিদে পিছৰ বছৰৰ কথা কয়। ১৫৬৮ চনত বৰ্তমানৰ কোচবিহাৰৰ ভেলাদুঙাত তেওঁৰ মৃত্যু হয়।"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "তেওঁ {{term:neo-vaishnavism|একশৰণ নামধৰ্ম (নৱ-বৈষ্ণৱ ধৰ্ম)}} প্ৰৱৰ্তন কৰে, যিয়ে নাম-প্ৰাৰ্থনাৰ জৰিয়তে এক ঈশ্বৰৰ ভক্তি শিকায়। তেওঁ {{term:sattra|সত্ৰ}} আৰু নামঘৰৰ ব্যৱস্থা গঢ়ি তোলে।"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "heritage",
+      "body": "শ্ৰেষ্ঠ গ্ৰন্থ: কীৰ্তন ঘোষা\nআন গ্ৰন্থ: গুণমালা, ৰুক্মিণী হৰণ, পাৰিজাত হৰণ, কেলি গোপাল\nসৃষ্টি: {{term:borgeet|বৰগীত}}, {{term:ankiya-naat|অংকীয়া নাট}} আৰু সত্ৰীয়া নৃত্য\nতেওঁৰ 'চিহ্নযাত্ৰা' আটাইতকৈ পুৰণি মুকলি মঞ্চৰ পৰিৱেশনসমূহৰ এটা; ইয়াৰ পাঠ পোৱা নাযায়"
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "মাজুলীৰ ধুৱাহাটত তেওঁ মাধৱদেৱক লগ পায়, যিজন তেওঁৰ প্ৰধান শিষ্য হয়। পিছলৈ তেওঁ ৰজা নৰনাৰায়ণৰ কোচ ৰাজ্যত বাস কৰে।"
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "পৰীক্ষাৰ বাবে মনত ৰাখক: জন্ম বৰদোৱাত (নগাঁও); শ্ৰেষ্ঠ গ্ৰন্থ কীৰ্তন ঘোষা; প্ৰধান শিষ্য মাধৱদেৱ।"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "lachit-borphukan",
+   "position": 2,
+   "sources": "Lachit Borphukan, Wikipedia: https://en.wikipedia.org/wiki/Lachit_Borphukan",
+   "versions": {
+    "en": {
+     "title": "Lachit Borphukan",
+     "summary": "The Ahom general who defeated the Mughals at Saraighat in 1671."
+    },
+    "as": {
+     "title": "লাচিত বৰফুকন",
+     "summary": "১৬৭১ চনত শৰাইঘাটত মোগলক পৰাস্ত কৰা আহোম সেনাপতি।"
+    }
+   },
+   "blocks": {
+    "en": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "personality",
+      "body": "Lachit Borphukan was born on 24 November 1622. His father was Momai Tamuli Borbarua, a senior Ahom officer. As {{term:borphukan|Borphukan}}, Lachit was the commander of the Ahom army in the west."
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "event",
+      "body": "In 1671 he led the Ahoms to a famous naval victory over the Mughal army of Ram Singh I in the Battle of Saraighat, even though he was ill at the time."
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "He died in April 1672. His {{term:maidam}} is at Holongapar, near Teok in Jorhat district."
+     },
+     {
+      "block_key": "p4",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "His birthday, 24 November, is celebrated in Assam as {{term:lachit-divas|Lachit Divas}}. The best passing-out cadet of the National Defence Academy receives a gold medal named after him."
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "Remember for exams: born 24 November 1622; Saraighat 1671; Lachit Divas 24 November."
+     }
+    ],
+    "as": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "personality",
+      "body": "লাচিত বৰফুকনৰ জন্ম ১৬২২ চনৰ ২৪ নৱেম্বৰত। তেওঁৰ পিতৃ মোমাই তামুলী বৰবৰুৱা আছিল এগৰাকী জ্যেষ্ঠ আহোম বিষয়া। {{term:borphukan|বৰফুকন}} হিচাপে লাচিত পশ্চিমত আহোম সেনাৰ সেনাপতি আছিল।"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "event",
+      "body": "১৬৭১ চনত শৰাইঘাটৰ যুদ্ধত তেওঁ অসুস্থ হৈ থকা অৱস্থাতো আহোম সেনাক নেতৃত্ব দি ৰামসিংহৰ মোগল বাহিনীৰ বিৰুদ্ধে এক বিখ্যাত নৌ-যুদ্ধত জয়লাভ কৰে।"
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "১৬৭২ চনৰ এপ্ৰিলত তেওঁৰ মৃত্যু হয়। তেওঁৰ {{term:maidam|মৈদাম}} যোৰহাট জিলাৰ টিয়কৰ ওচৰৰ হোলোঙাপাৰত আছে।"
+     },
+     {
+      "block_key": "p4",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "তেওঁৰ জন্মদিন ২৪ নৱেম্বৰ অসমত {{term:lachit-divas|লাচিত দিৱস}} হিচাপে পালন কৰা হয়। ৰাষ্ট্ৰীয় প্ৰতিৰক্ষা অকাডেমীৰ শ্ৰেষ্ঠ কেডেটক তেওঁৰ নামত এটা সোণৰ পদক দিয়া হয়।"
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "পৰীক্ষাৰ বাবে মনত ৰাখক: জন্ম ২৪ নৱেম্বৰ ১৬২২; শৰাইঘাট ১৬৭১; লাচিত দিৱস ২৪ নৱেম্বৰ।"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "lakshminath-bezbaroa",
+   "position": 3,
+   "sources": "Lakshminath Bezbaroa, Wikipedia: https://en.wikipedia.org/wiki/Lakshminath_Bezbaroa",
+   "versions": {
+    "en": {
+     "title": "Lakshminath Bezbaroa",
+     "summary": "The father of the Assamese short story and writer of the state song."
+    },
+    "as": {
+     "title": "লক্ষ্মীনাথ বেজবৰুৱা",
+     "summary": "অসমীয়া চুটিগল্পৰ জনক আৰু ৰাজ্যিক সংগীতৰ ৰচয়িতা।"
+    }
+   },
+   "blocks": {
+    "en": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "personality",
+      "body": "Lakshminath Bezbaroa (14 October 1864 to 26 March 1938) was one of the greatest writers of Assamese literature. He was a leading figure of the {{term:jonaki-era|Jonaki era}} and brought the short story into Assamese."
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "heritage",
+      "body": "Wrote the state song 'O Mur Apunar Desh', published in his collection Kodomkoli (1913)\nPen name: Kripabar Barbarua, used for his humorous writings\nCollected folk tales in Burhi Aair Sadhu\nPresident of the Asam Sahitya Sabha in 1924"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "He was given the titles {{term:rasaraj|Rasaraj}} (king of humour) and Sahityarathi (charioteer of literature). He died in Dibrugarh."
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "Remember for exams: writer of 'O Mur Apunar Desh'; pen name Kripabar Barbarua; titles Rasaraj and Sahityarathi."
+     }
+    ],
+    "as": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "personality",
+      "body": "লক্ষ্মীনাথ বেজবৰুৱা (১৪ অক্টোবৰ ১৮৬৪ ৰ পৰা ২৬ মাৰ্চ ১৯৩৮) অসমীয়া সাহিত্যৰ অন্যতম শ্ৰেষ্ঠ সাহিত্যিক। তেওঁ {{term:jonaki-era|জোনাকী যুগৰ}} এগৰাকী অগ্ৰণী ব্যক্তি আছিল আৰু অসমীয়া সাহিত্যত চুটিগল্পৰ প্ৰৱৰ্তন কৰে।"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "heritage",
+      "body": "ৰাজ্যিক সংগীত 'অ' মোৰ আপোনাৰ দেশ' ৰচনা কৰে, যিটো তেওঁৰ 'কদমকলি' (১৯১৩) সংকলনত প্ৰকাশ পায়\nছদ্মনাম: কৃপাবৰ বৰবৰুৱা, হাস্যৰসাত্মক লেখাৰ বাবে ব্যৱহাৰ কৰে\n'বুঢ়ী আইৰ সাধু'ত সাধুকথা সংকলন কৰে\n১৯২৪ চনত অসম সাহিত্য সভাৰ সভাপতি"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "তেওঁক {{term:rasaraj|ৰসৰাজ}} আৰু সাহিত্যৰথী উপাধি দিয়া হৈছিল। ডিব্ৰুগড়ত তেওঁৰ মৃত্যু হয়।"
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "পৰীক্ষাৰ বাবে মনত ৰাখক: 'অ' মোৰ আপোনাৰ দেশ'ৰ ৰচয়িতা; ছদ্মনাম কৃপাবৰ বৰবৰুৱা; উপাধি ৰসৰাজ আৰু সাহিত্যৰথী।"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "jyoti-prasad-agarwala",
+   "position": 4,
+   "sources": "Jyoti Prasad Agarwala, Wikipedia: https://en.wikipedia.org/wiki/Jyoti_Prasad_Agarwala",
+   "versions": {
+    "en": {
+     "title": "Jyoti Prasad Agarwala",
+     "summary": "Rupkonwar, maker of the first Assamese film Joymoti."
+    },
+    "as": {
+     "title": "জ্যোতিপ্ৰসাদ আগৰৱালা",
+     "summary": "প্ৰথম অসমীয়া চলচ্চিত্ৰ জয়মতীৰ নিৰ্মাতা ৰূপকোঁৱৰ।"
+    }
+   },
+   "blocks": {
+    "en": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "personality",
+      "body": "Jyoti Prasad Agarwala (17 June 1903 to 17 January 1951) was a playwright, poet, composer and filmmaker. He is known as the {{term:rupkonwar|Rupkonwar}} of Assamese culture."
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "event",
+      "body": "In 1935 he made Joymoti, the first Assamese film, based on a play by Lakshminath Bezbaroa. He is called the founder of Assamese cinema."
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "heritage",
+      "body": "Plays: Sonit Konwari (1925), Karengar Ligiri (1930), Rupalim, Lobhita\nFilms: Joymoti (1935), Indramalati (1939)"
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "He was jailed for fifteen months in 1932 for joining the freedom struggle, and went underground during the {{term:quit-india-movement|Quit India Movement}}. He discovered the young Bhupen Hazarika in Tezpur."
+     },
+     {
+      "block_key": "p4",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "He died in Tezpur. His death anniversary, 17 January, is observed as {{term:shilpi-divas|Shilpi Divas}} (Artists' Day)."
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "Remember for exams: first Assamese film Joymoti (1935); Shilpi Divas 17 January."
+     }
+    ],
+    "as": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "personality",
+      "body": "জ্যোতিপ্ৰসাদ আগৰৱালা (১৭ জুন ১৯০৩ ৰ পৰা ১৭ জানুৱাৰী ১৯৫১) আছিল নাট্যকাৰ, কবি, সুৰকাৰ আৰু চলচ্চিত্ৰ নিৰ্মাতা। তেওঁ অসমীয়া সংস্কৃতিৰ {{term:rupkonwar|ৰূপকোঁৱৰ}} হিচাপে জনাজাত।"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "event",
+      "body": "১৯৩৫ চনত তেওঁ লক্ষ্মীনাথ বেজবৰুৱাৰ নাটকৰ আধাৰত প্ৰথম অসমীয়া চলচ্চিত্ৰ 'জয়মতী' নিৰ্মাণ কৰে। তেওঁক অসমীয়া চলচ্চিত্ৰৰ জনক বুলি কোৱা হয়।"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "heritage",
+      "body": "নাটক: শোণিত কুঁৱৰী (১৯২৫), কাৰেঙৰ লিগিৰী (১৯৩০), ৰূপালীম, লভিতা\nচলচ্চিত্ৰ: জয়মতী (১৯৩৫), ইন্দ্ৰমালতী (১৯৩৯)"
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "স্বাধীনতা সংগ্ৰামত যোগ দিয়াৰ বাবে ১৯৩২ চনত তেওঁ পোন্ধৰ মাহ কাৰাবাস খাটে, আৰু {{term:quit-india-movement|ভাৰত ত্যাগ আন্দোলনৰ}} সময়ত আত্মগোপন কৰে। তেজপুৰত তেওঁ কিশোৰ ভূপেন হাজৰিকাক আৱিষ্কাৰ কৰে।"
+     },
+     {
+      "block_key": "p4",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "তেজপুৰত তেওঁৰ মৃত্যু হয়। তেওঁৰ মৃত্যু দিৱস ১৭ জানুৱাৰী {{term:shilpi-divas|শিল্পী দিৱস}} হিচাপে পালন কৰা হয়।"
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "পৰীক্ষাৰ বাবে মনত ৰাখক: প্ৰথম অসমীয়া চলচ্চিত্ৰ জয়মতী (১৯৩৫); শিল্পী দিৱস ১৭ জানুৱাৰী।"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "gopinath-bordoloi",
+   "position": 5,
+   "sources": "Gopinath Bordoloi, Wikipedia: https://en.wikipedia.org/wiki/Gopinath_Bordoloi\nTO VERIFY before publishing: the title Lokapriya in p4.",
+   "versions": {
+    "en": {
+     "title": "Gopinath Bordoloi",
+     "summary": "The first Chief Minister of Assam, who helped keep Assam in India."
+    },
+    "as": {
+     "title": "গোপীনাথ বৰদলৈ",
+     "summary": "অসমক ভাৰতত ৰখাত সহায় কৰা অসমৰ প্ৰথম মুখ্যমন্ত্ৰী।"
+    }
+   },
+   "blocks": {
+    "en": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "personality",
+      "body": "Gopinath Bordoloi was born on 6 June 1890 at Raha in Nagaon district and died on 5 August 1950 in Guwahati."
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "He became Premier of Assam in 1938 and was the first Chief Minister of Assam, from 11 February 1946 until his death."
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "event",
+      "body": "In 1946 the {{term:cabinet-mission|Cabinet Mission}} plan put Assam in a group with Bengal. Under Bordoloi, the Assam Congress opposed this grouping, which helped Assam remain part of India."
+     },
+     {
+      "block_key": "p4",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "He was awarded the Bharat Ratna after his death, in 1999. He is remembered as Lokapriya (beloved of the people)."
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "Remember for exams: first Chief Minister of Assam; opposed the Grouping plan (1946); Bharat Ratna 1999."
+     }
+    ],
+    "as": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "personality",
+      "body": "গোপীনাথ বৰদলৈৰ জন্ম ১৮৯০ চনৰ ৬ জুনত নগাঁও জিলাৰ ৰহাত আৰু মৃত্যু ১৯৫০ চনৰ ৫ আগষ্টত গুৱাহাটীত।"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "১৯৩৮ চনত তেওঁ অসমৰ প্ৰধানমন্ত্ৰী হয় আৰু ১৯৪৬ চনৰ ১১ ফেব্ৰুৱাৰীৰ পৰা মৃত্যুলৈকে অসমৰ প্ৰথম মুখ্যমন্ত্ৰী আছিল।"
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "event",
+      "body": "১৯৪৬ চনত {{term:cabinet-mission|কেবিনেট মিছনৰ}} পৰিকল্পনাত অসমক বংগৰ সৈতে একেটা গোটত ৰখা হৈছিল। বৰদলৈৰ নেতৃত্বত অসম কংগ্ৰেছে এই গোটকৰণৰ বিৰোধিতা কৰে, যাৰ ফলত অসম ভাৰতৰ অংশ হৈ থাকিল।"
+     },
+     {
+      "block_key": "p4",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "মৃত্যুৰ পিছত ১৯৯৯ চনত তেওঁক ভাৰতৰত্ন প্ৰদান কৰা হয়। তেওঁক লোকপ্ৰিয় বুলি সোঁৱৰা হয়।"
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "পৰীক্ষাৰ বাবে মনত ৰাখক: অসমৰ প্ৰথম মুখ্যমন্ত্ৰী; গোটকৰণ পৰিকল্পনাৰ বিৰোধিতা (১৯৪৬); ভাৰতৰত্ন ১৯৯৯।"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "bhupen-hazarika",
+   "position": 6,
+   "sources": "Bhupen Hazarika, Wikipedia: https://en.wikipedia.org/wiki/Bhupen_Hazarika",
+   "versions": {
+    "en": {
+     "title": "Bhupen Hazarika",
+     "summary": "Sudhakantha, the bard of the Brahmaputra and Bharat Ratna awardee."
+    },
+    "as": {
+     "title": "ড° ভূপেন হাজৰিকা",
+     "summary": "সুধাকণ্ঠ, ব্ৰহ্মপুত্ৰৰ কবি আৰু ভাৰতৰত্ন বঁটা প্ৰাপক।"
+    }
+   },
+   "blocks": {
+    "en": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "personality",
+      "body": "Bhupen Hazarika was born on 8 September 1926 at Sadiya and died on 5 November 2011 in Mumbai. He was a singer, composer, poet and filmmaker, known as {{term:sudhakantha|Sudhakantha}} and the bard of the Brahmaputra."
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "He earned a PhD from Columbia University, New York, in 1952. His famous songs include 'Bistirno Parore' and 'Manuhe Manuhor Babe'."
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "verified_fact",
+      "body": "Sangeet Natak Akademi Award: 1987\n{{term:dadasaheb-phalke-award|Dadasaheb Phalke Award}}: 1992\nPadma Vibhushan: 2012 (after his death)\n{{term:bharat-ratna|Bharat Ratna}}: 2019 (after his death)"
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "His film Shakuntala (1961) won the National Award for the best Assamese film. The Dhola-Sadiya bridge over the Lohit is named after him."
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "Remember for exams: born at Sadiya; Dadasaheb Phalke 1992; Bharat Ratna 2019; Dhola-Sadiya bridge named after him."
+     }
+    ],
+    "as": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "personality",
+      "body": "ভূপেন হাজৰিকাৰ জন্ম ১৯২৬ চনৰ ৮ ছেপ্টেম্বৰত শদিয়াত আৰু মৃত্যু ২০১১ চনৰ ৫ নৱেম্বৰত মুম্বাইত। তেওঁ আছিল গায়ক, সুৰকাৰ, কবি আৰু চলচ্চিত্ৰ নিৰ্মাতা, {{term:sudhakantha|সুধাকণ্ঠ}} আৰু ব্ৰহ্মপুত্ৰৰ কবি হিচাপে জনাজাত।"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "১৯৫২ চনত তেওঁ নিউয়ৰ্কৰ কলম্বিয়া বিশ্ববিদ্যালয়ৰ পৰা পি এইচ ডি লাভ কৰে। তেওঁৰ বিখ্যাত গীতৰ ভিতৰত আছে 'বিস্তীৰ্ণ পাৰৰে' আৰু 'মানুহে মানুহৰ বাবে'।"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "verified_fact",
+      "body": "সংগীত নাটক অকাডেমী বঁটা: ১৯৮৭\n{{term:dadasaheb-phalke-award|দাদাচাহেব ফাল্কে বঁটা}}: ১৯৯২\nপদ্মবিভূষণ: ২০১২ (মৃত্যুৰ পিছত)\n{{term:bharat-ratna|ভাৰতৰত্ন}}: ২০১৯ (মৃত্যুৰ পিছত)"
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "তেওঁৰ চলচ্চিত্ৰ 'শকুন্তলা' (১৯৬১)ই শ্ৰেষ্ঠ অসমীয়া চলচ্চিত্ৰৰ ৰাষ্ট্ৰীয় বঁটা লাভ কৰে। লুইতৰ ওপৰৰ ঢোলা-শদিয়া দলং তেওঁৰ নামেৰে নামকৰণ কৰা হৈছে।"
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "পৰীক্ষাৰ বাবে মনত ৰাখক: জন্ম শদিয়াত; দাদাচাহেব ফাল্কে ১৯৯২; ভাৰতৰত্ন ২০১৯; ঢোলা-শদিয়া দলং তেওঁৰ নামত।"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "maniram-dewan",
+   "position": 7,
+   "sources": "Maniram Dewan, Wikipedia: https://en.wikipedia.org/wiki/Maniram_Dewan\nAssam tea, Wikipedia: https://en.wikipedia.org/wiki/Assam_tea\nTO VERIFY before publishing: his full name Maniram Dutta Barua (p1).",
+   "versions": {
+    "en": {
+     "title": "Maniram Dewan",
+     "summary": "Tea pioneer and martyr of 1857 in Assam."
+    },
+    "as": {
+     "title": "মণিৰাম দেৱান",
+     "summary": "চাহ উদ্যোগৰ অগ্ৰদূত আৰু অসমত ১৮৫৭ চনৰ শ্বহীদ।"
+    }
+   },
+   "blocks": {
+    "en": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "personality",
+      "body": "Maniram Dutta Barua, known as Maniram Dewan, was a nobleman who first worked with the British and later turned against them."
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "He guided Robert Bruce to the Singpho chief Bessa Gam, which led to the discovery of Assam tea. In 1839 he became the {{term:dewan|Dewan}} of the Assam Tea Company at Nazira. He later started his own garden at Cinnamara, becoming the first Indian to grow tea commercially in Assam."
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "event",
+      "body": "During the revolt of 1857 he planned a rising to bring back Ahom rule. The plot was discovered, and he was hanged at Jorhat jail on 26 February 1858, along with Piyali Barua."
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "Remember for exams: first Indian tea planter in Assam; hanged at Jorhat on 26 February 1858 with Piyali Barua."
+     }
+    ],
+    "as": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "personality",
+      "body": "মণিৰাম দত্ত বৰুৱা, যাক মণিৰাম দেৱান বুলি জনা যায়, এগৰাকী অভিজাত ব্যক্তি আছিল, যিয়ে প্ৰথমে ব্ৰিটিছৰ সৈতে কাম কৰিছিল আৰু পিছত তেওঁলোকৰ বিৰোধী হৈ পৰে।"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "তেওঁ ৰবাৰ্ট ব্ৰুছক চিংফৌ মুখিয়াল বিছা গামৰ ওচৰলৈ লৈ যায়, যাৰ ফলত অসমৰ চাহ আৱিষ্কাৰ হয়। ১৮৩৯ চনত তেওঁ নাজিৰাৰ আসাম টি কোম্পানীৰ {{term:dewan|দেৱান}} হয়। পিছত চিনামৰাত নিজৰ বাগিচা আৰম্ভ কৰি তেওঁ অসমত বাণিজ্যিকভাৱে চাহ খেতি কৰা প্ৰথম ভাৰতীয় হয়।"
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "event",
+      "body": "১৮৫৭ চনৰ বিদ্ৰোহৰ সময়ত তেওঁ আহোম শাসন ঘূৰাই আনিবলৈ বিদ্ৰোহৰ পৰিকল্পনা কৰে। ষড়যন্ত্ৰ ধৰা পৰে আৰু ১৮৫৮ চনৰ ২৬ ফেব্ৰুৱাৰীত পিয়লি বৰুৱাৰ সৈতে যোৰহাট কাৰাগাৰত তেওঁক ফাঁচি দিয়া হয়।"
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "পৰীক্ষাৰ বাবে মনত ৰাখক: অসমৰ প্ৰথম ভাৰতীয় চাহ খেতিয়ক; ২৬ ফেব্ৰুৱাৰী ১৮৫৮ত পিয়লি বৰুৱাৰ সৈতে যোৰহাটত ফাঁচি।"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "kanaklata-barua",
+   "position": 8,
+   "sources": "Kanaklata Barua, Wikipedia: https://en.wikipedia.org/wiki/Kanaklata_Barua\nTO VERIFY before publishing: 'towards the Gohpur police station' (p2) and the name Birbala (p3).",
+   "versions": {
+    "en": {
+     "title": "Kanaklata Barua",
+     "summary": "The 17-year-old martyr of Gohpur in the Quit India Movement."
+    },
+    "as": {
+     "title": "কনকলতা বৰুৱা",
+     "summary": "ভাৰত ত্যাগ আন্দোলনত গহপুৰৰ ১৭ বছৰীয়া শ্বহীদ।"
+    }
+   },
+   "blocks": {
+    "en": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "personality",
+      "body": "Kanaklata Barua was born on 22 December 1924 at Borangabari, Gohpur, in the old Darrang district."
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "event",
+      "body": "During the {{term:quit-india-movement|Quit India Movement}} she joined the {{term:mrityu-bahini|Mrityu Bahini}}. On 20 September 1942 she led a procession carrying the national flag towards the Gohpur police station and was shot dead by the police. She was 17 years old."
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "She is remembered as one of the youngest martyrs of India's freedom struggle, and is also called Birbala."
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "Remember for exams: martyred at Gohpur on 20 September 1942, aged 17; member of the Mrityu Bahini."
+     }
+    ],
+    "as": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "personality",
+      "body": "কনকলতা বৰুৱাৰ জন্ম ১৯২৪ চনৰ ২২ ডিচেম্বৰত পুৰণি দৰং জিলাৰ গহপুৰৰ বৰঙাবাৰীত।"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "event",
+      "body": "{{term:quit-india-movement|ভাৰত ত্যাগ আন্দোলনৰ}} সময়ত তেওঁ {{term:mrityu-bahini|মৃত্যু বাহিনীত}} যোগ দিয়ে। ১৯৪২ চনৰ ২০ ছেপ্টেম্বৰত তেওঁ ৰাষ্ট্ৰীয় পতাকা লৈ গহপুৰ থানালৈ এক শোভাযাত্ৰাৰ নেতৃত্ব দিয়ে আৰু আৰক্ষীৰ গুলীত শ্বহীদ হয়। তেতিয়া তেওঁৰ বয়স আছিল ১৭ বছৰ।"
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "ভাৰতৰ স্বাধীনতা সংগ্ৰামৰ আটাইতকৈ কম বয়সীয়া শ্বহীদসকলৰ এগৰাকী হিচাপে তেওঁক সোঁৱৰা হয়, আৰু তেওঁক বীৰবালা বুলিও কোৱা হয়।"
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "পৰীক্ষাৰ বাবে মনত ৰাখক: ২০ ছেপ্টেম্বৰ ১৯৪২ত গহপুৰত ১৭ বছৰ বয়সত শ্বহীদ; মৃত্যু বাহিনীৰ সদস্য।"
+     }
+    ]
+   }
+  }
+ ]
+}

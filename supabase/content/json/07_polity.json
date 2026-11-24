@@ -1,0 +1,488 @@
+{
+ "group": "07_polity",
+ "category_slug": "polity",
+ "category_name": "Polity and Administration",
+ "last_checked": "2026-11-24",
+ "terms": [
+  {
+   "slug": "governor",
+   "term_en": "Governor",
+   "term_as": "ৰাজ্যপাল",
+   "meaning_en": "The constitutional head of a state, appointed by the President of India.",
+   "meaning_as": "ভাৰতৰ ৰাষ্ট্ৰপতিয়ে নিযুক্তি দিয়া ৰাজ্যৰ সাংবিধানিক মুৰব্বী।"
+  },
+  {
+   "slug": "chief-minister",
+   "term_en": "Chief Minister",
+   "term_as": "মুখ্যমন্ত্ৰী",
+   "meaning_en": "The head of the state government, usually the leader of the party with a majority in the Assembly.",
+   "meaning_as": "ৰাজ্য চৰকাৰৰ মুৰব্বী, সাধাৰণতে বিধানসভাত সংখ্যাগৰিষ্ঠ দলৰ নেতা।"
+  },
+  {
+   "slug": "council-of-ministers",
+   "term_en": "Council of Ministers",
+   "term_as": "মন্ত্ৰিপৰিষদ",
+   "meaning_en": "The team of ministers, led by the Chief Minister, that runs the state government.",
+   "meaning_as": "মুখ্যমন্ত্ৰীৰ নেতৃত্বত ৰাজ্য চৰকাৰ চলোৱা মন্ত্ৰীসকলৰ দল।"
+  },
+  {
+   "slug": "unicameral",
+   "term_en": "Unicameral",
+   "term_as": "এক সদনীয়",
+   "meaning_en": "A legislature with only one house. Assam has only a Legislative Assembly, no Legislative Council.",
+   "meaning_as": "এটা মাত্ৰ সদন থকা বিধানমণ্ডল। অসমত কেৱল বিধানসভা আছে, বিধান পৰিষদ নাই।"
+  },
+  {
+   "slug": "speaker",
+   "term_en": "Speaker",
+   "term_as": "অধ্যক্ষ",
+   "meaning_en": "The member who runs the meetings of the Assembly and keeps order in the House.",
+   "meaning_as": "বিধানসভাৰ অধিৱেশন পৰিচালনা কৰা আৰু সদনত শৃংখলা ৰক্ষা কৰা সদস্য।"
+  },
+  {
+   "slug": "high-court",
+   "term_en": "High Court",
+   "term_as": "উচ্চ ন্যায়ালয়",
+   "meaning_en": "The highest court in a state (or group of states), below the Supreme Court of India.",
+   "meaning_as": "ভাৰতৰ উচ্চতম ন্যায়ালয়ৰ তলত, এখন ৰাজ্যৰ (বা কেইবাখনো ৰাজ্যৰ) সৰ্বোচ্চ ন্যায়ালয়।"
+  },
+  {
+   "slug": "bench",
+   "term_en": "Bench (of a court)",
+   "term_as": "ন্যায়পীঠ",
+   "meaning_en": "A branch of a court that sits in another city so that people there need not travel far.",
+   "meaning_as": "আন এখন চহৰত বহা ন্যায়ালয়ৰ শাখা, যাতে তাৰ মানুহে দূৰলৈ যাব নালাগে।"
+  },
+  {
+   "slug": "sixth-schedule",
+   "term_en": "Sixth Schedule",
+   "term_as": "ষষ্ঠ অনুসূচী",
+   "meaning_en": "A part of the Constitution of India that lets tribal areas of Assam, Meghalaya, Tripura and Mizoram govern themselves through autonomous councils.",
+   "meaning_as": "ভাৰতীয় সংবিধানৰ এটা অংশ, যিয়ে অসম, মেঘালয়, ত্ৰিপুৰা আৰু মিজোৰামৰ জনজাতীয় অঞ্চলক স্বায়ত্তশাসিত পৰিষদৰ জৰিয়তে নিজকে শাসন কৰাৰ অধিকাৰ দিয়ে।"
+  },
+  {
+   "slug": "autonomous-council",
+   "term_en": "Autonomous council",
+   "term_as": "স্বায়ত্তশাসিত পৰিষদ",
+   "meaning_en": "An elected body that makes laws and runs local matters such as land, forests and customs in a tribal area.",
+   "meaning_as": "জনজাতীয় অঞ্চলৰ মাটি, অৰণ্য, ৰীতি-নীতি আদি স্থানীয় বিষয়ত আইন প্ৰণয়ন আৰু প্ৰশাসন চলোৱা নিৰ্বাচিত অনুষ্ঠান।"
+  },
+  {
+   "slug": "memorandum-of-settlement",
+   "term_en": "Memorandum of Settlement",
+   "term_as": "বুজাবুজিৰ চুক্তি",
+   "meaning_en": "A written peace agreement between the government and a group, setting out what each side agrees to.",
+   "meaning_as": "চৰকাৰ আৰু কোনো গোটৰ মাজত কোনে কি মানি ল'ব তাক লিখিতভাৱে উল্লেখ কৰা শান্তি চুক্তি।"
+  }
+ ],
+ "chapters": [
+  {
+   "slug": "governor-cm-ministers",
+   "position": 1,
+   "sources": "List of governors of Assam, Wikipedia: https://en.wikipedia.org/wiki/List_of_governors_of_Assam\nList of chief ministers of Assam, Wikipedia: https://en.wikipedia.org/wiki/List_of_chief_ministers_of_Assam\nAssam Legislative Assembly, Wikipedia: https://en.wikipedia.org/wiki/Assam_Legislative_Assembly\nNOTE: names of office holders change; check them again before every publish.",
+   "versions": {
+    "en": {
+     "title": "The Governor, Chief Minister and Council of Ministers",
+     "summary": "Who runs the government of Assam, with key firsts for exams."
+    },
+    "as": {
+     "title": "ৰাজ্যপাল, মুখ্যমন্ত্ৰী আৰু মন্ত্ৰিপৰিষদ",
+     "summary": "অসম চৰকাৰ কোনে চলায়, আৰু পৰীক্ষাৰ বাবে গুৰুত্বপূৰ্ণ 'প্ৰথম'সমূহ।"
+    }
+   },
+   "blocks": {
+    "en": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "The {{term:governor}} is the constitutional head of Assam, appointed by the President of India. The real work of government is done by the {{term:chief-minister|Chief Minister}} and the {{term:council-of-ministers|Council of Ministers}}, who answer to the Assembly. The seat of government is {{term:dispur|Dispur}}."
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "Office holders (as of November 2026)"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "verified_fact",
+      "body": "Governor: Lakshman Prasad Acharya (since 30 July 2024)\nChief Minister: Himanta Biswa Sarma (first sworn in on 10 May 2021; continued after the BJP won the 2026 election)"
+     },
+     {
+      "block_key": "h2",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "Firsts and records"
+     },
+     {
+      "block_key": "l2",
+      "block_type": "list",
+      "style": "personality",
+      "body": "First Governor: Sir Muhammad Saleh Akbar Hydari (from 4 May 1947)\nFirst Chief Minister: Gopinath Bordoloi\nFirst woman Chief Minister: Syeda Anwara Taimur (1980), India's first woman Muslim Chief Minister\nLongest-serving Chief Minister: Tarun Gogoi, 15 years (2001 to 2016)"
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "Remember for exams: first CM Gopinath Bordoloi; first woman CM Anwara Taimur; longest-serving CM Tarun Gogoi."
+     }
+    ],
+    "as": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "{{term:governor|ৰাজ্যপাল}} অসমৰ সাংবিধানিক মুৰব্বী, যাক ভাৰতৰ ৰাষ্ট্ৰপতিয়ে নিযুক্তি দিয়ে। চৰকাৰৰ প্ৰকৃত কাম {{term:chief-minister|মুখ্যমন্ত্ৰী}} আৰু {{term:council-of-ministers|মন্ত্ৰিপৰিষদে}} কৰে, যিসকল বিধানসভাৰ ওচৰত দায়বদ্ধ। চৰকাৰৰ আসন {{term:dispur|দিশপুৰ}}।"
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "পদাধিকাৰীসকল (২০২৬ চনৰ নৱেম্বৰলৈ)"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "verified_fact",
+      "body": "ৰাজ্যপাল: লক্ষ্মণ প্ৰসাদ আচাৰ্য (৩০ জুলাই ২০২৪ৰ পৰা)\nমুখ্যমন্ত্ৰী: হিমন্ত বিশ্ব শৰ্মা (প্ৰথমবাৰ ১০ মে' ২০২১ত শপত; ২০২৬ৰ নিৰ্বাচনত বিজেপি জয়ী হোৱাৰ পিছতো পদত বহাল)"
+     },
+     {
+      "block_key": "h2",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "প্ৰথম আৰু অভিলেখসমূহ"
+     },
+     {
+      "block_key": "l2",
+      "block_type": "list",
+      "style": "personality",
+      "body": "প্ৰথম ৰাজ্যপাল: চাৰ মহম্মদ চালেহ আকবৰ হায়দাৰী (৪ মে' ১৯৪৭ৰ পৰা)\nপ্ৰথম মুখ্যমন্ত্ৰী: গোপীনাথ বৰদলৈ\nপ্ৰথম মহিলা মুখ্যমন্ত্ৰী: ছৈয়দা আনোৱাৰা তৈমুৰ (১৯৮০), ভাৰতৰ প্ৰথম মুছলমান মহিলা মুখ্যমন্ত্ৰী\nআটাইতকৈ দীৰ্ঘকালীন মুখ্যমন্ত্ৰী: তৰুণ গগৈ, ১৫ বছৰ (২০০১ ৰ পৰা ২০১৬)"
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "পৰীক্ষাৰ বাবে মনত ৰাখক: প্ৰথম মুখ্যমন্ত্ৰী গোপীনাথ বৰদলৈ; প্ৰথম মহিলা মুখ্যমন্ত্ৰী আনোৱাৰা তৈমুৰ; দীৰ্ঘকালীন মুখ্যমন্ত্ৰী তৰুণ গগৈ।"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "assam-legislative-assembly",
+   "position": 2,
+   "sources": "Assam Legislative Assembly, Wikipedia: https://en.wikipedia.org/wiki/Assam_Legislative_Assembly\nNOTE: names of office holders change; check them again before every publish.",
+   "versions": {
+    "en": {
+     "title": "The Assam Legislative Assembly",
+     "summary": "126 seats, one house, and its history from Shillong in 1937 to Dispur."
+    },
+    "as": {
+     "title": "অসম বিধানসভা",
+     "summary": "১২৬ টা আসন, এটা সদন, আৰু ১৯৩৭ চনৰ শ্বিলঙৰ পৰা দিশপুৰলৈ ইয়াৰ ইতিহাস।"
+    }
+   },
+   "blocks": {
+    "en": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "The Assam Legislative Assembly has 126 members, each elected from one constituency for five years. It meets in the Assembly complex at Dispur."
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "Assam's legislature is {{term:unicameral}}: the Legislative Council was abolished in 1952, so only the Assembly remains."
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "History"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "event",
+      "body": "7 April 1937: first sitting of the Assam Assembly, in Shillong, with 108 members.\n1952: the first Assembly after independence is elected; the Legislative Council is abolished.\n2026: election to the 16th Assembly. The BJP won 82 of the 126 seats."
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "verified_fact",
+      "body": "The {{term:speaker}} of the 16th Assembly is Ranjeet Kumar Dass (since 21 May 2026)."
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "Remember for exams: 126 seats; unicameral; first sitting 7 April 1937 at Shillong."
+     }
+    ],
+    "as": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "অসম বিধানসভাৰ সদস্য ১২৬ গৰাকী, প্ৰতিগৰাকী এটা সমষ্টিৰ পৰা পাঁচ বছৰৰ বাবে নিৰ্বাচিত। ইয়াৰ অধিৱেশন দিশপুৰৰ বিধানসভা চৌহদত বহে।"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "অসমৰ বিধানমণ্ডল {{term:unicameral|এক সদনীয়}}: ১৯৫২ চনত বিধান পৰিষদ উঠাই দিয়া হয়, সেয়েহে কেৱল বিধানসভা আছে।"
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "ইতিহাস"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "event",
+      "body": "৭ এপ্ৰিল ১৯৩৭: শ্বিলঙত ১০৮ জন সদস্যৰে অসম বিধানসভাৰ প্ৰথম অধিৱেশন।\n১৯৫২: স্বাধীনতাৰ পিছৰ প্ৰথম বিধানসভা নিৰ্বাচিত হয়; বিধান পৰিষদ উঠাই দিয়া হয়।\n২০২৬: ষোড়শ বিধানসভাৰ নিৰ্বাচন। ১২৬ টা আসনৰ ৮২ টাত বিজেপি জয়ী হয়।"
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "verified_fact",
+      "body": "ষোড়শ বিধানসভাৰ {{term:speaker|অধ্যক্ষ}} ৰঞ্জিত কুমাৰ দাস (২১ মে' ২০২৬ৰ পৰা)।"
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "পৰীক্ষাৰ বাবে মনত ৰাখক: ১২৬ টা আসন; এক সদনীয়; প্ৰথম অধিৱেশন ৭ এপ্ৰিল ১৯৩৭, শ্বিলঙত।"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "gauhati-high-court",
+   "position": 3,
+   "sources": "Gauhati High Court, Wikipedia: https://en.wikipedia.org/wiki/Gauhati_High_Court\nNOTE: names of office holders change; check them again before every publish.",
+   "versions": {
+    "en": {
+     "title": "The Gauhati High Court",
+     "summary": "The High Court for four Northeast states, its benches and its history."
+    },
+    "as": {
+     "title": "গুৱাহাটী উচ্চ ন্যায়ালয়",
+     "summary": "উত্তৰ-পূবৰ চাৰিখন ৰাজ্যৰ উচ্চ ন্যায়ালয়, ইয়াৰ ন্যায়পীঠ আৰু ইতিহাস।"
+    }
+   },
+   "blocks": {
+    "en": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "The Gauhati {{term:high-court|High Court}} is the High Court for four states: Assam, Arunachal Pradesh, Nagaland and Mizoram. Its principal seat is in Guwahati."
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "It has three permanent {{term:bench|benches}}: Kohima (Nagaland), Aizawl (Mizoram) and Itanagar (Arunachal Pradesh)."
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "History"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "event",
+      "body": "1 March 1948: the Assam High Court Order is issued.\n5 April 1948: the High Court of Assam is inaugurated.\n1 December 1963: renamed the High Court of Assam and Nagaland.\n1971: renamed the Gauhati High Court."
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "verified_fact",
+      "body": "The Chief Justice is Ashutosh Kumar (since 21 July 2025)."
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "Remember for exams: Gauhati High Court started on 5 April 1948; benches at Kohima, Aizawl and Itanagar."
+     }
+    ],
+    "as": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "গুৱাহাটী {{term:high-court|উচ্চ ন্যায়ালয়}} চাৰিখন ৰাজ্যৰ উচ্চ ন্যায়ালয়: অসম, অৰুণাচল প্ৰদেশ, নাগালেণ্ড আৰু মিজোৰাম। ইয়াৰ মুখ্য আসন গুৱাহাটীত।"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "ইয়াৰ তিনিখন স্থায়ী {{term:bench|ন্যায়পীঠ}} আছে: কোহিমা (নাগালেণ্ড), আইজল (মিজোৰাম) আৰু ইটানগৰ (অৰুণাচল প্ৰদেশ)।"
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "ইতিহাস"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "event",
+      "body": "১ মাৰ্চ ১৯৪৮: অসম উচ্চ ন্যায়ালয় আদেশ জাৰি।\n৫ এপ্ৰিল ১৯৪৮: অসম উচ্চ ন্যায়ালয়ৰ উদ্বোধন।\n১ ডিচেম্বৰ ১৯৬৩: নাম সলনি কৰি অসম আৰু নাগালেণ্ড উচ্চ ন্যায়ালয় কৰা হয়।\n১৯৭১: নাম সলনি কৰি গুৱাহাটী উচ্চ ন্যায়ালয় কৰা হয়।"
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "verified_fact",
+      "body": "মুখ্য ন্যায়াধীশ আশুতোষ কুমাৰ (২১ জুলাই ২০২৫ৰ পৰা)।"
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "পৰীক্ষাৰ বাবে মনত ৰাখক: গুৱাহাটী উচ্চ ন্যায়ালয় ৫ এপ্ৰিল ১৯৪৮ত আৰম্ভ; কোহিমা, আইজল আৰু ইটানগৰত ন্যায়পীঠ।"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "sixth-schedule-councils",
+   "position": 4,
+   "sources": "Sixth Schedule to the Constitution of India, Wikipedia: https://en.wikipedia.org/wiki/Sixth_Schedule_to_the_Constitution_of_India\nBodoland Territorial Region, Wikipedia: https://en.wikipedia.org/wiki/Bodoland_Territorial_Region\nKarbi Anglong Autonomous Council, Wikipedia: https://en.wikipedia.org/wiki/Karbi_Anglong_Autonomous_Council",
+   "versions": {
+    "en": {
+     "title": "Sixth Schedule and autonomous councils",
+     "summary": "Assam's three Sixth Schedule councils: Bodoland, Karbi Anglong and Dima Hasao."
+    },
+    "as": {
+     "title": "ষষ্ঠ অনুসূচী আৰু স্বায়ত্তশাসিত পৰিষদ",
+     "summary": "অসমৰ তিনিখন ষষ্ঠ অনুসূচীভুক্ত পৰিষদ: বড়োলেণ্ড, কাৰ্বি আংলং আৰু ডিমা হাছাও।"
+    }
+   },
+   "blocks": {
+    "en": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "The {{term:sixth-schedule|Sixth Schedule}} of the Constitution applies to tribal areas in four states: Assam, Meghalaya, Tripura and Mizoram. These areas are governed by elected {{term:autonomous-council|autonomous councils}}."
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "The three councils of Assam"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "verified_fact",
+      "body": "Bodoland Territorial Council (2003), headquarters Kokrajhar\nNorth Cachar Hills (Dima Hasao) Autonomous Council (1951), headquarters Haflong\nKarbi Anglong Autonomous Council (1952), headquarters Diphu"
+     },
+     {
+      "block_key": "h2",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "Bodoland Territorial Region (BTR)"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "The Bodoland Territorial Council was created by a {{term:memorandum-of-settlement|Memorandum of Settlement}} dated 10 February 2003. A peace agreement signed on 27 January 2020 formed the Bodoland Territorial Region with more powers."
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "BTR has five districts: Kokrajhar, Chirang, Baksa, Udalguri and Tamulpur. Its council has 46 members: 40 elected and 6 nominated by the Governor."
+     },
+     {
+      "block_key": "h3",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "Karbi Anglong Autonomous Council"
+     },
+     {
+      "block_key": "p4",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "It began as a district council on 17 November 1951 and became the Karbi Anglong Autonomous Council on 23 June 1952. It has 26 members."
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "Remember for exams: 3 Sixth Schedule councils in Assam; BTR formed by the Bodo Accord of 27 January 2020; BTR HQ Kokrajhar."
+     }
+    ],
+    "as": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "সংবিধানৰ {{term:sixth-schedule|ষষ্ঠ অনুসূচী}} চাৰিখন ৰাজ্যৰ জনজাতীয় অঞ্চলত প্ৰযোজ্য: অসম, মেঘালয়, ত্ৰিপুৰা আৰু মিজোৰাম। এই অঞ্চলসমূহ নিৰ্বাচিত {{term:autonomous-council|স্বায়ত্তশাসিত পৰিষদে}} শাসন কৰে।"
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "অসমৰ তিনিখন পৰিষদ"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "verified_fact",
+      "body": "বড়োলেণ্ড আঞ্চলিক পৰিষদ (২০০৩), মুখ্য কাৰ্যালয় কোকৰাঝাৰ\nউত্তৰ কাছাৰ পাহাৰ (ডিমা হাছাও) স্বায়ত্তশাসিত পৰিষদ (১৯৫১), মুখ্য কাৰ্যালয় হাফলং\nকাৰ্বি আংলং স্বায়ত্তশাসিত পৰিষদ (১৯৫২), মুখ্য কাৰ্যালয় ডিফু"
+     },
+     {
+      "block_key": "h2",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "বড়োলেণ্ড আঞ্চলিক অঞ্চল (বি টি আৰ)"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "২০০৩ চনৰ ১০ ফেব্ৰুৱাৰীৰ {{term:memorandum-of-settlement|বুজাবুজিৰ চুক্তিৰে}} বড়োলেণ্ড আঞ্চলিক পৰিষদ গঠন হয়। ২০২০ চনৰ ২৭ জানুৱাৰীত স্বাক্ষৰিত শান্তি চুক্তিয়ে অধিক ক্ষমতাৰে বড়োলেণ্ড আঞ্চলিক অঞ্চল গঠন কৰে।"
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "বি টি আৰত পাঁচখন জিলা আছে: কোকৰাঝাৰ, চিৰাং, বাক্সা, ওদালগুৰি আৰু তামুলপুৰ। ইয়াৰ পৰিষদত ৪৬ জন সদস্য: ৪০ জন নিৰ্বাচিত আৰু ৬ জন ৰাজ্যপালৰ দ্বাৰা মনোনীত।"
+     },
+     {
+      "block_key": "h3",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "কাৰ্বি আংলং স্বায়ত্তশাসিত পৰিষদ"
+     },
+     {
+      "block_key": "p4",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "১৯৫১ চনৰ ১৭ নৱেম্বৰত ই জিলা পৰিষদ হিচাপে আৰম্ভ হয় আৰু ১৯৫২ চনৰ ২৩ জুনত কাৰ্বি আংলং স্বায়ত্তশাসিত পৰিষদ হয়। ইয়াৰ সদস্য ২৬ জন।"
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "পৰীক্ষাৰ বাবে মনত ৰাখক: অসমত ৩ খন ষষ্ঠ অনুসূচীভুক্ত পৰিষদ; ২৭ জানুৱাৰী ২০২০ৰ বড়ো চুক্তিৰে বি টি আৰ গঠন; বি টি আৰৰ মুখ্য কাৰ্যালয় কোকৰাঝাৰ।"
+     }
+    ]
+   }
+  }
+ ]
+}

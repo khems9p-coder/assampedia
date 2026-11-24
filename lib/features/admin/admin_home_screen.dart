@@ -4,6 +4,7 @@ import '../../core/app_scope.dart';
 import '../../core/widgets/common.dart';
 import '../../data/models.dart';
 import 'admin_chapter_list_screen.dart';
+import 'admin_import_screen.dart';
 import 'admin_practice_screen.dart';
 import 'admin_terms_screen.dart';
 import 'admin_vacancies_screen.dart';
@@ -39,6 +40,16 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
           return ListView(children: [
             Card(
               margin: const EdgeInsets.fromLTRB(12, 12, 12, 4),
+              child: ListTile(
+                leading: const Icon(Icons.download_for_offline_outlined),
+                title: const Text('Import chapters'),
+                subtitle: const Text('Add ready-made GK chapters as drafts, with one tap'),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AdminImportScreen())),
+              ),
+            ),
+            Card(
+              margin: const EdgeInsets.fromLTRB(12, 4, 12, 4),
               child: ListTile(
                 leading: const Icon(Icons.translate),
                 title: const Text('Dictionary terms'),

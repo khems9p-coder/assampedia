@@ -1,0 +1,412 @@
+{
+ "group": "08_society",
+ "category_slug": "society",
+ "category_name": "Society and Demography",
+ "last_checked": "2026-11-24",
+ "terms": [
+  {
+   "slug": "scheduled-tribe",
+   "term_en": "Scheduled Tribe (ST)",
+   "term_as": "অনুসূচীত জনজাতি",
+   "meaning_en": "A tribal community listed in the Constitution for special protection and reservation.",
+   "meaning_as": "বিশেষ সুৰক্ষা আৰু সংৰক্ষণৰ বাবে সংবিধানত তালিকাভুক্ত জনজাতীয় সম্প্ৰদায়।"
+  },
+  {
+   "slug": "scheduled-caste",
+   "term_en": "Scheduled Caste (SC)",
+   "term_as": "অনুসূচীত জাতি",
+   "meaning_en": "A community listed in the Constitution that faced social discrimination in the past and gets special protection and reservation.",
+   "meaning_as": "অতীতত সামাজিক বৈষম্যৰ সন্মুখীন হোৱা, সংবিধানত তালিকাভুক্ত আৰু বিশেষ সুৰক্ষা আৰু সংৰক্ষণ পোৱা সম্প্ৰদায়।"
+  },
+  {
+   "slug": "mother-tongue",
+   "term_en": "Mother tongue",
+   "term_as": "মাতৃভাষা",
+   "meaning_en": "The first language a person learns at home as a child.",
+   "meaning_as": "শৈশৱতে ঘৰত প্ৰথমে শিকা ভাষা।"
+  },
+  {
+   "slug": "official-language",
+   "term_en": "Official language",
+   "term_as": "চৰকাৰী ভাষা",
+   "meaning_en": "A language that the government uses for its work, laws and records.",
+   "meaning_as": "চৰকাৰে নিজৰ কাম-কাজ, আইন আৰু নথি-পত্ৰত ব্যৱহাৰ কৰা ভাষা।"
+  },
+  {
+   "slug": "central-university",
+   "term_en": "Central university",
+   "term_as": "কেন্দ্ৰীয় বিশ্ববিদ্যালয়",
+   "meaning_en": "A university set up and funded by the Government of India through an Act of Parliament.",
+   "meaning_as": "সংসদৰ আইনৰ জৰিয়তে ভাৰত চৰকাৰে স্থাপন আৰু পুঁজিৰ যোগান ধৰা বিশ্ববিদ্যালয়।"
+  },
+  {
+   "slug": "state-university",
+   "term_en": "State university",
+   "term_as": "ৰাজ্যিক বিশ্ববিদ্যালয়",
+   "meaning_en": "A university set up and funded by the state government.",
+   "meaning_as": "ৰাজ্য চৰকাৰে স্থাপন আৰু পুঁজিৰ যোগান ধৰা বিশ্ববিদ্যালয়।"
+  }
+ ],
+ "chapters": [
+  {
+   "slug": "population-census-2011",
+   "position": 1,
+   "sources": "Assam at a Glance 2025, Directorate of Economics and Statistics, Government of Assam: https://des.assam.gov.in/sites/default/files/swf_utility_folder/departments/ecostat_medhassu_in_oid_3/this_comm/assam_at_a_glance_-_2025.pdf\nDemographics of Assam, Wikipedia: https://en.wikipedia.org/wiki/Demographics_of_Assam\nTO VERIFY before publishing: the ST (12.45%) and SC (7.15%) shares in p3.",
+   "versions": {
+    "en": {
+     "title": "Population (Census 2011)",
+     "summary": "How many people live in Assam, and the religious make-up of the state."
+    },
+    "as": {
+     "title": "জনসংখ্যা (লোকপিয়ল ২০১১)",
+     "summary": "অসমত কিমান মানুহ বাস কৰে, আৰু ৰাজ্যখনৰ ধৰ্মীয় গাঁথনি।"
+    }
+   },
+   "blocks": {
+    "en": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "verified_fact",
+      "body": "According to the {{term:census}} of 2011, Assam has 3,12,05,576 people, with a {{term:population-density|density}} of 398 per sq km, a {{term:sex-ratio|sex ratio}} of 958 and a {{term:literacy-rate|literacy rate}} of 72.19%. About 86 percent of people live in villages."
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "Religion (Census 2011)"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "verified_fact",
+      "body": "Hindu: 61.47% (1,91,80,759 people)\nMuslim: 34.22% (1,06,79,345)\nChristian: 3.74% (11,65,867)\nBuddhist: 0.18%; Jain: 0.08%; Sikh: 0.07%"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "Christians in Assam are found mostly among the tribal communities."
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "{{term:scheduled-tribe|Scheduled Tribes}} make up about 12.45% and {{term:scheduled-caste|Scheduled Castes}} about 7.15% of the population."
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "Remember for exams: population 3,12,05,576; Hindus 61.47%, Muslims 34.22% (Census 2011)."
+     }
+    ],
+    "as": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "verified_fact",
+      "body": "২০১১ চনৰ {{term:census|লোকপিয়ল}} অনুসৰি অসমৰ জনসংখ্যা ৩,১২,০৫,৫৭৬; {{term:population-density|জনসংখ্যাৰ ঘনত্ব}} প্ৰতি বৰ্গ কিমিত ৩৯৮, {{term:sex-ratio|লিংগ অনুপাত}} ৯৫৮ আৰু {{term:literacy-rate|সাক্ষৰতাৰ হাৰ}} ৭২.১৯%। প্ৰায় ৮৬ শতাংশ মানুহ গাঁৱত বাস কৰে।"
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "ধৰ্ম (লোকপিয়ল ২০১১)"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "verified_fact",
+      "body": "হিন্দু: ৬১.৪৭% (১,৯১,৮০,৭৫৯ জন)\nমুছলমান: ৩৪.২২% (১,০৬,৭৯,৩৪৫)\nখ্ৰীষ্টান: ৩.৭৪% (১১,৬৫,৮৬৭)\nবৌদ্ধ: ০.১৮%; জৈন: ০.০৮%; শিখ: ০.০৭%"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "অসমৰ খ্ৰীষ্টানসকল বেছিভাগেই জনজাতীয় সম্প্ৰদায়ৰ মাজত আছে।"
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "জনসংখ্যাৰ প্ৰায় ১২.৪৫% {{term:scheduled-tribe|অনুসূচীত জনজাতি}} আৰু প্ৰায় ৭.১৫% {{term:scheduled-caste|অনুসূচীত জাতি}}।"
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "পৰীক্ষাৰ বাবে মনত ৰাখক: জনসংখ্যা ৩,১২,০৫,৫৭৬; হিন্দু ৬১.৪৭%, মুছলমান ৩৪.২২% (লোকপিয়ল ২০১১)।"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "communities-of-assam",
+   "position": 2,
+   "sources": "Demographics of Assam, Wikipedia: https://en.wikipedia.org/wiki/Demographics_of_Assam\nSixth Schedule to the Constitution of India, Wikipedia: https://en.wikipedia.org/wiki/Sixth_Schedule_to_the_Constitution_of_India\nTO VERIFY before publishing: p2 (Tiwa and Sonowal Kachari in the list, and Bodos as the largest plains tribe).",
+   "versions": {
+    "en": {
+     "title": "Communities and tribes of Assam",
+     "summary": "The many peoples of Assam, in the plains and the hills."
+    },
+    "as": {
+     "title": "অসমৰ জনগোষ্ঠী আৰু জনজাতিসমূহ",
+     "summary": "সমভূমি আৰু পাহাৰৰ অসমৰ বহুতো জনগোষ্ঠী।"
+    }
+   },
+   "blocks": {
+    "en": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "Assam is home to many communities with their own languages, festivals and dress. This is why it is often called a meeting place of cultures."
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "Tribal communities"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "Major {{term:scheduled-tribe|tribal communities}} include the Bodo, Mising, Karbi, Rabha, Dimasa, Tiwa, Deori and Sonowal Kachari. The Bodos are the largest plains tribe, and the Karbis and Dimasas live mainly in the hill districts."
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "Tribal areas in the hills and in Bodoland have self-government under the {{term:sixth-schedule|Sixth Schedule}}."
+     },
+     {
+      "block_key": "h2",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "Other communities"
+     },
+     {
+      "block_key": "p4",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "Other important groups include the Ahoms, the Koch-Rajbongshis, the Tea tribes (Adivasi) who came to work in the tea gardens, the Assamese Muslims, and the Bengali-speaking people of the Barak Valley."
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "Remember for exams: the Bodos are the largest plains tribe of Assam; Karbis and Dimasas live mainly in the hills."
+     }
+    ],
+    "as": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "অসম নিজা ভাষা, উৎসৱ আৰু সাজ-পাৰ থকা বহুতো জনগোষ্ঠীৰ ঘৰ। সেইবাবেই ইয়াক প্ৰায়ে বিভিন্ন সংস্কৃতিৰ মিলনভূমি বুলি কোৱা হয়।"
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "জনজাতীয় সম্প্ৰদায়"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "প্ৰধান {{term:scheduled-tribe|জনজাতীয় সম্প্ৰদায়ৰ}} ভিতৰত আছে বড়ো, মিচিং, কাৰ্বি, ৰাভা, ডিমাচা, তিৱা, দেউৰী আৰু সোণোৱাল কছাৰী। বড়োসকল আটাইতকৈ ডাঙৰ সমভূমিৰ জনজাতি, আৰু কাৰ্বি আৰু ডিমাচাসকল মূলতঃ পাহাৰীয়া জিলাত বাস কৰে।"
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "পাহাৰ আৰু বড়োলেণ্ডৰ জনজাতীয় অঞ্চলসমূহে {{term:sixth-schedule|ষষ্ঠ অনুসূচীৰ}} অধীনত স্বায়ত্তশাসন লাভ কৰিছে।"
+     },
+     {
+      "block_key": "h2",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "অন্যান্য জনগোষ্ঠী"
+     },
+     {
+      "block_key": "p4",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "আন গুৰুত্বপূৰ্ণ গোটসমূহৰ ভিতৰত আছে আহোম, কোচ-ৰাজবংশী, চাহ বাগিচাত কাম কৰিবলৈ অহা চাহ জনগোষ্ঠী (আদিবাসী), অসমীয়া মুছলমান, আৰু বৰাক উপত্যকাৰ বাংলাভাষী লোকসকল।"
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "পৰীক্ষাৰ বাবে মনত ৰাখক: বড়োসকল অসমৰ আটাইতকৈ ডাঙৰ সমভূমিৰ জনজাতি; কাৰ্বি আৰু ডিমাচাসকল মূলতঃ পাহাৰত থাকে।"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "languages-of-assam",
+   "position": 3,
+   "sources": "Languages of Assam, Wikipedia: https://en.wikipedia.org/wiki/Languages_of_Assam\nDemographics of Assam, Wikipedia: https://en.wikipedia.org/wiki/Demographics_of_Assam\nTO VERIFY before publishing: p2 (Assam Official Language Act, 1960).",
+   "versions": {
+    "en": {
+     "title": "Languages of Assam",
+     "summary": "The official languages of Assam and how many people speak each language."
+    },
+    "as": {
+     "title": "অসমৰ ভাষাসমূহ",
+     "summary": "অসমৰ চৰকাৰী ভাষা আৰু কোনটো ভাষা কিমান মানুহে কয়।"
+    }
+   },
+   "blocks": {
+    "en": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "Assamese is the main language of Assam. Assamese and Bodo are {{term:official-language|official languages}} of the state, and Bengali is an official language in the districts of the Barak Valley."
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "Assamese was made the official language by the Assam Official Language Act of 1960."
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "Mother tongues (Census 2011)"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "verified_fact",
+      "body": "Assamese: 1,50,97,257 people (48.38%)\nBengali: 90,24,652\nBodo: 14,07,371\nOther languages: 22,34,319"
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "Counting people who speak it as a second language, more than 71 percent of the people of Assam speak Assamese. Assamese is written in the Assamese script."
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "Remember for exams: Assamese is the {{term:mother-tongue|mother tongue}} of 48.38% of people (2011); Bodo is also an official language."
+     }
+    ],
+    "as": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "অসমীয়া অসমৰ প্ৰধান ভাষা। অসমীয়া আৰু বড়ো ৰাজ্যখনৰ {{term:official-language|চৰকাৰী ভাষা}}, আৰু বৰাক উপত্যকাৰ জিলাসমূহত বাংলা চৰকাৰী ভাষা।"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "১৯৬০ চনৰ অসম ৰাজ্যিক ভাষা আইনৰ দ্বাৰা অসমীয়াক চৰকাৰী ভাষাৰ মৰ্যাদা দিয়া হয়।"
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "মাতৃভাষা (লোকপিয়ল ২০১১)"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "verified_fact",
+      "body": "অসমীয়া: ১,৫০,৯৭,২৫৭ জন (৪৮.৩৮%)\nবাংলা: ৯০,২৪,৬৫২\nবড়ো: ১৪,০৭,৩৭১\nঅন্যান্য ভাষা: ২২,৩৪,৩১৯"
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "দ্বিতীয় ভাষা হিচাপে কোৱাসকলক ধৰিলে অসমৰ ৭১ শতাংশতকৈ অধিক মানুহে অসমীয়া কয়। অসমীয়া ভাষা অসমীয়া লিপিত লিখা হয়।"
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "পৰীক্ষাৰ বাবে মনত ৰাখক: ৪৮.৩৮% মানুহৰ {{term:mother-tongue|মাতৃভাষা}} অসমীয়া (২০১১); বড়োও চৰকাৰী ভাষা।"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "education-institutions",
+   "position": 4,
+   "sources": "List of institutions of higher education in Assam, Wikipedia: https://en.wikipedia.org/wiki/List_of_institutions_of_higher_education_in_Assam",
+   "versions": {
+    "en": {
+     "title": "Education: universities and institutions",
+     "summary": "The main universities and institutes of Assam, with the year each was founded."
+    },
+    "as": {
+     "title": "শিক্ষা: বিশ্ববিদ্যালয় আৰু অনুষ্ঠান",
+     "summary": "অসমৰ প্ৰধান বিশ্ববিদ্যালয় আৰু অনুষ্ঠানসমূহ, আৰু প্ৰতিখন প্ৰতিষ্ঠাৰ বছৰ।"
+    }
+   },
+   "blocks": {
+    "en": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "Assam has a mix of {{term:state-university|state universities}}, {{term:central-university|central universities}} and national institutes. These are the ones most often asked about, with their founding year:"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "verified_fact",
+      "body": "Cotton College (now Cotton University), Guwahati: 1901\nGauhati University, Guwahati: 1948\nDibrugarh University, Dibrugarh: 1965\nAssam Agricultural University, Jorhat: 1969\nTezpur University (central), Tezpur: 1994\nAssam University (central), Silchar: 1994\nIIT Guwahati: 1994\nKrishna Kanta Handiqui State Open University, Guwahati: 2007\nAIIMS Guwahati: 2021"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "Assam's two central universities are Tezpur University and Assam University, Silchar, both set up in 1994."
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "Remember for exams: Gauhati University 1948; central universities Tezpur and Silchar (1994); IIT Guwahati 1994."
+     }
+    ],
+    "as": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "অসমত {{term:state-university|ৰাজ্যিক বিশ্ববিদ্যালয়}}, {{term:central-university|কেন্দ্ৰীয় বিশ্ববিদ্যালয়}} আৰু ৰাষ্ট্ৰীয় প্ৰতিষ্ঠান আছে। পৰীক্ষাত সঘনাই সোধা কেইখনমান, প্ৰতিষ্ঠাৰ বছৰৰ সৈতে:"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "verified_fact",
+      "body": "কটন কলেজ (বৰ্তমান কটন বিশ্ববিদ্যালয়), গুৱাহাটী: ১৯০১\nগুৱাহাটী বিশ্ববিদ্যালয়, গুৱাহাটী: ১৯৪৮\nডিব্ৰুগড় বিশ্ববিদ্যালয়, ডিব্ৰুগড়: ১৯৬৫\nঅসম কৃষি বিশ্ববিদ্যালয়, যোৰহাট: ১৯৬৯\nতেজপুৰ বিশ্ববিদ্যালয় (কেন্দ্ৰীয়), তেজপুৰ: ১৯৯৪\nআসাম বিশ্ববিদ্যালয় (কেন্দ্ৰীয়), শিলচৰ: ১৯৯৪\nআই আই টি গুৱাহাটী: ১৯৯৪\nকৃষ্ণকান্ত সন্দিকৈ ৰাজ্যিক মুক্ত বিশ্ববিদ্যালয়, গুৱাহাটী: ২০০৭\nএইমছ গুৱাহাটী: ২০২১"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "অসমৰ দুখন কেন্দ্ৰীয় বিশ্ববিদ্যালয় হ'ল তেজপুৰ বিশ্ববিদ্যালয় আৰু শিলচৰৰ আসাম বিশ্ববিদ্যালয়, দুয়োখন ১৯৯৪ চনত স্থাপিত।"
+     },
+     {
+      "block_key": "exam1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "পৰীক্ষাৰ বাবে মনত ৰাখক: গুৱাহাটী বিশ্ববিদ্যালয় ১৯৪৮; কেন্দ্ৰীয় বিশ্ববিদ্যালয় তেজপুৰ আৰু শিলচৰ (১৯৯৪); আই আই টি গুৱাহাটী ১৯৯৪।"
+     }
+    ]
+   }
+  }
+ ]
+}
