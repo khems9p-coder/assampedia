@@ -5,6 +5,7 @@ import '../../core/i18n/app_lang.dart';
 import '../admin/admin_home_screen.dart';
 import '../jobs/vacancy_widgets.dart';
 import '../premium/paywall_screen.dart';
+import 'profile_screen.dart';
 import 'sign_in_screen.dart';
 
 /// "Me" tab: language, light/dark mode, account and (for admins) the admin panel.
@@ -79,7 +80,19 @@ class AccountScreen extends StatelessWidget {
                     onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const SignInScreen())),
                   )
                 else ...[
-                  ListTile(leading: const Icon(Icons.account_circle_outlined), title: Text(s.signedInAs(auth.user!.email ?? ''))),
+                  ListTile(
+                    leading: const Icon(Icons.account_circle_outlined),
+                    title: Text(s.myProfile),
+                    subtitle: Text(
+                      [
+                        (auth.profile?.fullName ?? '').trim().isEmpty ? s.notSet : auth.profile!.fullName!,
+                        s.signedInAs(auth.user?.email ?? ''),
+                      ].join('\n'),
+                    ),
+                    isThreeLine: true,
+                    trailing: const Icon(Icons.chevron_right),
+                    onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ProfileScreen())),
+                  ),
                   if (auth.isAdmin)
                     ListTile(
                       leading: Icon(Icons.admin_panel_settings_outlined, color: theme.colorScheme.primary),

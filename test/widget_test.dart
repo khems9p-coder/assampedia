@@ -15,6 +15,9 @@ import 'package:assampedia/data/models.dart';
 import 'package:assampedia/data/offline_cache.dart';
 import 'package:assampedia/data/practice_models.dart';
 import 'package:assampedia/data/premium_service.dart';
+import 'package:assampedia/data/student_profile.dart';
+import 'package:assampedia/core/i18n/strings.dart';
+import 'package:assampedia/features/account/auth_form.dart';
 import 'package:assampedia/features/admin/section_templates.dart';
 import 'package:assampedia/features/reader/reader_screen.dart';
 import 'package:assampedia/main.dart';
@@ -35,6 +38,27 @@ class _SignedOutAuth extends AuthService {
   bool get available => true;
 }
 
+/// Signed in for the first time, with an empty profile.
+class _NewStudentAuth extends AuthService {
+  _NewStudentAuth() : super(null);
+  StudentProfile? saved;
+  @override
+  bool get available => true;
+  @override
+  bool get isSignedIn => true;
+  @override
+  bool get checking => false;
+  @override
+  StudentProfile? get profile => saved ?? const StudentProfile();
+  @override
+  bool get needsProfile => !(profile?.isComplete ?? false);
+  @override
+  Future<void> saveProfile(StudentProfile p) async {
+    saved = p;
+    notifyListeners();
+  }
+}
+
 class _MemoryCache extends OfflineCache {
   final store = <String, Object>{};
   @override
@@ -43,9 +67,9 @@ class _MemoryCache extends OfflineCache {
   Future<dynamic> read(String key) async => store[key];
   @override
   Future<List<dynamic>> readAll(String prefix) async => [
-        for (final e in store.entries)
-          if (e.key.startsWith(prefix)) e.value,
-      ];
+    for (final e in store.entries)
+      if (e.key.startsWith(prefix)) e.value,
+  ];
 }
 
 class _Switchable implements ContentRepository {
@@ -113,15 +137,72 @@ void main() {
     expect(find.text('Welcome'), findsOneWidget);
     expect(find.text('Create account'), findsOneWidget);
 
-    // Empty or short entries get a clear message instead of a server error.
-    await tester.tap(find.text('Create account'));
+    // Signing in with empty boxes gets a clear message instead of a server error.
+    await tester.tap(find.widgetWithText(FilledButton, 'Sign in'));
     await tester.pump();
     expect(find.text('Please enter your email and a password.'), findsOneWidget);
+
+    // Create account: email, password, password again, with a strong-password rule.
+    await tester.tap(find.widgetWithText(OutlinedButton, 'Create account'));
+    await tester.pumpAndSettle();
+    expect(find.text('Re-enter password'), findsOneWidget);
+    final create = find.widgetWithText(FilledButton, 'Create account');
     await tester.enterText(find.widgetWithText(TextField, 'Email'), 'reader@example.com');
-    await tester.enterText(find.widgetWithText(TextField, 'Password'), '123');
-    await tester.tap(find.text('Create account'));
+    await tester.enterText(find.widgetWithText(TextField, 'Password'), 'abcdefgh1');
+    await tester.enterText(find.widgetWithText(TextField, 'Re-enter password'), 'abcdefgh1');
+    await tester.tap(create);
     await tester.pump();
-    expect(find.text('The password must be at least 6 characters.'), findsOneWidget);
+    // The rule shows as helper text too, so it appears twice when broken.
+    expect(find.textContaining('At least 8 characters'), findsNWidgets(2));
+    await tester.enterText(find.widgetWithText(TextField, 'Password'), 'abcdefg1!');
+    await tester.enterText(find.widgetWithText(TextField, 'Re-enter password'), 'abcdefg1?');
+    await tester.tap(create);
+    await tester.pump();
+    expect(find.text('The two passwords are not the same.'), findsOneWidget);
+  });
+
+  test('Strong password rule', () {
+    final s = S(AppLang.english);
+    expect(checkNewPassword(s, 'Assam@2026', 'Assam@2026'), isNull);
+    expect(checkNewPassword(s, 'assam2026', 'assam2026'), s.strongPasswordRule); // no special character
+    expect(checkNewPassword(s, 'Assam@xyz', 'Assam@xyz'), s.strongPasswordRule); // no number
+    expect(checkNewPassword(s, 'A@1b', 'A@1b'), s.strongPasswordRule); // too short
+    expect(checkNewPassword(s, 'Assam@2026', 'Assam@2025'), s.passwordsDiffer);
+  });
+
+  testWidgets('After the first sign-in, the student sets up a profile', (tester) async {
+    SharedPreferences.setMockInitialValues({'app_lang': 'en'});
+    final theme = ThemeController();
+    final language = LanguageController();
+    await theme.load();
+    await language.load();
+    final auth = _NewStudentAuth();
+    final services = AppServices(language: language, theme: theme, content: DemoContentRepository(), auth: auth);
+    tester.view.physicalSize = const Size(1200, 2400);
+    tester.view.devicePixelRatio = 1.5;
+    addTearDown(tester.view.reset);
+    await tester.pumpWidget(AssampediaApp(services: services));
+    await tester.pumpAndSettle();
+
+    expect(find.text('Set up your profile'), findsOneWidget);
+    await tester.tap(find.text('Save and continue'));
+    await tester.pump();
+    expect(find.text('Please enter your name.'), findsOneWidget);
+
+    await tester.enterText(find.widgetWithText(TextField, 'Full name'), 'Test Student');
+    await tester.tap(find.text('Graduate'));
+    await tester.tap(find.text('APSC (CCE)'));
+    await tester.tap(find.text('Assam Police'));
+    await tester.pump();
+    await tester.tap(find.text('Save and continue'));
+    await tester.pumpAndSettle();
+
+    expect(auth.saved?.fullName, 'Test Student');
+    expect(auth.saved?.education, Education.graduate);
+    expect(auth.saved?.exams, {ExamTarget.apsc, ExamTarget.police});
+    // Now the content opens.
+    expect(find.text('Set up your profile'), findsNothing);
+    expect(find.text('Assam GK Encyclopedia'), findsOneWidget);
   });
 
   testWidgets('First launch asks for a language and remembers it', (tester) async {
@@ -200,11 +281,17 @@ void main() {
   });
 
   test('Chapter survives saving for offline reading', () {
-    final ch = Chapter(id: '1', slug: 's', versions: {
-      AppLang.english: ChapterVersion(title: 'T', status: 'published', blocks: [
-        Block(key: 'p1', position: 1, type: BlockType.factBox, style: BlockStyle.examFact, body: 'B'),
-      ]),
-    });
+    final ch = Chapter(
+      id: '1',
+      slug: 's',
+      versions: {
+        AppLang.english: ChapterVersion(
+          title: 'T',
+          status: 'published',
+          blocks: [Block(key: 'p1', position: 1, type: BlockType.factBox, style: BlockStyle.examFact, body: 'B')],
+        ),
+      },
+    );
     final back = Chapter.fromJson(ch.toJson());
     final b = back.versions[AppLang.english]!.blocks.single;
     expect(back.versions[AppLang.english]!.title, 'T');
@@ -260,10 +347,14 @@ void main() {
 
     test('side-by-side pairs paragraphs by key and keeps your place', () {
       Block b(String k) => Block(key: k, position: 0, body: k);
-      final ch = Chapter(id: 'x', slug: 'x', versions: {
-        AppLang.english: ChapterVersion(title: 'E', blocks: [b('p1'), b('p2'), b('p3')]),
-        AppLang.assamese: ChapterVersion(title: 'A', blocks: [b('p1'), b('p3'), b('extra')]),
-      });
+      final ch = Chapter(
+        id: 'x',
+        slug: 'x',
+        versions: {
+          AppLang.english: ChapterVersion(title: 'E', blocks: [b('p1'), b('p2'), b('p3')]),
+          AppLang.assamese: ChapterVersion(title: 'A', blocks: [b('p1'), b('p3'), b('extra')]),
+        },
+      );
       final side = buildReaderRows(ch, AppLang.english, true);
       expect(side.map((r) => r.key), ['p1', 'p2', 'p3', 'extra']);
       expect(side[1].secondary, isNull);
@@ -352,11 +443,11 @@ void main() {
   group('Phase 5: vacancies and current affairs', () {
     final today = DateTime(2026, 6, 15);
     VacancyStatus st(int closesIn, {int? startsIn, String stage = 'notification'}) => vacancyStatus(
-          stage: stage,
-          startDate: startsIn == null ? null : today.add(Duration(days: startsIn)),
-          closingDate: today.add(Duration(days: closesIn)),
-          today: today,
-        );
+      stage: stage,
+      startDate: startsIn == null ? null : today.add(Duration(days: startsIn)),
+      closingDate: today.add(Duration(days: closesIn)),
+      today: today,
+    );
 
     test('Status comes from the dates, so expired vacancies never show as open', () {
       expect(st(30), VacancyStatus.open);
@@ -560,12 +651,7 @@ void main() {
     addTearDown(tester.view.reset);
     SharedPreferences.setMockInitialValues({'app_lang': 'en'});
     final services = await _services(lang: 'en');
-    final withFour = AppServices(
-      language: services.language,
-      theme: services.theme,
-      content: _FourQuizzes(),
-      auth: services.auth,
-    );
+    final withFour = AppServices(language: services.language, theme: services.theme, content: _FourQuizzes(), auth: services.auth);
     await tester.pumpWidget(AssampediaApp(services: withFour));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Practice Zone'));
