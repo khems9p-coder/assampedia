@@ -54,12 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
     if (mounted) setState(() => _last = last);
   }
 
-  void _push(Widget screen, [Color? color]) => Navigator.of(context).push(
-    SectionRoute(
-      context,
-      builder: (_) => color == null ? screen : SectionTheme(color: color, child: screen),
-    ),
-  );
+  void _push(Widget screen) => Navigator.of(context).push(SectionRoute(context, builder: (_) => screen));
 
   @override
   Widget build(BuildContext context) {
@@ -74,13 +69,13 @@ class _HomeScreenState extends State<HomeScreen> {
     final tiles = [
       _Tile(s.encyclopedia, Icons.auto_stories_outlined, SectionColors.learn, () => widget.openTab(Tabs.learn)),
       _Tile(s.tileExams, Icons.school_outlined, SectionColors.exams, () => widget.openTab(Tabs.exams)),
-      _Tile(s.practiceZone, Icons.quiz_outlined, SectionColors.practice, () => _push(const PracticeScreen(), SectionColors.practice)),
+      _Tile(s.practiceZone, Icons.quiz_outlined, SectionColors.practice, () => _push(const PracticeScreen())),
       _Tile(s.tileJobs, Icons.badge_outlined, SectionColors.jobs, () => widget.openTab(Tabs.jobs)),
       _Tile(s.tileNews, Icons.newspaper_outlined, SectionColors.news, () => widget.openTab(Tabs.jobs)),
       _Tile(s.tileCareers, Icons.explore_outlined, SectionColors.careers, () => widget.openTab(Tabs.exams)),
-      _Tile(s.dictionary, Icons.translate, SectionColors.dictionary, () => _push(const DictionaryScreen(), SectionColors.dictionary)),
-      _Tile(s.saved, Icons.bookmarks_outlined, SectionColors.saved, () => _push(const SavedScreen(), SectionColors.saved)),
-      _Tile(s.premium, Icons.workspace_premium_outlined, SectionColors.premium, () => _push(const PaywallScreen(), SectionColors.premium)),
+      _Tile(s.dictionary, Icons.translate, SectionColors.dictionary, () => _push(const DictionaryScreen())),
+      _Tile(s.saved, Icons.bookmarks_outlined, SectionColors.saved, () => _push(const SavedScreen())),
+      _Tile(s.premium, Icons.workspace_premium_outlined, SectionColors.premium, () => _push(const PaywallScreen())),
     ];
 
     return Scaffold(
@@ -139,11 +134,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 HomeSlide(s.slidePremium, s.slidePremiumCta, Icons.workspace_premium, const [
                   Color(0xFF7A4A00),
                   Color(0xFFB8860B),
-                ], () => _push(const PaywallScreen(), SectionColors.premium)),
+                ], () => _push(const PaywallScreen())),
                 HomeSlide(s.slidePractice, s.slidePracticeCta, Icons.quiz, const [
                   Color(0xFF8E1F55),
                   Color(0xFFB3266B),
-                ], () => _push(const PracticeScreen(), SectionColors.practice)),
+                ], () => _push(const PracticeScreen())),
                 HomeSlide(s.slideJobs, s.slideJobsCta, Icons.work, const [
                   Color(0xFF00574F),
                   Color(0xFF00897B),
