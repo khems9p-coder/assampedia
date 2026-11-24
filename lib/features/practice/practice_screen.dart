@@ -4,6 +4,7 @@ import '../../core/app_scope.dart';
 import '../../core/widgets/common.dart';
 import '../../data/practice_models.dart';
 import 'quiz_screen.dart';
+import 'revision_screens.dart';
 
 /// Practice Zone: every published quiz, grouped by kind, with a level filter
 /// and the reader's own progress.
@@ -122,15 +123,40 @@ class _SetCard extends StatelessWidget {
       if (set.timeLimitMinutes != null) s.minutes(set.timeLimitMinutes!),
       if (best != null) s.bestScore(best!.score, best!.total),
     ].join(' · ');
+    void open(Widget screen) => Navigator.of(context).push(MaterialPageRoute(builder: (_) => screen));
     return Card(
       margin: const EdgeInsets.only(bottom: 8),
-      child: ListTile(
-        leading: Icon(set.isTimed ? Icons.timer_outlined : Icons.quiz_outlined, color: theme.colorScheme.primary),
-        title: Text(set.title(lang)),
-        subtitle: Text([?set.description(lang), info].join('\n')),
-        isThreeLine: set.description(lang) != null,
-        trailing: const Icon(Icons.chevron_right),
-        onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => QuizScreen(set: set))),
+      child: Column(
+        children: [
+          ListTile(
+            leading: Icon(set.isTimed ? Icons.timer_outlined : Icons.quiz_outlined, color: theme.colorScheme.primary),
+            title: Text(set.title(lang)),
+            subtitle: Text([?set.description(lang), info].join('\n')),
+            isThreeLine: set.description(lang) != null,
+            trailing: const Icon(Icons.chevron_right),
+            onTap: () => open(QuizScreen(set: set)),
+          ),
+          // Revision from the same questions (mock tests and the daily question stay unseen).
+          if (!set.isTimed && set.kind != QuizKind.daily && set.questionCount > 0)
+            Padding(
+              padding: const EdgeInsets.fromLTRB(8, 0, 8, 4),
+              child: Wrap(
+                spacing: 4,
+                children: [
+                  TextButton.icon(
+                    onPressed: () => open(FlashcardsScreen(set: set)),
+                    icon: const Icon(Icons.style_outlined, size: 18),
+                    label: Text(s.flashcards),
+                  ),
+                  TextButton.icon(
+                    onPressed: () => open(OneLinersScreen(set: set)),
+                    icon: const Icon(Icons.format_list_numbered, size: 18),
+                    label: Text(s.oneLiners),
+                  ),
+                ],
+              ),
+            ),
+        ],
       ),
     );
   }

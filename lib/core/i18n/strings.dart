@@ -146,7 +146,7 @@ class S {
   String get allLevels => _t('সকলো স্তৰ', 'All levels');
   String get noQuizzes => _t('এতিয়ালৈকে কোনো কুইজ প্ৰকাশ হোৱা নাই।', 'No quizzes published yet.');
   String get noQuestions => _t('এই কুইজত এতিয়াও কোনো প্ৰশ্ন নাই।', 'This quiz has no questions yet.');
-  String questionsCount(int n) => _t('$nটা প্ৰশ্ন', '$n questions');
+  String questionsCount(int n) => _t('$nটা প্ৰশ্ন', n == 1 ? '1 question' : '$n questions');
   String minutes(int n) => _t('$n মিনিট', '$n min');
   String bestScore(int a, int b) => _t('শ্ৰেষ্ঠ: $a/$b', 'Best: $a/$b');
   String questionOf(int a, int b) => _t('প্ৰশ্ন $a / $b', 'Question $a of $b');
@@ -181,4 +181,14 @@ class S {
   String get leave => _t('ওলাই যাওক', 'Leave');
   String get timedTest => _t('সময়সীমা থকা পৰীক্ষা', 'Timed test');
   String get mockHint => _t('শেষত উত্তৰ আৰু ব্যাখ্যা দেখুওৱা হ’ব।', 'Answers and explanations are shown at the end.');
+
+  // Phase 6b: revision
+  String get flashcards => _t('ফ্লেচকাৰ্ড', 'Flashcards');
+  String get oneLiners => _t('এশাৰীৰ তথ্য', 'One-liners');
+  String get question => _t('প্ৰশ্ন', 'Question');
+  String get answer => _t('উত্তৰ', 'Answer');
+  String get tapToSeeAnswer => _t('উত্তৰ চাবলৈ টিপক', 'Tap to see the answer');
+  String get tapToSeeQuestion => _t('প্ৰশ্নলৈ উভতি যাবলৈ টিপক', 'Tap to go back to the question');
+  String cardOf(int a, int b) => _t('কাৰ্ড $a / $b', 'Card $a of $b');
+  String get shuffle => _t('মিহলাওক', 'Shuffle');
 }

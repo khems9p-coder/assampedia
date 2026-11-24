@@ -477,4 +477,32 @@ void main() {
       expect(services.progress.quizzesTaken, 1);
     });
   });
+
+  testWidgets('Phase 6b: flashcards flip and one-liners list the answers', (tester) async {
+    tester.view.physicalSize = const Size(1200, 2600);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(tester.view.reset);
+    final services = await _services(lang: 'en');
+    await tester.pumpWidget(AssampediaApp(services: services));
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Practice Zone'));
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Flashcards'));
+    await tester.pumpAndSettle();
+    expect(find.text('Card 1 of 2'), findsOneWidget);
+    expect(find.text('Sample question 1 (layout test)'), findsOneWidget);
+    await tester.tap(find.text('Tap to see the answer'));
+    await tester.pumpAndSettle();
+    expect(find.text('Option B'), findsOneWidget);
+    await tester.tap(find.text('Next'));
+    await tester.pumpAndSettle();
+    expect(find.text('Card 2 of 2'), findsOneWidget);
+    await tester.pageBack();
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('One-liners'));
+    await tester.pumpAndSettle();
+    expect(find.textContaining('Option D', findRichText: true), findsOneWidget);
+  });
 }
