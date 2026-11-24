@@ -47,6 +47,10 @@ IconData categoryIcon(String? name) => switch (name) {
       'trending_up' => Icons.trending_up,
       'location_city' => Icons.location_city_outlined,
       'place' => Icons.place_outlined,
+      'flag' => Icons.flag_outlined,
+      'gavel' => Icons.gavel_outlined,
+      'shield' => Icons.shield_outlined,
+      'work' => Icons.work_outline,
       _ => Icons.menu_book_outlined,
     };
 

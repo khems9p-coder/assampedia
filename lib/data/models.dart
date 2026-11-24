@@ -9,6 +9,7 @@ class Category {
     required this.nameEn,
     this.icon,
     this.isPublished = true,
+    this.section = 'gk',
   });
 
   final String id;
@@ -18,6 +19,9 @@ class Category {
   final String nameEn;
   final String? icon;
   final bool isPublished;
+
+  /// 'gk' (encyclopedia), 'exam' (exam syllabus library) or 'job' (careers).
+  final String section;
 
   String name(AppLang l) => l == AppLang.assamese ? nameAs : nameEn;
 
@@ -29,6 +33,7 @@ class Category {
     nameEn: j['name_en'] as String,
     icon: j['icon'] as String?,
     isPublished: j['is_published'] as bool? ?? true,
+    section: j['section'] as String? ?? 'gk',
   );
 
   Map<String, dynamic> toJson() => {
@@ -39,6 +44,7 @@ class Category {
     'name_en': nameEn,
     'icon': icon,
     'is_published': isPublished,
+    'section': section,
   };
 }
 
@@ -88,7 +94,7 @@ class ChapterSummary {
 
 enum BlockType { heading, paragraph, factBox, list, image }
 
-enum BlockStyle { normal, definition, verifiedFact, event, personality, examFact, geography, heritage }
+enum BlockStyle { normal, definition, verifiedFact, event, personality, examFact, geography, heritage, suggested }
 
 BlockType blockTypeFrom(String? s) => switch (s) {
   'heading' => BlockType.heading,
@@ -114,6 +120,7 @@ BlockStyle blockStyleFrom(String? s) => switch (s) {
   'exam_fact' => BlockStyle.examFact,
   'geography' => BlockStyle.geography,
   'heritage' => BlockStyle.heritage,
+  'suggested' => BlockStyle.suggested,
   _ => BlockStyle.normal,
 };
 
@@ -126,6 +133,7 @@ String blockStyleCode(BlockStyle s) => switch (s) {
   BlockStyle.examFact => 'exam_fact',
   BlockStyle.geography => 'geography',
   BlockStyle.heritage => 'heritage',
+  BlockStyle.suggested => 'suggested',
 };
 
 /// One paragraph, heading or box. [key] is shared by both languages.
@@ -196,12 +204,26 @@ class ChapterVersion {
 
 /// A whole chapter with every language version the reader may see.
 class Chapter {
-  Chapter({required this.id, required this.slug, this.categoryId, required this.versions});
+  Chapter({
+    required this.id,
+    required this.slug,
+    this.categoryId,
+    required this.versions,
+    this.officialUrl,
+    this.notificationUrl,
+    this.appliesTo,
+  });
 
   final String id;
   final String slug;
   final String? categoryId;
   final Map<AppLang, ChapterVersion> versions;
+
+  /// Exams and careers: the official website and notification, and which
+  /// year, version or date the information applies to.
+  final String? officialUrl;
+  final String? notificationUrl;
+  final String? appliesTo;
 
   bool has(AppLang l) => versions.containsKey(l);
 
@@ -209,6 +231,9 @@ class Chapter {
     'id': id,
     'slug': slug,
     'category_id': categoryId,
+    'official_url': officialUrl,
+    'notification_url': notificationUrl,
+    'applies_to': appliesTo,
     'versions': {for (final e in versions.entries) e.key.code: e.value.toJson()},
   };
 
@@ -218,7 +243,15 @@ class Chapter {
       final l = AppLang.fromCode(code);
       if (l != null) versions[l] = ChapterVersion.fromJson(v as Map<String, dynamic>);
     });
-    return Chapter(id: j['id'] as String, slug: j['slug'] as String, categoryId: j['category_id'] as String?, versions: versions);
+    return Chapter(
+      id: j['id'] as String,
+      slug: j['slug'] as String,
+      categoryId: j['category_id'] as String?,
+      versions: versions,
+      officialUrl: j['official_url'] as String?,
+      notificationUrl: j['notification_url'] as String?,
+      appliesTo: j['applies_to'] as String?,
+    );
   }
 }
 

@@ -17,10 +17,12 @@ class DemoContentRepository implements ContentRepository {
       nameAs: 'কলা, সংস্কৃতি আৰু ঐতিহ্য',
     ),
     Category(id: 'c4', slug: 'wildlife', position: 4, icon: 'pets', nameEn: 'Wildlife and Environment', nameAs: 'বন্যপ্ৰাণী আৰু পৰিৱেশ'),
+    Category(id: 'e1', slug: 'exams-sample', position: 1, icon: 'flag', section: 'exam', nameEn: 'Sample exam group', nameAs: 'নমুনা পৰীক্ষাৰ গোট'),
+    Category(id: 'j1', slug: 'careers-sample', position: 1, icon: 'gavel', section: 'job', nameEn: 'Sample career group', nameAs: 'নমুনা কেৰিয়াৰৰ গোট'),
   ];
 
   @override
-  Future<List<Category>> categories() async => _cats;
+  Future<List<Category>> categories({String section = 'gk'}) async => [for (final c in _cats) if (c.section == section) c];
 
   @override
   Future<List<ChapterSummary>> chapters(String categoryId) async => [
@@ -39,10 +41,13 @@ class DemoContentRepository implements ContentRepository {
       for (var i = 1; i <= 8; i++) Block(key: 'p$i', position: i + 1, body: '$para ($i)'),
       Block(key: 'f1', position: 20, type: BlockType.factBox, style: BlockStyle.examFact, body: '$label: exam fact box'),
       Block(key: 'f2', position: 21, type: BlockType.factBox, style: BlockStyle.definition, body: '$label: definition box'),
+      Block(key: 's1', position: 22, type: BlockType.factBox, style: BlockStyle.suggested, body: '$label: suggested tip box'),
     ];
     return Chapter(
       id: 'demo',
       slug: 'sample',
+      appliesTo: 'Sample version (layout test)',
+      officialUrl: 'https://example.org/',
       versions: {
         AppLang.english: ChapterVersion(
           title: 'Sample chapter (layout test)',

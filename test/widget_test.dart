@@ -12,6 +12,7 @@ import 'package:assampedia/data/content_repository.dart';
 import 'package:assampedia/data/demo_content_repository.dart';
 import 'package:assampedia/data/models.dart';
 import 'package:assampedia/data/offline_cache.dart';
+import 'package:assampedia/features/admin/section_templates.dart';
 import 'package:assampedia/features/reader/reader_screen.dart';
 import 'package:assampedia/main.dart';
 
@@ -43,7 +44,7 @@ class _Switchable implements ContentRepository {
   bool online = true;
   Future<T> _go<T>(Future<T> Function() f) => online ? f() : Future.error(Exception('offline'));
   @override
-  Future<List<Category>> categories() => _go(inner.categories);
+  Future<List<Category>> categories({String section = 'gk'}) => _go(() => inner.categories(section: section));
   @override
   Future<List<ChapterSummary>> chapters(String id) => _go(() => inner.chapters(id));
   @override
@@ -244,6 +245,52 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.text('নমুনা অধ্যায় (পৰীক্ষা)'), findsOneWidget);
       expect(find.text('Sample chapter (layout test)'), findsOneWidget);
+    });
+  });
+
+  group('Phase 4', () {
+    test('exam and career templates cover every required section', () {
+      expect(examSections.length, 20);
+      expect(jobSections.length, 21);
+      expect(examSections.where((t) => t.suggested).map((t) => t.en), ['Preparation strategy', 'Recommended study resources']);
+      for (final t in [...examSections, ...jobSections]) {
+        expect(t.as.trim(), isNotEmpty);
+        expect(t.en.trim(), isNotEmpty);
+      }
+    });
+
+    test('official links and section survive saving offline', () {
+      final ch = Chapter(id: '1', slug: 's', versions: {}, officialUrl: 'https://a', notificationUrl: 'https://b', appliesTo: 'v1');
+      final back = Chapter.fromJson(ch.toJson());
+      expect([back.officialUrl, back.notificationUrl, back.appliesTo], ['https://a', 'https://b', 'v1']);
+      final c = Category.fromJson(Category(id: 'x', slug: 'x', position: 1, nameAs: 'ক', nameEn: 'A', section: 'job').toJson());
+      expect(c.section, 'job');
+      expect(blockStyleFrom(blockStyleCode(BlockStyle.suggested)), BlockStyle.suggested);
+    });
+
+    test('encyclopedia does not list exam or career groups', () async {
+      final repo = DemoContentRepository();
+      expect((await repo.categories()).every((c) => c.section == 'gk'), isTrue);
+      expect((await repo.categories(section: 'exam')).single.slug, 'exams-sample');
+    });
+
+    testWidgets('Exams tab opens a page with its version and official link', (tester) async {
+      tester.view.physicalSize = const Size(1200, 2400);
+      tester.view.devicePixelRatio = 1.0;
+      addTearDown(tester.view.reset);
+      final services = await _services(lang: 'en');
+      await tester.pumpWidget(AssampediaApp(services: services));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Exams'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Sample exam group'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Sample chapter (layout test)'));
+      await tester.pumpAndSettle();
+      expect(find.text('Applies to: Sample version (layout test)'), findsOneWidget);
+      expect(find.text('Official website'), findsOneWidget);
+      await tester.scrollUntilVisible(find.text('Suggestion: not official information'), 300);
+      expect(find.text('Suggestion: not official information'), findsOneWidget);
     });
   });
 }

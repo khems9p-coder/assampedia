@@ -6,6 +6,7 @@ import '../../data/models.dart';
 import '../reader/block_view.dart';
 import '../reader/reader_screen.dart';
 import 'admin_terms_screen.dart';
+import 'section_templates.dart';
 
 /// One paragraph/box being edited, with its Assamese and English text side by side.
 class _EditBlock {
@@ -58,6 +59,9 @@ class ChapterEditorScreen extends StatefulWidget {
 
 class _ChapterEditorScreenState extends State<ChapterEditorScreen> {
   final _slug = TextEditingController();
+  final _official = TextEditingController();
+  final _notification = TextEditingController();
+  final _appliesTo = TextEditingController();
   final _versions = {for (final l in AppLang.values) l: _EditVersion()};
   final _blocks = <_EditBlock>[];
   String? _id;
@@ -77,6 +81,9 @@ class _ChapterEditorScreenState extends State<ChapterEditorScreen> {
   @override
   void dispose() {
     _slug.dispose();
+    _official.dispose();
+    _notification.dispose();
+    _appliesTo.dispose();
     for (final v in _versions.values) {
       v.dispose();
     }
@@ -88,7 +95,11 @@ class _ChapterEditorScreenState extends State<ChapterEditorScreen> {
 
   Future<void> _load() async {
     if (_id == null) {
-      _addBlock();
+      if (_isExamOrJob) {
+        _addSections();
+      } else {
+        _addBlock();
+      }
       setState(() => _loading = false);
       return;
     }
@@ -96,6 +107,9 @@ class _ChapterEditorScreenState extends State<ChapterEditorScreen> {
       final data = await context.services.admin!.loadForEdit(_id!);
       final content = data['content'] as Map<String, dynamic>;
       _slug.text = content['slug'] as String;
+      _official.text = content['official_url'] as String? ?? '';
+      _notification.text = content['notification_url'] as String? ?? '';
+      _appliesTo.text = content['applies_to'] as String? ?? '';
       _position = (content['position'] as num?)?.toInt() ?? 0;
       for (final v in data['versions'] as List) {
         final l = AppLang.fromCode(v['lang'] as String?);
@@ -124,6 +138,21 @@ class _ChapterEditorScreenState extends State<ChapterEditorScreen> {
       _snack('Could not load: $e');
     }
     if (mounted) setState(() => _loading = false);
+  }
+
+  bool get _isExamOrJob => widget.category.section != 'gk';
+
+  String? _text(TextEditingController c) => c.text.trim().isEmpty ? null : c.text.trim();
+
+  /// Adds the standard section headings (both languages), each followed by an
+  /// empty paragraph to fill in. Empty paragraphs are not shown to readers.
+  void _addSections() {
+    setState(() {
+      for (final t in sectionsFor(widget.category.section)) {
+        _blocks.add(_EditBlock(key: 'b${_nextKey++}', type: BlockType.heading, as: t.as, en: t.en));
+        _blocks.add(_EditBlock(key: 'b${_nextKey++}', style: styleUnder(t)));
+      }
+    });
   }
 
   void _addBlock() => setState(() => _blocks.add(_EditBlock(key: 'b${_nextKey++}')));
@@ -186,6 +215,10 @@ class _ChapterEditorScreenState extends State<ChapterEditorScreen> {
         categoryId: widget.category.id,
         position: _position,
         versions: versions,
+        section: widget.category.section,
+        officialUrl: _text(_official),
+        notificationUrl: _text(_notification),
+        appliesTo: _text(_appliesTo),
       );
       _snack('Saved.');
     } catch (e) {
@@ -223,7 +256,16 @@ class _ChapterEditorScreenState extends State<ChapterEditorScreen> {
       return;
     }
     Navigator.of(context).push(MaterialPageRoute(
-      builder: (_) => ReaderScreen(preview: Chapter(id: _id ?? 'preview', slug: _slug.text, versions: versions)),
+      builder: (_) => ReaderScreen(
+        preview: Chapter(
+          id: _id ?? 'preview',
+          slug: _slug.text,
+          versions: versions,
+          officialUrl: _text(_official),
+          notificationUrl: _text(_notification),
+          appliesTo: _text(_appliesTo),
+        ),
+      ),
     ));
   }
 
@@ -276,6 +318,7 @@ class _ChapterEditorScreenState extends State<ChapterEditorScreen> {
                 Text('Category: ${widget.category.nameEn}', style: Theme.of(context).textTheme.titleSmall),
                 const SizedBox(height: 12),
                 _pair(wide, [for (final l in AppLang.values) _versionCard(l)]),
+                if (_isExamOrJob) _officialCard(),
                 const SizedBox(height: 24),
                 Text('Paragraphs and boxes', style: Theme.of(context).textTheme.titleLarge),
                 const Text('Each item has the same place in both languages, so readers keep their place when they switch.'),
@@ -284,7 +327,15 @@ class _ChapterEditorScreenState extends State<ChapterEditorScreen> {
                 const SizedBox(height: 8),
                 for (var i = 0; i < _blocks.length; i++) _blockCard(i, wide),
                 const SizedBox(height: 8),
-                OutlinedButton.icon(onPressed: _addBlock, icon: const Icon(Icons.add), label: const Text('Add paragraph or box')),
+                Wrap(spacing: 8, runSpacing: 8, children: [
+                  OutlinedButton.icon(onPressed: _addBlock, icon: const Icon(Icons.add), label: const Text('Add paragraph or box')),
+                  if (_isExamOrJob)
+                    OutlinedButton.icon(
+                      onPressed: _addSections,
+                      icon: const Icon(Icons.playlist_add),
+                      label: const Text('Add standard sections'),
+                    ),
+                ]),
                 const SizedBox(height: 24),
                 ExpansionTile(
                   title: const Text('Advanced'),
@@ -314,6 +365,34 @@ class _ChapterEditorScreenState extends State<ChapterEditorScreen> {
           for (final c in children) Expanded(child: Padding(padding: const EdgeInsets.symmetric(horizontal: 4), child: c)),
         ])
       : Column(children: children);
+
+  /// Official links and the year/version the page applies to (exams and careers).
+  Widget _officialCard() {
+    final exam = widget.category.section == 'exam';
+    return Card(
+      margin: const EdgeInsets.only(bottom: 12),
+      child: Padding(
+        padding: const EdgeInsets.all(12),
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          Text('Official information', style: Theme.of(context).textTheme.titleMedium),
+          const Text('Readers see these at the top of the page. Only use official sources.'),
+          TextField(
+            controller: _appliesTo,
+            decoration: InputDecoration(
+              labelText: exam ? 'Syllabus year / version' : 'Pay scale and rules apply as of',
+              helperText: exam ? 'For example: as per the official notification of a given year' : 'For example: the date of the official pay rules you used',
+            ),
+          ),
+          TextField(controller: _official, keyboardType: TextInputType.url, decoration: const InputDecoration(labelText: 'Official website (https://...)')),
+          TextField(
+            controller: _notification,
+            keyboardType: TextInputType.url,
+            decoration: const InputDecoration(labelText: 'Official notification link (https://...)'),
+          ),
+        ]),
+      ),
+    );
+  }
 
   Widget _versionCard(AppLang l) {
     final v = _versions[l]!;

@@ -82,4 +82,19 @@ class S {
   String get removedSaved => _t('সংৰক্ষিত তালিকাৰ পৰা আঁতৰোৱা হ’ল।', 'Removed from Saved.');
   String get remove => _t('আঁতৰাওক', 'Remove');
   String get sideBySide => _t('দুয়োটা ভাষা একেলগে', 'Both languages side by side');
+
+  // Phase 4: exams and careers
+  String get examsTab => _t('পৰীক্ষা', 'Exams');
+  String get careersTab => _t('কেৰিয়াৰ', 'Careers');
+  String get examsIntro => _t('চৰকাৰী পৰীক্ষাৰ পাঠ্যক্ৰম, যোগ্যতা আৰু পৰীক্ষাৰ ধৰণ।',
+      'Government exam syllabuses, eligibility and exam patterns.');
+  String get careersIntro =>
+      _t('চৰকাৰী পদবীৰ কাম, দায়িত্ব আৰু কেৰিয়াৰৰ সুযোগ।', 'What government posts involve, and where they can lead.');
+  String get officialWebsite => _t('চৰকাৰী ৱেবছাইট', 'Official website');
+  String get officialNotification => _t('চৰকাৰী জাননী', 'Official notification');
+  String appliesTo(String v) => _t('প্ৰযোজ্য: $v', 'Applies to: $v');
+  String get checkOfficial => _t('আবেদন কৰাৰ আগতে সদায় চৰকাৰী জাননী পৰীক্ষা কৰক।',
+      'Always check the official notification before you apply.');
+  String get suggestedLabel => _t('পৰামৰ্শ: চৰকাৰী তথ্য নহয়', 'Suggestion: not official information');
+  String get cantOpenLink => _t('লিংকটো খুলিব পৰা নগ’ল।', "Couldn't open the link.");
 }

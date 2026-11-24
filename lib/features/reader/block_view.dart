@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../core/theme/app_colors.dart';
 import '../../core/app_scope.dart';
 import '../../core/i18n/app_lang.dart';
+import '../../core/i18n/strings.dart';
 import '../../data/models.dart';
 import '../dictionary/term_text.dart';
 
@@ -15,6 +16,7 @@ ContentColor? contentColorFor(BlockStyle s) => switch (s) {
   BlockStyle.examFact => ContentColor.examFact,
   BlockStyle.geography => ContentColor.geography,
   BlockStyle.heritage => ContentColor.heritage,
+  BlockStyle.suggested => ContentColor.suggested,
 };
 
 /// Draws one paragraph, heading, list, image or coloured fact box.
@@ -85,7 +87,24 @@ class BlockView extends StatelessWidget {
       _ => rich(block.body, body),
     };
 
-    if (block.type == BlockType.factBox || (color != null && block.type == BlockType.paragraph)) {
+    final suggested = block.style == BlockStyle.suggested && block.type != BlockType.heading && block.type != BlockType.image;
+    if (suggested) {
+      // Make it impossible to mistake a preparation tip for official information.
+      child = Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(children: [
+            Icon(Icons.lightbulb_outline, size: 16, color: color),
+            const SizedBox(width: 6),
+            Expanded(child: Text(S(lang).suggestedLabel, style: theme.textTheme.labelMedium?.copyWith(color: color, fontWeight: FontWeight.w600))),
+          ]),
+          const SizedBox(height: 6),
+          child,
+        ],
+      );
+    }
+
+    if (suggested || block.type == BlockType.factBox || (color != null && block.type == BlockType.paragraph)) {
       final c = color ?? theme.colorScheme.primary;
       child = Container(
         padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),

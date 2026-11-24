@@ -27,9 +27,9 @@ class CachedContentRepository implements ContentRepository {
   }
 
   @override
-  Future<List<Category>> categories() => _try(
-    'categories',
-    remote.categories,
+  Future<List<Category>> categories({String section = 'gk'}) => _try(
+    section == 'gk' ? 'categories' : 'categories_$section',
+    () => remote.categories(section: section),
     (v) => [for (final c in v) c.toJson()],
     (j) => [for (final c in j as List) Category.fromJson(c as Map<String, dynamic>)],
   );

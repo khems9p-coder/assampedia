@@ -23,7 +23,8 @@ enum ContentColor {
   personality('Important personalities', Color(0xFF6A1B9A), Color(0xFFCE93D8)),
   examFact('Frequently asked exam facts, high priority', Color(0xFFC62828), Color(0xFFEF9A9A)),
   geography('Geography, rivers, wildlife and environment', Color(0xFF00796B), Color(0xFF80CBC4)),
-  heritage('Cultural heritage and historical significance', Color(0xFF9A7400), Color(0xFFFFE082));
+  heritage('Cultural heritage and historical significance', Color(0xFF9A7400), Color(0xFFFFE082)),
+  suggested('Suggested preparation tips (not official)', Color(0xFF6B4F35), Color(0xFFD7C4AE));
 
   const ContentColor(this.meaningEn, this.light, this.dark);
 

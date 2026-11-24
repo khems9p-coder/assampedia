@@ -47,16 +47,27 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
             ),
             const Padding(
               padding: EdgeInsets.fromLTRB(16, 12, 16, 4),
-              child: Text('Choose a category to add or edit its chapters.'),
+              child: Text('Choose a group to add or edit its pages.'),
             ),
-            for (final c in snap.data!)
-              ListTile(
-                leading: Icon(categoryIcon(c.icon)),
-                title: Text(c.nameEn),
-                subtitle: Text(c.nameAs),
-                trailing: const Icon(Icons.chevron_right),
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => AdminChapterListScreen(category: c))),
-              ),
+            for (final (section, label) in const [
+              ('gk', 'Assam GK encyclopedia'),
+              ('exam', 'Exam syllabus library'),
+              ('job', 'Government careers'),
+            ]) ...[
+              if (snap.data!.any((c) => c.section == section))
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 16, 16, 4),
+                  child: Text(label, style: Theme.of(context).textTheme.titleSmall?.copyWith(color: Theme.of(context).colorScheme.primary)),
+                ),
+              for (final c in snap.data!.where((c) => c.section == section))
+                ListTile(
+                  leading: Icon(categoryIcon(c.icon)),
+                  title: Text(c.nameEn),
+                  subtitle: Text(c.nameAs),
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => AdminChapterListScreen(category: c))),
+                ),
+            ],
           ]);
         },
       ),

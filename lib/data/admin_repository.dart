@@ -9,11 +9,9 @@ class AdminRepository {
   AdminRepository(this.client);
   final SupabaseClient client;
 
+  /// Every category in all three sections (GK, exams, careers).
   Future<List<Category>> categories() async {
-    final rows = await client
-        .from('categories')
-        .select('id, slug, position, icon, name_as, name_en, is_published')
-        .order('position');
+    final rows = await client.from('categories').select().order('position');
     return [for (final r in rows) Category.fromJson(r)];
   }
 
@@ -41,6 +39,10 @@ class AdminRepository {
     required String categoryId,
     required int position,
     required Map<AppLang, ChapterVersion> versions,
+    String section = 'gk',
+    String? officialUrl,
+    String? notificationUrl,
+    String? appliesTo,
   }) async {
     final row = await client
         .from('content')
@@ -49,6 +51,13 @@ class AdminRepository {
           'slug': slug,
           'category_id': categoryId,
           'position': position,
+          'kind': switch (section) {
+            'exam' => 'exam',
+            'job' => 'job_profile',
+            _ => 'gk_chapter',
+          },
+          // Only exam and career pages use these (added in Phase 4).
+          if (section != 'gk') ...{'official_url': officialUrl, 'notification_url': notificationUrl, 'applies_to': appliesTo},
           'updated_at': DateTime.now().toUtc().toIso8601String(),
         })
         .select('id')

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../core/app_scope.dart';
 import '../../core/widgets/common.dart';
 import '../account/account_screen.dart';
+import '../exams/exams_screen.dart';
 import '../home/home_screen.dart';
 import '../learn/learn_screen.dart';
 
@@ -26,7 +27,7 @@ class _MainShellState extends State<MainShell> {
       body: IndexedStack(index: _index, children: [
         HomeScreen(openLearn: () => _go(1)),
         const LearnScreen(),
-        LaterPhase(title: s.examsTitle, phase: 4, icon: Icons.school_outlined),
+        const ExamsScreen(),
         LaterPhase(title: s.jobsTitle, phase: 5, icon: Icons.work_outline),
         const AccountScreen(),
       ]),
