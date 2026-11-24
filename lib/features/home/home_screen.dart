@@ -1,19 +1,26 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 
 import '../../core/app_scope.dart';
+import '../../core/i18n/app_lang.dart';
 import '../../core/widgets/common.dart';
 import '../../data/models.dart';
 import '../dictionary/dictionary_screen.dart';
+import 'home_drawer.dart';
 import '../learn/chapter_list_screen.dart';
 import '../practice/daily_question_card.dart';
 import '../practice/practice_screen.dart';
+import '../premium/paywall_screen.dart';
 import '../reader/reader_screen.dart';
 import '../saved/saved_screen.dart';
 import '../search/search_screen.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key, required this.openLearn});
-  final VoidCallback openLearn;
+  const HomeScreen({super.key, required this.openTab});
+
+  /// Switches the bottom bar to another tab (see [Tabs]).
+  final ValueChanged<int> openTab;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -36,141 +43,204 @@ class _HomeScreenState extends State<HomeScreen> {
     if (mounted) setState(() => _last = last);
   }
 
+  void _push(Widget screen) => Navigator.of(context).push(MaterialPageRoute(builder: (_) => screen));
+
   @override
   Widget build(BuildContext context) {
     final s = context.s;
     final lang = context.lang;
     final theme = Theme.of(context);
     final scheme = theme.colorScheme;
+    final width = MediaQuery.sizeOf(context).width;
+    final columns = width > 900 ? 4 : (width > 600 ? 3 : 2);
+    final name = (context.services.auth.profile?.fullName ?? '').trim();
+
+    final tiles = [
+      _Tile(s.encyclopedia, Icons.auto_stories_outlined, const Color(0xFF1E7A46), () => widget.openTab(Tabs.learn)),
+      _Tile(s.tileExams, Icons.school_outlined, const Color(0xFF1F6FB2), () => widget.openTab(Tabs.exams)),
+      _Tile(s.practiceZone, Icons.quiz_outlined, const Color(0xFFB3266B), () => _push(const PracticeScreen())),
+      _Tile(s.tileJobs, Icons.badge_outlined, const Color(0xFF00796B), () => widget.openTab(Tabs.jobs)),
+      _Tile(s.tileNews, Icons.newspaper_outlined, const Color(0xFFB85C00), () => widget.openTab(Tabs.jobs)),
+      _Tile(s.tileCareers, Icons.explore_outlined, const Color(0xFF6A3FB5), () => widget.openTab(Tabs.exams)),
+      _Tile(s.dictionary, Icons.translate, const Color(0xFF3949AB), () => _push(const DictionaryScreen())),
+      _Tile(s.saved, Icons.bookmarks_outlined, const Color(0xFF6D4C41), () => _push(const SavedScreen())),
+      _Tile(s.premium, Icons.workspace_premium_outlined, const Color(0xFF8A5300), () => _push(const PaywallScreen())),
+    ];
+
     return Scaffold(
-      body: SafeArea(
-        child: RefreshIndicator(
-          onRefresh: () async {
-            setState(() => _cats = context.services.content?.categories());
-            await _loadLast();
-          },
-          child: ListView(
-            padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
+      drawer: HomeDrawer(openTab: widget.openTab),
+      appBar: AppBar(
+        backgroundColor: scheme.primary,
+        foregroundColor: scheme.onPrimary,
+        leading: Builder(
+          builder: (context) =>
+              IconButton(tooltip: s.openMenu, icon: const Icon(Icons.menu), onPressed: () => Scaffold.of(context).openDrawer()),
+        ),
+        title: const Text('ASSAMPEDIA', style: TextStyle(fontWeight: FontWeight.w700, letterSpacing: 1.2)),
+        actions: [
+          IconButton(tooltip: s.search, icon: const Icon(Icons.search), onPressed: () => _push(const SearchScreen())),
+          TextButton(
+            style: TextButton.styleFrom(foregroundColor: scheme.onPrimary, minimumSize: const Size(48, 48)),
+            onPressed: () => context.services.language.set(lang.other),
+            child: Semantics(
+              label: s.switchLanguage,
+              child: Text(lang.other == AppLang.assamese ? 'অ' : 'A', style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700)),
+            ),
+          ),
+          const SizedBox(width: 4),
+        ],
+      ),
+      body: RefreshIndicator(
+        onRefresh: () async {
+          setState(() => _cats = context.services.content?.categories());
+          await _loadLast();
+        },
+        child: ListView(
+          padding: const EdgeInsets.fromLTRB(16, 16, 16, 24),
+          children: [
+            Text(name.isEmpty ? s.helloNoName : s.hello(name), style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w600)),
+            const SizedBox(height: 12),
+            HomeSlides(
+              slides: [
+                HomeSlide(s.tagline, s.slideLearnCta, Icons.auto_stories, const [
+                  Color(0xFF1E6B3C),
+                  Color(0xFF2E8B57),
+                ], () => widget.openTab(Tabs.learn)),
+                HomeSlide(s.slidePremium, s.slidePremiumCta, Icons.workspace_premium, const [
+                  Color(0xFF7A4A00),
+                  Color(0xFFB8860B),
+                ], () => _push(const PaywallScreen())),
+                HomeSlide(s.slidePractice, s.slidePracticeCta, Icons.quiz, const [
+                  Color(0xFF8E1F55),
+                  Color(0xFFB3266B),
+                ], () => _push(const PracticeScreen())),
+                HomeSlide(s.slideJobs, s.slideJobsCta, Icons.work, const [
+                  Color(0xFF00574F),
+                  Color(0xFF00897B),
+                ], () => widget.openTab(Tabs.jobs)),
+              ],
+            ),
+            const SizedBox(height: 16),
+            if (_last != null) ...[
+              Card(
+                child: ListTile(
+                  leading: Icon(Icons.play_circle_outline, color: scheme.primary, size: 32),
+                  title: Text(s.continueLearning, style: theme.textTheme.labelLarge),
+                  subtitle: Text(lang.code == 'as' ? _last![1] : _last![2], maxLines: 2, overflow: TextOverflow.ellipsis),
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () =>
+                      Navigator.of(context)
+                          .push(MaterialPageRoute(builder: (_) => ReaderScreen(contentId: _last![0])))
+                          .then((_) => _loadLast()),
+                ),
+              ),
+              const SizedBox(height: 12),
+            ],
+            GridView.count(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              crossAxisCount: columns,
+              mainAxisSpacing: 12,
+              crossAxisSpacing: 12,
+              childAspectRatio: columns == 2 ? 1.35 : 1.6,
+              children: [for (final t in tiles) _ColourTile(tile: t)],
+            ),
+            const SizedBox(height: 16),
+            const DailyQuestionCard(),
+            const SizedBox(height: 8),
+            Row(
+              children: [
+                Expanded(
+                  child: Text(s.categories, style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600)),
+                ),
+                TextButton(onPressed: () => widget.openTab(Tabs.learn), child: Text(s.seeAll)),
+              ],
+            ),
+            if (_cats == null)
+              Padding(padding: const EdgeInsets.all(16), child: Text(s.notConnected))
+            else
+              FutureBuilder<List<Category>>(
+                future: _cats,
+                builder: (context, snap) {
+                  if (snap.hasError) {
+                    return LoadError(message: s.loadFailed, onRetry: () => setState(() => _cats = context.services.content?.categories()));
+                  }
+                  if (!snap.hasData) {
+                    return const Padding(
+                      padding: EdgeInsets.all(24),
+                      child: Center(child: CircularProgressIndicator()),
+                    );
+                  }
+                  final cats = snap.data!.take(6).toList();
+                  return GridView.count(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    crossAxisCount: columns,
+                    mainAxisSpacing: 10,
+                    crossAxisSpacing: 10,
+                    childAspectRatio: width > 600 ? 2.2 : 1.5,
+                    children: [for (final c in cats) _CategoryTile(category: c)],
+                  );
+                },
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class _Tile {
+  const _Tile(this.title, this.icon, this.color, this.onTap);
+  final String title;
+  final IconData icon;
+  final Color color;
+  final VoidCallback onTap;
+}
+
+/// A big coloured shortcut tile with an arrow badge.
+class _ColourTile extends StatelessWidget {
+  const _ColourTile({required this.tile});
+  final _Tile tile;
+
+  @override
+  Widget build(BuildContext context) {
+    return Material(
+      color: tile.color,
+      borderRadius: BorderRadius.circular(20),
+      clipBehavior: Clip.antiAlias,
+      child: InkWell(
+        onTap: tile.onTap,
+        child: Padding(
+          padding: const EdgeInsets.all(14),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Image.asset('assets/brand/logo.png', width: 40, height: 40),
-                  const SizedBox(width: 10),
-                  Expanded(
-                    child: Text(
-                      'ASSAMPEDIA',
-                      style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700, color: scheme.primary, letterSpacing: 1.2),
-                    ),
+                  Container(
+                    width: 48,
+                    height: 48,
+                    decoration: BoxDecoration(color: Colors.white.withValues(alpha: 0.18), borderRadius: BorderRadius.circular(14)),
+                    child: Icon(tile.icon, color: Colors.white, size: 28),
                   ),
-                  IconButton(
-                    tooltip: s.search,
-                    icon: const Icon(Icons.search),
-                    onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const SearchScreen())),
-                  ),
-                  const LanguageSwitch(),
-                ],
-              ),
-              const SizedBox(height: 16),
-              _Banner(text: s.tagline),
-              const SizedBox(height: 16),
-              const DailyQuestionCard(),
-              if (_last != null) ...[
-                Card(
-                  child: ListTile(
-                    leading: Icon(Icons.play_circle_outline, color: scheme.primary),
-                    title: Text(s.continueLearning, style: theme.textTheme.labelLarge),
-                    subtitle: Text(lang.code == 'as' ? _last![1] : _last![2], maxLines: 2, overflow: TextOverflow.ellipsis),
-                    onTap: () =>
-                        Navigator.of(context)
-                            .push(MaterialPageRoute(builder: (_) => ReaderScreen(contentId: _last![0])))
-                            .then((_) => _loadLast()),
-                  ),
-                ),
-                const SizedBox(height: 12),
-              ],
-              Card(
-                color: scheme.primaryContainer,
-                child: ListTile(
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                  leading: Icon(Icons.auto_stories, color: scheme.onPrimaryContainer, size: 32),
-                  title: Text(
-                    s.encyclopedia,
-                    style: theme.textTheme.titleMedium?.copyWith(color: scheme.onPrimaryContainer, fontWeight: FontWeight.w600),
-                  ),
-                  subtitle: Text(s.encyclopediaHint, style: TextStyle(color: scheme.onPrimaryContainer)),
-                  trailing: Icon(Icons.chevron_right, color: scheme.onPrimaryContainer),
-                  onTap: widget.openLearn,
-                ),
-              ),
-              const SizedBox(height: 8),
-              Card(
-                child: ListTile(
-                  contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
-                  leading: Icon(Icons.quiz_outlined, color: scheme.primary, size: 30),
-                  title: Text(s.practiceZone, style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600)),
-                  subtitle: Text(s.practiceHint),
-                  trailing: const Icon(Icons.chevron_right),
-                  onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const PracticeScreen())),
-                ),
-              ),
-              const SizedBox(height: 8),
-              Row(
-                children: [
-                  Expanded(
-                    child: _QuickTile(
-                      icon: Icons.translate,
-                      title: s.dictionary,
-                      subtitle: s.dictionaryHint,
-                      onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const DictionaryScreen())),
-                    ),
-                  ),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: _QuickTile(
-                      icon: Icons.bookmarks_outlined,
-                      title: s.saved,
-                      subtitle: s.savedHint,
-                      onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const SavedScreen())),
-                    ),
+                  const Spacer(),
+                  Container(
+                    width: 28,
+                    height: 28,
+                    decoration: const BoxDecoration(color: Colors.white, shape: BoxShape.circle),
+                    child: Icon(Icons.north_east, size: 16, color: tile.color),
                   ),
                 ],
               ),
-              const SizedBox(height: 20),
-              Row(
-                children: [
-                  Expanded(
-                    child: Text(s.categories, style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600)),
-                  ),
-                  TextButton(onPressed: widget.openLearn, child: Text(s.seeAll)),
-                ],
+              const Spacer(),
+              Text(
+                tile.title,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white, fontWeight: FontWeight.w700, height: 1.2),
               ),
-              if (_cats == null)
-                Padding(padding: const EdgeInsets.all(16), child: Text(s.notConnected))
-              else
-                FutureBuilder<List<Category>>(
-                  future: _cats,
-                  builder: (context, snap) {
-                    if (snap.hasError) {
-                      return LoadError(
-                        message: s.loadFailed,
-                        onRetry: () => setState(() => _cats = context.services.content?.categories()),
-                      );
-                    }
-                    if (!snap.hasData) {
-                      return const Padding(padding: EdgeInsets.all(24), child: Center(child: CircularProgressIndicator()));
-                    }
-                    final cats = snap.data!.take(6).toList();
-                    return GridView.count(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      crossAxisCount: MediaQuery.sizeOf(context).width > 900 ? 4 : (MediaQuery.sizeOf(context).width > 600 ? 3 : 2),
-                      mainAxisSpacing: 10,
-                      crossAxisSpacing: 10,
-                      childAspectRatio: MediaQuery.sizeOf(context).width > 600 ? 2.2 : 1.5,
-                      children: [for (final c in cats) _CategoryTile(category: c)],
-                    );
-                  },
-                ),
             ],
           ),
         ),
@@ -179,31 +249,135 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 }
 
-class _Banner extends StatelessWidget {
-  const _Banner({required this.text});
+class HomeSlide {
+  const HomeSlide(this.text, this.cta, this.icon, this.colors, this.onTap);
   final String text;
+  final String cta;
+  final IconData icon;
+  final List<Color> colors;
+  final VoidCallback onTap;
+}
+
+/// The sliding banner at the top of Home. Moves on by itself every 5 seconds.
+class HomeSlides extends StatefulWidget {
+  const HomeSlides({super.key, required this.slides});
+  final List<HomeSlide> slides;
+
+  @override
+  State<HomeSlides> createState() => _HomeSlidesState();
+}
+
+class _HomeSlidesState extends State<HomeSlides> {
+  final _pages = PageController();
+  Timer? _timer;
+  int _page = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    // Not in widget tests, where a running timer would hold the test open.
+    final testing = WidgetsBinding.instance.runtimeType.toString().contains('Test');
+    if (!testing) {
+      _timer = Timer.periodic(const Duration(seconds: 5), (_) {
+        if (!_pages.hasClients) return;
+        final next = (_page + 1) % widget.slides.length;
+        _pages.animateToPage(next, duration: const Duration(milliseconds: 450), curve: Curves.easeInOut);
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    _timer?.cancel();
+    _pages.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
-    final scheme = Theme.of(context).colorScheme;
-    return Container(
-      padding: const EdgeInsets.all(18),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        gradient: const LinearGradient(colors: [Color(0xFF1E6B3C), Color(0xFF1B5E8C)]),
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: Text(
-              text,
-              style: Theme.of(context).textTheme.titleMedium?.copyWith(color: Colors.white, fontWeight: FontWeight.w600, height: 1.4),
-            ),
+    final theme = Theme.of(context);
+    final scheme = theme.colorScheme;
+    final height = MediaQuery.sizeOf(context).width > 600 ? 190.0 : 170.0;
+    return Column(
+      children: [
+        SizedBox(
+          height: height,
+          child: PageView.builder(
+            controller: _pages,
+            itemCount: widget.slides.length,
+            onPageChanged: (i) => setState(() => _page = i),
+            itemBuilder: (context, i) {
+              final slide = widget.slides[i];
+              return Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 2),
+                child: Material(
+                  borderRadius: BorderRadius.circular(22),
+                  clipBehavior: Clip.antiAlias,
+                  child: Ink(
+                    decoration: BoxDecoration(gradient: LinearGradient(colors: slide.colors)),
+                    child: InkWell(
+                      onTap: slide.onTap,
+                      child: Padding(
+                        padding: const EdgeInsets.all(20),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    slide.text,
+                                    maxLines: 3,
+                                    overflow: TextOverflow.ellipsis,
+                                    style: theme.textTheme.titleLarge?.copyWith(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.w700,
+                                      height: 1.3,
+                                    ),
+                                  ),
+                                  const SizedBox(height: 12),
+                                  Container(
+                                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                                    decoration: BoxDecoration(color: Colors.white, borderRadius: BorderRadius.circular(999)),
+                                    child: Text(
+                                      slide.cta,
+                                      style: TextStyle(color: slide.colors.first, fontWeight: FontWeight.w700),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                            const SizedBox(width: 12),
+                            Icon(slide.icon, color: Colors.white.withValues(alpha: 0.85), size: 72),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              );
+            },
           ),
-          const SizedBox(width: 12),
-          Icon(Icons.water, color: scheme.tertiary, size: 36),
-        ],
-      ),
+        ),
+        const SizedBox(height: 10),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            for (var i = 0; i < widget.slides.length; i++)
+              AnimatedContainer(
+                duration: const Duration(milliseconds: 250),
+                margin: const EdgeInsets.symmetric(horizontal: 3),
+                width: i == _page ? 22 : 8,
+                height: 8,
+                decoration: BoxDecoration(
+                  color: i == _page ? scheme.primary : scheme.outlineVariant,
+                  borderRadius: BorderRadius.circular(999),
+                ),
+              ),
+          ],
+        ),
+      ],
     );
   }
 }
@@ -231,43 +405,6 @@ class _CategoryTile extends StatelessWidget {
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
                 style: Theme.of(context).textTheme.titleSmall,
-              ),
-            ],
-          ),
-        ),
-      ),
-    );
-  }
-}
-
-class _QuickTile extends StatelessWidget {
-  const _QuickTile({required this.icon, required this.title, required this.subtitle, required this.onTap});
-  final IconData icon;
-  final String title;
-  final String subtitle;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Card(
-      clipBehavior: Clip.antiAlias,
-      child: InkWell(
-        onTap: onTap,
-        child: Padding(
-          padding: const EdgeInsets.all(12),
-          child: Row(
-            children: [
-              Icon(icon, color: theme.colorScheme.primary),
-              const SizedBox(width: 10),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(title, style: theme.textTheme.titleSmall),
-                    Text(subtitle, maxLines: 1, overflow: TextOverflow.ellipsis, style: theme.textTheme.bodySmall),
-                  ],
-                ),
               ),
             ],
           ),

@@ -24,23 +24,97 @@ class _MainShellState extends State<MainShell> {
   Widget build(BuildContext context) {
     final s = context.s;
     return Scaffold(
-      body: IndexedStack(index: _index, children: [
-        HomeScreen(openLearn: () => _go(1)),
-        const LearnScreen(),
-        const ExamsScreen(),
-        const JobsScreen(),
-        const AccountScreen(),
-      ]),
-      bottomNavigationBar: NavigationBar(
-        selectedIndex: _index,
-        onDestinationSelected: _go,
-        destinations: [
-          NavigationDestination(icon: const Icon(Icons.home_outlined), selectedIcon: const Icon(Icons.home), label: s.navHome),
-          NavigationDestination(icon: const Icon(Icons.menu_book_outlined), selectedIcon: const Icon(Icons.menu_book), label: s.navLearn),
-          NavigationDestination(icon: const Icon(Icons.school_outlined), selectedIcon: const Icon(Icons.school), label: s.navExams),
-          NavigationDestination(icon: const Icon(Icons.work_outline), selectedIcon: const Icon(Icons.work), label: s.navJobs),
-          NavigationDestination(icon: const Icon(Icons.person_outline), selectedIcon: const Icon(Icons.person), label: s.navMe),
+      body: IndexedStack(
+        index: _index,
+        children: [
+          HomeScreen(openTab: _go),
+          const LearnScreen(),
+          const ExamsScreen(),
+          const JobsScreen(),
+          const AccountScreen(),
         ],
+      ),
+      bottomNavigationBar: _FloatingNavBar(
+        index: _index,
+        onTap: _go,
+        items: [
+          (Icons.home_outlined, Icons.home, s.navHome),
+          (Icons.menu_book_outlined, Icons.menu_book, s.navLearn),
+          (Icons.school_outlined, Icons.school, s.navExams),
+          (Icons.work_outline, Icons.work, s.navJobs),
+          (Icons.person_outline, Icons.person, s.navMe),
+        ],
+      ),
+    );
+  }
+}
+
+/// A rounded bottom bar that floats above the page edge.
+class _FloatingNavBar extends StatelessWidget {
+  const _FloatingNavBar({required this.index, required this.onTap, required this.items});
+  final int index;
+  final ValueChanged<int> onTap;
+  final List<(IconData, IconData, String)> items;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return SafeArea(
+      top: false,
+      child: Padding(
+        padding: const EdgeInsets.fromLTRB(12, 4, 12, 10),
+        child: Material(
+          elevation: 6,
+          shadowColor: Colors.black26,
+          color: scheme.surfaceContainerLow,
+          borderRadius: BorderRadius.circular(28),
+          child: Padding(
+            padding: const EdgeInsets.all(6),
+            child: Row(
+              children: [
+                for (var i = 0; i < items.length; i++)
+                  Expanded(
+                    child: Semantics(
+                      selected: i == index,
+                      button: true,
+                      child: InkWell(
+                        borderRadius: BorderRadius.circular(22),
+                        onTap: () => onTap(i),
+                        child: AnimatedContainer(
+                          duration: const Duration(milliseconds: 200),
+                          height: 56,
+                          decoration: BoxDecoration(
+                            color: i == index ? scheme.primaryContainer : Colors.transparent,
+                            borderRadius: BorderRadius.circular(22),
+                          ),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                i == index ? items[i].$2 : items[i].$1,
+                                color: i == index ? scheme.onPrimaryContainer : scheme.onSurfaceVariant,
+                              ),
+                              const SizedBox(height: 2),
+                              Text(
+                                items[i].$3,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  fontWeight: i == index ? FontWeight.w700 : FontWeight.w500,
+                                  color: i == index ? scheme.onPrimaryContainer : scheme.onSurfaceVariant,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+              ],
+            ),
+          ),
+        ),
       ),
     );
   }

@@ -92,6 +92,27 @@ class S {
   String get newPassword => _t('নতুন পাছৱৰ্ড', 'New password');
   String get passwordChanged => _t('পাছৱৰ্ড সলনি হ’ল।', 'Your password has been changed.');
 
+  // Home screen (tiles, banner slides, side menu).
+  String hello(String name) => _t('নমস্কাৰ, $name', 'Hello, $name');
+  String get helloNoName => _t('নমস্কাৰ!', 'Hello!');
+  String get openMenu => _t('মেনু খোলক', 'Open menu');
+  String get switchLanguage => _t('ভাষা সলনি কৰক', 'Switch language');
+  String get tileExams => _t('পৰীক্ষাৰ পাঠ্যক্ৰম', 'Exam syllabus');
+  String get tileCareers => _t('কেৰিয়াৰ গাইড', 'Career guide');
+  String get tileNews => _t('আজিৰ খবৰ', 'Current affairs');
+  String get tileJobs => _t('চাকৰিৰ খবৰ', 'Job vacancies');
+  String get slideLearnCta => _t('পঢ়িবলৈ আৰম্ভ কৰক', 'Start learning');
+  String get slidePremium => _t('সকলো অধ্যায় আৰু কুইজ খোলক', 'Unlock every chapter and quiz');
+  String get slidePremiumCta => _t('প্ৰিমিয়াম লওক', 'Go Premium');
+  String get slidePractice => _t('কুইজ আৰু আদৰ্শ পৰীক্ষাৰে প্ৰতিদিনে অনুশীলন কৰক', 'Practise every day with quizzes and mock tests');
+  String get slidePracticeCta => _t('কুইজ আৰম্ভ কৰক', 'Start a quiz');
+  String get slideJobs => _t('অসমৰ শেহতীয়া চাকৰিৰ খবৰ এক ঠাইতে', 'The latest job vacancies in Assam, in one place');
+  String get slideJobsCta => _t('চাকৰি চাওক', 'See vacancies');
+  String get shareApp => _t('এপটো শ্বেয়াৰ কৰক', 'Share the app');
+  String get rateApp => _t('এপটোক ৰেটিং দিয়ক', 'Rate the app');
+  String shareText(String link) => _t('ASSAMPEDIA: অসমৰ সাধাৰণ জ্ঞান, পৰীক্ষা, চাকৰি আৰু কুইজ, অসমীয়া আৰু ইংৰাজীত। $link',
+      'ASSAMPEDIA: Assam GK, exams, jobs and quizzes in Assamese and English. $link');
+
   // Security question.
   String get securityQuestion => _t('সুৰক্ষা প্ৰশ্ন', 'Security question');
   String get securityQuestionHint => _t('পাছৱৰ্ড পাহৰিলে এই প্ৰশ্নৰ উত্তৰ দি নতুন পাছৱৰ্ড দিব পাৰিব।',
