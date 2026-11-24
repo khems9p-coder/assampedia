@@ -18,6 +18,7 @@ import 'data/practice_models.dart';
 import 'data/premium_service.dart';
 import 'data/supabase_content_repository.dart';
 import 'features/onboarding/language_select_screen.dart';
+import 'features/onboarding/welcome_screen.dart';
 import 'features/shell/main_shell.dart';
 
 Future<void> main() async {
@@ -75,17 +76,25 @@ class AssampediaApp extends StatelessWidget {
       child: LanguageScope(
         controller: services.language,
         child: ListenableBuilder(
-          listenable: Listenable.merge([services.theme, services.language]),
+          listenable: Listenable.merge([services.theme, services.language, services.auth]),
           builder: (context, _) => MaterialApp(
             title: 'ASSAMPEDIA',
             debugShowCheckedModeBanner: false,
             theme: AppTheme.light(),
             darkTheme: AppTheme.dark(),
             themeMode: services.theme.mode,
-            home: services.language.hasChosen ? const MainShell() : const LanguageSelectScreen(),
+            home: _startScreen(),
           ),
         ),
       ),
     );
+  }
+
+  /// After installing, readers sign in first; then they reach the content.
+  /// (Without a server, as in the demo, the language picker comes first instead.)
+  Widget _startScreen() {
+    final auth = services.auth;
+    if (auth.available && !auth.isSignedIn) return const WelcomeScreen();
+    return services.language.hasChosen ? const MainShell() : const LanguageSelectScreen();
   }
 }
