@@ -14,6 +14,7 @@ import 'data/cached_content_repository.dart';
 import 'data/content_repository.dart';
 import 'data/demo_content_repository.dart';
 import 'data/offline_cache.dart';
+import 'data/practice_models.dart';
 import 'data/supabase_content_repository.dart';
 import 'features/onboarding/language_select_screen.dart';
 import 'features/shell/main_shell.dart';
@@ -24,7 +25,8 @@ Future<void> main() async {
   final language = LanguageController();
   final bookmarks = BookmarkStore();
   final savedJobs = SavedJobsStore();
-  await Future.wait([theme.load(), language.load(), bookmarks.load(), savedJobs.load()]);
+  final progress = PracticeProgressStore();
+  await Future.wait([theme.load(), language.load(), bookmarks.load(), savedJobs.load(), progress.load()]);
 
   SupabaseClient? client;
   if (AppConfig.isConfigured) {
@@ -48,7 +50,8 @@ Future<void> main() async {
         auth: AuthService(client),
         admin: client == null ? null : AdminRepository(client),
         bookmarks: bookmarks,
-      savedJobs: savedJobs,
+        savedJobs: savedJobs,
+        progress: progress,
       ),
     ),
   );

@@ -2,6 +2,7 @@ import '../core/i18n/app_lang.dart';
 import 'content_repository.dart';
 import 'jobs_models.dart';
 import 'models.dart';
+import 'practice_models.dart';
 
 /// Layout-testing content only. Every text says it is sample text, so it can
 /// never be mistaken for real Assam GK.
@@ -120,4 +121,44 @@ class DemoContentRepository implements ContentRepository {
       titles: {AppLang.english: 'Sample chapter (layout test)', AppLang.assamese: 'নমুনা অধ্যায় (পৰীক্ষা)'},
     ),
   ];
+
+  @override
+  Future<List<QuestionSet>> questionSets() async => [
+    QuestionSet(
+      id: 'q1',
+      kind: QuizKind.topic,
+      text: {'title_en': 'Sample quiz (layout test)', 'title_as': 'নমুনা কুইজ (পৰীক্ষা)'},
+      isPublished: true,
+      questionCount: 2,
+    ),
+    QuestionSet(
+      id: 'qd',
+      kind: QuizKind.daily,
+      text: {'title_en': 'Sample daily question', 'title_as': 'নমুনা দৈনিক প্ৰশ্ন'},
+      isPublished: true,
+      questionCount: 1,
+    ),
+  ];
+
+  Question _sample(String set, int n, int correct) => Question(
+    id: '$set-$n',
+    setId: set,
+    position: n,
+    text: {
+      'question_en': 'Sample question $n (layout test)',
+      'question_as': 'নমুনা প্ৰশ্ন $n (পৰীক্ষা)',
+      'explanation_en': 'Sample explanation (not real information).',
+      'explanation_as': 'নমুনা ব্যাখ্যা (প্ৰকৃত তথ্য নহয়)।',
+    },
+    optionsEn: ['Option A', 'Option B', 'Option C', 'Option D'],
+    optionsAs: ['বিকল্প ক', 'বিকল্প খ', 'বিকল্প গ', 'বিকল্প ঘ'],
+    correctIndex: correct,
+  );
+
+  @override
+  Future<List<Question>> questions(String setId) async => switch (setId) {
+    'q1' => [_sample('q1', 1, 1), _sample('q1', 2, 3)],
+    'qd' => [_sample('qd', 1, 0)],
+    _ => const [],
+  };
 }

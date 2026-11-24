@@ -13,6 +13,7 @@ import 'package:assampedia/data/demo_content_repository.dart';
 import 'package:assampedia/data/jobs_models.dart';
 import 'package:assampedia/data/models.dart';
 import 'package:assampedia/data/offline_cache.dart';
+import 'package:assampedia/data/practice_models.dart';
 import 'package:assampedia/features/admin/section_templates.dart';
 import 'package:assampedia/features/reader/reader_screen.dart';
 import 'package:assampedia/main.dart';
@@ -58,6 +59,10 @@ class _Switchable implements ContentRepository {
   Future<List<Vacancy>> vacancies() => _go(inner.vacancies);
   @override
   Future<List<NewsItem>> currentAffairs() => _go(inner.currentAffairs);
+  @override
+  Future<List<QuestionSet>> questionSets() => _go(inner.questionSets);
+  @override
+  Future<List<Question>> questions(String id) => _go(() => inner.questions(id));
 }
 
 void main() {
@@ -97,6 +102,8 @@ void main() {
     await tester.pumpWidget(AssampediaApp(services: services));
     await tester.pumpAndSettle();
     expect(find.text('অসমৰ সাধাৰণ জ্ঞান'), findsOneWidget);
+    // Home is longer now (daily question, Practice Zone), so scroll to the categories.
+    await tester.scrollUntilVisible(find.text('অসমৰ ইতিহাস'), 200, scrollable: find.byType(Scrollable).first);
     expect(find.text('অসমৰ ইতিহাস'), findsOneWidget);
   });
 
@@ -373,6 +380,101 @@ void main() {
       await tester.tap(find.text('Current Affairs'));
       await tester.pumpAndSettle();
       expect(find.text('Sample chapter (layout test)'), findsOneWidget);
+    });
+  });
+
+  group('Phase 6: practice zone', () {
+    test('Question survives saving, and options follow the question language', () {
+      final q = Question(
+        id: 'a',
+        setId: 's',
+        text: {'question_en': 'Q?', 'explanation_en': 'Because.'},
+        optionsEn: ['x', 'y', 'z'],
+        correctIndex: 2,
+        source: 'Checked source',
+      );
+      final back = Question.fromJson(q.toJson());
+      expect(back.correctIndex, 2);
+      expect(back.options(AppLang.english), ['x', 'y', 'z']);
+      // No Assamese version: question, options and explanation fall back together.
+      expect(back.question(AppLang.assamese), 'Q?');
+      expect(back.options(AppLang.assamese), ['x', 'y', 'z']);
+      expect(back.get('explanation', AppLang.assamese), 'Because.');
+      expect(back.source, 'Checked source');
+    });
+
+    test('Question set reads its question count from the database or offline copy', () {
+      final online = QuestionSet.fromJson({
+        'id': 's',
+        'kind': 'mock',
+        'level': 'competitive',
+        'title_en': 'Mock 1',
+        'time_limit_minutes': 30,
+        'questions': [
+          {'count': 25},
+        ],
+      });
+      expect(online.questionCount, 25);
+      expect(online.isTimed, isTrue);
+      expect(online.kind, QuizKind.mock);
+      expect(online.level, QuizLevel.competitive);
+      final offline = QuestionSet.fromJson(online.toJson());
+      expect(offline.questionCount, 25);
+      expect(online.toRow().containsKey('question_count'), isFalse);
+    });
+
+    test('Daily question changes every day and goes round the list', () {
+      final d = DateTime(2026, 11, 24);
+      final a = dailyIndex(d, 5);
+      expect(dailyIndex(d.add(const Duration(days: 1)), 5), (a + 1) % 5);
+      expect(dailyIndex(d.add(const Duration(days: 5)), 5), a);
+      expect(dailyIndex(d, 0), -1);
+    });
+
+    test('Progress adds up scores and keeps the best per quiz', () async {
+      SharedPreferences.setMockInitialValues({});
+      final p = PracticeProgressStore();
+      await p.load();
+      await p.add(QuizAttempt(setId: 's', score: 2, total: 4, at: DateTime(2026)));
+      await p.add(QuizAttempt(setId: 's', score: 3, total: 4, at: DateTime(2026)));
+      expect(p.quizzesTaken, 2);
+      expect(p.accuracy, 5 / 8);
+      expect(p.best('s')!.score, 3);
+      expect(p.best('other'), isNull);
+      final again = PracticeProgressStore();
+      await again.load();
+      expect(again.quizzesTaken, 2);
+    });
+
+    testWidgets('Take a quiz from Home and see the result', (tester) async {
+      tester.view.physicalSize = const Size(1200, 2600);
+      tester.view.devicePixelRatio = 1.0;
+      addTearDown(tester.view.reset);
+      final services = await _services(lang: 'en');
+      await tester.pumpWidget(AssampediaApp(services: services));
+      await tester.pumpAndSettle();
+      expect(find.text('Daily Assam GK question'), findsOneWidget);
+
+      await tester.tap(find.text('Practice Zone'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Sample quiz (layout test)'));
+      await tester.pumpAndSettle();
+      expect(find.text('Question 1 of 2'), findsOneWidget);
+
+      await tester.tap(find.text('Option B')); // correct
+      await tester.pumpAndSettle();
+      expect(find.text('Correct!'), findsOneWidget);
+      await tester.tap(find.text('Next'));
+      await tester.pumpAndSettle();
+      await tester.tap(find.text('Option A')); // wrong (D is right)
+      await tester.pumpAndSettle();
+      expect(find.text('Not correct'), findsOneWidget);
+      expect(find.text('Correct answer: Option D'), findsOneWidget);
+      await tester.tap(find.text('Finish'));
+      await tester.pumpAndSettle();
+      expect(find.text('1 / 2'), findsOneWidget);
+      expect(find.text('Practise the wrong ones'), findsOneWidget);
+      expect(services.progress.quizzesTaken, 1);
     });
   });
 }

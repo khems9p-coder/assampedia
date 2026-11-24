@@ -3,6 +3,7 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import '../core/i18n/app_lang.dart';
 import 'jobs_models.dart';
 import 'models.dart';
+import 'practice_models.dart';
 
 /// Everything the admin screens can change. The database only accepts these
 /// changes from accounts marked as admin.
@@ -119,4 +120,32 @@ class AdminRepository {
       client.from('vacancies').upsert({...v.toJson(), 'updated_at': DateTime.now().toUtc().toIso8601String()});
 
   Future<void> deleteVacancy(String id) => client.from('vacancies').delete().eq('id', id);
+
+  /// Every practice set, including drafts.
+  Future<List<QuestionSet>> questionSets() async {
+    final rows = await client.from('question_sets').select('*, questions(count)').order('position', ascending: true);
+    return [for (final r in rows) QuestionSet.fromJson(r)];
+  }
+
+  Future<QuestionSet> saveSet(QuestionSet set) async {
+    final row = await client
+        .from('question_sets')
+        .upsert({...set.toRow(), 'updated_at': DateTime.now().toUtc().toIso8601String()})
+        .select('*, questions(count)')
+        .single();
+    return QuestionSet.fromJson(row);
+  }
+
+  /// Deletes a set and all its questions.
+  Future<void> deleteSet(String id) => client.from('question_sets').delete().eq('id', id);
+
+  Future<List<Question>> questions(String setId) async {
+    final rows = await client.from('questions').select().eq('set_id', setId).order('position', ascending: true);
+    return [for (final r in rows) Question.fromJson(r)];
+  }
+
+  Future<void> saveQuestion(Question q) =>
+      client.from('questions').upsert({...q.toJson(), 'updated_at': DateTime.now().toUtc().toIso8601String()});
+
+  Future<void> deleteQuestion(String id) => client.from('questions').delete().eq('id', id);
 }

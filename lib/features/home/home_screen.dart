@@ -5,6 +5,8 @@ import '../../core/widgets/common.dart';
 import '../../data/models.dart';
 import '../dictionary/dictionary_screen.dart';
 import '../learn/chapter_list_screen.dart';
+import '../practice/daily_question_card.dart';
+import '../practice/practice_screen.dart';
 import '../reader/reader_screen.dart';
 import '../saved/saved_screen.dart';
 import '../search/search_screen.dart';
@@ -71,6 +73,7 @@ class _HomeScreenState extends State<HomeScreen> {
               const SizedBox(height: 16),
               _Banner(text: s.tagline),
               const SizedBox(height: 16),
+              const DailyQuestionCard(),
               if (_last != null) ...[
                 Card(
                   child: ListTile(
@@ -97,6 +100,17 @@ class _HomeScreenState extends State<HomeScreen> {
                   subtitle: Text(s.encyclopediaHint, style: TextStyle(color: scheme.onPrimaryContainer)),
                   trailing: Icon(Icons.chevron_right, color: scheme.onPrimaryContainer),
                   onTap: widget.openLearn,
+                ),
+              ),
+              const SizedBox(height: 8),
+              Card(
+                child: ListTile(
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                  leading: Icon(Icons.quiz_outlined, color: scheme.primary, size: 30),
+                  title: Text(s.practiceZone, style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600)),
+                  subtitle: Text(s.practiceHint),
+                  trailing: const Icon(Icons.chevron_right),
+                  onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const PracticeScreen())),
                 ),
               ),
               const SizedBox(height: 8),
