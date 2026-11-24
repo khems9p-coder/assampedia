@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 
 import '../../core/app_scope.dart';
+import '../../core/i18n/app_lang.dart';
+import '../../core/i18n/strings.dart';
 import '../../core/widgets/common.dart';
 import '../../data/jobs_models.dart';
 import '../../data/models.dart';
+import '../premium/paywall_screen.dart';
 import '../reader/reader_screen.dart';
 import 'vacancy_detail_screen.dart';
 import 'vacancy_widgets.dart';
@@ -226,6 +229,13 @@ class _NewsListState extends State<NewsList> with AutomaticKeepAliveClientMixin 
     final lang = context.lang;
     final theme = Theme.of(context);
     if (_future == null) return Center(child: Text(s.notConnected));
+    return ListenableBuilder(
+      listenable: context.services.premium,
+      builder: (context, _) => _news(context, s, lang, theme),
+    );
+  }
+
+  Widget _news(BuildContext context, S s, AppLang lang, ThemeData theme) {
     return FutureBuilder<(List<NewsItem>, List<Category>)>(
       future: _future,
       builder: (context, snap) {
@@ -237,6 +247,13 @@ class _NewsListState extends State<NewsList> with AutomaticKeepAliveClientMixin 
           for (final n in items)
             if (inPeriod(n.date, _period, today) && (_group == null || n.categoryId == _group)) n,
         ];
+        // The newest 3 items of each group are free (same rule as the database).
+        final rank = <String, int>{};
+        final seen = <String?, int>{};
+        for (final n in items) {
+          rank[n.id] = seen[n.categoryId] = (seen[n.categoryId] ?? -1) + 1;
+        }
+        final premium = context.services.premium;
         final children = <Widget>[];
         String? lastHeader;
         for (final n in list) {
@@ -251,13 +268,14 @@ class _NewsListState extends State<NewsList> with AutomaticKeepAliveClientMixin 
             lastHeader = header;
           }
           final group = groups.where((g) => g.id == n.categoryId);
+          final allowed = n.categoryId == null || premium.canOpen(indexInGroup: rank[n.id] ?? 0);
           children.add(
             ListTile(
               leading: const Icon(Icons.article_outlined),
               title: Text(n.title(lang)),
               subtitle: group.isEmpty ? null : Text(group.first.name(lang)),
-              trailing: const Icon(Icons.chevron_right),
-              onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => ReaderScreen(contentId: n.id))),
+              trailing: allowed ? const Icon(Icons.chevron_right) : const LockIcon(),
+              onTap: () => openOrPaywall(context, allowed: allowed, screen: () => ReaderScreen(contentId: n.id)),
             ),
           );
         }

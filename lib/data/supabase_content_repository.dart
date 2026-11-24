@@ -40,7 +40,8 @@ class SupabaseContentRepository implements ContentRepository {
         .from('content')
         .select('id, slug, position, content_versions(lang, title, status)')
         .eq('category_id', categoryId)
-        .order('position', ascending: true);
+        .order('position', ascending: true)
+        .order('id', ascending: true);
     return [
       for (final r in rows)
         if ((r['content_versions'] as List).isNotEmpty) ChapterSummary.fromJson(r),
@@ -162,6 +163,8 @@ class SupabaseContentRepository implements ContentRepository {
         .select('id, event_date, category_id, content_versions(lang, title)')
         .eq('kind', 'current_affairs')
         .order('event_date', ascending: false)
+        .order('position', ascending: true)
+        .order('id', ascending: true)
         .limit(300);
     return [
       for (final r in rows)
@@ -173,9 +176,10 @@ class SupabaseContentRepository implements ContentRepository {
   Future<List<QuestionSet>> questionSets() async {
     final rows = await client
         .from('question_sets')
-        .select('*, questions(count)')
+        .select()
         .eq('is_published', true)
         .order('position', ascending: true)
+        .order('id', ascending: true)
         .limit(500);
     return [for (final r in rows) QuestionSet.fromJson(r)];
   }

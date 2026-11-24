@@ -8,6 +8,7 @@ import '../../data/bookmark_store.dart';
 import '../../data/cached_content_repository.dart';
 import '../../data/models.dart';
 import '../dictionary/term_sheet.dart';
+import '../premium/paywall_screen.dart';
 import 'block_view.dart';
 import 'official_info.dart';
 
@@ -69,6 +70,7 @@ class _ReaderScreenState extends State<ReaderScreen> {
   final _scroll = ItemScrollController();
   final _positions = ItemPositionsListener.create();
   Future<Chapter>? _future;
+  bool _locked = false;
   Chapter? _chapter;
   bool _offline = false;
   bool _side = false;
@@ -110,6 +112,10 @@ class _ReaderScreenState extends State<ReaderScreen> {
     final repo = services.content!;
     final ch = await repo.chapter(widget.contentId!);
     _offline = repo is CachedContentRepository && repo.lastWasOffline;
+    // Premium pages come without paragraphs for free readers.
+    final empty = ch.versions.values.every((v) => v.blocks.isEmpty);
+    _locked = empty && !services.premium.isPremium && !await services.premium.contentIsFree(ch.id);
+    if (_locked) return ch;
     final titles = _titles(ch);
     services.rememberChapter(ch.id, titles.$1, titles.$2);
     return ch;
@@ -206,6 +212,7 @@ class _ReaderScreenState extends State<ReaderScreen> {
           if (snap.hasError) return LoadError(message: s.loadFailed, onRetry: () => setState(() => _future = _load()));
           if (!snap.hasData) return const Center(child: CircularProgressIndicator());
           final ch = snap.data!;
+          if (_locked) return const PaywallBody(locked: true);
           if (_chapter == null) {
             _chapter = ch;
             // Show the side-by-side and bookmark buttons now that the chapter is here.

@@ -9,6 +9,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  in_app_purchase: ^3.3.1
   path_provider: ^2.1.6
   scrollable_positioned_list: ^0.3.8
   shared_preferences: ^2.5.6

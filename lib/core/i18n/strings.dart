@@ -191,4 +191,28 @@ class S {
   String get tapToSeeQuestion => _t('প্ৰশ্নলৈ উভতি যাবলৈ টিপক', 'Tap to go back to the question');
   String cardOf(int a, int b) => _t('কাৰ্ড $a / $b', 'Card $a of $b');
   String get shuffle => _t('মিহলাওক', 'Shuffle');
+
+  // Phase 6c: Premium
+  String get premium => _t('প্ৰিমিয়াম', 'Premium');
+  String get premiumTitle => _t('ASSAMPEDIA প্ৰিমিয়াম', 'ASSAMPEDIA Premium');
+  String get lockedPage => _t('এই পৃষ্ঠাটো প্ৰিমিয়াম সদস্যৰ বাবে।', 'This page is for Premium members.');
+  String get freeNote => _t('প্ৰতিটো গোটৰ প্ৰথম ৩টা পৃষ্ঠা আৰু প্ৰতিবিধ কুইজৰ প্ৰথম ৩টা বিনামূলীয়া।',
+      'The first 3 pages of every group and the first 3 quizzes of every type are free.');
+  String get benefitAll => _t('সকলো অধ্যায়, পৰীক্ষা আৰু কেৰিয়াৰৰ পৃষ্ঠা', 'Every chapter, exam and career page');
+  String get benefitQuizzes => _t('সকলো কুইজ, আদৰ্শ পৰীক্ষা আৰু ফ্লেচকাৰ্ড', 'All quizzes, mock tests and flashcards');
+  String get benefitNews => _t('সকলো সাম্প্ৰতিক ঘটনা', 'All current affairs');
+  String get benefitFree => _t('চাকৰিৰ খবৰ সদায় বিনামূলীয়া', 'Job vacancies always stay free');
+  String perMonth(String price) => _t('মাহে $price', '$price per month');
+  String get subscribe => _t('প্ৰিমিয়াম লওক', 'Subscribe');
+  String get restorePurchase => _t('আগৰ ক্ৰয় পুনৰুদ্ধাৰ কৰক', 'Restore purchase');
+  String get signInToSubscribe => _t('প্ৰিমিয়াম ল’বলৈ প্ৰথমে ছাইন ইন কৰক।', 'Please sign in first to subscribe.');
+  String get storeUnavailable => _t('Google Playৰ পৰা ইনষ্টল কৰা এপত হে প্ৰিমিয়াম কিনিব পাৰি।',
+      'Premium can be bought in the app installed from Google Play.');
+  String get cancelAnytime => _t('Google Play → চাবস্ক্ৰিপচনত যিকোনো সময়ত বাতিল কৰিব পাৰি।',
+      'Cancel any time in Google Play → Subscriptions.');
+  String premiumUntil(String d) => _t('প্ৰিমিয়াম সক্ৰিয়, $d লৈকে', 'Premium active until $d');
+  String get youArePremium => _t('আপুনি প্ৰিমিয়াম সদস্য। ধন্যবাদ!', "You're a Premium member. Thank you!");
+  String get manageSubscription => _t('চাবস্ক্ৰিপচন পৰিচালনা কৰক', 'Manage subscription');
+  String get freePlan => _t('বিনামূলীয়া', 'Free plan');
+  String get seePremium => _t('প্ৰিমিয়াম চাওক', 'See Premium');
 }

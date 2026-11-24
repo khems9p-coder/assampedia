@@ -123,7 +123,7 @@ class AdminRepository {
 
   /// Every practice set, including drafts.
   Future<List<QuestionSet>> questionSets() async {
-    final rows = await client.from('question_sets').select('*, questions(count)').order('position', ascending: true);
+    final rows = await client.from('question_sets').select().order('position', ascending: true).order('id', ascending: true);
     return [for (final r in rows) QuestionSet.fromJson(r)];
   }
 
@@ -131,7 +131,7 @@ class AdminRepository {
     final row = await client
         .from('question_sets')
         .upsert({...set.toRow(), 'updated_at': DateTime.now().toUtc().toIso8601String()})
-        .select('*, questions(count)')
+        .select()
         .single();
     return QuestionSet.fromJson(row);
   }

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../core/app_scope.dart';
 import '../../core/widgets/common.dart';
 import '../../data/models.dart';
+import '../premium/paywall_screen.dart';
 import '../reader/reader_screen.dart';
 
 class ChapterListScreen extends StatefulWidget {
@@ -28,7 +29,9 @@ class _ChapterListScreenState extends State<ChapterListScreen> {
     final lang = context.lang;
     return Scaffold(
       appBar: AppBar(title: Text(widget.category.name(lang))),
-      body: FutureBuilder<List<ChapterSummary>>(
+      body: ListenableBuilder(
+        listenable: context.services.premium,
+        builder: (context, _) => FutureBuilder<List<ChapterSummary>>(
         future: _chapters,
         builder: (context, snap) {
           if (snap.hasError) {
@@ -46,16 +49,18 @@ class _ChapterListScreenState extends State<ChapterListScreen> {
             itemBuilder: (context, i) {
               final c = list[i];
               final missing = !c.titles.containsKey(lang);
+              final allowed = context.services.premium.canOpen(indexInGroup: i);
               return ListTile(
                 leading: CircleAvatar(child: Text('${i + 1}')),
                 title: Text(c.title(lang)),
                 subtitle: missing ? Text(s.notAvailableIn(lang), style: TextStyle(color: Theme.of(context).colorScheme.error)) : null,
-                trailing: const Icon(Icons.chevron_right),
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => ReaderScreen(contentId: c.id))),
+                trailing: allowed ? const Icon(Icons.chevron_right) : const LockIcon(),
+                onTap: () => openOrPaywall(context, allowed: allowed, screen: () => ReaderScreen(contentId: c.id)),
               );
             },
           );
         },
+      ),
       ),
     );
   }
