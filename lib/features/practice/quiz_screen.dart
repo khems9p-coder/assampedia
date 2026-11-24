@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import '../../core/theme/section_theme.dart';
+
 import '../../core/app_scope.dart';
 import '../../core/i18n/app_lang.dart';
 import '../../core/widgets/common.dart';
@@ -247,14 +249,15 @@ class _QuizScreenState extends State<QuizScreen> {
           runSpacing: 8,
           children: [
             FilledButton.icon(
-              onPressed: () => Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (_) => QuizScreen(set: widget.set))),
+              onPressed: () => Navigator.of(context).pushReplacement(SectionRoute(context, builder: (_) => QuizScreen(set: widget.set))),
               icon: const Icon(Icons.replay),
               label: Text(s.tryAgain),
             ),
             if (wrong.isNotEmpty)
               OutlinedButton.icon(
                 onPressed: () => Navigator.of(context).pushReplacement(
-                  MaterialPageRoute(
+                  SectionRoute(
+                    context,
                     builder: (_) => QuizScreen(set: widget.set, only: wrong),
                   ),
                 ),

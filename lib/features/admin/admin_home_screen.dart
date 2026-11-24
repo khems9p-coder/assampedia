@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../core/theme/section_theme.dart';
+
 import '../../core/app_scope.dart';
 import '../../core/widgets/common.dart';
 import '../../data/models.dart';
@@ -45,7 +47,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                 title: const Text('Import chapters'),
                 subtitle: const Text('Add ready-made GK chapters as drafts, with one tap'),
                 trailing: const Icon(Icons.chevron_right),
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AdminImportScreen())),
+                onTap: () => Navigator.of(context).push(SectionRoute(context, builder: (_) => const AdminImportScreen())),
               ),
             ),
             Card(
@@ -55,7 +57,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                 title: const Text('Dictionary terms'),
                 subtitle: const Text('Words readers can tap inside chapters'),
                 trailing: const Icon(Icons.chevron_right),
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AdminTermsScreen())),
+                onTap: () => Navigator.of(context).push(SectionRoute(context, builder: (_) => const AdminTermsScreen())),
               ),
             ),
             Card(
@@ -65,7 +67,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                 title: const Text('Job vacancies'),
                 subtitle: const Text('Recruitment notices from official notifications'),
                 trailing: const Icon(Icons.chevron_right),
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AdminVacanciesScreen())),
+                onTap: () => Navigator.of(context).push(SectionRoute(context, builder: (_) => const AdminVacanciesScreen())),
               ),
             ),
             Card(
@@ -75,7 +77,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                 title: const Text('Practice Zone'),
                 subtitle: const Text('Quizzes, mock tests and the daily question'),
                 trailing: const Icon(Icons.chevron_right),
-                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AdminPracticeScreen())),
+                onTap: () => Navigator.of(context).push(SectionRoute(context, builder: (_) => const AdminPracticeScreen())),
               ),
             ),
             const Padding(
@@ -99,7 +101,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                   title: Text(c.nameEn),
                   subtitle: Text(c.nameAs),
                   trailing: const Icon(Icons.chevron_right),
-                  onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => AdminChapterListScreen(category: c))),
+                  onTap: () => Navigator.of(context).push(SectionRoute(context, builder: (_) => AdminChapterListScreen(category: c))),
                 ),
             ],
           ]);

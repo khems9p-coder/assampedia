@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../core/theme/section_theme.dart';
+
 import '../../core/app_scope.dart';
 import '../../core/widgets/common.dart';
 import '../../data/models.dart';
@@ -22,7 +24,7 @@ class ExamsScreen extends StatelessWidget {
             IconButton(
               tooltip: s.search,
               icon: const Icon(Icons.search),
-              onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const SearchScreen())),
+              onPressed: () => Navigator.of(context).push(SectionRoute(context, builder: (_) => const SearchScreen())),
             ),
             const Padding(padding: EdgeInsets.only(right: 8), child: LanguageSwitch()),
           ],
@@ -97,7 +99,7 @@ class _SectionListState extends State<_SectionList> with AutomaticKeepAliveClien
                   title: Text(c.name(lang)),
                   subtitle: Text(c.name(lang.other)),
                   trailing: const Icon(Icons.chevron_right),
-                  onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => ChapterListScreen(category: c))),
+                  onTap: () => Navigator.of(context).push(SectionRoute(context, builder: (_) => ChapterListScreen(category: c))),
                 ),
             ],
           ),

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../core/theme/section_theme.dart';
+
 import '../../core/app_scope.dart';
 import '../../core/i18n/app_lang.dart';
 import '../../data/models.dart';
@@ -265,7 +267,7 @@ class _ChapterEditorScreenState extends State<ChapterEditorScreen> {
       _snack('Add a title in at least one language.');
       return;
     }
-    Navigator.of(context).push(MaterialPageRoute(
+    Navigator.of(context).push(SectionRoute(context, 
       builder: (_) => ReaderScreen(
         preview: Chapter(
           id: _id ?? 'preview',

@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import '../../core/theme/section_theme.dart';
+
 import '../../core/app_scope.dart';
 import '../../core/i18n/app_lang.dart';
 import '../dictionary/dictionary_screen.dart';
@@ -52,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
     if (mounted) setState(() => _last = last);
   }
 
-  void _push(Widget screen) => Navigator.of(context).push(MaterialPageRoute(builder: (_) => screen));
+  void _push(Widget screen) => Navigator.of(context).push(SectionRoute(context, builder: (_) => screen));
 
   @override
   Widget build(BuildContext context) {
@@ -65,15 +67,15 @@ class _HomeScreenState extends State<HomeScreen> {
     final name = (context.services.auth.profile?.fullName ?? '').trim();
 
     final tiles = [
-      _Tile(s.encyclopedia, Icons.auto_stories_outlined, const Color(0xFF1E7A46), () => widget.openTab(Tabs.learn)),
-      _Tile(s.tileExams, Icons.school_outlined, const Color(0xFF1F6FB2), () => widget.openTab(Tabs.exams)),
-      _Tile(s.practiceZone, Icons.quiz_outlined, const Color(0xFFB3266B), () => _push(const PracticeScreen())),
-      _Tile(s.tileJobs, Icons.badge_outlined, const Color(0xFF00796B), () => widget.openTab(Tabs.jobs)),
-      _Tile(s.tileNews, Icons.newspaper_outlined, const Color(0xFFB85C00), () => widget.openTab(Tabs.jobs)),
-      _Tile(s.tileCareers, Icons.explore_outlined, const Color(0xFF6A3FB5), () => widget.openTab(Tabs.exams)),
-      _Tile(s.dictionary, Icons.translate, const Color(0xFF3949AB), () => _push(const DictionaryScreen())),
-      _Tile(s.saved, Icons.bookmarks_outlined, const Color(0xFF6D4C41), () => _push(const SavedScreen())),
-      _Tile(s.premium, Icons.workspace_premium_outlined, const Color(0xFF8A5300), () => _push(const PaywallScreen())),
+      _Tile(s.encyclopedia, Icons.auto_stories_outlined, SectionColors.learn, () => widget.openTab(Tabs.learn)),
+      _Tile(s.tileExams, Icons.school_outlined, SectionColors.exams, () => widget.openTab(Tabs.exams)),
+      _Tile(s.practiceZone, Icons.quiz_outlined, SectionColors.practice, () => _push(const PracticeScreen())),
+      _Tile(s.tileJobs, Icons.badge_outlined, SectionColors.jobs, () => widget.openTab(Tabs.jobs)),
+      _Tile(s.tileNews, Icons.newspaper_outlined, SectionColors.news, () => widget.openTab(Tabs.jobs)),
+      _Tile(s.tileCareers, Icons.explore_outlined, SectionColors.careers, () => widget.openTab(Tabs.exams)),
+      _Tile(s.dictionary, Icons.translate, SectionColors.dictionary, () => _push(const DictionaryScreen())),
+      _Tile(s.saved, Icons.bookmarks_outlined, SectionColors.saved, () => _push(const SavedScreen())),
+      _Tile(s.premium, Icons.workspace_premium_outlined, SectionColors.premium, () => _push(const PaywallScreen())),
     ];
 
     return Scaffold(
@@ -153,7 +155,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   trailing: const Icon(Icons.chevron_right),
                   onTap: () =>
                       Navigator.of(context)
-                          .push(MaterialPageRoute(builder: (_) => ReaderScreen(contentId: _last![0])))
+                          .push(SectionRoute(context, builder: (_) => ReaderScreen(contentId: _last![0])))
                           .then((_) => _loadLast()),
                 ),
               ),

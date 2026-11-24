@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../core/theme/section_theme.dart';
+
 import '../../core/app_scope.dart';
 import '../../core/i18n/app_lang.dart';
 import '../admin/admin_home_screen.dart';
@@ -75,7 +77,7 @@ class AccountScreen extends StatelessWidget {
                         : s.seePremium,
                   ),
                   trailing: const Icon(Icons.chevron_right),
-                  onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const PaywallScreen())),
+                  onTap: () => Navigator.of(context).push(SectionRoute(context, builder: (_) => const PaywallScreen())),
                 ),
                 _Section(s.account),
                 if (!auth.available)
@@ -85,7 +87,7 @@ class AccountScreen extends StatelessWidget {
                     leading: Icon(Icons.login, color: theme.colorScheme.primary),
                     title: Text(s.signIn),
                     subtitle: Text(s.signInHint),
-                    onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const SignInScreen())),
+                    onTap: () => Navigator.of(context).push(SectionRoute(context, builder: (_) => const SignInScreen())),
                   )
                 else ...[
                   ListTile(
@@ -99,14 +101,14 @@ class AccountScreen extends StatelessWidget {
                     ),
                     isThreeLine: true,
                     trailing: const Icon(Icons.chevron_right),
-                    onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const ProfileScreen())),
+                    onTap: () => Navigator.of(context).push(SectionRoute(context, builder: (_) => const ProfileScreen())),
                   ),
                   if (auth.isAdmin)
                     ListTile(
                       leading: Icon(Icons.admin_panel_settings_outlined, color: theme.colorScheme.primary),
                       title: Text(s.adminPanel),
                       trailing: const Icon(Icons.chevron_right),
-                      onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AdminHomeScreen())),
+                      onTap: () => Navigator.of(context).push(SectionRoute(context, builder: (_) => const AdminHomeScreen())),
                     ),
                   if (auth.adminCheckError != null)
                     ListTile(

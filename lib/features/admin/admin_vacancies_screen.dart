@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../core/theme/section_theme.dart';
+
 import '../../core/app_scope.dart';
 import '../../core/i18n/app_lang.dart';
 import '../../core/widgets/common.dart';
@@ -27,7 +29,7 @@ class _AdminVacanciesScreenState extends State<AdminVacanciesScreen> {
   void _reload() => setState(() => _list = context.services.admin!.vacancies());
 
   Future<void> _edit([Vacancy? v]) async {
-    final changed = await Navigator.of(context).push<bool>(MaterialPageRoute(builder: (_) => VacancyEditorScreen(vacancy: v)));
+    final changed = await Navigator.of(context).push<bool>(SectionRoute(context, builder: (_) => VacancyEditorScreen(vacancy: v)));
     if (changed == true && mounted) _reload();
   }
 

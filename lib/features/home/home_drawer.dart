@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+
+import '../../core/theme/section_theme.dart';
+
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -35,7 +38,7 @@ class HomeDrawer extends StatelessWidget {
     void close() => Navigator.of(context).pop();
     void push(Widget screen) {
       close();
-      Navigator.of(context).push(MaterialPageRoute(builder: (_) => screen));
+      Navigator.of(context).push(SectionRoute(context, builder: (_) => screen));
     }
 
     void tab(int i) {
