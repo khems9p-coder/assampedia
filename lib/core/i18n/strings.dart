@@ -56,6 +56,10 @@ class S {
   String get email => _t('ইমেইল', 'Email');
   String get password => _t('পাছৱৰ্ড', 'Password');
   String get signInHint => _t('ছাইন ইন কৰিলে আপোনাৰ প্ৰগতি সুৰক্ষিত থাকিব।', 'Sign in to keep your progress safe on any phone.');
+  String get welcome => _t('স্বাগতম', 'Welcome');
+  String get inspiration =>
+      _t('জ্ঞানেই শক্তি। আজিৰ অধ্যয়নেই কাইলৈৰ সফলতা।', "Knowledge is power. What you learn today is tomorrow's success.");
+  String get signInToStart => _t('শিকিবলৈ আৰম্ভ কৰিবলৈ ছাইন ইন কৰক বা নতুন একাউণ্ট খোলক।', 'Sign in or create an account to start learning.');
   String get checkEmail => _t('নিশ্চিত কৰিবলৈ আপোনাৰ ইমেইল চাওক।', 'Check your email to confirm your account.');
   String signedInAs(String who) => _t('$who হিচাপে ছাইন ইন কৰা হৈছে', 'Signed in as $who');
   String get adminPanel => _t('এডমিন পেনেল', 'Admin panel');

@@ -28,6 +28,13 @@ Future<AppServices> _services({String? lang}) async {
   return AppServices(language: language, theme: theme, content: DemoContentRepository(), auth: AuthService(null));
 }
 
+/// A server is set up but nobody has signed in yet.
+class _SignedOutAuth extends AuthService {
+  _SignedOutAuth() : super(null);
+  @override
+  bool get available => true;
+}
+
 class _MemoryCache extends OfflineCache {
   final store = <String, Object>{};
   @override
@@ -80,6 +87,28 @@ void main() {
     expect(again.versions[AppLang.english]!.blocks.length, first.versions[AppLang.english]!.blocks.length);
 
     expect(() => repo.chapter('never-opened'), throwsException);
+  });
+
+  testWidgets('After installing, the app opens on the welcome and sign-in screen', (tester) async {
+    SharedPreferences.setMockInitialValues({});
+    final theme = ThemeController();
+    final language = LanguageController();
+    await theme.load();
+    await language.load();
+    final services = AppServices(language: language, theme: theme, content: DemoContentRepository(), auth: _SignedOutAuth());
+    await tester.pumpWidget(AssampediaApp(services: services));
+    await tester.pumpAndSettle();
+
+    expect(find.text('স্বাগতম'), findsOneWidget);
+    expect(find.text('ASSAMPEDIA'), findsOneWidget);
+    expect(find.text('ছাইন ইন কৰক'), findsWidgets);
+    // The content stays behind sign-in.
+    expect(find.text('Assam GK Encyclopedia'), findsNothing);
+
+    await tester.tap(find.text('English'));
+    await tester.pumpAndSettle();
+    expect(find.text('Welcome'), findsOneWidget);
+    expect(find.text('Create account'), findsOneWidget);
   });
 
   testWidgets('First launch asks for a language and remembers it', (tester) async {

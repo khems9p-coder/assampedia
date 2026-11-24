@@ -29,6 +29,8 @@ class AuthService extends ChangeNotifier {
   Future<void> refresh() => _refresh();
 
   Future<void> _refresh() async {
+    // Tell the app straight away that someone signed in or out; the admin check follows.
+    notifyListeners();
     final u = user;
     var admin = false;
     String? error;
