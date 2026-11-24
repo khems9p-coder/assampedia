@@ -30,8 +30,11 @@ class BlockView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final body = theme.textTheme.bodyLarge?.copyWith(height: 1.65, fontSize: 17);
+    final plainBody = theme.textTheme.bodyLarge?.copyWith(height: 1.65, fontSize: 17);
     final color = contentColorFor(block.style)?.of(context);
+    // Highlighted (coloured) paragraphs, lists and fact boxes are in bold.
+    final highlighted = color != null || block.type == BlockType.factBox;
+    final body = highlighted ? plainBody?.copyWith(fontWeight: FontWeight.w600) : plainBody;
     final lang = this.lang ?? context.lang;
     Widget rich(String text, TextStyle? style) => TermText(text, style: style, terms: terms, onTerm: onTerm, lang: lang);
 
@@ -40,7 +43,8 @@ class BlockView extends StatelessWidget {
         padding: const EdgeInsets.only(top: 12),
         child: Text(
           plainText(block.body, terms, lang),
-          style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700, color: color ?? theme.colorScheme.primary),
+          textAlign: TextAlign.start,
+          style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w800, color: color ?? theme.colorScheme.primary),
         ),
       ),
       BlockType.list => Column(
@@ -93,11 +97,18 @@ class BlockView extends StatelessWidget {
       child = Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(children: [
-            Icon(Icons.lightbulb_outline, size: 16, color: color),
-            const SizedBox(width: 6),
-            Expanded(child: Text(S(lang).suggestedLabel, style: theme.textTheme.labelMedium?.copyWith(color: color, fontWeight: FontWeight.w600))),
-          ]),
+          Row(
+            children: [
+              Icon(Icons.lightbulb_outline, size: 16, color: color),
+              const SizedBox(width: 6),
+              Expanded(
+                child: Text(
+                  S(lang).suggestedLabel,
+                  style: theme.textTheme.labelMedium?.copyWith(color: color, fontWeight: FontWeight.w600),
+                ),
+              ),
+            ],
+          ),
           const SizedBox(height: 6),
           child,
         ],

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../core/theme/section_theme.dart';
+
 import '../../core/app_scope.dart';
 import '../../core/widgets/common.dart';
 import '../../data/jobs_models.dart';
@@ -92,7 +94,7 @@ class VacancyDetailScreen extends StatelessWidget {
                   if (v.syllabusContentId != null)
                     OutlinedButton.icon(
                       onPressed: () =>
-                          Navigator.of(context).push(MaterialPageRoute(builder: (_) => ReaderScreen(contentId: v.syllabusContentId))),
+                          Navigator.of(context).push(SectionRoute(context, builder: (_) => ReaderScreen(contentId: v.syllabusContentId))),
                       icon: const Icon(Icons.menu_book_outlined),
                       label: Text(s.examSyllabus),
                     ),

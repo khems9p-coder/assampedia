@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../core/theme/section_theme.dart';
+
 import '../../core/app_scope.dart';
 import '../../core/widgets/common.dart';
 import '../../data/models.dart';
@@ -33,7 +35,7 @@ class _LearnScreenState extends State<LearnScreen> {
           IconButton(
             tooltip: s.search,
             icon: const Icon(Icons.search),
-            onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const SearchScreen())),
+            onPressed: () => Navigator.of(context).push(SectionRoute(context, builder: (_) => const SearchScreen())),
           ),
           const Padding(padding: EdgeInsets.only(right: 8), child: LanguageSwitch()),
         ],
@@ -64,7 +66,7 @@ class _LearnScreenState extends State<LearnScreen> {
                         title: Text(c.name(context.lang)),
                         subtitle: Text(c.name(context.lang.other)),
                         trailing: const Icon(Icons.chevron_right),
-                        onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => ChapterListScreen(category: c))),
+                        onTap: () => Navigator.of(context).push(SectionRoute(context, builder: (_) => ChapterListScreen(category: c))),
                       );
                     },
                   ),

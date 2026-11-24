@@ -32,6 +32,5 @@ enum ContentColor {
   final Color light;
   final Color dark;
 
-  Color of(BuildContext context) =>
-      Theme.of(context).brightness == Brightness.dark ? dark : light;
+  Color of(BuildContext context) => Theme.of(context).brightness == Brightness.dark ? dark : light;
 }

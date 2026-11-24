@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../core/theme/section_theme.dart';
+
 import '../../core/app_scope.dart';
 import '../../core/i18n/app_lang.dart';
 import '../../core/widgets/common.dart';
@@ -63,13 +65,13 @@ class _AdminPracticeScreenState extends State<AdminPracticeScreen> {
 
   Future<void> _newSet(int position) async {
     final saved = await Navigator.of(context).push<QuestionSet>(
-      MaterialPageRoute(
+      SectionRoute(context, 
         builder: (_) => SetEditorScreen(set: QuestionSet(position: position)),
       ),
     );
     if (saved != null && mounted) {
       _reload();
-      await Navigator.of(context).push(MaterialPageRoute(builder: (_) => AdminQuestionListScreen(set: saved)));
+      await Navigator.of(context).push(SectionRoute(context, builder: (_) => AdminQuestionListScreen(set: saved)));
       if (mounted) _reload();
     }
   }
@@ -117,7 +119,7 @@ class _AdminPracticeScreenState extends State<AdminPracticeScreen> {
                         subtitle: Text([x.level.nameEn, '${x.questionCount} questions', if (!x.isPublished) 'Hidden (draft)'].join(' · ')),
                         trailing: const Icon(Icons.chevron_right),
                         onTap: () async {
-                          await Navigator.of(context).push(MaterialPageRoute(builder: (_) => AdminQuestionListScreen(set: x)));
+                          await Navigator.of(context).push(SectionRoute(context, builder: (_) => AdminQuestionListScreen(set: x)));
                           if (mounted) _reload();
                         },
                       ),
@@ -293,12 +295,12 @@ class _AdminQuestionListScreenState extends State<AdminQuestionListScreen> {
   void _reload() => setState(() => _qs = context.services.admin!.questions(_set.id!));
 
   Future<void> _edit(Question q) async {
-    final changed = await Navigator.of(context).push<bool>(MaterialPageRoute(builder: (_) => QuestionEditorScreen(question: q)));
+    final changed = await Navigator.of(context).push<bool>(SectionRoute(context, builder: (_) => QuestionEditorScreen(question: q)));
     if (changed == true && mounted) _reload();
   }
 
   Future<void> _editSet() async {
-    final saved = await Navigator.of(context).push<QuestionSet>(MaterialPageRoute(builder: (_) => SetEditorScreen(set: _set)));
+    final saved = await Navigator.of(context).push<QuestionSet>(SectionRoute(context, builder: (_) => SetEditorScreen(set: _set)));
     if (saved != null && mounted) setState(() => _set = saved);
   }
 

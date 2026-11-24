@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../core/theme/section_theme.dart';
+
 import '../../core/app_scope.dart';
 import '../../data/jobs_models.dart';
 import '../../data/quotes.dart';
@@ -50,7 +52,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
     await notes.markJobsSeen();
   }
 
-  void _open(Vacancy v) => Navigator.of(context).push(MaterialPageRoute(builder: (_) => VacancyDetailScreen(vacancy: v)));
+  void _open(Vacancy v) => Navigator.of(context).push(SectionRoute(context, builder: (_) => VacancyDetailScreen(vacancy: v)));
 
   @override
   Widget build(BuildContext context) {

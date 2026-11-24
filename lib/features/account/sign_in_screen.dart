@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import '../../core/theme/section_theme.dart';
+
 import '../../core/app_scope.dart';
 import '../../data/student_profile.dart';
 import 'auth_form.dart';
@@ -38,7 +40,7 @@ class _SignInFormState extends State<SignInForm> with AuthFormMixin {
     super.dispose();
   }
 
-  void _open(Widget screen) => Navigator.of(context).push(MaterialPageRoute(builder: (_) => screen));
+  void _open(Widget screen) => Navigator.of(context).push(SectionRoute(context, builder: (_) => screen));
 
   @override
   Widget build(BuildContext context) {
@@ -155,7 +157,8 @@ class _CreateAccountScreenState extends State<CreateAccountScreen> with AuthForm
                       if (mounted) backToStart(this.context);
                     } else {
                       await Navigator.of(this.context).push(
-                        MaterialPageRoute(
+                        SectionRoute(
+                          this.context,
                           builder: (_) => VerifyCodeScreen(email: email, question: question, answer: answer),
                         ),
                       );

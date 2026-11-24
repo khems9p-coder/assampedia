@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 
+import '../../core/theme/section_theme.dart';
+
 import '../../core/app_scope.dart';
 import '../../data/models.dart';
 import '../dictionary/term_sheet.dart';
@@ -115,7 +117,8 @@ class _SearchScreenState extends State<SearchScreen> {
                               subtitle: Text(h.snippet, maxLines: 3, overflow: TextOverflow.ellipsis),
                               trailing: h.lang == lang ? null : Text(h.lang.label, style: theme.textTheme.labelSmall),
                               onTap: () => Navigator.of(context).push(
-                                MaterialPageRoute(
+                                SectionRoute(
+                                  context,
                                   builder: (_) => ReaderScreen(contentId: h.contentId, initialBlockKey: h.blockKey),
                                 ),
                               ),

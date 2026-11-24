@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../core/theme/section_theme.dart';
+
 import '../../core/app_scope.dart';
 import '../../core/i18n/app_lang.dart';
 import '../../core/i18n/strings.dart';
@@ -86,7 +88,7 @@ class _VacancyListState extends State<VacancyList> with AutomaticKeepAliveClient
     return list;
   }
 
-  void _open(Vacancy v) => Navigator.of(context).push(MaterialPageRoute(builder: (_) => VacancyDetailScreen(vacancy: v)));
+  void _open(Vacancy v) => Navigator.of(context).push(SectionRoute(context, builder: (_) => VacancyDetailScreen(vacancy: v)));
 
   Widget _filters(List<Vacancy> all) {
     final s = context.s;

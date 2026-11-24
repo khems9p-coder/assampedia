@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../core/theme/section_theme.dart';
+
 import '../../core/app_scope.dart';
 import '../../core/widgets/common.dart';
 import '../../data/practice_models.dart';
@@ -101,7 +103,8 @@ class _PracticeScreenState extends State<PracticeScreen> {
                                 set: x,
                                 best: progress.best(x.id),
                                 // The first 3 of each type (counted before the level filter) and all daily ones are free.
-                                locked: x.kind != QuizKind.daily &&
+                                locked:
+                                    x.kind != QuizKind.daily &&
                                     !context.services.premium.canOpen(
                                       indexInGroup: snap.data!.where((y) => y.kind == x.kind).toList().indexOf(x),
                                     ),
@@ -134,7 +137,7 @@ class _SetCard extends StatelessWidget {
       if (set.timeLimitMinutes != null) s.minutes(set.timeLimitMinutes!),
       if (best != null) s.bestScore(best!.score, best!.total),
     ].join(' · ');
-    void open(Widget screen) => Navigator.of(context).push(MaterialPageRoute(builder: (_) => screen));
+    void open(Widget screen) => Navigator.of(context).push(SectionRoute(context, builder: (_) => screen));
     return Card(
       margin: const EdgeInsets.only(bottom: 8),
       child: Column(

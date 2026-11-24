@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+
+import '../../core/theme/section_theme.dart';
+
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -33,9 +36,14 @@ class HomeDrawer extends StatelessWidget {
     final name = (auth.profile?.fullName ?? '').trim();
 
     void close() => Navigator.of(context).pop();
-    void push(Widget screen) {
+    void push(Widget screen, [Color? color]) {
       close();
-      Navigator.of(context).push(MaterialPageRoute(builder: (_) => screen));
+      Navigator.of(context).push(
+        SectionRoute(
+          context,
+          builder: (_) => color == null ? screen : SectionTheme(color: color, child: screen),
+        ),
+      );
     }
 
     void tab(int i) {
@@ -85,10 +93,10 @@ class HomeDrawer extends StatelessWidget {
             item(Icons.home_outlined, s.navHome, close, selected: true),
             if (auth.isSignedIn) item(Icons.account_circle_outlined, s.myProfile, () => push(const ProfileScreen())),
             item(Icons.notifications_outlined, s.notifications, () => push(const NotificationsScreen())),
-            item(Icons.workspace_premium_outlined, s.premium, () => push(const PaywallScreen())),
-            item(Icons.quiz_outlined, s.practiceZone, () => push(const PracticeScreen())),
-            item(Icons.translate, s.dictionary, () => push(const DictionaryScreen())),
-            item(Icons.bookmarks_outlined, s.saved, () => push(const SavedScreen())),
+            item(Icons.workspace_premium_outlined, s.premium, () => push(const PaywallScreen(), SectionColors.premium)),
+            item(Icons.quiz_outlined, s.practiceZone, () => push(const PracticeScreen(), SectionColors.practice)),
+            item(Icons.translate, s.dictionary, () => push(const DictionaryScreen(), SectionColors.dictionary)),
+            item(Icons.bookmarks_outlined, s.saved, () => push(const SavedScreen(), SectionColors.saved)),
             item(Icons.settings_outlined, s.settings, () => tab(Tabs.me)),
             const Divider(indent: 24, endIndent: 24),
             item(Icons.share_outlined, s.shareApp, () {

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../core/theme/section_theme.dart';
+
 import '../../core/app_scope.dart';
 import '../../core/i18n/app_lang.dart';
 import '../reader/reader_screen.dart';
@@ -38,7 +40,8 @@ class SavedScreen extends StatelessWidget {
                 subtitle: Text(lang == AppLang.assamese ? b.titleEn : b.titleAs),
                 trailing: IconButton(tooltip: s.remove, icon: const Icon(Icons.close), onPressed: () => store.remove(b.contentId)),
                 onTap: () => Navigator.of(context).push(
-                  MaterialPageRoute(
+                  SectionRoute(
+                    context,
                     builder: (_) => ReaderScreen(contentId: b.contentId, initialBlockKey: b.blockKey),
                   ),
                 ),

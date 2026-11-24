@@ -10,10 +10,7 @@ class ThemeController extends ChangeNotifier {
   Future<void> load() async {
     final prefs = await SharedPreferences.getInstance();
     final saved = prefs.getString(_key);
-    _mode = ThemeMode.values.firstWhere(
-      (m) => m.name == saved,
-      orElse: () => ThemeMode.system,
-    );
+    _mode = ThemeMode.values.firstWhere((m) => m.name == saved, orElse: () => ThemeMode.system);
     notifyListeners();
   }
 

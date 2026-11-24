@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../core/theme/section_theme.dart';
+
 import '../../core/app_scope.dart';
 import '../../core/i18n/app_lang.dart';
 import '../../core/widgets/common.dart';
@@ -27,7 +29,7 @@ class _AdminChapterListScreenState extends State<AdminChapterListScreen> {
   void _reload() => setState(() => _list = context.services.admin!.chapters(widget.category.id));
 
   Future<void> _open({String? id, int position = 0}) async {
-    await Navigator.of(context).push(MaterialPageRoute(
+    await Navigator.of(context).push(SectionRoute(context, 
       builder: (_) => ChapterEditorScreen(category: widget.category, contentId: id, newPosition: position),
     ));
     _reload();

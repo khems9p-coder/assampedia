@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../core/app_scope.dart';
+import '../../core/theme/section_theme.dart';
 import '../account/account_screen.dart';
 import '../exams/exams_screen.dart';
 import '../jobs/jobs_screen.dart';
@@ -28,15 +29,16 @@ class _MainShellState extends State<MainShell> {
         index: _index,
         children: [
           HomeScreen(openTab: _go),
-          const LearnScreen(),
-          const ExamsScreen(),
-          const JobsScreen(),
+          const SectionTheme(color: SectionColors.learn, child: LearnScreen()),
+          const SectionTheme(color: SectionColors.exams, child: ExamsScreen()),
+          const SectionTheme(color: SectionColors.jobs, child: JobsScreen()),
           const AccountScreen(),
         ],
       ),
       bottomNavigationBar: _FloatingNavBar(
         index: _index,
         onTap: _go,
+        colors: const [null, SectionColors.learn, SectionColors.exams, SectionColors.jobs, null],
         items: [
           (Icons.home_outlined, Icons.home, s.navHome),
           (Icons.menu_book_outlined, Icons.menu_book, s.navLearn),
@@ -51,14 +53,26 @@ class _MainShellState extends State<MainShell> {
 
 /// A rounded bottom bar that floats above the page edge.
 class _FloatingNavBar extends StatelessWidget {
-  const _FloatingNavBar({required this.index, required this.onTap, required this.items});
+  const _FloatingNavBar({required this.index, required this.onTap, required this.items, required this.colors});
   final int index;
   final ValueChanged<int> onTap;
   final List<(IconData, IconData, String)> items;
 
+  /// Each tab's section colour (null: the app's green).
+  final List<Color?> colors;
+
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
+    final dark = Theme.of(context).brightness == Brightness.dark;
+    Color accent(int i) {
+      final c = colors[i];
+      if (c == null) return scheme.onPrimaryContainer;
+      return dark ? Color.lerp(c, Colors.white, 0.55)! : c;
+    }
+
+    Color fill(int i) => colors[i] == null ? scheme.primaryContainer : colors[i]!.withValues(alpha: dark ? 0.35 : 0.16);
+
     return SafeArea(
       top: false,
       child: Padding(
@@ -84,16 +98,13 @@ class _FloatingNavBar extends StatelessWidget {
                           duration: const Duration(milliseconds: 200),
                           height: 56,
                           decoration: BoxDecoration(
-                            color: i == index ? scheme.primaryContainer : Colors.transparent,
+                            color: i == index ? fill(i) : Colors.transparent,
                             borderRadius: BorderRadius.circular(22),
                           ),
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Icon(
-                                i == index ? items[i].$2 : items[i].$1,
-                                color: i == index ? scheme.onPrimaryContainer : scheme.onSurfaceVariant,
-                              ),
+                              Icon(i == index ? items[i].$2 : items[i].$1, color: i == index ? accent(i) : scheme.onSurfaceVariant),
                               const SizedBox(height: 2),
                               Text(
                                 items[i].$3,
@@ -102,7 +113,7 @@ class _FloatingNavBar extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 12,
                                   fontWeight: i == index ? FontWeight.w700 : FontWeight.w500,
-                                  color: i == index ? scheme.onPrimaryContainer : scheme.onSurfaceVariant,
+                                  color: i == index ? accent(i) : scheme.onSurfaceVariant,
                                 ),
                               ),
                             ],

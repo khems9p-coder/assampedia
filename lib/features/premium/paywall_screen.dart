@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../core/theme/section_theme.dart';
+
 import '../../core/app_scope.dart';
 import '../../data/premium_service.dart';
 import '../account/sign_in_screen.dart';
@@ -8,7 +10,7 @@ import '../reader/official_info.dart';
 
 /// Opens [screen] if the reader may, otherwise the Premium page.
 void openOrPaywall(BuildContext context, {required bool allowed, required Widget Function() screen}) {
-  Navigator.of(context).push(MaterialPageRoute(builder: (_) => allowed ? screen() : const PaywallScreen()));
+  Navigator.of(context).push(SectionRoute(context, builder: (_) => allowed ? screen() : const PaywallScreen()));
 }
 
 /// A small lock shown next to Premium-only items in lists.
@@ -94,7 +96,7 @@ class PaywallBody extends StatelessWidget {
                 Text(s.signInToSubscribe, textAlign: TextAlign.center),
                 const SizedBox(height: 8),
                 FilledButton.icon(
-                  onPressed: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const SignInScreen())),
+                  onPressed: () => Navigator.of(context).push(SectionRoute(context, builder: (_) => const SignInScreen())),
                   icon: const Icon(Icons.login),
                   label: Text(s.signIn),
                 ),

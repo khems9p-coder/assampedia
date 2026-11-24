@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../core/theme/section_theme.dart';
+
 import '../../core/app_scope.dart';
 import '../../core/widgets/common.dart';
 import '../../data/models.dart';
@@ -27,7 +29,7 @@ class _AdminTermsScreenState extends State<AdminTermsScreen> {
   }
 
   Future<void> _edit([Term? t]) async {
-    final changed = await Navigator.of(context).push<bool>(MaterialPageRoute(builder: (_) => TermEditorScreen(term: t)));
+    final changed = await Navigator.of(context).push<bool>(SectionRoute(context, builder: (_) => TermEditorScreen(term: t)));
     if (changed == true && mounted) _reload();
   }
 
