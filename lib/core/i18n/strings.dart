@@ -206,7 +206,7 @@ class S {
   String get benefitQuizzes => _t('সকলো কুইজ, আদৰ্শ পৰীক্ষা আৰু ফ্লেচকাৰ্ড', 'All quizzes, mock tests and flashcards');
   String get benefitNews => _t('সকলো সাম্প্ৰতিক ঘটনা', 'All current affairs');
   String get benefitFree => _t('চাকৰিৰ খবৰ সদায় বিনামূলীয়া', 'Job vacancies always stay free');
-  String perMonth(String price) => _t('মাহে $price', '$price per month');
+  String perYear(String price) => _t('বছৰি $price', '$price per year');
   String get subscribe => _t('প্ৰিমিয়াম লওক', 'Subscribe');
   String get restorePurchase => _t('আগৰ ক্ৰয় পুনৰুদ্ধাৰ কৰক', 'Restore purchase');
   String get signInToSubscribe => _t('প্ৰিমিয়াম ল’বলৈ প্ৰথমে ছাইন ইন কৰক।', 'Please sign in first to subscribe.');
