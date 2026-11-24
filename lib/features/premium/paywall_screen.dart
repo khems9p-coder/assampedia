@@ -85,7 +85,7 @@ class PaywallBody extends StatelessWidget {
               const SizedBox(height: 20),
               if (p.price != null)
                 Text(
-                  s.perMonth(p.price!),
+                  s.perYear(p.price!),
                   textAlign: TextAlign.center,
                   style: theme.textTheme.titleLarge?.copyWith(fontWeight: FontWeight.w700),
                 ),
