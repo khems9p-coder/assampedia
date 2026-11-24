@@ -54,7 +54,8 @@ Future<void> main() async {
         language: language,
         theme: theme,
         content: content,
-        auth: AuthService(client),
+        // The demo build (sample content) skips sign-in.
+        auth: AuthService(AppConfig.demoMode ? null : client),
         admin: client == null ? null : AdminRepository(client),
         bookmarks: bookmarks,
         savedJobs: savedJobs,
