@@ -9,6 +9,7 @@ import '../../data/models.dart';
 import '../dictionary/dictionary_screen.dart';
 import 'home_drawer.dart';
 import '../learn/chapter_list_screen.dart';
+import '../notifications/notifications_screen.dart';
 import '../practice/daily_question_card.dart';
 import '../practice/practice_screen.dart';
 import '../premium/paywall_screen.dart';
@@ -36,6 +37,20 @@ class _HomeScreenState extends State<HomeScreen> {
     final repo = context.services.content;
     _cats ??= repo?.categories();
     _loadLast();
+    _jobsChecked ??= _checkJobs();
+  }
+
+  Future<void>? _jobsChecked;
+
+  /// Loads the vacancies so the bell can show how many are new.
+  Future<void> _checkJobs() async {
+    final services = context.services;
+    try {
+      final all = await services.content?.vacancies();
+      if (all != null) services.notifications.updateJobs(all);
+    } catch (_) {
+      // No internet: the bell just shows no count.
+    }
   }
 
   Future<void> _loadLast() async {
@@ -79,6 +94,21 @@ class _HomeScreenState extends State<HomeScreen> {
         title: const Text('ASSAMPEDIA', style: TextStyle(fontWeight: FontWeight.w700, letterSpacing: 1.2)),
         actions: [
           IconButton(tooltip: s.search, icon: const Icon(Icons.search), onPressed: () => _push(const SearchScreen())),
+          ListenableBuilder(
+            listenable: context.services.notifications,
+            builder: (context, _) {
+              final count = context.services.notifications.newJobCount;
+              return IconButton(
+                tooltip: count == 0 ? s.notifications : '${s.notifications}: ${s.newJobsCount(count)}',
+                icon: Badge(
+                  isLabelVisible: count > 0,
+                  label: Text(count > 9 ? '9+' : '$count'),
+                  child: const Icon(Icons.notifications_outlined),
+                ),
+                onPressed: () => _push(const NotificationsScreen()),
+              );
+            },
+          ),
           TextButton(
             style: TextButton.styleFrom(foregroundColor: scheme.onPrimary, minimumSize: const Size(48, 48)),
             onPressed: () => context.services.language.set(lang.other),

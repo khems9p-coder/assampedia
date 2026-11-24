@@ -59,26 +59,34 @@ class S {
   String get welcome => _t('স্বাগতম', 'Welcome');
   String get inspiration =>
       _t('জ্ঞানেই শক্তি। আজিৰ অধ্যয়নেই কাইলৈৰ সফলতা।', "Knowledge is power. What you learn today is tomorrow's success.");
-  String get signInToStart => _t('শিকিবলৈ আৰম্ভ কৰিবলৈ ছাইন ইন কৰক বা নতুন একাউণ্ট খোলক।', 'Sign in or create an account to start learning.');
+  String get signInToStart =>
+      _t('শিকিবলৈ আৰম্ভ কৰিবলৈ ছাইন ইন কৰক বা নতুন একাউণ্ট খোলক।', 'Sign in or create an account to start learning.');
   String get enterEmailPassword => _t('ইমেইল আৰু পাছৱৰ্ড দুয়োটা লিখক।', 'Please enter your email and a password.');
   String get badEmail => _t('শুদ্ধ ইমেইল ঠিকনা লিখক।', 'Please enter a valid email address.');
   String get shortPassword => _t('পাছৱৰ্ড অন্ততঃ ৬টা আখৰৰ হ’ব লাগিব।', 'The password must be at least 6 characters.');
   String get wrongLogin => _t('ইমেইল বা পাছৱৰ্ড ভুল।', 'Wrong email or password.');
   String get accountExists =>
       _t('এই ইমেইলেৰে একাউণ্ট আগতেই আছে। ছাইন ইন কৰক।', 'An account with this email already exists. Please sign in.');
-  String get emailNotConfirmed =>
-      _t('আগতে আপোনাৰ ইমেইলত পঠোৱা লিংকটোত টিপি একাউণ্ট নিশ্চিত কৰক।', 'Please confirm your account first using the link sent to your email.');
-  String get tooManyTries => _t('বহুবাৰ চেষ্টা কৰা হ’ল। কিছু সময় পিছত পুনৰ চেষ্টা কৰক।', 'Too many tries. Please wait a little and try again.');
+  String get emailNotConfirmed => _t(
+    'আগতে আপোনাৰ ইমেইলত পঠোৱা লিংকটোত টিপি একাউণ্ট নিশ্চিত কৰক।',
+    'Please confirm your account first using the link sent to your email.',
+  );
+  String get tooManyTries =>
+      _t('বহুবাৰ চেষ্টা কৰা হ’ল। কিছু সময় পিছত পুনৰ চেষ্টা কৰক।', 'Too many tries. Please wait a little and try again.');
   // Sign-up with an email code, and forgotten passwords.
-  String get strongPasswordRule => _t('অন্ততঃ ৮টা আখৰ: আখৰ, সংখ্যা আৰু এটা বিশেষ চিন (যেনে @ # !) লাগিব।',
-      'At least 8 characters, with letters, numbers and a special character (like @ # !).');
+  String get strongPasswordRule => _t(
+    'অন্ততঃ ৮টা আখৰ: আখৰ, সংখ্যা আৰু এটা বিশেষ চিন (যেনে @ # !) লাগিব।',
+    'At least 8 characters, with letters, numbers and a special character (like @ # !).',
+  );
   String get confirmPassword => _t('পাছৱৰ্ড পুনৰ লিখক', 'Re-enter password');
   String get passwordsDiffer => _t('দুয়োটা পাছৱৰ্ড একে হোৱা নাই।', 'The two passwords are not the same.');
   String get forgotPassword => _t('পাছৱৰ্ড পাহৰিলে?', 'Forgot password?');
   String get noAccountYet => _t('নতুন ছাত্ৰ-ছাত্ৰী?', 'New here?');
   String get enterCode => _t('ক’ড লিখক', 'Enter the code');
-  String codeSentTo(String email) =>
-      _t('$email লৈ এটা ক’ড পঠোৱা হৈছে। ইমেইল (আৰু স্পাম ফ’ল্ডাৰ) চাওক।', 'We sent a code to $email. Check your email (and the spam folder).');
+  String codeSentTo(String email) => _t(
+    '$email লৈ এটা ক’ড পঠোৱা হৈছে। ইমেইল (আৰু স্পাম ফ’ল্ডাৰ) চাওক।',
+    'We sent a code to $email. Check your email (and the spam folder).',
+  );
   String get code => _t('ক’ড', 'Code');
   String get badCode => _t('ক’ডটো ভুল বা ইয়াৰ সময় উকলি গৈছে।', 'The code is wrong or has expired.');
   String get confirm => _t('নিশ্চিত কৰক', 'Confirm');
@@ -110,26 +118,35 @@ class S {
   String get slideJobsCta => _t('চাকৰি চাওক', 'See vacancies');
   String get shareApp => _t('এপটো শ্বেয়াৰ কৰক', 'Share the app');
   String get rateApp => _t('এপটোক ৰেটিং দিয়ক', 'Rate the app');
-  String shareText(String link) => _t('ASSAMPEDIA: অসমৰ সাধাৰণ জ্ঞান, পৰীক্ষা, চাকৰি আৰু কুইজ, অসমীয়া আৰু ইংৰাজীত। $link',
-      'ASSAMPEDIA: Assam GK, exams, jobs and quizzes in Assamese and English. $link');
+  String shareText(String link) => _t(
+    'ASSAMPEDIA: অসমৰ সাধাৰণ জ্ঞান, পৰীক্ষা, চাকৰি আৰু কুইজ, অসমীয়া আৰু ইংৰাজীত। $link',
+    'ASSAMPEDIA: Assam GK, exams, jobs and quizzes in Assamese and English. $link',
+  );
 
   // Security question.
   String get securityQuestion => _t('সুৰক্ষা প্ৰশ্ন', 'Security question');
-  String get securityQuestionHint => _t('পাছৱৰ্ড পাহৰিলে এই প্ৰশ্নৰ উত্তৰ দি নতুন পাছৱৰ্ড দিব পাৰিব।',
-      'If you forget your password, you can answer this question to set a new one.');
+  String get securityQuestionHint => _t(
+    'পাছৱৰ্ড পাহৰিলে এই প্ৰশ্নৰ উত্তৰ দি নতুন পাছৱৰ্ড দিব পাৰিব।',
+    'If you forget your password, you can answer this question to set a new one.',
+  );
   String get chooseQuestion => _t('এটা প্ৰশ্ন বাছক', 'Choose a question');
-  String get answerNeeded => _t('সুৰক্ষা প্ৰশ্ন বাছি উত্তৰ লিখক (অন্ততঃ ২টা আখৰ)।', 'Choose a security question and write an answer (at least 2 letters).');
-  String get answerYourQuestion => _t('আপোনাৰ সুৰক্ষা প্ৰশ্নৰ উত্তৰ দিয়ক আৰু নতুন পাছৱৰ্ড বাছক।', 'Answer your security question and choose a new password.');
+  String get answerNeeded =>
+      _t('সুৰক্ষা প্ৰশ্ন বাছি উত্তৰ লিখক (অন্ততঃ ২টা আখৰ)।', 'Choose a security question and write an answer (at least 2 letters).');
+  String get answerYourQuestion =>
+      _t('আপোনাৰ সুৰক্ষা প্ৰশ্নৰ উত্তৰ দিয়ক আৰু নতুন পাছৱৰ্ড বাছক।', 'Answer your security question and choose a new password.');
   String get wrongAnswer => _t('উত্তৰ মিলা নাই। পুনৰ চেষ্টা কৰক।', "That answer doesn't match. Please try again.");
-  String get answerLocked => _t('বহুবাৰ ভুল উত্তৰ দিয়া হ’ল। ১ ঘণ্টাৰ পিছত পুনৰ চেষ্টা কৰক।', 'Too many wrong answers. Please try again after 1 hour.');
+  String get answerLocked =>
+      _t('বহুবাৰ ভুল উত্তৰ দিয়া হ’ল। ১ ঘণ্টাৰ পিছত পুনৰ চেষ্টা কৰক।', 'Too many wrong answers. Please try again after 1 hour.');
   String get useEmailCode => _t('ইয়াৰ সলনি ইমেইল ক’ড ব্যৱহাৰ কৰক', 'Use an email code instead');
   String get changeAnswerHint => _t('সলনি কৰিবলৈ হে নতুন উত্তৰ লিখক।', 'Write a new answer only if you want to change it.');
 
   // Student profile.
   String get myProfile => _t('মোৰ প্ৰ’ফাইল', 'My profile');
   String get setUpProfile => _t('আপোনাৰ প্ৰ’ফাইল সাজক', 'Set up your profile');
-  String get profileHint => _t('আপোনাৰ বিষয়ে অলপ কওক, যাতে এপটো আপোনাৰ প্ৰস্তুতিৰ বাবে উপযোগী হয়।',
-      'Tell us a little about yourself so the app can suit your preparation.');
+  String get profileHint => _t(
+    'আপোনাৰ বিষয়ে অলপ কওক, যাতে এপটো আপোনাৰ প্ৰস্তুতিৰ বাবে উপযোগী হয়।',
+    'Tell us a little about yourself so the app can suit your preparation.',
+  );
   String get fullName => _t('সম্পূৰ্ণ নাম', 'Full name');
   String get nameNeeded => _t('আপোনাৰ নাম লিখক।', 'Please enter your name.');
   String get education => _t('শিক্ষাগত অৰ্হতা', 'Education');
@@ -169,15 +186,15 @@ class S {
   // Phase 4: exams and careers
   String get examsTab => _t('পৰীক্ষা', 'Exams');
   String get careersTab => _t('কেৰিয়াৰ', 'Careers');
-  String get examsIntro => _t('চৰকাৰী পৰীক্ষাৰ পাঠ্যক্ৰম, যোগ্যতা আৰু পৰীক্ষাৰ ধৰণ।',
-      'Government exam syllabuses, eligibility and exam patterns.');
+  String get examsIntro =>
+      _t('চৰকাৰী পৰীক্ষাৰ পাঠ্যক্ৰম, যোগ্যতা আৰু পৰীক্ষাৰ ধৰণ।', 'Government exam syllabuses, eligibility and exam patterns.');
   String get careersIntro =>
       _t('চৰকাৰী পদবীৰ কাম, দায়িত্ব আৰু কেৰিয়াৰৰ সুযোগ।', 'What government posts involve, and where they can lead.');
   String get officialWebsite => _t('চৰকাৰী ৱেবছাইট', 'Official website');
   String get officialNotification => _t('চৰকাৰী জাননী', 'Official notification');
   String appliesTo(String v) => _t('প্ৰযোজ্য: $v', 'Applies to: $v');
-  String get checkOfficial => _t('আবেদন কৰাৰ আগতে সদায় চৰকাৰী জাননী পৰীক্ষা কৰক।',
-      'Always check the official notification before you apply.');
+  String get checkOfficial =>
+      _t('আবেদন কৰাৰ আগতে সদায় চৰকাৰী জাননী পৰীক্ষা কৰক।', 'Always check the official notification before you apply.');
   String get suggestedLabel => _t('পৰামৰ্শ: চৰকাৰী তথ্য নহয়', 'Suggestion: not official information');
   String get cantOpenLink => _t('লিংকটো খুলিব পৰা নগ’ল।', "Couldn't open the link.");
 
@@ -279,8 +296,10 @@ class S {
   String get premium => _t('প্ৰিমিয়াম', 'Premium');
   String get premiumTitle => _t('ASSAMPEDIA প্ৰিমিয়াম', 'ASSAMPEDIA Premium');
   String get lockedPage => _t('এই পৃষ্ঠাটো প্ৰিমিয়াম সদস্যৰ বাবে।', 'This page is for Premium members.');
-  String get freeNote => _t('প্ৰতিটো গোটৰ প্ৰথম ৩টা পৃষ্ঠা আৰু প্ৰতিবিধ কুইজৰ প্ৰথম ৩টা বিনামূলীয়া।',
-      'The first 3 pages of every group and the first 3 quizzes of every type are free.');
+  String get freeNote => _t(
+    'প্ৰতিটো গোটৰ প্ৰথম ৩টা পৃষ্ঠা আৰু প্ৰতিবিধ কুইজৰ প্ৰথম ৩টা বিনামূলীয়া।',
+    'The first 3 pages of every group and the first 3 quizzes of every type are free.',
+  );
   String get benefitAll => _t('সকলো অধ্যায়, পৰীক্ষা আৰু কেৰিয়াৰৰ পৃষ্ঠা', 'Every chapter, exam and career page');
   String get benefitQuizzes => _t('সকলো কুইজ, আদৰ্শ পৰীক্ষা আৰু ফ্লেচকাৰ্ড', 'All quizzes, mock tests and flashcards');
   String get benefitNews => _t('সকলো সাম্প্ৰতিক ঘটনা', 'All current affairs');
@@ -289,13 +308,24 @@ class S {
   String get subscribe => _t('প্ৰিমিয়াম লওক', 'Subscribe');
   String get restorePurchase => _t('আগৰ ক্ৰয় পুনৰুদ্ধাৰ কৰক', 'Restore purchase');
   String get signInToSubscribe => _t('প্ৰিমিয়াম ল’বলৈ প্ৰথমে ছাইন ইন কৰক।', 'Please sign in first to subscribe.');
-  String get storeUnavailable => _t('Google Playৰ পৰা ইনষ্টল কৰা এপত হে প্ৰিমিয়াম কিনিব পাৰি।',
-      'Premium can be bought in the app installed from Google Play.');
-  String get cancelAnytime => _t('Google Play → চাবস্ক্ৰিপচনত যিকোনো সময়ত বাতিল কৰিব পাৰি।',
-      'Cancel any time in Google Play → Subscriptions.');
+  String get storeUnavailable =>
+      _t('Google Playৰ পৰা ইনষ্টল কৰা এপত হে প্ৰিমিয়াম কিনিব পাৰি।', 'Premium can be bought in the app installed from Google Play.');
+  String get cancelAnytime =>
+      _t('Google Play → চাবস্ক্ৰিপচনত যিকোনো সময়ত বাতিল কৰিব পাৰি।', 'Cancel any time in Google Play → Subscriptions.');
   String premiumUntil(String d) => _t('প্ৰিমিয়াম সক্ৰিয়, $d লৈকে', 'Premium active until $d');
   String get youArePremium => _t('আপুনি প্ৰিমিয়াম সদস্য। ধন্যবাদ!', "You're a Premium member. Thank you!");
   String get manageSubscription => _t('চাবস্ক্ৰিপচন পৰিচালনা কৰক', 'Manage subscription');
   String get freePlan => _t('বিনামূলীয়া', 'Free plan');
   String get seePremium => _t('প্ৰিমিয়াম চাওক', 'See Premium');
+
+  // Notifications
+  String get notifications => _t('জাননী', 'Notifications');
+  String get thoughtForToday => _t('আজিৰ প্ৰেৰণা', 'Thought for today');
+  String get openJobs => _t('খোলা চাকৰিৰ খালী পদ', 'Open job vacancies');
+  String get newBadge => _t('নতুন', 'NEW');
+  String get noOpenJobs => _t('এই মুহূৰ্তত কোনো খোলা খালী পদ নাই।', 'No open vacancies right now.');
+  String get morningQuote => _t('ৰাতিপুৱাৰ প্ৰেৰণা', 'Morning quote');
+  String get morningQuoteHint =>
+      _t('প্ৰতিদিনে ৰাতিপুৱা ৭ বজাত এজন মহান ব্যক্তিৰ প্ৰেৰণাদায়ক বাণী', 'A motivational quote by a great person every day at 7 AM');
+  String newJobsCount(int n) => _t('$nটা নতুন খালী পদ', n == 1 ? '1 new vacancy' : '$n new vacancies');
 }

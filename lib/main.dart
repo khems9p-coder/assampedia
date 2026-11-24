@@ -13,6 +13,7 @@ import 'data/saved_jobs_store.dart';
 import 'data/cached_content_repository.dart';
 import 'data/content_repository.dart';
 import 'data/demo_content_repository.dart';
+import 'data/notification_service.dart';
 import 'data/offline_cache.dart';
 import 'data/practice_models.dart';
 import 'data/premium_service.dart';
@@ -29,7 +30,12 @@ Future<void> main() async {
   final bookmarks = BookmarkStore();
   final savedJobs = SavedJobsStore();
   final progress = PracticeProgressStore();
-  await Future.wait([theme.load(), language.load(), bookmarks.load(), savedJobs.load(), progress.load()]);
+  final notifications = NotificationService();
+  await Future.wait([theme.load(), language.load(), bookmarks.load(), savedJobs.load(), progress.load(), notifications.load()]);
+  // Not awaited: schedules the coming mornings' quotes in the background, and
+  // again in the new language whenever the reader switches.
+  notifications.start(language.lang);
+  language.addListener(() => notifications.start(language.lang));
 
   SupabaseClient? client;
   if (AppConfig.isConfigured) {
@@ -61,6 +67,7 @@ Future<void> main() async {
         savedJobs: savedJobs,
         progress: progress,
         premium: premium,
+        notifications: notifications,
       ),
     ),
   );

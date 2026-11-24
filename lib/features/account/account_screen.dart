@@ -20,7 +20,7 @@ class AccountScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(title: Text(s.navMe)),
       body: ListenableBuilder(
-        listenable: Listenable.merge([services.auth, services.theme, services.premium]),
+        listenable: Listenable.merge([services.auth, services.theme, services.premium, services.notifications]),
         builder: (context, _) {
           final auth = services.auth;
           return RefreshIndicator(
@@ -53,6 +53,14 @@ class AccountScreen extends StatelessWidget {
                     selected: {services.theme.mode},
                     onSelectionChanged: (v) => services.theme.setMode(v.first),
                   ),
+                ),
+                _Section(s.notifications),
+                SwitchListTile(
+                  secondary: const Icon(Icons.notifications_active_outlined),
+                  title: Text(s.morningQuote),
+                  subtitle: Text(s.morningQuoteHint),
+                  value: services.notifications.dailyOn,
+                  onChanged: (on) => services.notifications.setDailyOn(on, context.lang),
                 ),
                 _Section(s.premium),
                 ListTile(

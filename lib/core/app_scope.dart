@@ -6,6 +6,7 @@ import '../data/auth_service.dart';
 import '../data/bookmark_store.dart';
 import '../data/content_repository.dart';
 import '../data/models.dart';
+import '../data/notification_service.dart';
 import '../data/practice_models.dart';
 import '../data/premium_service.dart';
 import '../data/saved_jobs_store.dart';
@@ -25,10 +26,12 @@ class AppServices {
     SavedJobsStore? savedJobs,
     PracticeProgressStore? progress,
     PremiumService? premium,
+    NotificationService? notifications,
   }) : bookmarks = bookmarks ?? BookmarkStore(),
        savedJobs = savedJobs ?? SavedJobsStore(),
        progress = progress ?? PracticeProgressStore(),
-       premium = premium ?? PremiumService();
+       premium = premium ?? PremiumService(),
+       notifications = notifications ?? NotificationService(onDevice: false);
 
   final LanguageController language;
   final ThemeController theme;
@@ -43,6 +46,9 @@ class AppServices {
 
   /// Premium subscription status and purchase.
   final PremiumService premium;
+
+  /// The morning quote notification and new-vacancy count.
+  final NotificationService notifications;
 
   Future<List<Term>>? _terms;
 

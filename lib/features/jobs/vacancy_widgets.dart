@@ -26,17 +26,27 @@ class StatusChip extends StatelessWidget {
     final c = statusColor(context, status);
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
-      decoration: BoxDecoration(color: c.withValues(alpha: 0.12), borderRadius: BorderRadius.circular(20), border: Border.all(color: c)),
-      child: Text(status.label(context.lang), style: Theme.of(context).textTheme.labelSmall?.copyWith(color: c, fontWeight: FontWeight.w700)),
+      decoration: BoxDecoration(
+        color: c.withValues(alpha: 0.12),
+        borderRadius: BorderRadius.circular(20),
+        border: Border.all(color: c),
+      ),
+      child: Text(
+        status.label(context.lang),
+        style: Theme.of(context).textTheme.labelSmall?.copyWith(color: c, fontWeight: FontWeight.w700),
+      ),
     );
   }
 }
 
 /// One vacancy in a list.
 class VacancyCard extends StatelessWidget {
-  const VacancyCard({super.key, required this.vacancy, required this.onTap});
+  const VacancyCard({super.key, required this.vacancy, required this.onTap, this.isNew = false});
   final Vacancy vacancy;
   final VoidCallback onTap;
+
+  /// Shows a NEW label (on the Notifications screen).
+  final bool isNew;
 
   @override
   Widget build(BuildContext context) {
@@ -58,12 +68,28 @@ class VacancyCard extends StatelessWidget {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Expanded(child: Text(vacancy.post(lang), style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600))),
+                  if (isNew)
+                    Container(
+                      margin: const EdgeInsets.only(right: 8, top: 2),
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+                      decoration: BoxDecoration(color: theme.colorScheme.error, borderRadius: BorderRadius.circular(8)),
+                      child: Text(
+                        s.newBadge,
+                        style: theme.textTheme.labelSmall?.copyWith(color: theme.colorScheme.onError, fontWeight: FontWeight.w700),
+                      ),
+                    ),
+                  Expanded(
+                    child: Text(vacancy.post(lang), style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w600)),
+                  ),
                   const SizedBox(width: 8),
                   StatusChip(status: status),
                 ],
               ),
-              if (org != null) Padding(padding: const EdgeInsets.only(top: 2), child: Text(org, style: theme.textTheme.bodyMedium)),
+              if (org != null)
+                Padding(
+                  padding: const EdgeInsets.only(top: 2),
+                  child: Text(org, style: theme.textTheme.bodyMedium),
+                ),
               const SizedBox(height: 8),
               Wrap(
                 spacing: 14,
@@ -103,4 +129,3 @@ class _Meta extends StatelessWidget {
 
 /// Name of a job category in the current language, or "All".
 String categoryLabel(BuildContext context, JobCategory? c) => c == null ? context.s.allCategories : c.name(context.lang);
-
