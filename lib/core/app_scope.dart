@@ -5,6 +5,7 @@ import '../data/admin_repository.dart';
 import '../data/auth_service.dart';
 import '../data/bookmark_store.dart';
 import '../data/content_repository.dart';
+import '../data/saved_jobs_store.dart';
 import '../data/models.dart';
 import 'i18n/app_lang.dart';
 import 'i18n/strings.dart';
@@ -19,7 +20,9 @@ class AppServices {
     required this.auth,
     this.admin,
     BookmarkStore? bookmarks,
-  }) : bookmarks = bookmarks ?? BookmarkStore();
+    SavedJobsStore? savedJobs,
+  }) : bookmarks = bookmarks ?? BookmarkStore(),
+       savedJobs = savedJobs ?? SavedJobsStore();
 
   final LanguageController language;
   final ThemeController theme;
@@ -27,6 +30,7 @@ class AppServices {
   final AuthService auth;
   final AdminRepository? admin;
   final BookmarkStore bookmarks;
+  final SavedJobsStore savedJobs;
 
   Future<List<Term>>? _terms;
 

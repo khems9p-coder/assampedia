@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../core/app_scope.dart';
-import '../../core/widgets/common.dart';
 import '../account/account_screen.dart';
 import '../exams/exams_screen.dart';
+import '../jobs/jobs_screen.dart';
 import '../home/home_screen.dart';
 import '../learn/learn_screen.dart';
 
@@ -28,7 +28,7 @@ class _MainShellState extends State<MainShell> {
         HomeScreen(openLearn: () => _go(1)),
         const LearnScreen(),
         const ExamsScreen(),
-        LaterPhase(title: s.jobsTitle, phase: 5, icon: Icons.work_outline),
+        const JobsScreen(),
         const AccountScreen(),
       ]),
       bottomNavigationBar: NavigationBar(

@@ -4,26 +4,27 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../core/app_scope.dart';
 import '../../data/models.dart';
 
+/// Opens an official web address in the phone's browser.
+Future<void> openLink(BuildContext context, String url) async {
+  final s = context.s;
+  final messenger = ScaffoldMessenger.of(context);
+  final uri = Uri.tryParse(url.trim());
+  var ok = false;
+  if (uri != null && (uri.scheme == 'https' || uri.scheme == 'http')) {
+    try {
+      ok = await launchUrl(uri, mode: LaunchMode.externalApplication);
+    } catch (_) {
+      ok = false;
+    }
+  }
+  if (!ok) messenger.showSnackBar(SnackBar(content: Text(s.cantOpenLink)));
+}
+
 /// For exam and career pages: which version/date the page applies to, and
 /// buttons to the official website and notification.
 class OfficialInfo extends StatelessWidget {
   const OfficialInfo({super.key, required this.chapter});
   final Chapter chapter;
-
-  Future<void> _open(BuildContext context, String url) async {
-    final s = context.s;
-    final messenger = ScaffoldMessenger.of(context);
-    final uri = Uri.tryParse(url.trim());
-    var ok = false;
-    if (uri != null && (uri.scheme == 'https' || uri.scheme == 'http')) {
-      try {
-        ok = await launchUrl(uri, mode: LaunchMode.externalApplication);
-      } catch (_) {
-        ok = false;
-      }
-    }
-    if (!ok) messenger.showSnackBar(SnackBar(content: Text(s.cantOpenLink)));
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,13 +54,13 @@ class OfficialInfo extends StatelessWidget {
               children: [
                 if (chapter.officialUrl != null)
                   FilledButton.tonalIcon(
-                    onPressed: () => _open(context, chapter.officialUrl!),
+                    onPressed: () => openLink(context, chapter.officialUrl!),
                     icon: const Icon(Icons.public, size: 18),
                     label: Text(s.officialWebsite),
                   ),
                 if (chapter.notificationUrl != null)
                   FilledButton.tonalIcon(
-                    onPressed: () => _open(context, chapter.notificationUrl!),
+                    onPressed: () => openLink(context, chapter.notificationUrl!),
                     icon: const Icon(Icons.description_outlined, size: 18),
                     label: Text(s.officialNotification),
                   ),

@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../core/app_scope.dart';
 import '../../core/i18n/app_lang.dart';
 import '../../data/models.dart';
+import '../jobs/vacancy_widgets.dart';
 import '../reader/block_view.dart';
 import '../reader/reader_screen.dart';
 import 'admin_terms_screen.dart';
@@ -65,6 +66,7 @@ class _ChapterEditorScreenState extends State<ChapterEditorScreen> {
   final _versions = {for (final l in AppLang.values) l: _EditVersion()};
   final _blocks = <_EditBlock>[];
   String? _id;
+  DateTime? _eventDate;
   int _position = 0;
   bool _loading = true;
   bool _saving = false;
@@ -111,6 +113,7 @@ class _ChapterEditorScreenState extends State<ChapterEditorScreen> {
       _notification.text = content['notification_url'] as String? ?? '';
       _appliesTo.text = content['applies_to'] as String? ?? '';
       _position = (content['position'] as num?)?.toInt() ?? 0;
+      _eventDate = DateTime.tryParse(content['event_date'] as String? ?? '');
       for (final v in data['versions'] as List) {
         final l = AppLang.fromCode(v['lang'] as String?);
         if (l == null) continue;
@@ -122,7 +125,7 @@ class _ChapterEditorScreenState extends State<ChapterEditorScreen> {
         e.published = v['status'] == 'published';
       }
       final byKey = <String, _EditBlock>{};
-      for (final raw in data['blocks'] as List) {
+      for (final raw in [...data['blocks'] as List]..sort((a, b) => ((a['position'] as num?) ?? 0).compareTo((b['position'] as num?) ?? 0))) {
         final b = Block.fromJson(raw as Map<String, dynamic>);
         final l = AppLang.fromCode(raw['lang'] as String?);
         final eb = byKey.putIfAbsent(b.key, () {
@@ -140,7 +143,9 @@ class _ChapterEditorScreenState extends State<ChapterEditorScreen> {
     if (mounted) setState(() => _loading = false);
   }
 
+  /// Pages that start with standard section headings (exams, careers, news).
   bool get _isExamOrJob => widget.category.section != 'gk';
+  bool get _isNews => widget.category.section == 'ca';
 
   String? _text(TextEditingController c) => c.text.trim().isEmpty ? null : c.text.trim();
 
@@ -206,6 +211,10 @@ class _ChapterEditorScreenState extends State<ChapterEditorScreen> {
       _snack('Add a title in at least one language.');
       return;
     }
+    if (_isNews && _eventDate == null) {
+      _snack('Choose the date of the event first.');
+      return;
+    }
     if (_slug.text.trim().isEmpty) _slug.text = _makeSlug();
     setState(() => _saving = true);
     try {
@@ -219,6 +228,7 @@ class _ChapterEditorScreenState extends State<ChapterEditorScreen> {
         officialUrl: _text(_official),
         notificationUrl: _text(_notification),
         appliesTo: _text(_appliesTo),
+        eventDate: _eventDate,
       );
       _snack('Saved.');
     } catch (e) {
@@ -318,7 +328,7 @@ class _ChapterEditorScreenState extends State<ChapterEditorScreen> {
                 Text('Category: ${widget.category.nameEn}', style: Theme.of(context).textTheme.titleSmall),
                 const SizedBox(height: 12),
                 _pair(wide, [for (final l in AppLang.values) _versionCard(l)]),
-                if (_isExamOrJob) _officialCard(),
+                if (_isNews) _eventDateCard() else if (_isExamOrJob) _officialCard(),
                 const SizedBox(height: 24),
                 Text('Paragraphs and boxes', style: Theme.of(context).textTheme.titleLarge),
                 const Text('Each item has the same place in both languages, so readers keep their place when they switch.'),
@@ -365,6 +375,30 @@ class _ChapterEditorScreenState extends State<ChapterEditorScreen> {
           for (final c in children) Expanded(child: Padding(padding: const EdgeInsets.symmetric(horizontal: 4), child: c)),
         ])
       : Column(children: children);
+
+  /// The date the news event happened. The Current Affairs list is sorted by it.
+  Widget _eventDateCard() {
+    final d = _eventDate;
+    return Card(
+      margin: const EdgeInsets.only(bottom: 12),
+      child: ListTile(
+        leading: const Icon(Icons.event_outlined),
+        title: const Text('Date of the event'),
+        subtitle: Text(d == null ? 'Required. Tap to choose.' : formatDate(d)),
+        trailing: const Icon(Icons.edit_calendar_outlined),
+        onTap: () async {
+          final now = DateTime.now();
+          final picked = await showDatePicker(
+            context: context,
+            initialDate: d ?? now,
+            firstDate: DateTime(2000),
+            lastDate: DateTime(now.year + 1, 12, 31),
+          );
+          if (picked != null) setState(() => _eventDate = picked);
+        },
+      ),
+    );
+  }
 
   /// Official links and the year/version the page applies to (exams and careers).
   Widget _officialCard() {

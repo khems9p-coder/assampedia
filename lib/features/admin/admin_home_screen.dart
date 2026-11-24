@@ -5,6 +5,7 @@ import '../../core/widgets/common.dart';
 import '../../data/models.dart';
 import 'admin_chapter_list_screen.dart';
 import 'admin_terms_screen.dart';
+import 'admin_vacancies_screen.dart';
 
 /// Admin start page: pick a category to manage its chapters.
 class AdminHomeScreen extends StatefulWidget {
@@ -45,6 +46,16 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                 onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AdminTermsScreen())),
               ),
             ),
+            Card(
+              margin: const EdgeInsets.fromLTRB(12, 4, 12, 4),
+              child: ListTile(
+                leading: const Icon(Icons.work_outline),
+                title: const Text('Job vacancies'),
+                subtitle: const Text('Recruitment notices from official notifications'),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => Navigator.of(context).push(MaterialPageRoute(builder: (_) => const AdminVacanciesScreen())),
+              ),
+            ),
             const Padding(
               padding: EdgeInsets.fromLTRB(16, 12, 16, 4),
               child: Text('Choose a group to add or edit its pages.'),
@@ -53,6 +64,7 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
               ('gk', 'Assam GK encyclopedia'),
               ('exam', 'Exam syllabus library'),
               ('job', 'Government careers'),
+              ('ca', 'Current affairs'),
             ]) ...[
               if (snap.data!.any((c) => c.section == section))
                 Padding(

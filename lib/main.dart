@@ -9,6 +9,7 @@ import 'core/theme/theme_controller.dart';
 import 'data/admin_repository.dart';
 import 'data/auth_service.dart';
 import 'data/bookmark_store.dart';
+import 'data/saved_jobs_store.dart';
 import 'data/cached_content_repository.dart';
 import 'data/content_repository.dart';
 import 'data/demo_content_repository.dart';
@@ -22,7 +23,8 @@ Future<void> main() async {
   final theme = ThemeController();
   final language = LanguageController();
   final bookmarks = BookmarkStore();
-  await Future.wait([theme.load(), language.load(), bookmarks.load()]);
+  final savedJobs = SavedJobsStore();
+  await Future.wait([theme.load(), language.load(), bookmarks.load(), savedJobs.load()]);
 
   SupabaseClient? client;
   if (AppConfig.isConfigured) {
@@ -46,6 +48,7 @@ Future<void> main() async {
         auth: AuthService(client),
         admin: client == null ? null : AdminRepository(client),
         bookmarks: bookmarks,
+      savedJobs: savedJobs,
       ),
     ),
   );
