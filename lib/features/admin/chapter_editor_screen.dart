@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:image_picker/image_picker.dart';
 
 import '../../core/theme/section_theme.dart';
 
 import '../../core/app_scope.dart';
 import '../../core/i18n/app_lang.dart';
+import '../../data/admin_repository.dart';
 import '../../data/models.dart';
 import '../jobs/vacancy_widgets.dart';
 import '../reader/block_view.dart';
@@ -524,8 +526,7 @@ class _ChapterEditorScreenState extends State<ChapterEditorScreen> {
               icon: const Icon(Icons.close),
             ),
           ]),
-          if (b.type == BlockType.image)
-            TextField(controller: b.image, decoration: const InputDecoration(labelText: 'Image web address (https://...)')),
+          if (b.type == BlockType.image) _ImagePickerField(controller: b.image),
           _pair(wide, [
             for (final l in AppLang.values)
               TextField(
@@ -537,6 +538,88 @@ class _ChapterEditorScreenState extends State<ChapterEditorScreen> {
           ]),
         ]),
       ),
+    );
+  }
+}
+
+/// Picture of an image block: upload one from the phone's gallery, or paste a
+/// web address. Shows a small preview.
+class _ImagePickerField extends StatefulWidget {
+  const _ImagePickerField({required this.controller});
+  final TextEditingController controller;
+
+  @override
+  State<_ImagePickerField> createState() => _ImagePickerFieldState();
+}
+
+class _ImagePickerFieldState extends State<_ImagePickerField> {
+  bool _uploading = false;
+
+  Future<void> _pick() async {
+    final admin = context.services.admin;
+    if (admin == null) return;
+    final messenger = ScaffoldMessenger.of(context);
+    try {
+      // Large photos are shrunk so chapters load quickly on mobile data.
+      final file = await ImagePicker().pickImage(source: ImageSource.gallery, maxWidth: 1600, maxHeight: 1600, imageQuality: 85);
+      if (file == null) return;
+      setState(() => _uploading = true);
+      final url = await admin.uploadImage(await file.readAsBytes(), file.name);
+      widget.controller.text = url;
+      messenger.showSnackBar(const SnackBar(content: Text('Picture uploaded. Remember to save the chapter.')));
+    } catch (e) {
+      messenger.showSnackBar(SnackBar(content: Text('Upload failed: $e')));
+    } finally {
+      if (mounted) setState(() => _uploading = false);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder<TextEditingValue>(
+      valueListenable: widget.controller,
+      builder: (context, value, _) {
+        final url = value.text.trim();
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 8),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (url.startsWith('http'))
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 8),
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: Image.network(
+                      url,
+                      height: 160,
+                      fit: BoxFit.cover,
+                      errorBuilder: (_, _, _) => const SizedBox(height: 60, child: Center(child: Icon(Icons.broken_image_outlined))),
+                    ),
+                  ),
+                ),
+              Wrap(
+                spacing: 12,
+                runSpacing: 8,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                children: [
+                  FilledButton.icon(
+                    onPressed: _uploading ? null : _pick,
+                    icon: _uploading
+                        ? const SizedBox(width: 18, height: 18, child: CircularProgressIndicator(strokeWidth: 2))
+                        : const Icon(Icons.add_photo_alternate_outlined),
+                    label: Text(_uploading ? 'Uploading…' : (url.isEmpty ? 'Upload picture' : 'Change picture')),
+                  ),
+                  if (url.isNotEmpty && !_uploading)
+                    TextButton.icon(onPressed: widget.controller.clear, icon: const Icon(Icons.delete_outline), label: const Text('Remove')),
+                ],
+              ),
+              const SizedBox(height: 8),
+              TextField(controller: widget.controller, decoration: const InputDecoration(labelText: 'Or paste a picture web address (https://...)')),
+            ],
+          ),
+        );
+      },
     );
   }
 }
