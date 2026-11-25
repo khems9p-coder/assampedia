@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../core/widgets/line_art.dart';
 import '../../core/app_scope.dart';
 import '../../core/theme/section_theme.dart';
 import '../../core/widgets/common.dart';
@@ -51,8 +52,7 @@ class _MockTestsScreenState extends State<MockTestsScreen> {
                     builder: (context, _) => ListView(
                       padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
                       children: [
-                        Text(s.mockTestsHint, style: Theme.of(context).textTheme.bodyMedium),
-                        const SizedBox(height: 12),
+                        IntroCard(text: s.mockTestsHint, art: LineArt.desk),
                         if (mocks.isEmpty)
                           Padding(
                             padding: const EdgeInsets.all(24),

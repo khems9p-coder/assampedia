@@ -92,7 +92,8 @@ class _MockIntroScreenState extends State<MockIntroScreen> {
               SafeArea(
                 top: false,
                 child: Material(
-                  elevation: 3,
+                  color: Theme.of(context).colorScheme.surface,
+                  shape: Border(top: BorderSide(color: Theme.of(context).colorScheme.outlineVariant)),
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(8, 4, 16, 12),
                     child: Column(

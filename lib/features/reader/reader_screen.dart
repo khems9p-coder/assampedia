@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
+import '../../core/widgets/line_art.dart';
 import '../../core/app_scope.dart';
 import '../../core/i18n/app_lang.dart';
 import '../../core/widgets/common.dart';
@@ -385,6 +386,17 @@ class _Header extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
+          // A quiet line drawing above the title.
+          Container(
+            height: wide ? 150 : 120,
+            margin: const EdgeInsets.only(top: 4, bottom: 16),
+            decoration: BoxDecoration(
+              color: Theme.of(context).colorScheme.primaryContainer,
+              borderRadius: BorderRadius.circular(16),
+            ),
+            alignment: Alignment.center,
+            child: LineArtView(LineArt.heritage, height: wide ? 120 : 96),
+          ),
           body,
           if (chapter.appliesTo != null || chapter.officialUrl != null || chapter.notificationUrl != null) ...[
             const SizedBox(height: 12),

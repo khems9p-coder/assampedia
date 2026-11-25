@@ -13,22 +13,9 @@ class LanguageSwitch extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final current = context.lang;
-    final scheme = Theme.of(context).colorScheme;
-    // On a coloured top bar: white outline, white text, white for the chosen one.
-    final onBar = context.findAncestorWidgetOfExactType<AppBar>() != null;
     return SegmentedButton<AppLang>(
       showSelectedIcon: false,
-      style: ButtonStyle(
-        visualDensity: VisualDensity.compact,
-        tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        side: onBar ? WidgetStatePropertyAll(BorderSide(color: scheme.onPrimary.withValues(alpha: 0.7))) : null,
-        foregroundColor: onBar
-            ? WidgetStateProperty.resolveWith((st) => st.contains(WidgetState.selected) ? scheme.primary : scheme.onPrimary)
-            : null,
-        backgroundColor: onBar
-            ? WidgetStateProperty.resolveWith((st) => st.contains(WidgetState.selected) ? scheme.onPrimary : Colors.transparent)
-            : null,
-      ),
+      style: const ButtonStyle(visualDensity: VisualDensity.compact, tapTargetSize: MaterialTapTargetSize.shrinkWrap),
       segments: [for (final l in AppLang.values) ButtonSegment(value: l, label: Text(l.label))],
       selected: {current},
       onSelectionChanged: (sel) {

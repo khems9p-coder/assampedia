@@ -155,7 +155,7 @@ void main() {
     expect(find.text('ASSAMPEDIA'), findsOneWidget);
     expect(find.text('ছাইন ইন কৰক'), findsWidgets);
     // The content stays behind sign-in.
-    expect(find.text('Assam GK Encyclopedia'), findsNothing);
+    expect(find.text('Assam GK'), findsNothing);
 
     await tester.tap(find.text('English'));
     await tester.pumpAndSettle();
@@ -244,7 +244,7 @@ void main() {
     expect(auth.saved?.exams, {ExamTarget.apsc, ExamTarget.police});
     // Now the content opens.
     expect(find.text('Set up your profile'), findsNothing);
-    expect(find.text('Assam GK Encyclopedia'), findsOneWidget);
+    expect(find.text('Assam GK'), findsOneWidget);
   });
 
   testWidgets('First launch asks for a language and remembers it', (tester) async {
@@ -258,7 +258,7 @@ void main() {
     await tester.pumpAndSettle();
 
     expect(services.language.lang, AppLang.english);
-    expect(find.text('Assam GK Encyclopedia'), findsOneWidget);
+    expect(find.text('Assam GK'), findsOneWidget);
     final prefs = await SharedPreferences.getInstance();
     expect(prefs.getString('app_lang'), 'en');
   });
@@ -267,7 +267,7 @@ void main() {
     final services = await _services(lang: 'as');
     await tester.pumpWidget(AssampediaApp(services: services));
     await tester.pumpAndSettle();
-    expect(find.text('অসমৰ সাধাৰণ জ্ঞান'), findsOneWidget);
+    expect(find.text('অসমৰ জ্ঞান'), findsOneWidget);
     // The groups are on the Learn tab (Home no longer repeats them).
     expect(find.text('অসমৰ ইতিহাস'), findsNothing);
     await tester.tap(find.text('শিকক').last);
@@ -475,7 +475,7 @@ void main() {
       final services = await _services(lang: 'en');
       await tester.pumpWidget(AssampediaApp(services: services));
       await tester.pumpAndSettle();
-      await tester.tap(find.text('Exams'));
+      await tester.tap(find.text('Exams').last);
       await tester.pumpAndSettle();
       await tester.tap(find.text('Sample exam group'));
       await tester.pumpAndSettle();
@@ -637,7 +637,7 @@ void main() {
       await tester.pumpAndSettle();
       expect(find.text('Daily Assam GK question'), findsOneWidget);
 
-      await tester.tap(find.text('Practice Zone'));
+      await tester.tap(find.text('Practice'));
       await tester.pumpAndSettle();
       await tester.tap(find.text('Sample quiz (layout test)'));
       await tester.pumpAndSettle();
@@ -752,7 +752,7 @@ void main() {
     final services = await _services(lang: 'en');
     await tester.pumpWidget(AssampediaApp(services: services));
     await tester.pumpAndSettle();
-    await tester.tap(find.text('Practice Zone'));
+    await tester.tap(find.text('Practice'));
     await tester.pumpAndSettle();
 
     await tester.tap(find.text('Flashcards'));
@@ -787,7 +787,7 @@ void main() {
     final withFour = AppServices(language: services.language, theme: services.theme, content: _FourQuizzes(), auth: services.auth);
     await tester.pumpWidget(AssampediaApp(services: withFour));
     await tester.pumpAndSettle();
-    await tester.tap(find.text('Practice Zone'));
+    await tester.tap(find.text('Practice'));
     await tester.pumpAndSettle();
     expect(find.byIcon(Icons.lock_outline), findsOneWidget);
     await tester.tap(find.text('Quiz 4'));

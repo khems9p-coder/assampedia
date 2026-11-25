@@ -443,7 +443,8 @@ class _MockTestScreenState extends State<MockTestScreen> {
         SafeArea(
           top: false,
           child: Material(
-            elevation: 3,
+            color: theme.colorScheme.surface,
+            shape: Border(top: BorderSide(color: theme.colorScheme.outlineVariant)),
             child: Padding(
               padding: const EdgeInsets.fromLTRB(12, 8, 12, 10),
               child: Column(
@@ -453,11 +454,7 @@ class _MockTestScreenState extends State<MockTestScreen> {
                     children: [
                       Expanded(
                         child: OutlinedButton.icon(
-                          style: OutlinedButton.styleFrom(
-                            foregroundColor: Colors.deepPurple,
-                            side: BorderSide(color: Colors.deepPurple.withValues(alpha: marked ? 1 : 0.5)),
-                            backgroundColor: marked ? Colors.deepPurple.withValues(alpha: 0.08) : null,
-                          ),
+                          style: marked ? OutlinedButton.styleFrom(backgroundColor: theme.colorScheme.primaryContainer) : null,
                           onPressed: _toggleMark,
                           icon: Icon(marked ? Icons.bookmark : Icons.bookmark_border),
                           label: Text(marked ? s.unmark : s.markForReview, maxLines: 1, overflow: TextOverflow.ellipsis),
@@ -519,13 +516,13 @@ class _Choice extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 10),
       child: Material(
-        color: selected ? scheme.primary.withValues(alpha: 0.08) : null,
+        color: scheme.surfaceContainerLowest,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(14),
           side: BorderSide(color: color, width: selected ? 2 : 1),
         ),
         child: InkWell(
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(14),
           onTap: onTap,
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 14),
@@ -533,7 +530,7 @@ class _Choice extends StatelessWidget {
               children: [
                 CircleAvatar(
                   radius: 15,
-                  backgroundColor: selected ? scheme.primary : scheme.surfaceContainerHighest,
+                  backgroundColor: selected ? scheme.primary : scheme.primaryContainer,
                   child: Text(letter, style: TextStyle(color: selected ? scheme.onPrimary : scheme.onSurface)),
                 ),
                 const SizedBox(width: 12),
