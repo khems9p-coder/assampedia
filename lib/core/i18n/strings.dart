@@ -224,6 +224,10 @@ class S {
   String get save => _t('ছেভ কৰক', 'Save');
   String get profileSaved => _t('প্ৰ’ফাইল ছেভ হ’ল।', 'Profile saved.');
   String get notSet => _t('দিয়া হোৱা নাই', 'Not set');
+  String get editProfile => _t('প্ৰ’ফাইল সলনি কৰক', 'Edit profile');
+  String get cancel => _t('বাতিল কৰক', 'Cancel');
+  String get preparingFor => _t('প্ৰস্তুতি চলাইছে', 'Preparing for');
+  String get districtTown => _t('জিলা / চহৰ', 'District / town');
   String get checkEmail => _t('নিশ্চিত কৰিবলৈ আপোনাৰ ইমেইল চাওক।', 'Check your email to confirm your account.');
   String signedInAs(String who) => _t('$who হিচাপে ছাইন ইন কৰা হৈছে', 'Signed in as $who');
   String get adminPanel => _t('এডমিন পেনেল', 'Admin panel');

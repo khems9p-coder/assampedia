@@ -20,6 +20,7 @@ import 'package:assampedia/data/premium_service.dart';
 import 'package:assampedia/data/student_profile.dart';
 import 'package:assampedia/core/i18n/strings.dart';
 import 'package:assampedia/features/account/auth_form.dart';
+import 'package:assampedia/features/account/profile_screen.dart';
 import 'package:assampedia/features/admin/section_templates.dart';
 import 'package:assampedia/features/reader/reader_screen.dart';
 import 'package:assampedia/main.dart';
@@ -245,6 +246,25 @@ void main() {
     // Now the content opens.
     expect(find.text('Set up your profile'), findsNothing);
     expect(find.text('Assam GK'), findsOneWidget);
+
+    // Opening the profile again shows the saved bio, not the blank form.
+    tester.state<NavigatorState>(find.byType(Navigator).first).push(MaterialPageRoute<void>(builder: (_) => const ProfileScreen()));
+    await tester.pumpAndSettle();
+    expect(find.text('My profile'), findsOneWidget);
+    expect(find.text('Test Student'), findsOneWidget);
+    expect(find.text('Graduate'), findsOneWidget);
+    expect(find.widgetWithText(TextField, 'Full name'), findsNothing);
+
+    // Edit opens the form with the saved answers filled in; saving returns to the bio.
+    await tester.tap(find.widgetWithText(OutlinedButton, 'Edit profile'));
+    await tester.pumpAndSettle();
+    expect(find.widgetWithText(TextField, 'Full name'), findsOneWidget);
+    await tester.enterText(find.widgetWithText(TextField, 'Full name'), 'Test Student Two');
+    await tester.tap(find.text('Save'));
+    await tester.pumpAndSettle();
+    expect(auth.saved?.fullName, 'Test Student Two');
+    expect(find.widgetWithText(TextField, 'Full name'), findsNothing);
+    expect(find.text('Test Student Two'), findsOneWidget);
   });
 
   testWidgets('First launch asks for a language and remembers it', (tester) async {
