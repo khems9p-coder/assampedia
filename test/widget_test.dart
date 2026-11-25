@@ -3,6 +3,7 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:assampedia/data/course_models.dart';
+import 'package:assampedia/data/study_models.dart';
 import 'package:assampedia/core/app_scope.dart';
 import 'package:assampedia/core/i18n/app_lang.dart';
 import 'package:assampedia/core/theme/theme_controller.dart';
@@ -113,6 +114,12 @@ class _Switchable implements ContentRepository {
   Future<List<Course>> courses() => _go(inner.courses);
   @override
   Future<List<CourseLesson>> courseLessons(String id) => _go(() => inner.courseLessons(id));
+  @override
+  Future<List<StudySection>> studySections() => _go(inner.studySections);
+  @override
+  Future<List<StudyItem>> studyItems(String id) => _go(() => inner.studyItems(id));
+  @override
+  Future<String> studyFileUrl(String path) => _go(() => inner.studyFileUrl(path));
 }
 
 void main() {
@@ -660,10 +667,12 @@ void main() {
     final services = await _services(lang: 'en');
     await tester.pumpWidget(AssampediaApp(services: services));
     await tester.pumpAndSettle();
-    await tester.tap(find.descendant(of: find.byType(InkWell), matching: find.text('Courses')).last);
+    await tester.tap(find.descendant(of: find.byType(InkWell), matching: find.text('Study')).last);
+    await tester.pumpAndSettle();
+    await tester.tap(find.text('Premium').first);
     await tester.pumpAndSettle();
     expect(find.text('Sample course (layout test)'), findsOneWidget);
-    expect(find.text('4 lessons'), findsOneWidget);
+    expect(find.textContaining('4 lessons'), findsOneWidget);
     await tester.tap(find.text('Sample course (layout test)'));
     await tester.pumpAndSettle();
     expect(find.text('0 of 4 done'), findsOneWidget);
@@ -683,6 +692,57 @@ void main() {
     await tester.pumpAndSettle();
     expect(find.text('Premium'), findsWidgets);
     expect(services.courseProgress.isDone('l4'), isFalse);
+  });
+
+  testWidgets('Study tab: free PDFs under Free; premium sections preview 3 items, then lock', (tester) async {
+    tester.view.physicalSize = const Size(1200, 2600);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(tester.view.reset);
+    final services = await _services(lang: 'en');
+    await tester.pumpWidget(AssampediaApp(services: services));
+    await tester.pumpAndSettle();
+    await tester.tap(find.descendant(of: find.byType(InkWell), matching: find.text('Study')).last);
+    await tester.pumpAndSettle();
+    expect(find.text('Free PDF Study Material'), findsOneWidget);
+    expect(find.text('Sample premium notes'), findsNothing);
+    await tester.tap(find.text('Free PDF Study Material'));
+    await tester.pumpAndSettle();
+    expect(find.text('Sample PDF (layout test)'), findsOneWidget);
+    expect(find.text('PDF · 1.1 MB · Free'), findsOneWidget);
+    await tester.pageBack();
+    await tester.pumpAndSettle();
+
+    await tester.tap(find.text('Premium').first);
+    await tester.pumpAndSettle();
+    expect(find.text('Unlock everything with Premium'), findsOneWidget);
+    await tester.tap(find.text('Sample premium notes'));
+    await tester.pumpAndSettle();
+    expect(find.text('Sample sub-section'), findsOneWidget);
+    expect(find.text('Sample video class'), findsOneWidget);
+    expect(find.byIcon(Icons.lock_outline), findsOneWidget);
+    expect(find.text('Unlock 1 more with Premium'), findsOneWidget);
+    await tester.tap(find.text('Sample locked notes'));
+    await tester.pumpAndSettle();
+    expect(find.text('All notes, PDFs and videos'), findsOneWidget);
+  });
+
+  test('YouTube links give their video id; other links do not', () {
+    expect(youTubeId('https://youtu.be/abc123'), 'abc123');
+    expect(youTubeId('https://www.youtube.com/watch?v=xyz&t=5'), 'xyz');
+    expect(youTubeId('https://m.youtube.com/shorts/s1'), 's1');
+    expect(youTubeId('https://example.com/video'), isNull);
+    expect(fileSizeLabel(1200000), '1.1 MB');
+    expect(fileSizeLabel(2048), '2 KB');
+  });
+
+  test('Sub-sections are found under their parent, in order', () {
+    final all = [
+      StudySection(id: 'b', parentId: 'a', titleEn: 'B', position: 2),
+      StudySection(id: 'a', titleEn: 'A'),
+      StudySection(id: 'c', parentId: 'a', titleEn: 'C', position: 1),
+    ];
+    expect(childSections(all, null).map((s) => s.id), ['a']);
+    expect(childSections(all, 'a').map((s) => s.id), ['c', 'b']);
   });
 
   testWidgets('Phase 6b: flashcards flip and one-liners list the answers', (tester) async {

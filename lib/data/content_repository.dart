@@ -2,6 +2,7 @@ import 'course_models.dart';
 import 'jobs_models.dart';
 import 'models.dart';
 import 'practice_models.dart';
+import 'study_models.dart';
 
 /// Where the app gets its content from.
 abstract class ContentRepository {
@@ -29,6 +30,16 @@ abstract class ContentRepository {
 
   /// The lessons of one course, in order, with which ones are free.
   Future<List<CourseLesson>> courseLessons(String courseId);
+
+  /// Every published study section and sub-section (the app builds the tree).
+  Future<List<StudySection>> studySections();
+
+  /// The items of one section, in order, with which ones are free.
+  Future<List<StudyItem>> studyItems(String sectionId);
+
+  /// A short-lived web address for a study file (PDF or picture). The
+  /// database only gives one when the reader may open the file.
+  Future<String> studyFileUrl(String path);
 }
 
 extension DailyQuestion on ContentRepository {
