@@ -101,7 +101,7 @@ void main() {
     await tester.pumpAndSettle();
     expect(admin.imported.first, '01_introduction');
     expect(admin.imported, orderedEquals([...admin.imported]..sort()));
-    expect(admin.imported.length, 12);
+    expect(admin.imported.length, 13);
     expect(find.text('Added 8 chapters as drafts.'), findsOneWidget); // History
   });
 }

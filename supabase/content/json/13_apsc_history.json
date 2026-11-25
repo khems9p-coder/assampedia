@@ -1,0 +1,935 @@
+{
+ "group": "13_apsc_history",
+ "category_slug": "exams-assam",
+ "category_name": "Assam Government Examinations",
+ "name": "APSC CCE: History syllabus (Exams)",
+ "kind": "exam",
+ "last_checked": "2026-11-24",
+ "terms": [
+  {
+   "slug": "preliminary-exam",
+   "term_en": "Preliminary examination (Prelims)",
+   "term_as": "প্ৰাৰম্ভিক পৰীক্ষা (প্ৰিলিমছ)",
+   "meaning_en": "The first stage of a competitive exam, with objective (multiple choice) questions. It decides who may sit the Mains.",
+   "meaning_as": "প্ৰতিযোগিতামূলক পৰীক্ষাৰ প্ৰথম পৰ্যায়, য'ত বহুবিকল্পী প্ৰশ্ন থাকে। মুখ্য পৰীক্ষাত কোন বহিব পাৰিব, ই তাক নিৰ্ধাৰণ কৰে।"
+  },
+  {
+   "slug": "main-exam",
+   "term_en": "Main examination (Mains)",
+   "term_as": "মুখ্য পৰীক্ষা (মেইনছ)",
+   "meaning_en": "The second stage, with written (descriptive) answers. Its marks count for the final merit list.",
+   "meaning_as": "দ্বিতীয় পৰ্যায়, য'ত লিখিত (বৰ্ণনামূলক) উত্তৰ দিব লাগে। ইয়াৰ নম্বৰ চূড়ান্ত মেধা তালিকাত গণ্য হয়।"
+  },
+  {
+   "slug": "csat",
+   "term_en": "CSAT",
+   "term_as": "চিছেট (CSAT)",
+   "meaning_en": "Civil Services Aptitude Test: the second Prelims paper (reasoning, maths, comprehension). You only need to pass it.",
+   "meaning_as": "চিভিল ছাৰ্ভিচেছ এপ্টিচিউড টেষ্ট: প্ৰাৰম্ভিক পৰীক্ষাৰ দ্বিতীয় কাকত (যুক্তি, গণিত, বুজাবুজি)। ইয়াত কেৱল উত্তীৰ্ণ হ'লেই হয়।"
+  },
+  {
+   "slug": "negative-marking",
+   "term_en": "Negative marking",
+   "term_as": "ঋণাত্মক নম্বৰ",
+   "meaning_en": "Marks taken away for a wrong answer. In APSC Prelims, one quarter of the question's marks is cut for each wrong answer.",
+   "meaning_as": "ভুল উত্তৰৰ বাবে নম্বৰ কটা যোৱা। এপিএছচিৰ প্ৰাৰম্ভিক পৰীক্ষাত প্ৰতিটো ভুল উত্তৰৰ বাবে সেই প্ৰশ্নৰ নম্বৰৰ এক চতুৰ্থাংশ কটা যায়।"
+  },
+  {
+   "slug": "optional-subject",
+   "term_en": "Optional subject",
+   "term_as": "ঐচ্ছিক বিষয়",
+   "meaning_en": "A subject the candidate chooses (such as History) with its own papers. The APSC CCE Mains no longer has one.",
+   "meaning_as": "প্ৰাৰ্থীয়ে নিজে বাছি লোৱা বিষয় (যেনে ইতিহাস), যাৰ নিজা কাকত থাকে। এপিএছচি চিচিইৰ মুখ্য পৰীক্ষাত এতিয়া এনে বিষয় নাই।"
+  }
+ ],
+ "chapters": [
+  {
+   "slug": "apsc-cce-history-overview",
+   "position": 1,
+   "sources": "APSC official website (notifications and syllabus PDF): https://apsc.nic.in/ (could not be opened from our system, please compare with the latest notification).\nCopy of the APSC syllabus PDF: https://smartiasfoundation.com/wp-content/uploads/2025/01/SYLLABUS-FOR-APSC-PDF.pdf\nExam pattern: https://www.drishtiias.com/state-pcs/apsc-exam-pattern\nExam pattern and GS tables: https://spmiasacademy.com/apsc-cce-syllabus-prelims-mains/\nOld History optional (removed): https://www.assams.info/career/history-syllabus-apsc-mains-exam\nTO VERIFY before publishing: (1) negative marking of one quarter (given by Drishti and SPM, not in the syllabus PDF copy); (2) the year the History optional was removed (no source gave it); (3) the paper numbering of the Assam paper (Paper VI in Drishti, GS Paper V in SPM); (4) whether any qualifying language paper is also held in Mains.",
+   "official_url": "https://apsc.nic.in/",
+   "notification_url": "https://apsc.nic.in/",
+   "applies_to": "APSC CCE scheme in use for CCE 2025 and 2026 (check against the latest APSC notification)",
+   "versions": {
+    "en": {
+     "title": "APSC CCE History: where it is asked and how many marks",
+     "summary": "The exam scheme, and every place History appears in Prelims and Mains."
+    },
+    "as": {
+     "title": "এপিএছচি চিচিইত ইতিহাস: ক'ত সোধা হয় আৰু কিমান নম্বৰ",
+     "summary": "পৰীক্ষাৰ আঁচনি, আৰু প্ৰাৰম্ভিক আৰু মুখ্য পৰীক্ষাত ইতিহাস থকা প্ৰতিটো ঠাই।"
+    }
+   },
+   "blocks": {
+    "en": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "The Assam Public Service Commission (APSC) holds the Combined Competitive Examination (CCE) to select officers such as the Assam Civil Service (ACS) and Assam Police Service (APS). It has three stages: the {{term:preliminary-exam|Preliminary examination}}, the {{term:main-exam|Main examination}} and the interview."
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "History is not a separate paper any more. It comes inside the General Studies papers: in Prelims Paper I, in Mains General Studies Paper I, and in the Mains paper on Assam."
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "Exam scheme"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "exam_fact",
+      "body": "Prelims Paper I, General Studies: 200 marks, 100 questions, 2 hours. Its marks decide who goes to Mains.\nPrelims Paper II, General Studies II ({{term:csat|CSAT}}): 200 marks, 80 questions, 2 hours. Qualifying only: you need 33% (66.66 marks).\n{{term:negative-marking|Negative marking}} in Prelims: one quarter of the marks of a question for each wrong answer.\nMains: 6 written papers of 250 marks each, 3 hours each, 1500 marks in all: Essay, General Studies I, II, III, IV and the paper on Assam.\nInterview: 180 marks. Final merit list = Mains + Interview = 1680 marks.\nMains answers may be written in English or Assamese."
+     },
+     {
+      "block_key": "h2",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "Where History comes in"
+     },
+     {
+      "block_key": "l2",
+      "block_type": "list",
+      "style": "normal",
+      "body": "Prelims, General Studies Paper I: History of India and the Indian National Movement. Coaching analyses say about 30 to 35% of this paper's questions are about Assam.\nMains, General Studies Paper I: Indian culture (art, literature, architecture), modern Indian history, the freedom struggle, and India after independence.\nMains, paper on Assam: history of Assam, its dynasties, freedom movement, monuments, arts, literature, festivals, religious movements and leading personalities.\nMains, General Studies Paper II: the historical background of the Indian Constitution."
+     },
+     {
+      "block_key": "f1",
+      "block_type": "fact_box",
+      "style": "verified_fact",
+      "body": "There is no {{term:optional-subject|optional subject}} in the APSC CCE Mains now. Older notices showed History as an optional with two papers (Indian history; and British, European and world history). That optional is no longer part of the exam, so it is not included here."
+     },
+     {
+      "block_key": "h3",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "Syllabus pages in this group"
+     },
+     {
+      "block_key": "l3",
+      "block_type": "list",
+      "style": "normal",
+      "body": "Prelims: History of India and the National Movement\nMains General Studies I: Indian culture and modern Indian history\nMains paper on Assam: History, culture and heritage of Assam"
+     },
+     {
+      "block_key": "h4",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "Official website"
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "Always check the latest notification on the APSC website, apsc.nic.in, before the exam. The scheme above is taken from the APSC syllabus as published for recent exams."
+     }
+    ],
+    "as": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "অসম ৰাজ্যিক লোকসেৱা আয়োগে (এপিএছচি) অসম অসামৰিক সেৱা (এচিএছ) আৰু অসম আৰক্ষী সেৱা (এপিএছ)ৰ দৰে বিষয়া বাছনি কৰিবলৈ সন্মিলিত প্ৰতিযোগিতামূলক পৰীক্ষা (চিচিই) লয়। ইয়াৰ তিনিটা পৰ্যায়: {{term:preliminary-exam|প্ৰাৰম্ভিক পৰীক্ষা}}, {{term:main-exam|মুখ্য পৰীক্ষা}} আৰু সাক্ষাৎকাৰ।"
+     },
+     {
+      "block_key": "p2",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "ইতিহাস এতিয়া পৃথক কাকত নহয়। ই সাধাৰণ অধ্যয়নৰ কাকতবোৰৰ ভিতৰত আছে: প্ৰাৰম্ভিক পৰীক্ষাৰ প্ৰথম কাকতত, মুখ্য পৰীক্ষাৰ সাধাৰণ অধ্যয়ন প্ৰথম কাকতত, আৰু মুখ্য পৰীক্ষাৰ অসম বিষয়ক কাকতত।"
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "পৰীক্ষাৰ আঁচনি"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "exam_fact",
+      "body": "প্ৰাৰম্ভিক প্ৰথম কাকত, সাধাৰণ অধ্যয়ন: ২০০ নম্বৰ, ১০০টা প্ৰশ্ন, ২ ঘণ্টা। ইয়াৰ নম্বৰৰ ভিত্তিত মুখ্য পৰীক্ষালৈ বাছনি হয়।\nপ্ৰাৰম্ভিক দ্বিতীয় কাকত, সাধাৰণ অধ্যয়ন ২ ({{term:csat|চিছেট}}): ২০০ নম্বৰ, ৮০টা প্ৰশ্ন, ২ ঘণ্টা। কেৱল উত্তীৰ্ণ হ'ব লাগে: ৩৩% (৬৬.৬৬ নম্বৰ)।\nপ্ৰাৰম্ভিক পৰীক্ষাত {{term:negative-marking|ঋণাত্মক নম্বৰ}}: প্ৰতিটো ভুল উত্তৰৰ বাবে প্ৰশ্নটোৰ নম্বৰৰ এক চতুৰ্থাংশ কটা যায়।\nমুখ্য পৰীক্ষা: প্ৰতিটো ২৫০ নম্বৰৰ ৬খন লিখিত কাকত, প্ৰতিখন ৩ ঘণ্টা, মুঠ ১৫০০ নম্বৰ: ৰচনা, সাধাৰণ অধ্যয়ন ১, ২, ৩, ৪ আৰু অসম বিষয়ক কাকত।\nসাক্ষাৎকাৰ: ১৮০ নম্বৰ। চূড়ান্ত মেধা তালিকা = মুখ্য পৰীক্ষা + সাক্ষাৎকাৰ = ১৬৮০ নম্বৰ।\nমুখ্য পৰীক্ষাৰ উত্তৰ ইংৰাজী বা অসমীয়াত লিখিব পাৰি।"
+     },
+     {
+      "block_key": "h2",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "ইতিহাস ক'ত আছে"
+     },
+     {
+      "block_key": "l2",
+      "block_type": "list",
+      "style": "normal",
+      "body": "প্ৰাৰম্ভিক, সাধাৰণ অধ্যয়ন প্ৰথম কাকত: ভাৰতৰ ইতিহাস আৰু ভাৰতীয় জাতীয় আন্দোলন। কোচিং বিশ্লেষণ অনুসৰি এই কাকতৰ প্ৰায় ৩০ ৰ পৰা ৩৫% প্ৰশ্ন অসম সম্পৰ্কীয়।\nমুখ্য, সাধাৰণ অধ্যয়ন প্ৰথম কাকত: ভাৰতীয় সংস্কৃতি (কলা, সাহিত্য, স্থাপত্য), আধুনিক ভাৰতৰ ইতিহাস, স্বাধীনতা সংগ্ৰাম আৰু স্বাধীনতাৰ পিছৰ ভাৰত।\nমুখ্য, অসম বিষয়ক কাকত: অসমৰ ইতিহাস, ৰাজবংশ, স্বাধীনতা আন্দোলন, কীৰ্তিচিহ্ন, কলা, সাহিত্য, উৎসৱ, ধৰ্মীয় আন্দোলন আৰু বিশিষ্ট ব্যক্তি।\nমুখ্য, সাধাৰণ অধ্যয়ন দ্বিতীয় কাকত: ভাৰতীয় সংবিধানৰ ঐতিহাসিক পটভূমি।"
+     },
+     {
+      "block_key": "f1",
+      "block_type": "fact_box",
+      "style": "verified_fact",
+      "body": "এপিএছচি চিচিইৰ মুখ্য পৰীক্ষাত এতিয়া কোনো {{term:optional-subject|ঐচ্ছিক বিষয়}} নাই। পুৰণি জাননীত ইতিহাস দুখন কাকতৰ ঐচ্ছিক বিষয় আছিল (ভাৰতৰ ইতিহাস; আৰু ব্ৰিটেইন, ইউৰোপ আৰু বিশ্বৰ ইতিহাস)। সেই ঐচ্ছিক বিষয় এতিয়া পৰীক্ষাত নাই, সেয়ে ইয়াত দিয়া হোৱা নাই।"
+     },
+     {
+      "block_key": "h3",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "এই গোটৰ পাঠ্যক্ৰমৰ পৃষ্ঠাসমূহ"
+     },
+     {
+      "block_key": "l3",
+      "block_type": "list",
+      "style": "normal",
+      "body": "প্ৰাৰম্ভিক: ভাৰতৰ ইতিহাস আৰু জাতীয় আন্দোলন\nমুখ্য সাধাৰণ অধ্যয়ন ১: ভাৰতীয় সংস্কৃতি আৰু আধুনিক ভাৰতৰ ইতিহাস\nমুখ্য অসম বিষয়ক কাকত: অসমৰ ইতিহাস, সংস্কৃতি আৰু ঐতিহ্য"
+     },
+     {
+      "block_key": "h4",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "চৰকাৰী ৱেবছাইট"
+     },
+     {
+      "block_key": "p3",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "পৰীক্ষাৰ আগতে সদায় এপিএছচিৰ ৱেবছাইট apsc.nic.in ত শেহতীয়া জাননী চাওক। ওপৰৰ আঁচনিখন শেহতীয়া পৰীক্ষাৰ বাবে প্ৰকাশিত এপিএছচিৰ পাঠ্যক্ৰমৰ পৰা লোৱা হৈছে।"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "apsc-cce-prelims-history",
+   "position": 2,
+   "sources": "APSC official website (notifications and syllabus PDF): https://apsc.nic.in/ (could not be opened from our system, please compare with the latest notification).\nCopy of the APSC syllabus PDF: https://smartiasfoundation.com/wp-content/uploads/2025/01/SYLLABUS-FOR-APSC-PDF.pdf\nExam pattern: https://www.drishtiias.com/state-pcs/apsc-exam-pattern\nExam pattern and GS tables: https://spmiasacademy.com/apsc-cce-syllabus-prelims-mains/\nOld History optional (removed): https://www.assams.info/career/history-syllabus-apsc-mains-exam\nThe detailed topic lists are our study guide built on the official line; they are not APSC's words.",
+   "official_url": "https://apsc.nic.in/",
+   "notification_url": "https://apsc.nic.in/",
+   "applies_to": "APSC CCE scheme in use for CCE 2025 and 2026 (check against the latest APSC notification)",
+   "versions": {
+    "en": {
+     "title": "APSC Prelims: History of India and the National Movement",
+     "summary": "The official Prelims line, opened up into every period and topic to study."
+    },
+    "as": {
+     "title": "এপিএছচি প্ৰাৰম্ভিক: ভাৰতৰ ইতিহাস আৰু জাতীয় আন্দোলন",
+     "summary": "প্ৰাৰম্ভিক পৰীক্ষাৰ চৰকাৰী শাৰীটো, পঢ়িবলগীয়া প্ৰতিটো যুগ আৰু বিষয়লৈ বহলাই দিয়া হৈছে।"
+    }
+   },
+   "blocks": {
+    "en": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "In the {{term:preliminary-exam|Prelims}} General Studies Paper I (200 marks, 100 questions, 2 hours), the syllabus gives History in one line. Questions come from ancient, medieval and modern India, with special weight on the freedom struggle and on Assam."
+     },
+     {
+      "block_key": "f1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "APSC syllabus: History of India and Indian National Movement."
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "1. Ancient India"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "Sources of ancient history: literature, inscriptions, coins, foreign travellers\nStone Age and Chalcolithic cultures\nIndus Valley (Harappan) civilisation: sites, town planning, seals, trade, decline\nVedic age: Early and Later Vedic society, polity, religion; the four Vedas\nSixteen Mahajanapadas and the rise of Magadha\nBuddhism and Jainism: teachings, councils, spread\nPersian and Greek invasions (Alexander, 326 BCE)\nThe Mauryas: Chandragupta, Ashoka and his dhamma, edicts, administration, decline\nAfter the Mauryas: Sungas, Kanvas, Indo-Greeks, Kushanas (Kanishka), Satavahanas, Sangam age\nThe Guptas: Samudragupta (Allahabad Pillar Inscription names Kamarupa), Chandragupta II, art, science, literature\nHarshavardhana, his ally Bhaskaravarman of Kamarupa, and the visit of Xuanzang\nSouth India: Pallavas, Chalukyas, Rashtrakutas, Cholas"
+     },
+     {
+      "block_key": "h2",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "2. Medieval India"
+     },
+     {
+      "block_key": "l2",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "Rajput kingdoms; Arab conquest of Sind (712); Ghaznavid and Ghurid invasions\nDelhi Sultanate: Slave, Khalji, Tughlaq, Sayyid and Lodi dynasties; administration and economy\nBakhtiyar Khalji's failed attack on Kamarupa (1206)\nVijayanagara and Bahmani kingdoms\nBhakti and Sufi movements: Ramananda, Kabir, Chaitanya, Nanak, Mirabai, Sankardev\nThe Mughals: Babur to Aurangzeb, Sher Shah Sur, Akbar's administration (mansabdari) and religious policy\nMughal art, architecture and literature\nRise of the Marathas: Shivaji and the Peshwas\nRegional kingdoms of the Northeast: Ahom, Koch, Chutia, Kachari, Jaintia; Mughal-Ahom wars and Saraighat (1671)"
+     },
+     {
+      "block_key": "h3",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "3. Modern India"
+     },
+     {
+      "block_key": "l3",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "Coming of the Europeans: Portuguese, Dutch, English, French\nBritish conquest: Plassey (1757), Buxar (1764), Anglo-Mysore, Anglo-Maratha and Anglo-Sikh wars\nGovernors-General and their policies: Hastings, Cornwallis, Wellesley (Subsidiary Alliance), Bentinck, Dalhousie (Doctrine of Lapse)\nLand revenue systems: Permanent Settlement, Ryotwari, Mahalwari; drain of wealth\nAnglo-Burmese war and the {{term:treaty-of-yandabo|Treaty of Yandabo}} (1826)\nSocio-religious reform: Raja Rammohun Roy, Brahmo Samaj, Arya Samaj, Ramakrishna Mission, Aligarh movement\nThe Revolt of 1857: causes, leaders, spread (including Maniram Dewan in Assam), results\nRule of the Crown after 1858; growth of education and the press"
+     },
+     {
+      "block_key": "h4",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "4. The Indian National Movement"
+     },
+     {
+      "block_key": "l4",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "Early associations and the Indian National Congress (1885); Moderates and Extremists\nPartition of Bengal (1905) and the Swadeshi movement; Muslim League (1906); Surat split (1907)\nMorley-Minto Reforms (1909); Home Rule Leagues (1916); Lucknow Pact (1916)\nGandhi's early struggles: Champaran, Kheda, Ahmedabad\nRowlatt Act and Jallianwala Bagh (1919); Khilafat and Non-Cooperation (1920 to 1922)\nSwaraj Party, Simon Commission (1927), Nehru Report (1928), Purna Swaraj (1929)\nCivil Disobedience and the Dandi March (1930); Round Table Conferences; Poona Pact (1932)\nGovernment of India Act 1935 and the 1937 provincial ministries\n{{term:quit-india-movement|Quit India Movement}} (1942), Subhas Chandra Bose and the INA\n{{term:cabinet-mission|Cabinet Mission}} (1946), Mountbatten Plan and Independence (1947)\nRevolutionary movements and the role of women, peasants and tribal people"
+     },
+     {
+      "block_key": "h5",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "Read these in ASSAMPEDIA (GK > History of Assam)"
+     },
+     {
+      "block_key": "l5",
+      "block_type": "list",
+      "style": "normal",
+      "body": "Ancient Assam: Pragjyotisha and Kamarupa\nThe Ahom kingdom (1228 to 1826)\nThe Koch kingdom\nMughal invasions and the Battle of Saraighat\nBurmese invasions and the Treaty of Yandabo\nAssam under British rule\nAssam in the freedom struggle\nThe Assam Movement and the Assam Accord"
+     },
+     {
+      "block_key": "tip1",
+      "block_type": "paragraph",
+      "style": "suggested",
+      "body": "Prelims questions are short facts: dates, firsts, pairs (person and work), places. For each topic above, make one-line notes and practise with the quizzes in the Practice tab."
+     }
+    ],
+    "as": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "{{term:preliminary-exam|প্ৰাৰম্ভিক পৰীক্ষাৰ}} সাধাৰণ অধ্যয়ন প্ৰথম কাকতত (২০০ নম্বৰ, ১০০টা প্ৰশ্ন, ২ ঘণ্টা) পাঠ্যক্ৰমত ইতিহাস এটা শাৰীত দিয়া আছে। প্ৰশ্ন প্ৰাচীন, মধ্যযুগীয় আৰু আধুনিক ভাৰতৰ পৰা আহে, বিশেষকৈ স্বাধীনতা সংগ্ৰাম আৰু অসমৰ ওপৰত বেছি গুৰুত্ব থাকে।"
+     },
+     {
+      "block_key": "f1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "এপিএছচিৰ পাঠ্যক্ৰম: ভাৰতৰ ইতিহাস আৰু ভাৰতীয় জাতীয় আন্দোলন।"
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "১. প্ৰাচীন ভাৰত"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "প্ৰাচীন ইতিহাসৰ উৎস: সাহিত্য, শিলালিপি, মুদ্ৰা, বিদেশী পৰিব্ৰাজক\nপ্ৰস্তৰ যুগ আৰু তাম্ৰ-প্ৰস্তৰ যুগৰ সংস্কৃতি\nসিন্ধু উপত্যকা (হৰপ্পা) সভ্যতা: স্থান, নগৰ পৰিকল্পনা, মোহৰ, বাণিজ্য, অৱক্ষয়\nবৈদিক যুগ: আদি আৰু পৰৱৰ্তী বৈদিক সমাজ, ৰাজনীতি, ধৰ্ম; চাৰিখন বেদ\nষোল্লটা মহাজনপদ আৰু মগধৰ উত্থান\nবৌদ্ধ আৰু জৈন ধৰ্ম: শিক্ষা, সংগীতি, বিস্তাৰ\nপাৰস্য আৰু গ্ৰীক আক্ৰমণ (আলেকজেণ্ডাৰ, খ্ৰীঃ পূঃ ৩২৬)\nমৌৰ্য বংশ: চন্দ্ৰগুপ্ত, অশোক আৰু তেওঁৰ ধম্ম, শিলালিপি, প্ৰশাসন, পতন\nমৌৰ্যৰ পিছত: শুংগ, কাণ্ব, ইণ্ডো-গ্ৰীক, কুষাণ (কণিষ্ক), সাতবাহন, সংগম যুগ\nগুপ্ত বংশ: সমুদ্ৰগুপ্ত (এলাহাবাদ স্তম্ভলিপিত কামৰূপৰ নাম আছে), দ্বিতীয় চন্দ্ৰগুপ্ত, কলা, বিজ্ঞান, সাহিত্য\nহৰ্ষবৰ্ধন, তেওঁৰ মিত্ৰ কামৰূপৰ ভাস্কৰবৰ্মন, আৰু হিউৱেন চাঙৰ ভ্ৰমণ\nদাক্ষিণাত্য: পল্লৱ, চালুক্য, ৰাষ্ট্ৰকূট, চোল"
+     },
+     {
+      "block_key": "h2",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "২. মধ্যযুগৰ ভাৰত"
+     },
+     {
+      "block_key": "l2",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "ৰাজপুত ৰাজ্যসমূহ; আৰবৰ সিন্ধু বিজয় (৭১২); গজনী আৰু ঘোৰীৰ আক্ৰমণ\nদিল্লী ছুলতানী: দাস, খিলজী, তোগলক, ছৈয়দ আৰু লোদী বংশ; প্ৰশাসন আৰু অৰ্থনীতি\nবখতিয়াৰ খিলজীৰ বিফল কামৰূপ আক্ৰমণ (১২০৬)\nবিজয়নগৰ আৰু বাহমনী ৰাজ্য\nভক্তি আৰু ছুফী আন্দোলন: ৰামানন্দ, কবীৰ, চৈতন্য, নানক, মীৰাবাই, শংকৰদেৱ\nমোগল: বাবৰৰ পৰা ঔৰংজেবলৈ, শ্বেৰশ্বাহ শূৰ, আকবৰৰ প্ৰশাসন (মনচবদাৰী) আৰু ধৰ্মনীতি\nমোগল কলা, স্থাপত্য আৰু সাহিত্য\nমাৰাঠাৰ উত্থান: শিৱাজী আৰু পেছোৱা\nউত্তৰ-পূৰ্বৰ আঞ্চলিক ৰাজ্য: আহোম, কোচ, চুতীয়া, কছাৰী, জয়ন্তীয়া; মোগল-আহোম যুদ্ধ আৰু শৰাইঘাট (১৬৭১)"
+     },
+     {
+      "block_key": "h3",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "৩. আধুনিক ভাৰত"
+     },
+     {
+      "block_key": "l3",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "ইউৰোপীয়সকলৰ আগমন: পৰ্তুগীজ, ডাচ, ইংৰাজ, ফৰাচী\nব্ৰিটিছৰ ৰাজ্য বিস্তাৰ: পলাশী (১৭৫৭), বক্সাৰ (১৭৬৪), ইংৰাজ-মহীশূৰ, ইংৰাজ-মাৰাঠা আৰু ইংৰাজ-শিখ যুদ্ধ\nগৱৰ্ণৰ জেনেৰেলসকল আৰু তেওঁলোকৰ নীতি: হেষ্টিংছ, কৰ্ণৱালিছ, ৱেলেছলী (অধীনতামূলক মিত্ৰতা), বেণ্টিংক, ডালহৌচী (স্বত্ববিলোপ নীতি)\nভূমি ৰাজহ ব্যৱস্থা: চিৰস্থায়ী বন্দোবস্ত, ৰায়তৱাৰী, মহলৱাৰী; সম্পদ নিষ্কাশন\nইংৰাজ-বৰ্মী যুদ্ধ আৰু {{term:treaty-of-yandabo|ইয়াণ্ডাবুৰ সন্ধি}} (১৮২৬)\nসমাজ-ধৰ্ম সংস্কাৰ: ৰাজা ৰামমোহন ৰায়, ব্ৰাহ্ম সমাজ, আৰ্য সমাজ, ৰামকৃষ্ণ মিছন, আলীগড় আন্দোলন\n১৮৫৭ চনৰ বিদ্ৰোহ: কাৰণ, নেতা, বিস্তাৰ (অসমত মণিৰাম দেৱানকে ধৰি), ফলাফল\n১৮৫৮ চনৰ পিছত ব্ৰিটিছ ৰাজমুকুটৰ শাসন; শিক্ষা আৰু সংবাদপত্ৰৰ বিকাশ"
+     },
+     {
+      "block_key": "h4",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "৪. ভাৰতীয় জাতীয় আন্দোলন"
+     },
+     {
+      "block_key": "l4",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "আদিম সংগঠন আৰু ভাৰতীয় ৰাষ্ট্ৰীয় কংগ্ৰেছ (১৮৮৫); নৰমপন্থী আৰু চৰমপন্থী\nবংগ বিভাজন (১৯০৫) আৰু স্বদেশী আন্দোলন; মুছলিম লীগ (১৯০৬); ছুৰাট বিভাজন (১৯০৭)\nমৰ্লে-মিণ্টো সংস্কাৰ (১৯০৯); হোম ৰুল লীগ (১৯১৬); লক্ষ্ণৌ চুক্তি (১৯১৬)\nগান্ধীৰ প্ৰথম সংগ্ৰাম: চম্পাৰণ, খেদা, আহমেদাবাদ\nৰাওলাট আইন আৰু জালিয়ানৱালা বাগ (১৯১৯); খিলাফত আৰু অসহযোগ আন্দোলন (১৯২০ ৰ পৰা ১৯২২)\nস্বৰাজ দল, চাইমন কমিছন (১৯২৭), নেহৰু প্ৰতিবেদন (১৯২৮), পূৰ্ণ স্বৰাজ (১৯২৯)\nআইন অমান্য আন্দোলন আৰু ডাণ্ডী যাত্ৰা (১৯৩০); গোলমেজ বৈঠক; পুণা চুক্তি (১৯৩২)\nভাৰত চৰকাৰ আইন ১৯৩৫ আৰু ১৯৩৭ চনৰ প্ৰাদেশিক মন্ত্ৰিসভা\n{{term:quit-india-movement|ভাৰত ত্যাগ আন্দোলন}} (১৯৪২), নেতাজী সুভাষচন্দ্ৰ বসু আৰু আজাদ হিন্দ ফৌজ\n{{term:cabinet-mission|কেবিনেট মিছন}} (১৯৪৬), মাউণ্টবেটেন পৰিকল্পনা আৰু স্বাধীনতা (১৯৪৭)\nবিপ্লৱী আন্দোলন, আৰু মহিলা, কৃষক আৰু জনজাতীয় লোকৰ ভূমিকা"
+     },
+     {
+      "block_key": "h5",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "ASSAMPEDIA ত পঢ়ক (সাধাৰণ জ্ঞান > অসমৰ ইতিহাস)"
+     },
+     {
+      "block_key": "l5",
+      "block_type": "list",
+      "style": "normal",
+      "body": "প্ৰাচীন অসম: প্ৰাগজ্যোতিষ আৰু কামৰূপ\nআহোম ৰাজ্য (১২২৮ ৰ পৰা ১৮২৬)\nকোচ ৰাজ্য\nমোগল আক্ৰমণ আৰু শৰাইঘাটৰ যুদ্ধ\nমানৰ আক্ৰমণ আৰু ইয়াণ্ডাবুৰ সন্ধি\nব্ৰিটিছ শাসনত অসম\nস্বাধীনতা সংগ্ৰামত অসম\nঅসম আন্দোলন আৰু অসম চুক্তি"
+     },
+     {
+      "block_key": "tip1",
+      "block_type": "paragraph",
+      "style": "suggested",
+      "body": "প্ৰাৰম্ভিক পৰীক্ষাৰ প্ৰশ্ন চমু তথ্যভিত্তিক: তাৰিখ, প্ৰথম, যোৰা (ব্যক্তি আৰু কৃতি), ঠাই। ওপৰৰ প্ৰতিটো বিষয়ৰ বাবে এশাৰীৰ টোকা বনাওক আৰু অনুশীলন টেবত কুইজ কৰি অভ্যাস কৰক।"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "apsc-cce-mains-gs1-history",
+   "position": 3,
+   "sources": "APSC official website (notifications and syllabus PDF): https://apsc.nic.in/ (could not be opened from our system, please compare with the latest notification).\nCopy of the APSC syllabus PDF: https://smartiasfoundation.com/wp-content/uploads/2025/01/SYLLABUS-FOR-APSC-PDF.pdf\nExam pattern: https://www.drishtiias.com/state-pcs/apsc-exam-pattern\nExam pattern and GS tables: https://spmiasacademy.com/apsc-cce-syllabus-prelims-mains/\nOld History optional (removed): https://www.assams.info/career/history-syllabus-apsc-mains-exam\nThe detailed topic lists are our study guide built on the official lines; they are not APSC's words.\nTO VERIFY before publishing: the syllabus copies we found list no world history in GS I (UPSC's GS I has it). Check the latest APSC syllabus.",
+   "official_url": "https://apsc.nic.in/",
+   "notification_url": "https://apsc.nic.in/",
+   "applies_to": "APSC CCE scheme in use for CCE 2025 and 2026 (check against the latest APSC notification)",
+   "versions": {
+    "en": {
+     "title": "APSC Mains GS I: Indian culture and modern Indian history",
+     "summary": "The four history areas of General Studies Paper I, with every topic under them."
+    },
+    "as": {
+     "title": "এপিএছচি মুখ্য সাধাৰণ অধ্যয়ন ১: ভাৰতীয় সংস্কৃতি আৰু আধুনিক ভাৰতৰ ইতিহাস",
+     "summary": "সাধাৰণ অধ্যয়ন প্ৰথম কাকতৰ ইতিহাসৰ চাৰিটা ভাগ, প্ৰতিটোৰ তলৰ সকলো বিষয়ৰ সৈতে।"
+    }
+   },
+   "blocks": {
+    "en": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "General Studies Paper I of the {{term:main-exam|Mains}} (250 marks, 3 hours) covers Indian heritage and culture, history, society and geography. Its history part has four areas."
+     },
+     {
+      "block_key": "f1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "APSC syllabus, in short:\n1. Indian culture: the main aspects of art forms, literature and architecture from ancient to modern times.\n2. Modern Indian history from about the middle of the eighteenth century until the present: significant events, personalities and issues.\n3. The freedom struggle: its various stages and important contributors from different parts of the country.\n4. Post-independence consolidation and reorganisation within the country."
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "1. Indian culture: art, literature, architecture"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "Architecture: Harappan cities; Mauryan pillars and stupas; rock-cut caves (Ajanta, Ellora, Elephanta); temple styles Nagara, Dravida and Vesara; Indo-Islamic and Mughal buildings; colonial architecture\nSculpture: Mauryan, Gandhara, Mathura and Amaravati schools; Gupta and Chola bronzes\nPainting: Ajanta murals; Mughal, Rajput and Pahari miniatures; manuscript painting of Assam; Bengal School\nMusic: Hindustani and Carnatic; Bhakti songs; {{term:borgeet|Borgeet}}\nDance: the classical dances recognised by the Sangeet Natak Akademi, including Sattriya of Assam; folk dances\nTheatre and puppetry: Sanskrit drama, Ankiya Naat and Bhaona, folk theatre\nLiterature: Vedic and Sanskrit, Sangam Tamil, Pali and Prakrit, Bhakti literature, Persian and Urdu, modern Indian literature\nReligion and philosophy: six schools of philosophy, Buddhism, Jainism, Bhakti and Sufi traditions\nFairs, festivals, crafts and UNESCO World Heritage Sites of India (Kaziranga, Manas and the Charaideo Moidams in Assam)"
+     },
+     {
+      "block_key": "h2",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "2. Modern Indian history (about 1750 to today)"
+     },
+     {
+      "block_key": "l2",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "Decline of the Mughals and rise of regional powers\nEast India Company: conquest, Subsidiary Alliance, Doctrine of Lapse\nEconomic impact of British rule: land revenue settlements, decline of handicrafts, commercialisation of agriculture, drain of wealth, famines\nTea, oil and coal in Assam; indentured labour for the tea gardens\nEducation policy: Macaulay's Minute (1835), Wood's Despatch (1854), universities (1857)\nPress and public opinion; Indian awakening and reform movements\nPeasant and tribal revolts: Santhal, Indigo, Deccan riots, Phulaguri (1861) and Patharughat (1894) in Assam\nConstitutional development: Regulating Act 1773 to the Indian Independence Act 1947\nImportant personalities: reformers, nationalist leaders, revolutionaries"
+     },
+     {
+      "block_key": "h3",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "3. The freedom struggle: stages and contributors"
+     },
+     {
+      "block_key": "l3",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "Stage 1, the Moderate phase (1885 to 1905): petitions, economic critique, Dadabhai Naoroji\nStage 2, the Extremist phase and Swadeshi (1905 to 1918): Lal-Bal-Pal, boycott, national education\nStage 3, the Gandhian mass movements (1919 to 1947): Non-Cooperation, Civil Disobedience, {{term:quit-india-movement|Quit India}}\nRevolutionary and left movements: Bhagat Singh, HSRA, Chittagong, Congress Socialists\nSubhas Chandra Bose and the INA, which reached the Northeast frontier (Kohima, Moirang, 1944)\nContributors from the Northeast: Gomdhar Konwar, U Tirot Sing, Maniram Dewan, Piyoli Barua, Kanaklata Barua, Kushal Konwar, Bhogeswari Phukanani, Tarun Ram Phukan, Nabin Chandra Bardoloi, Gopinath Bordoloi, Rani Gaidinliu\nContributors from other regions: Tilak, Gokhale, Lala Lajpat Rai, Sardar Patel, Nehru, Ambedkar, Sarojini Naidu, Periyar, Khan Abdul Ghaffar Khan\nThe partition question: {{term:cabinet-mission|Cabinet Mission}} grouping and Assam's resistance; Sylhet referendum (1947)"
+     },
+     {
+      "block_key": "h4",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "4. India after independence"
+     },
+     {
+      "block_key": "l4",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "Integration of princely states (Sardar Patel, V. P. Menon); Manipur and Tripura joining India (1949)\nMaking of the Constitution (1946 to 1950)\nLinguistic reorganisation: Andhra (1953), States Reorganisation Act (1956)\nReorganisation of the Northeast: Nagaland (1963), North-Eastern Areas (Reorganisation) Act 1971, Meghalaya, Manipur and Tripura as states (1972), Mizoram and Arunachal Pradesh (1987)\n{{term:sixth-schedule|Sixth Schedule}} and autonomous councils\nWars of 1962, 1965 and 1971; the Chinese aggression in Arunachal and Assam (1962)\nPlanning, Green Revolution, land reforms; the Emergency (1975 to 1977)\nThe Assam Movement (1979 to 1985) and the {{term:assam-accord|Assam Accord}}"
+     },
+     {
+      "block_key": "h5",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "Read these in ASSAMPEDIA (GK)"
+     },
+     {
+      "block_key": "l5",
+      "block_type": "list",
+      "style": "normal",
+      "body": "History of Assam: Assam under British rule; Assam in the freedom struggle; The Assam Movement and the Assam Accord\nArt, Culture and Heritage: Sattriya dance and the Sattra institution; Folk dances and music; A short history of Assamese literature\nIntroduction to Assam: How the present state was formed\nPolity and Administration: Sixth Schedule and autonomous councils\nImportant Personalities: Gopinath Bordoloi; Maniram Dewan; Lachit Borphukan"
+     },
+     {
+      "block_key": "tip1",
+      "block_type": "paragraph",
+      "style": "suggested",
+      "body": "Mains answers need analysis, not only facts. For each topic, be ready to write about causes, results and significance, and add an Assam or Northeast example wherever you can."
+     }
+    ],
+    "as": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "{{term:main-exam|মুখ্য পৰীক্ষাৰ}} সাধাৰণ অধ্যয়ন প্ৰথম কাকতত (২৫০ নম্বৰ, ৩ ঘণ্টা) ভাৰতীয় ঐতিহ্য আৰু সংস্কৃতি, ইতিহাস, সমাজ আৰু ভূগোল থাকে। ইয়াৰ ইতিহাসৰ অংশত চাৰিটা ভাগ আছে।"
+     },
+     {
+      "block_key": "f1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "এপিএছচিৰ পাঠ্যক্ৰম, চমুকৈ:\n১. ভাৰতীয় সংস্কৃতি: প্ৰাচীন কালৰ পৰা আধুনিক কাললৈ কলা, সাহিত্য আৰু স্থাপত্যৰ প্ৰধান দিশসমূহ।\n২. প্ৰায় অষ্টাদশ শতিকাৰ মাজভাগৰ পৰা বৰ্তমানলৈ আধুনিক ভাৰতৰ ইতিহাস: গুৰুত্বপূৰ্ণ ঘটনা, ব্যক্তি আৰু বিষয়।\n৩. স্বাধীনতা সংগ্ৰাম: ইয়াৰ বিভিন্ন পৰ্যায় আৰু দেশৰ বিভিন্ন প্ৰান্তৰ গুৰুত্বপূৰ্ণ অৰিহণাকাৰী।\n৪. স্বাধীনতাৰ পিছত দেশৰ ভিতৰত একত্ৰীকৰণ আৰু পুনৰ্গঠন।"
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "১. ভাৰতীয় সংস্কৃতি: কলা, সাহিত্য, স্থাপত্য"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "স্থাপত্য: হৰপ্পাৰ নগৰ; মৌৰ্য স্তম্ভ আৰু স্তূপ; শিল কাটি সজা গুহা (অজন্তা, ইলোৰা, এলিফেণ্টা); নাগৰ, দ্ৰাবিড় আৰু বেসৰ মন্দিৰ শৈলী; ইণ্ডো-ইছলামীয় আৰু মোগল অট্টালিকা; ঔপনিৱেশিক স্থাপত্য\nভাস্কৰ্য: মৌৰ্য, গান্ধাৰ, মথুৰা আৰু অমৰাৱতী শৈলী; গুপ্ত আৰু চোল যুগৰ ব্ৰঞ্জ মূৰ্তি\nচিত্ৰকলা: অজন্তাৰ দেৱালচিত্ৰ; মোগল, ৰাজপুত আৰু পাহাৰী অণুচিত্ৰ; অসমৰ পুথিচিত্ৰ; বংগ শৈলী\nসংগীত: হিন্দুস্তানী আৰু কৰ্ণাটকী; ভক্তিগীত; {{term:borgeet|বৰগীত}}\nনৃত্য: সংগীত নাটক অকাদেমীয়ে স্বীকৃতি দিয়া শাস্ত্ৰীয় নৃত্য, অসমৰ সত্ৰীয়াকে ধৰি; লোকনৃত্য\nনাট্য আৰু পুতলা নাচ: সংস্কৃত নাটক, অংকীয়া নাট আৰু ভাওনা, লোকনাট্য\nসাহিত্য: বৈদিক আৰু সংস্কৃত, সংগম তামিল, পালি আৰু প্ৰাকৃত, ভক্তি সাহিত্য, ফাৰ্চী আৰু উৰ্দু, আধুনিক ভাৰতীয় সাহিত্য\nধৰ্ম আৰু দৰ্শন: ষড়দৰ্শন, বৌদ্ধ, জৈন, ভক্তি আৰু ছুফী পৰম্পৰা\nমেলা, উৎসৱ, হস্তশিল্প আৰু ভাৰতৰ ইউনেস্কো বিশ্ব ঐতিহ্য ক্ষেত্ৰ (অসমত কাজিৰঙা, মানস আৰু চৰাইদেউৰ মৈদাম)"
+     },
+     {
+      "block_key": "h2",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "২. আধুনিক ভাৰতৰ ইতিহাস (প্ৰায় ১৭৫০ ৰ পৰা আজিলৈ)"
+     },
+     {
+      "block_key": "l2",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "মোগলৰ পতন আৰু আঞ্চলিক শক্তিৰ উত্থান\nইষ্ট ইণ্ডিয়া কোম্পানী: ৰাজ্য জয়, অধীনতামূলক মিত্ৰতা, স্বত্ববিলোপ নীতি\nব্ৰিটিছ শাসনৰ অৰ্থনৈতিক প্ৰভাৱ: ভূমি ৰাজহ বন্দোবস্ত, হস্তশিল্পৰ অৱনতি, কৃষিৰ বাণিজ্যিকীকৰণ, সম্পদ নিষ্কাশন, দুৰ্ভিক্ষ\nঅসমত চাহ, তেল আৰু কয়লা; চাহ বাগিচালৈ চুক্তিবদ্ধ শ্ৰমিক\nশিক্ষা নীতি: মেকলেৰ মিনিট (১৮৩৫), উডৰ ডেচপেচ (১৮৫৪), বিশ্ববিদ্যালয় (১৮৫৭)\nসংবাদপত্ৰ আৰু জনমত; ভাৰতীয় জাগৰণ আৰু সংস্কাৰ আন্দোলন\nকৃষক আৰু জনজাতীয় বিদ্ৰোহ: চাওঁতাল, নীল বিদ্ৰোহ, দাক্ষিণাত্যৰ বিদ্ৰোহ, অসমত ফুলগুৰি (১৮৬১) আৰু পথাৰুঘাট (১৮৯৪)\nসাংবিধানিক বিকাশ: নিয়ন্ত্ৰণ আইন ১৭৭৩ ৰ পৰা ভাৰতীয় স্বাধীনতা আইন ১৯৪৭ লৈ\nগুৰুত্বপূৰ্ণ ব্যক্তি: সংস্কাৰক, জাতীয়তাবাদী নেতা, বিপ্লৱী"
+     },
+     {
+      "block_key": "h3",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "৩. স্বাধীনতা সংগ্ৰাম: পৰ্যায় আৰু অৰিহণাকাৰী"
+     },
+     {
+      "block_key": "l3",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "প্ৰথম পৰ্যায়, নৰমপন্থী যুগ (১৮৮৫ ৰ পৰা ১৯০৫): আবেদন, অৰ্থনৈতিক সমালোচনা, দাদাভাই নৌৰোজী\nদ্বিতীয় পৰ্যায়, চৰমপন্থী যুগ আৰু স্বদেশী (১৯০৫ ৰ পৰা ১৯১৮): লাল-বাল-পাল, বৰ্জন, জাতীয় শিক্ষা\nতৃতীয় পৰ্যায়, গান্ধীৰ গণ আন্দোলন (১৯১৯ ৰ পৰা ১৯৪৭): অসহযোগ, আইন অমান্য, {{term:quit-india-movement|ভাৰত ত্যাগ}}\nবিপ্লৱী আৰু বাম আন্দোলন: ভগৎ সিং, এইচএছআৰএ, চট্টগ্ৰাম, কংগ্ৰেছ ছচিয়েলিষ্ট\nসুভাষচন্দ্ৰ বসু আৰু আজাদ হিন্দ ফৌজ, যি উত্তৰ-পূৰ্বৰ সীমালৈ আহিছিল (কোহিমা, মৈৰাং, ১৯৪৪)\nউত্তৰ-পূৰ্বৰ অৰিহণাকাৰী: গোমধৰ কোঁৱৰ, উ তিৰত সিং, মণিৰাম দেৱান, পিয়লি বৰুৱা, কনকলতা বৰুৱা, কুশল কোঁৱৰ, ভোগেশ্বৰী ফুকননী, তৰুণৰাম ফুকন, নবীনচন্দ্ৰ বৰদলৈ, গোপীনাথ বৰদলৈ, ৰাণী গাইদিনলিউ\nঅন্য অঞ্চলৰ অৰিহণাকাৰী: তিলক, গোখলে, লালা লাজপত ৰায়, চৰ্দাৰ পেটেল, নেহৰু, আম্বেদকাৰ, চৰোজিনী নাইডু, পেৰিয়াৰ, খান আব্দুল গফ্ফাৰ খান\nবিভাজনৰ প্ৰশ্ন: {{term:cabinet-mission|কেবিনেট মিছনৰ}} গোট ব্যৱস্থা আৰু অসমৰ প্ৰতিবাদ; শ্ৰীহট্ট গণভোট (১৯৪৭)"
+     },
+     {
+      "block_key": "h4",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "৪. স্বাধীনতাৰ পিছৰ ভাৰত"
+     },
+     {
+      "block_key": "l4",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "দেশীয় ৰাজ্যৰ একত্ৰীকৰণ (চৰ্দাৰ পেটেল, ভি. পি. মেনন); মণিপুৰ আৰু ত্ৰিপুৰাৰ ভাৰতভুক্তি (১৯৪৯)\nসংবিধান প্ৰণয়ন (১৯৪৬ ৰ পৰা ১৯৫০)\nভাষাভিত্তিক পুনৰ্গঠন: অন্ধ্ৰ (১৯৫৩), ৰাজ্য পুনৰ্গঠন আইন (১৯৫৬)\nউত্তৰ-পূৰ্বৰ পুনৰ্গঠন: নাগালেণ্ড (১৯৬৩), উত্তৰ-পূৰ্বাঞ্চল (পুনৰ্গঠন) আইন ১৯৭১, ৰাজ্য হিচাপে মেঘালয়, মণিপুৰ আৰু ত্ৰিপুৰা (১৯৭২), মিজোৰাম আৰু অৰুণাচল প্ৰদেশ (১৯৮৭)\n{{term:sixth-schedule|ষষ্ঠ অনুসূচী}} আৰু স্বায়ত্তশাসিত পৰিষদ\n১৯৬২, ১৯৬৫ আৰু ১৯৭১ চনৰ যুদ্ধ; অৰুণাচল আৰু অসমত চীনা আক্ৰমণ (১৯৬২)\nপৰিকল্পনা, সেউজ বিপ্লৱ, ভূমি সংস্কাৰ; জৰুৰীকালীন অৱস্থা (১৯৭৫ ৰ পৰা ১৯৭৭)\nঅসম আন্দোলন (১৯৭৯ ৰ পৰা ১৯৮৫) আৰু {{term:assam-accord|অসম চুক্তি}}"
+     },
+     {
+      "block_key": "h5",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "ASSAMPEDIA ত পঢ়ক (সাধাৰণ জ্ঞান)"
+     },
+     {
+      "block_key": "l5",
+      "block_type": "list",
+      "style": "normal",
+      "body": "অসমৰ ইতিহাস: ব্ৰিটিছ শাসনত অসম; স্বাধীনতা সংগ্ৰামত অসম; অসম আন্দোলন আৰু অসম চুক্তি\nকলা, সংস্কৃতি আৰু ঐতিহ্য: সত্ৰীয়া নৃত্য আৰু সত্ৰ অনুষ্ঠান; লোকনৃত্য আৰু লোকসংগীত; অসমীয়া সাহিত্যৰ চমু ইতিহাস\nঅসমৰ পৰিচয়: বৰ্তমানৰ অসম ৰাজ্য কেনেকৈ গঠন হ'ল\nৰাজনীতি আৰু প্ৰশাসন: ষষ্ঠ অনুসূচী আৰু স্বায়ত্তশাসিত পৰিষদ\nবিশিষ্ট ব্যক্তি: গোপীনাথ বৰদলৈ; মণিৰাম দেৱান; লাচিত বৰফুকন"
+     },
+     {
+      "block_key": "tip1",
+      "block_type": "paragraph",
+      "style": "suggested",
+      "body": "মুখ্য পৰীক্ষাৰ উত্তৰত কেৱল তথ্য নহয়, বিশ্লেষণো লাগে। প্ৰতিটো বিষয়ৰ কাৰণ, ফলাফল আৰু তাৎপৰ্য লিখিবলৈ সাজু থাকক, আৰু য'তেই পাৰে অসম বা উত্তৰ-পূৰ্বৰ উদাহৰণ যোগ কৰক।"
+     }
+    ]
+   }
+  },
+  {
+   "slug": "apsc-cce-mains-assam-history",
+   "position": 4,
+   "sources": "APSC official website (notifications and syllabus PDF): https://apsc.nic.in/ (could not be opened from our system, please compare with the latest notification).\nCopy of the APSC syllabus PDF: https://smartiasfoundation.com/wp-content/uploads/2025/01/SYLLABUS-FOR-APSC-PDF.pdf\nExam pattern: https://www.drishtiias.com/state-pcs/apsc-exam-pattern\nExam pattern and GS tables: https://spmiasacademy.com/apsc-cce-syllabus-prelims-mains/\nOld History optional (removed): https://www.assams.info/career/history-syllabus-apsc-mains-exam\nThe detailed topic lists are our study guide built on the official lines; they are not APSC's words.\nTO VERIFY before publishing: the paper number (Paper VI in Drishti and the syllabus PDF copy, GS Paper V in SPM); Jnanpith years in l8 (Birendra Kumar Bhattacharya 1979, Mamoni Raisom Goswami 2000, Nilmani Phookan for 2021).",
+   "official_url": "https://apsc.nic.in/",
+   "notification_url": "https://apsc.nic.in/",
+   "applies_to": "APSC CCE scheme in use for CCE 2025 and 2026 (check against the latest APSC notification)",
+   "versions": {
+    "en": {
+     "title": "APSC Mains paper on Assam: History, culture and heritage",
+     "summary": "All twelve history and culture topics of the Assam paper, each opened up with subtopics."
+    },
+    "as": {
+     "title": "এপিএছচি মুখ্য অসম বিষয়ক কাকত: অসমৰ ইতিহাস, সংস্কৃতি আৰু ঐতিহ্য",
+     "summary": "অসম বিষয়ক কাকতৰ ইতিহাস আৰু সংস্কৃতিৰ বাৰটা বিষয়, প্ৰতিটোৰ উপবিষয়ৰ সৈতে।"
+    }
+   },
+   "blocks": {
+    "en": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "The {{term:main-exam|Mains}} has a full General Studies paper on Assam (250 marks, 3 hours). History, culture and heritage come first in it. This is where most of your Assam history preparation pays off."
+     },
+     {
+      "block_key": "f1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "APSC syllabus, in short (History of Assam):\n1. Major landmarks in the history of Assam\n2. Major dynasties, their administrative and revenue systems\n3. Socio-cultural issues\n4. The freedom movement\n5. Political awakening and integration\n6. Architecture and monuments\n7. Arts, paintings and handicrafts\n8. Important literature\n9. Fairs, festivals, folk music and folk dances\n10. Culture, tradition and heritage\n11. Religious movements\n12. Leading personalities"
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "1. Major landmarks in the history of Assam"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "Prehistoric Assam: Neolithic site of Daojali Hading (Dima Hasao)\nPragjyotisha and {{term:kamarupa|Kamarupa}}: Varman, Salastambha and Pala dynasties\nKamata kingdom, Chutia, Dimasa Kachari and Jaintia kingdoms; the Bhuyans\nThe {{term:ahom|Ahom}} kingdom (1228 to 1826) and the Koch kingdom\nMughal-Ahom conflicts; Battle of Saraighat (1671)\n{{term:moamoria-rebellion|Moamoria rebellion}} (1769 onwards); Burmese invasions (1817 to 1826)\n{{term:treaty-of-yandabo|Treaty of Yandabo}} (1826) and British annexation\n{{term:chief-commissioner-province|Chief Commissioner's Province}} (1874); Eastern Bengal and Assam (1905 to 1912)\nSylhet {{term:referendum|referendum}} (1947); Assam as a state of India (1950); later separation of new states"
+     },
+     {
+      "block_key": "h2",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "2. Major dynasties: administration and revenue"
+     },
+     {
+      "block_key": "l2",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "Kamarupa: king and ministers, land grants recorded on copper plates (Nidhanpur, Dubi), revenue from land\nAhom administration: the {{term:swargadeo|Swargadeo}}; the Patra Mantris (Burhagohain, Borgohain, Borpatragohain, and later the Borbarua and {{term:borphukan|Borphukan}})\nAhom officials: Rajkhowa, Baruas, Phukans, Hazarika, Saikia, Bora\nThe {{term:paik-system|Paik system}}, khels and gots; land survey under Pratap Singha and Rudra Singha\nRecording history: the {{term:buranji|Buranjis}}\nKoch administration under Naranarayan and Chilarai\nBritish revenue system: land revenue in cash, rising rates, tea land grants (Wasteland Rules), new taxes"
+     },
+     {
+      "block_key": "h3",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "3. Socio-cultural issues"
+     },
+     {
+      "block_key": "l3",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "Social structure: caste, tribes and communities; the place of women\nMigration: tea garden labour, migration from East Bengal, the Line System (1920)\nLanguage question: Bengali as court language (1836 to 1873) and its reversal; Official Language Act (1960); medium of instruction movement (1972)\nGrowth of the Assamese middle class, press and organisations\nIdentity movements of plains and hill communities; the Assam Movement (1979 to 1985)"
+     },
+     {
+      "block_key": "h4",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "4. The freedom movement in Assam"
+     },
+     {
+      "block_key": "l4",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "Early revolts: Gomdhar Konwar (1828), Piyoli Phukan and Jiuram Dulia Barua (1830), U Tirot Sing and the Khasi resistance (1829 to 1833)\n1857 in Assam: Maniram Dewan and Piyoli Barua\nPeasant uprisings against high land revenue: Phulaguri (1861), Rangia and Lachima (1893 to 1894), Patharughat (1894)\nNon-Cooperation (1921) in Assam; Gandhi's visit (1921)\nCivil Disobedience (1930 to 1934)\n{{term:quit-india-movement|Quit India}} (1942): {{term:mrityu-bahini|Mrityu Bahini}}, Kanaklata Barua and Mukunda Kakati at Gohpur, Kushal Konwar, Bhogeswari Phukanani\nThe {{term:cabinet-mission|Cabinet Mission}} grouping plan (1946) and Gopinath Bordoloi's fight to keep Assam in India"
+     },
+     {
+      "block_key": "h5",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "5. Political awakening and integration"
+     },
+     {
+      "block_key": "l5",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "Early bodies: Jorhat Sarvajanik Sabha (1884), Assam Association (1903), Ryot Sabhas\nAssam Sahitya Sabha (1917) and the cultural awakening\nAssam Pradesh Congress Committee (1921); Congress session at Pandu, Guwahati (1926)\nElections and ministries under the 1935 Act\nIntegration of the Northeast after 1947: princely states, hills areas, {{term:sixth-schedule|Sixth Schedule}}\nFormation of new states out of Assam (1963 to 1987); autonomous councils; {{term:assam-accord|Assam Accord}} (1985)"
+     },
+     {
+      "block_key": "h6",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "6. Architecture and monuments"
+     },
+     {
+      "block_key": "l6",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "Da-Parbatia door frame near Tezpur (Gupta style), Bamuni Hills, Madan Kamdev, Surya Pahar\nKamakhya temple (rebuilt by the Koch king Naranarayan, 1565); Hayagriva Madhava at Hajo; Umananda\nAhom monuments: Rang Ghar, Talatal Ghar, Kareng Ghar, Sivadol, Joysagar tank\nCharaideo {{term:maidam|Moidams}}, a UNESCO World Heritage Site (2024)\nSattras and Namghars as a building style; Poa Mecca at Hajo"
+     },
+     {
+      "block_key": "h7",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "7. Arts, paintings and handicrafts"
+     },
+     {
+      "block_key": "l7",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "Manuscript painting on sanchipat (agar bark): Chitra Bhagavata, Hastividyarnava, Gita Govinda\nMask making of Majuli\nMuga, Pat and Eri silk; gamosa weaving\nBell metal of Sarthebari, brass of Hajo, terracotta of Asharikandi\nCane and bamboo work; japi; jewellery (jonbiri, gamkharu)"
+     },
+     {
+      "block_key": "h8",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "8. Important literature"
+     },
+     {
+      "block_key": "l8",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "{{term:charyapada|Charyapada}} (early roots)\nPre-Vaishnava: Hema Saraswati (Prahlad Charit), Madhav Kandali (Saptakanda Ramayana)\nVaishnava age: Sankardev (Kirtan Ghosha, Ankiya Naat), Madhavdev (Naam Ghosha), Bhattadev (prose)\nAhom age: {{term:buranji|Buranjis}} in prose\nMissionaries and Orunodoi (1846); Hemchandra Barua's grammar and dictionary\n{{term:jonaki-era|Jonaki era}} (1889): Lakshminath Bezbaroa, Chandra Kumar Agarwala, Hemchandra Goswami\nModern: Jyoti Prasad Agarwala, Bishnu Prasad Rabha, Birinchi Kumar Barua\n{{term:jnanpith-award|Jnanpith Award}} winners: Birendra Kumar Bhattacharya, Mamoni Raisom Goswami, Nilmani Phookan"
+     },
+     {
+      "block_key": "h9",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "9. Fairs, festivals, folk music and dances"
+     },
+     {
+      "block_key": "l9",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "Bihu (Bohag, Kati, Magh); Ambubachi Mela; Raas Leela of Majuli; Jonbeel Mela; Dehing Patkai festival\nCommunity festivals: Me-Dam-Me-Phi, Ali-Aye-Ligang, Bwisagu, Baikho, Rongker, Bushu Dima, Karam\nFolk music: Bihu geet, Borgeet, Zikir and Zari, Kamrupi and Goalpariya lokageet, Tokari geet\nDances: Bihu, Bagurumba, Jhumur, Deodhani, Ojapali, Sattriya"
+     },
+     {
+      "block_key": "h10",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "10. Culture, tradition and heritage"
+     },
+     {
+      "block_key": "l10",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "The {{term:sattra|Sattra}} and the {{term:namghar|Namghar}} in village life\nSymbols: gamosa, xorai, jaapi\nBhaona and Ankiya Naat\nGeographical Indication tags of Assam (Muga silk, Assam tea, Joha rice, Bhut Jolokia and others)\nIntangible heritage: oral traditions, Buranji writing, folk tales"
+     },
+     {
+      "block_key": "h11",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "11. Religious movements"
+     },
+     {
+      "block_key": "l11",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "Shaktism and Tantra (Kamakhya); Shaivism; Buddhism (Hajo)\n{{term:neo-vaishnavism|Neo-Vaishnavism}} of Sankardev and Madhavdev; the four samhatis (Brahma, Purusha, Kala, Nika)\nAhom kings and Hinduism; the traditional Tai Ahom faith and ancestor worship (Me-Dam-Me-Phi)\nIslam in Assam: Azan Fakir and Zikir; Poa Mecca\nChristian missions: the American Baptists in Sivasagar, missions in the hills"
+     },
+     {
+      "block_key": "h12",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "12. Leading personalities"
+     },
+     {
+      "block_key": "l12",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "Kings and generals: Bhaskaravarman, Sukaphaa, Suhungmung, Naranarayan and Chilarai, Lachit Borphukan, Rudra Singha, Mula Gabharu, Joymoti\nSaints and writers: Sankardev, Madhavdev, Azan Fakir, Lakshminath Bezbaroa, Jyoti Prasad Agarwala, Bishnu Prasad Rabha\nFreedom fighters: Maniram Dewan, Gopinath Bordoloi, Tarun Ram Phukan, Nabin Chandra Bardoloi, Kanaklata Barua, Kushal Konwar, Chandraprabha Saikiani\nModern Assam: Bhupen Hazarika, Anandaram Dhekial Phukan, Gunabhiram Barua, Ambikagiri Raichoudhury"
+     },
+     {
+      "block_key": "h13",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "Read these in ASSAMPEDIA (GK)"
+     },
+     {
+      "block_key": "l13",
+      "block_type": "list",
+      "style": "normal",
+      "body": "History of Assam: all 8 chapters\nArt, Culture and Heritage: Bihu; Sattriya dance and the Sattra institution; Folk dances and music; Silk and handloom; A short history of Assamese literature\nImportant Personalities: Srimanta Sankardev; Lachit Borphukan; Lakshminath Bezbaroa; Jyoti Prasad Agarwala; Gopinath Bordoloi; Bhupen Hazarika; Maniram Dewan\nImportant Places and Tourism: Kamakhya Temple; Majuli; Sivasagar and its monuments; Hajo; Tezpur\nIntroduction to Assam: How the present state was formed"
+     },
+     {
+      "block_key": "tip1",
+      "block_type": "paragraph",
+      "style": "suggested",
+      "body": "This paper rewards Assam-specific detail. Learn names, years and places well, and practise short notes (150 words) and long answers (250 words) on each of the twelve topics."
+     }
+    ],
+    "as": [
+     {
+      "block_key": "p1",
+      "block_type": "paragraph",
+      "style": "normal",
+      "body": "{{term:main-exam|মুখ্য পৰীক্ষাত}} অসমৰ ওপৰত এখন সম্পূৰ্ণ সাধাৰণ অধ্যয়নৰ কাকত আছে (২৫০ নম্বৰ, ৩ ঘণ্টা)। ইয়াত ইতিহাস, সংস্কৃতি আৰু ঐতিহ্য প্ৰথমতে আছে। অসমৰ ইতিহাসৰ প্ৰস্তুতিৰ সৰহভাগ ফল ইয়াতেই পোৱা যায়।"
+     },
+     {
+      "block_key": "f1",
+      "block_type": "fact_box",
+      "style": "exam_fact",
+      "body": "এপিএছচিৰ পাঠ্যক্ৰম, চমুকৈ (অসমৰ ইতিহাস):\n১. অসমৰ ইতিহাসৰ প্ৰধান মাইলৰ খুঁটি\n২. প্ৰধান ৰাজবংশ, সিহঁতৰ প্ৰশাসনিক আৰু ৰাজহ ব্যৱস্থা\n৩. সমাজ-সাংস্কৃতিক বিষয়\n৪. স্বাধীনতা আন্দোলন\n৫. ৰাজনৈতিক জাগৰণ আৰু একত্ৰীকৰণ\n৬. স্থাপত্য আৰু কীৰ্তিচিহ্ন\n৭. কলা, চিত্ৰকলা আৰু হস্তশিল্প\n৮. গুৰুত্বপূৰ্ণ সাহিত্য\n৯. মেলা, উৎসৱ, লোকসংগীত আৰু লোকনৃত্য\n১০. সংস্কৃতি, পৰম্পৰা আৰু ঐতিহ্য\n১১. ধৰ্মীয় আন্দোলন\n১২. বিশিষ্ট ব্যক্তি"
+     },
+     {
+      "block_key": "h1",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "১. অসমৰ ইতিহাসৰ প্ৰধান মাইলৰ খুঁটি"
+     },
+     {
+      "block_key": "l1",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "প্ৰাগৈতিহাসিক অসম: দাওজালি হাডিঙৰ নৱ্য প্ৰস্তৰ যুগৰ স্থান (ডিমা হাছাও)\nপ্ৰাগজ্যোতিষ আৰু {{term:kamarupa|কামৰূপ}}: বৰ্মন, শালস্তম্ভ আৰু পাল বংশ\nকমতা ৰাজ্য, চুতীয়া, ডিমাছা কছাৰী আৰু জয়ন্তীয়া ৰাজ্য; ভূঞাসকল\n{{term:ahom|আহোম}} ৰাজ্য (১২২৮ ৰ পৰা ১৮২৬) আৰু কোচ ৰাজ্য\nমোগল-আহোম সংঘাত; শৰাইঘাটৰ যুদ্ধ (১৬৭১)\n{{term:moamoria-rebellion|মোৱামৰীয়া বিদ্ৰোহ}} (১৭৬৯ ৰ পৰা); মানৰ আক্ৰমণ (১৮১৭ ৰ পৰা ১৮২৬)\n{{term:treaty-of-yandabo|ইয়াণ্ডাবুৰ সন্ধি}} (১৮২৬) আৰু ব্ৰিটিছৰ অধিকাৰ\n{{term:chief-commissioner-province|চিফ কমিছনাৰৰ প্ৰদেশ}} (১৮৭৪); পূব বংগ আৰু অসম (১৯০৫ ৰ পৰা ১৯১২)\nশ্ৰীহট্ট {{term:referendum|গণভোট}} (১৯৪৭); ভাৰতৰ ৰাজ্য হিচাপে অসম (১৯৫০); পিছত নতুন ৰাজ্যৰ পৃথকীকৰণ"
+     },
+     {
+      "block_key": "h2",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "২. প্ৰধান ৰাজবংশ: প্ৰশাসন আৰু ৰাজহ"
+     },
+     {
+      "block_key": "l2",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "কামৰূপ: ৰজা আৰু মন্ত্ৰী, তাম্ৰফলকত লিখা ভূমিদান (নিধানপুৰ, ডুবি), মাটিৰ পৰা ৰাজহ\nআহোম প্ৰশাসন: {{term:swargadeo|স্বৰ্গদেউ}}; পাত্ৰমন্ত্ৰী (বুঢ়াগোহাঁই, বৰগোহাঁই, বৰপাত্ৰগোহাঁই, আৰু পিছত বৰবৰুৱা আৰু {{term:borphukan|বৰফুকন}})\nআহোম বিষয়া: ৰাজখোৱা, বৰুৱা, ফুকন, হাজৰিকা, শইকীয়া, বৰা\n{{term:paik-system|পাইক প্ৰথা}}, খেল আৰু গোট; প্ৰতাপ সিংহ আৰু ৰুদ্ৰ সিংহৰ দিনৰ মাটি জৰীপ\nইতিহাস লিখন: {{term:buranji|বুৰঞ্জী}}\nনৰনাৰায়ণ আৰু চিলাৰায়ৰ দিনৰ কোচ প্ৰশাসন\nব্ৰিটিছৰ ৰাজহ ব্যৱস্থা: নগদ ধনত মাটিৰ খাজনা, খাজনাৰ হাৰ বৃদ্ধি, চাহৰ বাবে পতিত মাটি দান, নতুন কৰ"
+     },
+     {
+      "block_key": "h3",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "৩. সমাজ-সাংস্কৃতিক বিষয়"
+     },
+     {
+      "block_key": "l3",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "সমাজ ব্যৱস্থা: জাতি, জনজাতি আৰু জনগোষ্ঠী; নাৰীৰ স্থান\nপ্ৰব্ৰজন: চাহ বাগিচাৰ শ্ৰমিক, পূব বংগৰ পৰা প্ৰব্ৰজন, ৰেখা প্ৰথা (১৯২০)\nভাষাৰ প্ৰশ্ন: আদালতৰ ভাষা হিচাপে বাংলা (১৮৩৬ ৰ পৰা ১৮৭৩) আৰু ইয়াৰ পৰিৱৰ্তন; ৰাজ্যিক ভাষা আইন (১৯৬০); মাধ্যম আন্দোলন (১৯৭২)\nঅসমীয়া মধ্যবিত্ত শ্ৰেণী, সংবাদপত্ৰ আৰু সংগঠনৰ বিকাশ\nভৈয়াম আৰু পাহাৰৰ জনগোষ্ঠীৰ পৰিচয়ৰ আন্দোলন; অসম আন্দোলন (১৯৭৯ ৰ পৰা ১৯৮৫)"
+     },
+     {
+      "block_key": "h4",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "৪. অসমৰ স্বাধীনতা আন্দোলন"
+     },
+     {
+      "block_key": "l4",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "প্ৰথম বিদ্ৰোহ: গোমধৰ কোঁৱৰ (১৮২৮), পিয়লি ফুকন আৰু জিউৰাম দুলীয়া বৰুৱা (১৮৩০), উ তিৰত সিং আৰু খাচী প্ৰতিৰোধ (১৮২৯ ৰ পৰা ১৮৩৩)\nঅসমত ১৮৫৭: মণিৰাম দেৱান আৰু পিয়লি বৰুৱা\nউচ্চ খাজনাৰ বিৰুদ্ধে কৃষক বিদ্ৰোহ: ফুলগুৰি (১৮৬১), ৰঙিয়া আৰু লাচিমা (১৮৯৩ ৰ পৰা ১৮৯৪), পথাৰুঘাট (১৮৯৪)\nঅসমত অসহযোগ আন্দোলন (১৯২১); গান্ধীৰ অসম ভ্ৰমণ (১৯২১)\nআইন অমান্য আন্দোলন (১৯৩০ ৰ পৰা ১৯৩৪)\n{{term:quit-india-movement|ভাৰত ত্যাগ}} (১৯৪২): {{term:mrityu-bahini|মৃত্যু বাহিনী}}, গহপুৰত কনকলতা বৰুৱা আৰু মুকুন্দ কাকতি, কুশল কোঁৱৰ, ভোগেশ্বৰী ফুকননী\n{{term:cabinet-mission|কেবিনেট মিছনৰ}} গোট পৰিকল্পনা (১৯৪৬) আৰু অসমক ভাৰতত ৰাখিবলৈ গোপীনাথ বৰদলৈৰ সংগ্ৰাম"
+     },
+     {
+      "block_key": "h5",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "৫. ৰাজনৈতিক জাগৰণ আৰু একত্ৰীকৰণ"
+     },
+     {
+      "block_key": "l5",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "প্ৰথম সংগঠন: যোৰহাট সাৰ্বজনিক সভা (১৮৮৪), আসাম এছোচিয়েচন (১৯০৩), ৰাইজ মেল\nঅসম সাহিত্য সভা (১৯১৭) আৰু সাংস্কৃতিক জাগৰণ\nঅসম প্ৰদেশ কংগ্ৰেছ কমিটি (১৯২১); গুৱাহাটীৰ পাণ্ডুত কংগ্ৰেছৰ অধিৱেশন (১৯২৬)\n১৯৩৫ চনৰ আইনৰ অধীনত নিৰ্বাচন আৰু মন্ত্ৰিসভা\n১৯৪৭ ৰ পিছত উত্তৰ-পূৰ্বৰ একত্ৰীকৰণ: দেশীয় ৰাজ্য, পাহাৰীয়া অঞ্চল, {{term:sixth-schedule|ষষ্ঠ অনুসূচী}}\nঅসমৰ পৰা নতুন ৰাজ্য গঠন (১৯৬৩ ৰ পৰা ১৯৮৭); স্বায়ত্তশাসিত পৰিষদ; {{term:assam-accord|অসম চুক্তি}} (১৯৮৫)"
+     },
+     {
+      "block_key": "h6",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "৬. স্থাপত্য আৰু কীৰ্তিচিহ্ন"
+     },
+     {
+      "block_key": "l6",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "তেজপুৰৰ ওচৰৰ দহপৰ্বতীয়াৰ দুৱাৰডলি (গুপ্ত শৈলী), বামুণী পাহাৰ, মদন কামদেৱ, সূৰ্য পাহাৰ\nকামাখ্যা মন্দিৰ (কোচ ৰজা নৰনাৰায়ণে ১৫৬৫ চনত পুনৰ নিৰ্মাণ কৰে); হাজোৰ হয়গ্ৰীৱ মাধৱ; উমানন্দ\nআহোম কীৰ্তিচিহ্ন: ৰংঘৰ, তলাতল ঘৰ, কাৰেংঘৰ, শিৱদৌল, জয়সাগৰ পুখুৰী\nচৰাইদেউৰ {{term:maidam|মৈদাম}}, ইউনেস্কো বিশ্ব ঐতিহ্য ক্ষেত্ৰ (২০২৪)\nস্থাপত্য শৈলী হিচাপে সত্ৰ আৰু নামঘৰ; হাজোৰ পোৱা মক্কা"
+     },
+     {
+      "block_key": "h7",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "৭. কলা, চিত্ৰকলা আৰু হস্তশিল্প"
+     },
+     {
+      "block_key": "l7",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "সাঁচিপাতত পুথিচিত্ৰ: চিত্ৰ ভাগৱত, হস্তীবিদ্যাৰ্ণৱ, গীতগোবিন্দ\nমাজুলীৰ মুখা শিল্প\nমুগা, পাট আৰু এৰী; গামোচা বোৱা\nসৰ্থেবাৰীৰ কাঁহ, হাজোৰ পিতল, আশাৰিকান্দিৰ পোৰামাটিৰ শিল্প\nবাঁহ-বেতৰ কাম; জাপি; অলংকাৰ (জোনবিৰি, গামখাৰু)"
+     },
+     {
+      "block_key": "h8",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "৮. গুৰুত্বপূৰ্ণ সাহিত্য"
+     },
+     {
+      "block_key": "l8",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "{{term:charyapada|চৰ্যাপদ}} (আদি শিপা)\nপ্ৰাক্-বৈষ্ণৱ যুগ: হেম সৰস্বতী (প্ৰহ্লাদ চৰিত), মাধৱ কন্দলি (সপ্তকাণ্ড ৰামায়ণ)\nবৈষ্ণৱ যুগ: শংকৰদেৱ (কীৰ্তন ঘোষা, অংকীয়া নাট), মাধৱদেৱ (নামঘোষা), ভট্টদেৱ (গদ্য)\nআহোম যুগ: গদ্যত লিখা {{term:buranji|বুৰঞ্জী}}\nমিছনেৰী আৰু অৰুণোদই (১৮৪৬); হেমচন্দ্ৰ বৰুৱাৰ ব্যাকৰণ আৰু অভিধান\n{{term:jonaki-era|জোনাকী যুগ}} (১৮৮৯): লক্ষ্মীনাথ বেজবৰুৱা, চন্দ্ৰকুমাৰ আগৰৱালা, হেমচন্দ্ৰ গোস্বামী\nআধুনিক: জ্যোতিপ্ৰসাদ আগৰৱালা, বিষ্ণুপ্ৰসাদ ৰাভা, বিৰিঞ্চি কুমাৰ বৰুৱা\n{{term:jnanpith-award|জ্ঞানপীঠ বঁটা}} বিজয়ী: বীৰেন্দ্ৰ কুমাৰ ভট্টাচাৰ্য, মামণি ৰয়ছম গোস্বামী, নীলমণি ফুকন"
+     },
+     {
+      "block_key": "h9",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "৯. মেলা, উৎসৱ, লোকসংগীত আৰু নৃত্য"
+     },
+     {
+      "block_key": "l9",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "বিহু (ব'হাগ, কাতি, মাঘ); অম্বুবাচী মেলা; মাজুলীৰ ৰাস লীলা; জোনবিল মেলা; ডিহিং পাটকাই উৎসৱ\nজনগোষ্ঠীয় উৎসৱ: মে-ডাম-মে-ফি, আলি-আয়ে-লৃগাং, বৈশাগু, বাইখো, ৰংকেৰ, বুছু ডিমা, কৰম\nলোকসংগীত: বিহুগীত, বৰগীত, জিকিৰ আৰু জাৰী, কামৰূপী আৰু গোৱালপৰীয়া লোকগীত, টোকাৰী গীত\nনৃত্য: বিহু, বাগুৰুম্বা, ঝুমুৰ, দেওধনী, ওজাপালি, সত্ৰীয়া"
+     },
+     {
+      "block_key": "h10",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "১০. সংস্কৃতি, পৰম্পৰা আৰু ঐতিহ্য"
+     },
+     {
+      "block_key": "l10",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "গাঁৱলীয়া জীৱনত {{term:sattra|সত্ৰ}} আৰু {{term:namghar|নামঘৰ}}\nপ্ৰতীক: গামোচা, শৰাই, জাপি\nভাওনা আৰু অংকীয়া নাট\nঅসমৰ ভৌগোলিক নিৰ্দেশনা (জিআই) চিহ্ন (মুগা পাট, অসম চাহ, জহা চাউল, ভূত জলকীয়া আদি)\nঅমূৰ্ত ঐতিহ্য: মৌখিক পৰম্পৰা, বুৰঞ্জী লিখন, সাধুকথা"
+     },
+     {
+      "block_key": "h11",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "১১. ধৰ্মীয় আন্দোলন"
+     },
+     {
+      "block_key": "l11",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "শাক্ত ধৰ্ম আৰু তন্ত্ৰ (কামাখ্যা); শৈৱ ধৰ্ম; বৌদ্ধ ধৰ্ম (হাজো)\nশংকৰদেৱ আৰু মাধৱদেৱৰ {{term:neo-vaishnavism|নৱ-বৈষ্ণৱ ধৰ্ম}}; চাৰি সংহতি (ব্ৰহ্ম, পুৰুষ, কাল, নিকা)\nআহোম ৰজা আৰু হিন্দু ধৰ্ম; টাই আহোমৰ পৰম্পৰাগত বিশ্বাস আৰু পূৰ্বপুৰুষ পূজা (মে-ডাম-মে-ফি)\nঅসমত ইছলাম: আজান ফকিৰ আৰু জিকিৰ; পোৱা মক্কা\nখ্ৰীষ্টান মিছন: শিৱসাগৰত আমেৰিকান বেপ্টিষ্ট, পাহাৰত মিছন"
+     },
+     {
+      "block_key": "h12",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "১২. বিশিষ্ট ব্যক্তি"
+     },
+     {
+      "block_key": "l12",
+      "block_type": "list",
+      "style": "suggested",
+      "body": "ৰজা আৰু সেনাপতি: ভাস্কৰবৰ্মন, চুকাফা, চুহুংমুং, নৰনাৰায়ণ আৰু চিলাৰায়, লাচিত বৰফুকন, ৰুদ্ৰ সিংহ, মূলা গাভৰু, জয়মতী\nসন্ত আৰু সাহিত্যিক: শংকৰদেৱ, মাধৱদেৱ, আজান ফকিৰ, লক্ষ্মীনাথ বেজবৰুৱা, জ্যোতিপ্ৰসাদ আগৰৱালা, বিষ্ণুপ্ৰসাদ ৰাভা\nস্বাধীনতা সংগ্ৰামী: মণিৰাম দেৱান, গোপীনাথ বৰদলৈ, তৰুণৰাম ফুকন, নবীনচন্দ্ৰ বৰদলৈ, কনকলতা বৰুৱা, কুশল কোঁৱৰ, চন্দ্ৰপ্ৰভা শইকীয়ানী\nআধুনিক অসম: ভূপেন হাজৰিকা, আনন্দৰাম ঢেকিয়াল ফুকন, গুণাভিৰাম বৰুৱা, অম্বিকাগিৰি ৰায়চৌধুৰী"
+     },
+     {
+      "block_key": "h13",
+      "block_type": "heading",
+      "style": "normal",
+      "body": "ASSAMPEDIA ত পঢ়ক (সাধাৰণ জ্ঞান)"
+     },
+     {
+      "block_key": "l13",
+      "block_type": "list",
+      "style": "normal",
+      "body": "অসমৰ ইতিহাস: আটাইকেইটা ৮টা অধ্যায়\nকলা, সংস্কৃতি আৰু ঐতিহ্য: বিহু; সত্ৰীয়া নৃত্য আৰু সত্ৰ অনুষ্ঠান; লোকনৃত্য আৰু লোকসংগীত; পাট-মুগা আৰু তাঁতশাল; অসমীয়া সাহিত্যৰ চমু ইতিহাস\nবিশিষ্ট ব্যক্তি: শ্ৰীমন্ত শংকৰদেৱ; লাচিত বৰফুকন; লক্ষ্মীনাথ বেজবৰুৱা; জ্যোতিপ্ৰসাদ আগৰৱালা; গোপীনাথ বৰদলৈ; ভূপেন হাজৰিকা; মণিৰাম দেৱান\nগুৰুত্বপূৰ্ণ স্থান আৰু পৰ্যটন: কামাখ্যা মন্দিৰ; মাজুলী; শিৱসাগৰ আৰু ইয়াৰ কীৰ্তিচিহ্নসমূহ; হাজো; তেজপুৰ\nঅসমৰ পৰিচয়: বৰ্তমানৰ অসম ৰাজ্য কেনেকৈ গঠন হ'ল"
+     },
+     {
+      "block_key": "tip1",
+      "block_type": "paragraph",
+      "style": "suggested",
+      "body": "এই কাকতত অসমৰ বিতং তথ্যৰ বাবে নম্বৰ পোৱা যায়। নাম, চন আৰু ঠাই ভালকৈ শিকক, আৰু বাৰটা বিষয়ৰ প্ৰতিটোৰ ওপৰত চমু টোকা (১৫০ শব্দ) আৰু দীঘল উত্তৰ (২৫০ শব্দ) লিখি অভ্যাস কৰক।"
+     }
+    ]
+   }
+  }
+ ]
+}

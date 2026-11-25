@@ -94,7 +94,7 @@ class _AdminImportScreenState extends State<AdminImportScreen> {
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
                 child: Text(
-                  '$total ready-made chapters in ${groups.length} groups, in English and Assamese. '
+                  '$total ready-made chapters and exam syllabus pages in ${groups.length} groups, in English and Assamese. '
                   'They are added as drafts, so readers will not see them until you check and publish each one. '
                   'Chapters you already have keep your edits: only new pictures are added to them.',
                 ),

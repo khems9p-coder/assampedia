@@ -144,7 +144,17 @@ class AdminRepository {
       }
       final row = await client
           .from('content')
-          .insert({'slug': slug, 'kind': 'gk_chapter', 'category_id': categoryId, 'position': ch['position']})
+          .insert({
+            'slug': slug,
+            // GK groups leave 'kind' out; exam syllabus groups set it to 'exam'.
+            'kind': group['kind'] ?? 'gk_chapter',
+            'category_id': categoryId,
+            'position': ch['position'],
+            // Exam pages carry their official links and the year they apply to.
+            'official_url': ?ch['official_url'],
+            'notification_url': ?ch['notification_url'],
+            'applies_to': ?ch['applies_to'],
+          })
           .select('id')
           .single();
       final contentId = row['id'] as String;

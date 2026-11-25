@@ -1,6 +1,7 @@
 """Turns a chapter data file (content/gk/NN_name.py) into SQL for the Supabase SQL Editor.
 
 Usage:  python3 content/build_sql.py content/gk/01_introduction.py
+        (exam syllabus groups live in content/exams/ and set KIND = "exam")
 Writes  supabase/content/NN_name.sql          (adds the chapters as drafts)
 and     supabase/content/NN_name_publish.sql  (publishes the whole group after checking)
 """
@@ -72,6 +73,11 @@ def check(mod):
         sys.exit(f"terms defined but never used: {sorted(unused)}")
 
 
+def kind(mod):
+    """'gk_chapter' for GK groups; exam syllabus groups set KIND = "exam"."""
+    return getattr(mod, "KIND", "gk_chapter")
+
+
 def build(mod):
     out = [
         f"-- ASSAMPEDIA content: {mod.CATEGORY_NAME}",
@@ -92,9 +98,10 @@ def build(mod):
         slug = ch["slug"]
         sel = f"from public.content where slug = {q(slug)}"
         out += ["", f"-- Chapter {ch['position']}: {ch['title']['en']}"]
+        links = [k for k in ("official_url", "notification_url", "applies_to") if ch.get(k)]
         out.append(
-            "insert into public.content (slug, kind, category_id, position) "
-            f"select {q(slug)}, 'gk_chapter', id, {ch['position']} from public.categories "
+            f"insert into public.content (slug, kind, category_id, position{''.join(', ' + k for k in links)}) "
+            f"select {q(slug)}, '{kind(mod)}', id, {ch['position']}{''.join(', ' + q(ch[k]) for k in links)} from public.categories "
             f"where slug = {q(mod.CATEGORY_SLUG)} on conflict (slug) do nothing;"
         )
         for lang in LANGS:
@@ -130,6 +137,8 @@ def build_json(mod, stem):
         "group": stem,
         "category_slug": mod.CATEGORY_SLUG,
         "category_name": mod.CATEGORY_NAME,
+        **({"name": mod.GROUP_NAME} if hasattr(mod, "GROUP_NAME") else {}),
+        **({"kind": mod.KIND} if hasattr(mod, "KIND") else {}),
         "last_checked": mod.LAST_CHECKED,
         "terms": [{"slug": t["slug"], "term_en": t["en"], "term_as": t["as"],
                    "meaning_en": t["meaning_en"], "meaning_as": t["meaning_as"]} for t in mod.TERMS],
@@ -137,6 +146,7 @@ def build_json(mod, stem):
             "slug": ch["slug"],
             "position": ch["position"],
             "sources": ch["sources"],
+            **{k: ch[k] for k in ("official_url", "notification_url", "applies_to") if ch.get(k)},
             "versions": {lang: {"title": ch["title"][lang], "summary": ch["summary"][lang]} for lang in LANGS},
             "blocks": {lang: [{"block_key": k, "block_type": t, "style": st, "body": b, **({"image_url": u} if u else {})}
                               for (k, t, st, b, u) in blocks(ch, lang)] for lang in LANGS},
@@ -149,7 +159,7 @@ def write_index(dest):
     groups = []
     for f in sorted((dest / "json").glob("[0-9]*.json")):
         data = json.loads(f.read_text(encoding="utf-8"))
-        groups.append({"file": f.name, "name": data["category_name"], "chapters": len(data["chapters"]),
+        groups.append({"file": f.name, "name": data.get("name", data["category_name"]), "chapters": len(data["chapters"]),
                        "terms": len(data["terms"])})
     (dest / "json" / "index.json").write_text(json.dumps({"groups": groups}, ensure_ascii=False, indent=1), encoding="utf-8")
 

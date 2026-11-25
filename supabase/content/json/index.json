@@ -71,6 +71,12 @@
    "name": "Important Places and Tourism",
    "chapters": 5,
    "terms": 5
+  },
+  {
+   "file": "13_apsc_history.json",
+   "name": "APSC CCE: History syllabus (Exams)",
+   "chapters": 4,
+   "terms": 5
   }
  ]
 }
