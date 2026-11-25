@@ -62,6 +62,12 @@ IconData categoryIcon(String? name) => switch (name) {
       'shield' => Icons.shield_outlined,
       'work' => Icons.work_outline,
       'public' => Icons.public,
+      'menu_book' => Icons.menu_book_outlined,
+      'workspace_premium' => Icons.workspace_premium_outlined,
+      'picture_as_pdf' => Icons.picture_as_pdf_outlined,
+      'video' => Icons.ondemand_video_outlined,
+      'newspaper' => Icons.newspaper_outlined,
+      'school' => Icons.school_outlined,
       _ => Icons.menu_book_outlined,
     };
 

@@ -4,6 +4,7 @@ import 'jobs_models.dart';
 import 'models.dart';
 import 'offline_cache.dart';
 import 'practice_models.dart';
+import 'study_models.dart';
 
 /// Wraps the online repository: every successful download is saved, and when
 /// the phone is offline the saved copy is shown instead.
@@ -121,4 +122,24 @@ class CachedContentRepository implements ContentRepository {
     (v) => [for (final x in v) x.toJson()],
     (j) => [for (final x in j as List) CourseLesson.fromJson(x as Map<String, dynamic>)],
   );
+
+  @override
+  Future<List<StudySection>> studySections() => _try(
+    'study_sections',
+    remote.studySections,
+    (v) => [for (final x in v) x.toJson()],
+    (j) => [for (final x in j as List) StudySection.fromJson(x as Map<String, dynamic>)],
+  );
+
+  @override
+  Future<List<StudyItem>> studyItems(String sectionId) => _try(
+    'study_items_$sectionId',
+    () => remote.studyItems(sectionId),
+    (v) => [for (final x in v) x.toJson()],
+    (j) => [for (final x in j as List) StudyItem.fromJson(x as Map<String, dynamic>)],
+  );
+
+  /// Files need the internet (the address is checked and expires).
+  @override
+  Future<String> studyFileUrl(String path) => remote.studyFileUrl(path);
 }

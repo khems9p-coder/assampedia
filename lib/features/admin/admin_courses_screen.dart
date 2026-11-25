@@ -148,12 +148,12 @@ class _AdminCourseLessonsScreenState extends State<AdminCourseLessonsScreen> {
   }
 
   Future<void> _addPage() async {
-    final picked = await Navigator.of(context).push<String>(SectionRoute(context, builder: (_) => const _PagePicker()));
+    final picked = await Navigator.of(context).push<String>(SectionRoute(context, builder: (_) => const PagePicker()));
     if (picked != null) await _run(() => _admin.addCourseItem(_course.id!, contentId: picked, position: _nextPosition));
   }
 
   Future<void> _addQuiz() async {
-    final picked = await Navigator.of(context).push<String>(SectionRoute(context, builder: (_) => const _QuizPicker()));
+    final picked = await Navigator.of(context).push<String>(SectionRoute(context, builder: (_) => const QuizPicker()));
     if (picked != null) await _run(() => _admin.addCourseItem(_course.id!, setId: picked, position: _nextPosition));
   }
 
@@ -394,14 +394,14 @@ class _CourseEditorScreenState extends State<CourseEditorScreen> {
 }
 
 /// Pick a page: first its group, then the page. Returns the page's id.
-class _PagePicker extends StatefulWidget {
-  const _PagePicker();
+class PagePicker extends StatefulWidget {
+  const PagePicker({super.key});
 
   @override
-  State<_PagePicker> createState() => _PagePickerState();
+  State<PagePicker> createState() => PagePickerState();
 }
 
-class _PagePickerState extends State<_PagePicker> {
+class PagePickerState extends State<PagePicker> {
   late final Future<List<Category>> _cats = context.services.admin!.categories();
 
   @override
@@ -432,7 +432,7 @@ class _PagePickerState extends State<_PagePicker> {
                   subtitle: Text(c.nameAs),
                   trailing: const Icon(Icons.chevron_right),
                   onTap: () async {
-                    final id = await Navigator.of(context).push<String>(SectionRoute(context, builder: (_) => _ChapterPicker(category: c)));
+                    final id = await Navigator.of(context).push<String>(SectionRoute(context, builder: (_) => ChapterPicker(category: c)));
                     if (id != null && context.mounted) Navigator.of(context).pop(id);
                   },
                 ),
@@ -444,15 +444,15 @@ class _PagePickerState extends State<_PagePicker> {
   );
 }
 
-class _ChapterPicker extends StatefulWidget {
-  const _ChapterPicker({required this.category});
+class ChapterPicker extends StatefulWidget {
+  const ChapterPicker({super.key, required this.category});
   final Category category;
 
   @override
-  State<_ChapterPicker> createState() => _ChapterPickerState();
+  State<ChapterPicker> createState() => ChapterPickerState();
 }
 
-class _ChapterPickerState extends State<_ChapterPicker> {
+class ChapterPickerState extends State<ChapterPicker> {
   late final Future<List<ChapterSummary>> _list = context.services.admin!.chapters(widget.category.id);
 
   @override
@@ -479,14 +479,14 @@ class _ChapterPickerState extends State<_ChapterPicker> {
   );
 }
 
-class _QuizPicker extends StatefulWidget {
-  const _QuizPicker();
+class QuizPicker extends StatefulWidget {
+  const QuizPicker({super.key});
 
   @override
-  State<_QuizPicker> createState() => _QuizPickerState();
+  State<QuizPicker> createState() => QuizPickerState();
 }
 
-class _QuizPickerState extends State<_QuizPicker> {
+class QuizPickerState extends State<QuizPicker> {
   late final Future<List<QuestionSet>> _sets = context.services.admin!.questionSets();
 
   @override

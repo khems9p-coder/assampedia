@@ -79,11 +79,14 @@ class PaywallBody extends StatelessWidget {
               ),
             ] else ...[
               benefit(Icons.menu_book_outlined, s.benefitAll),
+              benefit(Icons.picture_as_pdf_outlined, s.benefitStudy),
               benefit(Icons.quiz_outlined, s.benefitQuizzes),
               benefit(Icons.newspaper_outlined, s.benefitNews),
               benefit(Icons.work_outline, s.benefitFree),
               const SizedBox(height: 8),
               Text(s.freeNote, style: theme.textTheme.bodySmall),
+              const SizedBox(height: 16),
+              const _CompareTable(),
               const SizedBox(height: 20),
               if (p.price != null)
                 Text(
@@ -134,3 +137,41 @@ class PaywallBody extends StatelessWidget {
 
 /// Keeps "first 3 free" in one place for lists sorted the way readers see them.
 bool isFreeIndex(int i) => i < freePerGroup;
+
+/// Free and Premium side by side, so readers see what they are missing.
+class _CompareTable extends StatelessWidget {
+  const _CompareTable();
+
+  @override
+  Widget build(BuildContext context) {
+    final s = context.s;
+    final theme = Theme.of(context);
+    Widget cell(Widget child, {bool head = false}) => Padding(
+      padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 6),
+      child: DefaultTextStyle.merge(style: head ? const TextStyle(fontWeight: FontWeight.w700) : null, child: child),
+    );
+    Widget mark(bool yes) => cell(
+      Icon(yes ? Icons.check_circle : Icons.lock_outline, size: 20, color: yes ? theme.colorScheme.primary : theme.colorScheme.outline),
+    );
+    TableRow row(String what, bool free) => TableRow(children: [cell(Text(what)), mark(free), mark(true)]);
+    return Card(
+      child: Padding(
+        padding: const EdgeInsets.all(8),
+        child: Table(
+          columnWidths: const {0: FlexColumnWidth(3), 1: FlexColumnWidth(1.2), 2: FlexColumnWidth(1.4)},
+          defaultVerticalAlignment: TableCellVerticalAlignment.middle,
+          children: [
+            TableRow(
+              decoration: BoxDecoration(border: Border(bottom: BorderSide(color: theme.dividerColor))),
+              children: [cell(Text(s.compareFeature), head: true), cell(Text(s.tabFree), head: true), cell(Text(s.tabPremium), head: true)],
+            ),
+            row(s.compareFreePdf, true),
+            row(s.compareFirst3, true),
+            row(s.compareAllNotes, false),
+            row(s.compareAllTests, false),
+          ],
+        ),
+      ),
+    );
+  }
+}

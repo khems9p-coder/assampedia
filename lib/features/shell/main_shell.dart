@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../core/app_scope.dart';
 import '../account/account_screen.dart';
-import '../courses/courses_screen.dart';
+import '../study/study_screen.dart';
 import '../exams/exams_screen.dart';
 import '../jobs/jobs_screen.dart';
 import '../home/home_screen.dart';
@@ -30,7 +30,7 @@ class _MainShellState extends State<MainShell> {
         children: [
           HomeScreen(openTab: _go),
           const LearnScreen(),
-          const CoursesScreen(),
+          const StudyScreen(),
           const ExamsScreen(),
           const JobsScreen(),
           const AccountScreen(),
@@ -42,7 +42,7 @@ class _MainShellState extends State<MainShell> {
         items: [
           (Icons.home_outlined, Icons.home, s.navHome),
           (Icons.menu_book_outlined, Icons.menu_book, s.navLearn),
-          (Icons.route_outlined, Icons.route, s.navCourses),
+          (Icons.local_library_outlined, Icons.local_library, s.navCourses),
           (Icons.school_outlined, Icons.school, s.navExams),
           (Icons.work_outline, Icons.work, s.navJobs),
           (Icons.person_outline, Icons.person, s.navMe),

@@ -6,6 +6,7 @@ import 'course_models.dart';
 import 'jobs_models.dart';
 import 'models.dart';
 import 'practice_models.dart';
+import 'study_models.dart';
 
 /// Reads content from Supabase. The database's security rules make sure
 /// readers only receive published language versions.
@@ -207,4 +208,25 @@ class SupabaseContentRepository implements ContentRepository {
     final rows = await client.rpc('course_lessons', params: {'cid': courseId}) as List;
     return [for (final r in rows) CourseLesson.fromJson(r as Map<String, dynamic>)];
   }
+
+  @override
+  Future<List<StudySection>> studySections() async {
+    final rows = await client
+        .from('study_sections')
+        .select()
+        .eq('is_published', true)
+        .order('position', ascending: true)
+        .order('id', ascending: true)
+        .limit(1000);
+    return [for (final r in rows) StudySection.fromJson(r)];
+  }
+
+  @override
+  Future<List<StudyItem>> studyItems(String sectionId) async {
+    final rows = await client.rpc('study_section_items', params: {'sid': sectionId}) as List;
+    return [for (final r in rows) StudyItem.fromJson(r as Map<String, dynamic>, sectionId: sectionId)];
+  }
+
+  @override
+  Future<String> studyFileUrl(String path) => client.storage.from('study').createSignedUrl(path, 60 * 60);
 }

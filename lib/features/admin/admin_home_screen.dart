@@ -7,6 +7,7 @@ import '../../core/widgets/common.dart';
 import '../../data/models.dart';
 import 'admin_chapter_list_screen.dart';
 import 'admin_courses_screen.dart';
+import 'admin_study_screen.dart';
 import 'admin_import_screen.dart';
 import 'admin_practice_screen.dart';
 import 'admin_terms_screen.dart';
@@ -79,6 +80,16 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                 subtitle: const Text('Recruitment notices from official notifications'),
                 trailing: const Icon(Icons.chevron_right),
                 onTap: () => Navigator.of(context).push(SectionRoute(context, builder: (_) => const AdminVacanciesScreen())),
+              ),
+            ),
+            Card(
+              margin: const EdgeInsets.fromLTRB(12, 4, 12, 4),
+              child: ListTile(
+                leading: const Icon(Icons.local_library_outlined),
+                title: const Text('Study Material'),
+                subtitle: const Text('Free and Premium sections: PDFs, pictures, videos'),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => Navigator.of(context).push(SectionRoute(context, builder: (_) => const AdminStudyScreen())),
               ),
             ),
             Card(

@@ -90,7 +90,7 @@ class HomeDrawer extends StatelessWidget {
             if (auth.isSignedIn) item(Icons.account_circle_outlined, s.myProfile, () => push(const ProfileScreen())),
             item(Icons.notifications_outlined, s.notifications, () => push(const NotificationsScreen())),
             item(Icons.workspace_premium_outlined, s.premium, () => push(const PaywallScreen())),
-            item(Icons.route_outlined, s.coursesTitle, () => tab(Tabs.courses)),
+            item(Icons.local_library_outlined, s.studyTitle, () => tab(Tabs.courses)),
             item(Icons.quiz_outlined, s.practiceZone, () => push(const PracticeScreen())),
             item(Icons.timer_outlined, s.mockTests, () => push(const MockTestsScreen())),
             item(Icons.translate, s.dictionary, () => push(const DictionaryScreen())),

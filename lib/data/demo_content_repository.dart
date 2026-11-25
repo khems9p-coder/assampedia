@@ -4,6 +4,7 @@ import 'course_models.dart';
 import 'jobs_models.dart';
 import 'models.dart';
 import 'practice_models.dart';
+import 'study_models.dart';
 
 /// Layout-testing content only. Every text says it is sample text, so it can
 /// never be mistaken for real Assam GK.
@@ -235,4 +236,28 @@ class DemoContentRepository implements ContentRepository {
     CourseLesson(id: 'l3', number: 3, contentId: 'demo', kind: LessonKind.exam, titleEn: 'Sample exam page', titleAs: 'নমুনা পৰীক্ষাৰ পৃষ্ঠা', isFree: true),
     CourseLesson(id: 'l4', number: 4, contentId: 'demo', titleEn: 'Sample locked chapter', titleAs: 'নমুনা বন্ধ অধ্যায়'),
   ];
+
+  @override
+  Future<List<StudySection>> studySections() async => [
+    StudySection(id: 's1', slug: 'free-pdf', titleEn: 'Free PDF Study Material', titleAs: 'বিনামূলীয়া পিডিএফ অধ্যয়ন সামগ্ৰী', icon: 'menu_book', isPublished: true),
+    StudySection(id: 's2', tier: StudyTier.premium, titleEn: 'Sample premium notes', titleAs: 'নমুনা প্ৰিমিয়াম টোকা', isPublished: true),
+    StudySection(id: 's3', parentId: 's2', tier: StudyTier.premium, titleEn: 'Sample sub-section', titleAs: 'নমুনা উপ-শাখা', isPublished: true),
+  ];
+
+  @override
+  Future<List<StudyItem>> studyItems(String sectionId) async => switch (sectionId) {
+    's1' => [
+      StudyItem(id: 'i1', sectionId: 's1', type: StudyItemType.pdf, titleEn: 'Sample PDF (layout test)', titleAs: 'নমুনা পিডিএফ', filePath: 'demo.pdf', fileSize: 1200000, isFree: true),
+    ],
+    's2' => [
+      StudyItem(id: 'i2', sectionId: 's2', type: StudyItemType.page, contentId: 'demo', titleEn: 'Sample chapter (layout test)', titleAs: 'নমুনা অধ্যায় (পৰীক্ষা)', isFree: true),
+      StudyItem(id: 'i3', sectionId: 's2', type: StudyItemType.video, titleEn: 'Sample video class', titleAs: 'নমুনা ভিডিঅ’ শ্ৰেণী', videoUrl: 'https://youtu.be/abc', isFree: true),
+      StudyItem(id: 'i4', sectionId: 's2', type: StudyItemType.quiz, setId: 'q1', titleEn: 'Sample quiz (layout test)', titleAs: 'নমুনা কুইজ (পৰীক্ষা)', isFree: true),
+      StudyItem(id: 'i5', sectionId: 's2', type: StudyItemType.pdf, titleEn: 'Sample locked notes', titleAs: 'নমুনা বন্ধ টোকা', filePath: 'locked.pdf'),
+    ],
+    _ => const [],
+  };
+
+  @override
+  Future<String> studyFileUrl(String path) async => throw UnsupportedError('No files in the demo');
 }

@@ -19,7 +19,45 @@ class S {
   String get navExams => _t('পৰীক্ষা', 'Exams');
   String get navJobs => _t('চাকৰি', 'Jobs');
   String get navMe => _t('মোৰ', 'Me');
-  String get navCourses => _t('পাঠ্যক্ৰম', 'Courses');
+  String get navCourses => _t('অধ্যয়ন', 'Study');
+  String get studyTitle => _t('অধ্যয়ন', 'Study');
+  String get tabFree => _t('বিনামূলীয়া', 'Free');
+  String get tabPremium => _t('প্ৰিমিয়াম', 'Premium');
+  String get freeIntro => _t(
+    'সকলোৰে বাবে বিনামূলীয়া: পিডিএফ, টোকা আৰু ভিডিঅ’। ডাউনল’ড কৰক আৰু বন্ধুক শ্বেয়াৰ কৰক।',
+    'Free for everyone: PDFs, notes and videos. Read them and share the app with friends.',
+  );
+  String get premiumIntro => _t(
+    'সম্পূৰ্ণ পাঠ্যক্ৰম, টোকা আৰু ভিডিঅ’ শ্ৰেণী। প্ৰতিটোৰে প্ৰথম ৩টা বিনামূলীয়াকৈ চাওক।',
+    'Full courses, notes and video classes. Try the first 3 items of each for free.',
+  );
+  String get unlockAll => _t('প্ৰিমিয়ামৰ সৈতে সকলো খোলক', 'Unlock everything with Premium');
+  String get unlockAllHint => _t('সকলো পাঠ্যক্ৰম, পিডিএফ টোকা, ভিডিঅ’ আৰু আদৰ্শ পৰীক্ষা।', 'All courses, PDF notes, videos and mock tests.');
+  String get coursesHeading => _t('পাঠ্যক্ৰম', 'Courses');
+  String get materialHeading => _t('অধ্যয়ন সামগ্ৰী', 'Study material');
+  String get nothingHereYet => _t('ইয়াত এতিয়াও একো নাই।', 'Nothing here yet.');
+  String get itemPdf => _t('পিডিএফ', 'PDF');
+  String get itemImage => _t('ছবি', 'Picture');
+  String get itemVideo => _t('ভিডিঅ’', 'Video');
+  String get itemPage => _t('টোকা', 'Notes');
+  String get itemQuiz => _t('কুইজ', 'Quiz');
+  String itemsCount(int n) => _t('$nটা বস্তু', n == 1 ? '1 item' : '$n items');
+  String sectionsCount(int n) => _t('$nটা উপ-শাখা', n == 1 ? '1 sub-section' : '$n sub-sections');
+  String moreWithPremium(int n) => _t('প্ৰিমিয়ামৰ সৈতে আৰু $nটা খোলক', n == 1 ? 'Unlock 1 more with Premium' : 'Unlock $n more with Premium');
+  String get previewHint => _t('প্ৰথম ৩টা বিনামূলীয়া। বাকীবোৰ প্ৰিমিয়ামত।', 'The first 3 are free to try. The rest are in Premium.');
+  String get fileNeedsInternet => _t('এই ফাইলটো খুলিবলৈ ইণ্টাৰনেট লাগিব।', 'You need the internet to open this file.');
+  String get couldNotOpenVideo => _t('ভিডিঅ’টো খুলিব পৰা নগ’ল।', "Couldn't open the video.");
+  String get sharePdf => _t('শ্বেয়াৰ কৰক', 'Share');
+  String sharePdfText(String title, String url) => _t(
+    '"$title" আৰু বহুতো বিনামূলীয়া অধ্যয়ন সামগ্ৰী ASSAMPEDIA এপত পঢ়ক: $url',
+    'Read "$title" and more free study material in the ASSAMPEDIA app: $url',
+  );
+  String get endOfFreeItem => _t('ভাল লাগিলনে? প্ৰিমিয়ামত আৰু বহুত আছে।', 'Liked it? There is much more in Premium.');
+  String get compareFeature => _t('কি পাব', 'What you get');
+  String get compareFreePdf => _t('বিনামূলীয়া পিডিএফ আৰু দৈনিক প্ৰশ্ন', 'Free PDFs and daily question');
+  String get compareFirst3 => _t('প্ৰতিটো গোট আৰু পাঠ্যক্ৰমৰ প্ৰথম ৩টা', 'First 3 of every group and course');
+  String get compareAllNotes => _t('সকলো টোকা, পিডিএফ আৰু ভিডিঅ’', 'All notes, PDFs and videos');
+  String get compareAllTests => _t('সকলো কুইজ আৰু আদৰ্শ পৰীক্ষা', 'All quizzes and mock tests');
 
   String get coursesTitle => _t('পাঠ্যক্ৰম', 'Courses');
   String get coursesIntro => _t(
@@ -326,6 +364,7 @@ class S {
   String get benefitAll => _t('সকলো অধ্যায়, পৰীক্ষা আৰু কেৰিয়াৰৰ পৃষ্ঠা', 'Every chapter, exam and career page');
   String get benefitQuizzes => _t('সকলো কুইজ, আদৰ্শ পৰীক্ষা আৰু ফ্লেচকাৰ্ড', 'All quizzes, mock tests and flashcards');
   String get benefitNews => _t('সকলো সাম্প্ৰতিক ঘটনা', 'All current affairs');
+  String get benefitStudy => _t('সকলো পিডিএফ টোকা আৰু ভিডিঅ’ শ্ৰেণী', 'All PDF notes and video classes');
   String get benefitFree => _t('চাকৰিৰ খবৰ সদায় বিনামূলীয়া', 'Job vacancies always stay free');
   String perYear(String price) => _t('বছৰি $price', '$price per year');
   String get subscribe => _t('প্ৰিমিয়াম লওক', 'Subscribe');
