@@ -1,0 +1,9 @@
+{
+ "tests": [
+  {
+   "file": "assam-gk-mock-1.json",
+   "name": "Assam GK Mock Test 1",
+   "questions": 20
+  }
+ ]
+}

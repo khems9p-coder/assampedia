@@ -159,6 +159,17 @@ class DemoContentRepository implements ContentRepository {
       questionCount: 2,
     ),
     QuestionSet(
+      id: 'qm',
+      kind: QuizKind.mock,
+      level: QuizLevel.competitive,
+      text: {'title_en': 'Sample mock test (layout test)', 'title_as': 'নমুনা আদৰ্শ পৰীক্ষা (পৰীক্ষা)'},
+      timeLimitMinutes: 10,
+      marksPerQuestion: 2,
+      negativeMarks: 0.5,
+      isPublished: true,
+      questionCount: 3,
+    ),
+    QuestionSet(
       id: 'qd',
       kind: QuizKind.daily,
       text: {'title_en': 'Sample daily question', 'title_as': 'নমুনা দৈনিক প্ৰশ্ন'},
@@ -186,6 +197,18 @@ class DemoContentRepository implements ContentRepository {
   Future<List<Question>> questions(String setId) async => switch (setId) {
     'q1' => [_sample('q1', 1, 1), _sample('q1', 2, 3)],
     'qd' => [_sample('qd', 1, 0)],
+    'qm' => [
+      for (final (n, correct, topic) in [(1, 0, 'History'), (2, 1, 'History'), (3, 2, 'Geography')])
+        Question(
+          id: 'qm-$n',
+          setId: 'qm',
+          position: n,
+          text: {..._sample('qm', n, correct).text, 'topic_en': topic},
+          optionsEn: _sample('qm', n, correct).optionsEn,
+          optionsAs: _sample('qm', n, correct).optionsAs,
+          correctIndex: correct,
+        ),
+    ],
     _ => const [],
   };
 }

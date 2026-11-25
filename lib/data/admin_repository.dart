@@ -293,6 +293,38 @@ class AdminRepository {
       client.from('questions').upsert({...q.toJson(), 'updated_at': DateTime.now().toUtc().toIso8601String()});
 
   Future<void> deleteQuestion(String id) => client.from('questions').delete().eq('id', id);
+
+  /// Adds a ready-made mock test (from the app's GitHub files) as a hidden
+  /// draft. Returns false if a test with the same slug is already there.
+  Future<bool> importMockTest(Map<String, dynamic> test) async {
+    final slug = test['slug'] as String;
+    final existing = await client.from('question_sets').select('id').eq('slug', slug).maybeSingle();
+    if (existing != null) return false;
+    final last = await client.from('question_sets').select('position').order('position', ascending: false).limit(1);
+    final set = QuestionSet.fromJson({...test['set'] as Map<String, dynamic>, 'slug': slug});
+    final row = await client
+        .from('question_sets')
+        .insert({
+          ...set.toRow(),
+          'position': last.isEmpty ? 1 : (last.first['position'] as int) + 1,
+          // Hidden until the admin has checked every question.
+          'is_published': false,
+        })
+        .select('id')
+        .single();
+    final setId = row['id'] as String;
+    try {
+      await client.from('questions').insert([
+        for (final (i, q) in (test['questions'] as List).indexed)
+          {...Question.fromJson({...q as Map<String, dynamic>, 'set_id': setId}).toJson(), 'position': i + 1},
+      ]);
+    } catch (_) {
+      // Don't leave a half-made test behind; the next import will retry it.
+      await client.from('question_sets').delete().eq('id', setId);
+      rethrow;
+    }
+    return true;
+  }
 }
 
 /// What one group import did.

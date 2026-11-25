@@ -6,6 +6,8 @@ import '../../core/app_scope.dart';
 import '../../core/widgets/common.dart';
 import '../../data/practice_models.dart';
 import '../premium/paywall_screen.dart';
+import '../mock/mock_intro_screen.dart';
+import '../mock/mock_tests_screen.dart';
 import 'quiz_screen.dart';
 import 'revision_screens.dart';
 
@@ -65,6 +67,15 @@ class _PracticeScreenState extends State<PracticeScreen> {
                                   ? s.noProgress
                                   : s.progressLine(progress.quizzesTaken, progress.questionsAnswered, (progress.accuracy * 100).round()),
                             ),
+                          ),
+                        ),
+                        Card(
+                          child: ListTile(
+                            leading: Icon(Icons.timer_outlined, color: theme.colorScheme.primary),
+                            title: Text(s.mockTests, style: theme.textTheme.titleSmall),
+                            subtitle: Text(s.mockTestsHint),
+                            trailing: const Icon(Icons.chevron_right),
+                            onTap: () => Navigator.of(context).push(SectionRoute(context, builder: (_) => const MockTestsScreen())),
                           ),
                         ),
                         const SizedBox(height: 8),
@@ -148,10 +159,16 @@ class _SetCard extends StatelessWidget {
             subtitle: Text([?set.description(lang), info].join('\n')),
             isThreeLine: set.description(lang) != null,
             trailing: locked ? const LockIcon() : const Icon(Icons.chevron_right),
-            onTap: () => open(locked ? const PaywallScreen() : QuizScreen(set: set)),
+            onTap: () => open(
+              locked
+                  ? const PaywallScreen()
+                  : set.isMockTest
+                  ? MockIntroScreen(set: set)
+                  : QuizScreen(set: set),
+            ),
           ),
           // Revision from the same questions (mock tests and the daily question stay unseen).
-          if (!locked && !set.isTimed && set.kind != QuizKind.daily && set.questionCount > 0)
+          if (!locked && !set.isMockTest && set.kind != QuizKind.daily && set.questionCount > 0)
             Padding(
               padding: const EdgeInsets.fromLTRB(8, 0, 8, 4),
               child: Wrap(

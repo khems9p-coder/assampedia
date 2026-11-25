@@ -66,9 +66,12 @@ class QuestionSet {
     this.position = 0,
     this.isPublished = false,
     this.questionCount = 0,
+    this.marksPerQuestion = 1,
+    this.negativeMarks = 0,
+    this.slug,
   });
 
-  static const textFields = ['title', 'description'];
+  static const textFields = ['title', 'description', 'instructions'];
 
   final String? id;
   final QuizKind kind;
@@ -84,10 +87,31 @@ class QuestionSet {
   final bool isPublished;
   final int questionCount;
 
+  /// Marks for each right answer (mock tests).
+  final double marksPerQuestion;
+
+  /// Marks taken away for each wrong answer; 0 means no negative marking.
+  final double negativeMarks;
+
+  /// A short fixed name for ready-made tests (so courses can point to them).
+  final String? slug;
+
   bool get isTimed => timeLimitMinutes != null;
+
+  /// Taken like a real exam: instructions first, then a timer, a question
+  /// palette and the analysis at the end.
+  bool get isMockTest => kind == QuizKind.mock || isTimed;
+
+  double get totalMarks => questionCount * marksPerQuestion;
 
   String title(AppLang l) => _pick(text, 'title', l) ?? '';
   String? description(AppLang l) => _pick(text, 'description', l);
+
+  /// The admin's own instructions, one per line.
+  List<String> instructions(AppLang l) => [
+    for (final line in (_pick(text, 'instructions', l) ?? '').split('\n'))
+      if (line.trim().isNotEmpty) line.trim().replaceFirst(RegExp(r'^[-•*]\s*'), ''),
+  ];
 
   factory QuestionSet.fromJson(Map<String, dynamic> j) {
     final counted = j['questions'];
@@ -108,6 +132,9 @@ class QuestionSet {
       questionCount: counted is List && counted.isNotEmpty
           ? ((counted.first as Map)['count'] as num).toInt()
           : (j['question_count'] as num?)?.toInt() ?? 0,
+      marksPerQuestion: (j['marks_per_question'] as num?)?.toDouble() ?? 1,
+      negativeMarks: (j['negative_marks'] as num?)?.toDouble() ?? 0,
+      slug: j['slug'] as String?,
     );
   }
 
@@ -122,6 +149,9 @@ class QuestionSet {
     'time_limit_minutes': timeLimitMinutes,
     'position': position,
     'is_published': isPublished,
+    'marks_per_question': marksPerQuestion,
+    'negative_marks': negativeMarks,
+    'slug': slug,
   };
 
   Map<String, dynamic> toJson() => {...toRow(), 'question_count': questionCount};
@@ -140,7 +170,7 @@ class Question {
     this.source,
   });
 
-  static const textFields = ['question', 'explanation', 'background', 'relevance'];
+  static const textFields = ['question', 'explanation', 'background', 'relevance', 'topic'];
 
   final String? id;
   final String setId;
@@ -156,6 +186,9 @@ class Question {
   String? get(String field, AppLang l) => _pick(text, field, l);
 
   String question(AppLang l) => get('question', l) ?? '';
+
+  /// The topic (e.g. History), for the topic-wise analysis of mock tests.
+  String? topic(AppLang l) => get('topic', l);
 
   /// The options in [l]. Falls back to the other language together with the
   /// question, so a question and its options are always in the same language.
@@ -208,13 +241,27 @@ int dailyIndex(DateTime today, int count) {
 
 /// One finished quiz, kept on the phone.
 class QuizAttempt {
-  QuizAttempt({required this.setId, required this.score, required this.total, required this.at, this.seconds = 0});
+  QuizAttempt({
+    required this.setId,
+    required this.score,
+    required this.total,
+    required this.at,
+    this.seconds = 0,
+    this.marks,
+    this.maxMarks,
+  });
 
   final String setId;
+
+  /// Number of right answers.
   final int score;
   final int total;
   final DateTime at;
   final int seconds;
+
+  /// Mock tests only: marks after negative marking, out of [maxMarks].
+  final double? marks;
+  final double? maxMarks;
 
   double get accuracy => total == 0 ? 0 : score / total;
 
@@ -224,9 +271,19 @@ class QuizAttempt {
     total: (j['total'] as num).toInt(),
     at: DateTime.parse(j['at'] as String),
     seconds: (j['seconds'] as num?)?.toInt() ?? 0,
+    marks: (j['marks'] as num?)?.toDouble(),
+    maxMarks: (j['max_marks'] as num?)?.toDouble(),
   );
 
-  Map<String, dynamic> toJson() => {'set_id': setId, 'score': score, 'total': total, 'at': at.toIso8601String(), 'seconds': seconds};
+  Map<String, dynamic> toJson() => {
+    'set_id': setId,
+    'score': score,
+    'total': total,
+    'at': at.toIso8601String(),
+    'seconds': seconds,
+    'marks': ?marks,
+    'max_marks': ?maxMarks,
+  };
 }
 
 /// Scores and accuracy, stored on this phone only (no account needed).
@@ -261,6 +318,17 @@ class PracticeProgressStore extends ChangeNotifier {
   int get questionsAnswered => _items.fold(0, (s, a) => s + a.total);
   int get correctAnswers => _items.fold(0, (s, a) => s + a.score);
   double get accuracy => questionsAnswered == 0 ? 0 : correctAnswers / questionsAnswered;
+
+  /// The most recent attempt at a set, or null if it was never taken.
+  QuizAttempt? last(String? setId) {
+    for (final a in _items) {
+      if (a.setId == setId) return a;
+    }
+    return null;
+  }
+
+  /// How many times a set was taken.
+  int timesTaken(String? setId) => _items.where((a) => a.setId == setId).length;
 
   /// Best score for a set, or null if it was never taken.
   QuizAttempt? best(String? setId) {

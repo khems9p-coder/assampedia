@@ -139,3 +139,102 @@ class _AdminImportScreenState extends State<AdminImportScreen> {
     );
   }
 }
+
+/// Where the ready-made mock tests live.
+const mockBaseUrl = 'https://raw.githubusercontent.com/khems9p-coder/assampedia/main/supabase/content/mock/';
+
+/// Admin screen that adds ready-made mock tests with one tap. They come in
+/// hidden, so readers see them only after the admin checks and publishes them.
+class AdminImportMockScreen extends StatefulWidget {
+  const AdminImportMockScreen({super.key, this.baseUrl = mockBaseUrl, this.httpClient});
+  final String baseUrl;
+  final http.Client? httpClient;
+
+  @override
+  State<AdminImportMockScreen> createState() => _AdminImportMockScreenState();
+}
+
+class _AdminImportMockScreenState extends State<AdminImportMockScreen> {
+  late final http.Client _http = widget.httpClient ?? http.Client();
+  late Future<List<Map<String, dynamic>>> _tests = _loadIndex();
+  final _status = <String, _Status>{};
+  final _message = <String, String>{};
+
+  Future<Map<String, dynamic>> _getJson(String file) async {
+    final url = Uri.parse('${widget.baseUrl}$file?t=${DateTime.now().millisecondsSinceEpoch}');
+    final res = await _http.get(url);
+    if (res.statusCode != 200) throw Exception('Could not download $file (error ${res.statusCode}).');
+    return jsonDecode(utf8.decode(res.bodyBytes)) as Map<String, dynamic>;
+  }
+
+  Future<List<Map<String, dynamic>>> _loadIndex() async {
+    final index = await _getJson('index.json');
+    return [for (final t in index['tests'] as List) t as Map<String, dynamic>];
+  }
+
+  Future<void> _import(Map<String, dynamic> t) async {
+    final file = t['file'] as String;
+    setState(() => _status[file] = _Status.working);
+    try {
+      final added = await context.services.admin!.importMockTest(await _getJson(file));
+      _message[file] = added
+          ? 'Added as a hidden draft. Check it in Admin > Practice Zone, then turn on "Show to readers".'
+          : 'Already added. Nothing new.';
+      _status[file] = _Status.done;
+    } catch (e) {
+      _message[file] = '$e';
+      _status[file] = _Status.failed;
+    }
+    if (mounted) setState(() {});
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    return Scaffold(
+      appBar: AppBar(title: const Text('Admin · Import mock tests')),
+      body: FutureBuilder<List<Map<String, dynamic>>>(
+        future: _tests,
+        builder: (context, snap) {
+          if (snap.hasError) {
+            return LoadError(message: '${snap.error}', onRetry: () => setState(() => _tests = _loadIndex()));
+          }
+          if (!snap.hasData) return const Center(child: CircularProgressIndicator());
+          return ListView(
+            padding: const EdgeInsets.only(bottom: 32),
+            children: [
+              const Padding(
+                padding: EdgeInsets.fromLTRB(16, 16, 16, 8),
+                child: Text(
+                  'Ready-made mock tests in English and Assamese, with marks, negative marking and a topic for every question. '
+                  'They are added hidden, so check every question before you show a test to readers.',
+                ),
+              ),
+              const Divider(),
+              for (final t in snap.data!)
+                Builder(
+                  builder: (context) {
+                    final file = t['file'] as String;
+                    final status = _status[file] ?? _Status.waiting;
+                    return ListTile(
+                      leading: const Icon(Icons.timer_outlined),
+                      title: Text(t['name'] as String),
+                      subtitle: Text(
+                        _message[file] ?? '${t['questions']} questions',
+                        style: status == _Status.failed ? TextStyle(color: scheme.error) : null,
+                      ),
+                      trailing: switch (status) {
+                        _Status.working => const SizedBox(width: 24, height: 24, child: CircularProgressIndicator(strokeWidth: 2)),
+                        _Status.done => Icon(Icons.check_circle, color: scheme.primary),
+                        _ => TextButton(onPressed: () => _import(t), child: Text(status == _Status.failed ? 'Retry' : 'Import')),
+                      },
+                    );
+                  },
+                ),
+            ],
+          );
+        },
+      ),
+    );
+  }
+}

@@ -1,0 +1,438 @@
+{
+ "slug": "assam-gk-mock-1",
+ "set": {
+  "kind": "mock",
+  "level": "competitive",
+  "title_en": "Assam GK Mock Test 1",
+  "title_as": "অসমৰ সাধাৰণ জ্ঞান আদৰ্শ পৰীক্ষা ১",
+  "description_en": "20 questions on history, polity, geography, wildlife, culture and economy.",
+  "description_as": "ইতিহাস, শাসন ব্যৱস্থা, ভূগোল, বন্যপ্ৰাণী, সংস্কৃতি আৰু অৰ্থনীতিৰ ২০টা প্ৰশ্ন।",
+  "instructions_en": "This is a practice test made by ASSAMPEDIA. It is not an official exam paper.",
+  "instructions_as": "এইটো ASSAMPEDIAৰ অনুশীলন পৰীক্ষা, চৰকাৰী প্ৰশ্নকাকত নহয়।",
+  "time_limit_minutes": 15,
+  "marks_per_question": 1,
+  "negative_marks": 0.25
+ },
+ "questions": [
+  {
+   "topic_en": "History",
+   "topic_as": "ইতিহাস",
+   "question_en": "Who led the Ahom army to victory in the Battle of Saraighat (1671)?",
+   "question_as": "১৬৭১ চনৰ শৰাইঘাটৰ যুদ্ধত আহোম সেনাক কোনে নেতৃত্ব দি জয়ী কৰিছিল?",
+   "options_en": [
+    "Lachit Borphukan",
+    "Momai Tamuli Borbarua",
+    "Sukaphaa",
+    "Badan Borphukan"
+   ],
+   "options_as": [
+    "লাচিত বৰফুকন",
+    "মোমাই তামুলী বৰবৰুৱা",
+    "চুকাফা",
+    "বদন বৰফুকন"
+   ],
+   "correct_index": 0,
+   "explanation_en": "Lachit Borphukan, the Ahom army commander, defeated the Mughal army on the Brahmaputra at Saraighat near Guwahati in 1671. His birth anniversary, 24 November, is observed as Lachit Divas.",
+   "explanation_as": "আহোম সেনাপতি লাচিত বৰফুকনে ১৬৭১ চনত গুৱাহাটীৰ ওচৰৰ শৰাইঘাটত ব্ৰহ্মপুত্ৰত মোগল সেনাক পৰাস্ত কৰিছিল। তেওঁৰ জন্মদিন ২৪ নৱেম্বৰক লাচিত দিৱস হিচাপে পালন কৰা হয়।"
+  },
+  {
+   "topic_en": "History",
+   "topic_as": "ইতিহাস",
+   "question_en": "In which year did Sukaphaa found the Ahom kingdom in Assam?",
+   "question_as": "চুকাফাই কোন চনত অসমত আহোম ৰাজ্য প্ৰতিষ্ঠা কৰিছিল?",
+   "options_en": [
+    "1206",
+    "1526",
+    "1671",
+    "1228"
+   ],
+   "options_as": [
+    "১২০৬",
+    "১৫২৬",
+    "১৬৭১",
+    "১২২৮"
+   ],
+   "correct_index": 3,
+   "explanation_en": "Sukaphaa crossed the Patkai hills and founded the Ahom kingdom in 1228. The Ahoms ruled for about 600 years. 2 December is observed as Asom Divas (Sukaphaa Divas).",
+   "explanation_as": "চুকাফাই পাটকাই পাহাৰ পাৰ হৈ ১২২৮ চনত আহোম ৰাজ্য প্ৰতিষ্ঠা কৰিছিল। আহোমসকলে প্ৰায় ৬০০ বছৰ ৰাজত্ব কৰিছিল। ২ ডিচেম্বৰক অসম দিৱস (চুকাফা দিৱস) হিচাপে পালন কৰা হয়।"
+  },
+  {
+   "topic_en": "History",
+   "topic_as": "ইতিহাস",
+   "question_en": "The Treaty of Yandabo, which brought Assam under British control, was signed in:",
+   "question_as": "যি সন্ধিৰ ফলত অসম ব্ৰিটিছৰ অধীনলৈ আহিছিল, সেই ইয়াণ্ডাবু সন্ধি কোন চনত স্বাক্ষৰিত হৈছিল?",
+   "options_en": [
+    "1757",
+    "1858",
+    "1826",
+    "1874"
+   ],
+   "options_as": [
+    "১৭৫৭",
+    "১৮৫৮",
+    "১৮২৬",
+    "১৮৭৪"
+   ],
+   "correct_index": 2,
+   "explanation_en": "The Treaty of Yandabo (24 February 1826) ended the First Anglo-Burmese War. The Burmese gave up their claim to Assam, and the British took control.",
+   "explanation_as": "ইয়াণ্ডাবু সন্ধিয়ে (২৪ ফেব্ৰুৱাৰী ১৮২৬) প্ৰথম ইংগ-বৰ্মী যুদ্ধৰ অন্ত পেলাইছিল। বৰ্মীসকলে অসমৰ ওপৰত দাবী এৰি দিয়ে আৰু ব্ৰিটিছে অসমৰ শাসনভাৰ লয়।"
+  },
+  {
+   "topic_en": "History",
+   "topic_as": "ইতিহাস",
+   "question_en": "In which year was the Assam Accord signed?",
+   "question_as": "অসম চুক্তি কোন চনত স্বাক্ষৰিত হৈছিল?",
+   "options_en": [
+    "1979",
+    "1985",
+    "1971",
+    "1991"
+   ],
+   "options_as": [
+    "১৯৭৯",
+    "১৯৮৫",
+    "১৯৭১",
+    "১৯৯১"
+   ],
+   "correct_index": 1,
+   "explanation_en": "The Assam Accord was signed on 15 August 1985 between the Government of India and the leaders of the Assam Movement (AASU and AAGSP).",
+   "explanation_as": "১৯৮৫ চনৰ ১৫ আগষ্টত ভাৰত চৰকাৰ আৰু অসম আন্দোলনৰ নেতৃবৃন্দ (আছু আৰু সৰ্বভাৰতীয় অসম গণ সংগ্ৰাম পৰিষদ)ৰ মাজত অসম চুক্তি স্বাক্ষৰিত হৈছিল।"
+  },
+  {
+   "topic_en": "History",
+   "topic_as": "ইতিহাস",
+   "question_en": "Who was the first Chief Minister of Assam?",
+   "question_as": "অসমৰ প্ৰথম মুখ্যমন্ত্ৰী কোন আছিল?",
+   "options_en": [
+    "Gopinath Bordoloi",
+    "Bishnuram Medhi",
+    "Bimala Prasad Chaliha",
+    "Sarat Chandra Sinha"
+   ],
+   "options_as": [
+    "গোপীনাথ বৰদলৈ",
+    "বিষ্ণুৰাম মেধি",
+    "বিমলা প্ৰসাদ চলিহা",
+    "শৰৎ চন্দ্ৰ সিংহ"
+   ],
+   "correct_index": 0,
+   "explanation_en": "Gopinath Bordoloi became the head of the Assam government in 1946 and was the first Chief Minister after independence. He was given the Bharat Ratna in 1999.",
+   "explanation_as": "গোপীনাথ বৰদলৈ ১৯৪৬ চনত অসম চৰকাৰৰ মুৰব্বী হৈছিল আৰু স্বাধীনতাৰ পিছত প্ৰথম মুখ্যমন্ত্ৰী আছিল। ১৯৯৯ চনত তেওঁক ভাৰতৰত্ন প্ৰদান কৰা হয়।"
+  },
+  {
+   "topic_en": "Polity",
+   "topic_as": "শাসন ব্যৱস্থা",
+   "question_en": "What is the capital of Assam?",
+   "question_as": "অসমৰ ৰাজধানী ক’ত?",
+   "options_en": [
+    "Jorhat",
+    "Shillong",
+    "Silchar",
+    "Dispur"
+   ],
+   "options_as": [
+    "যোৰহাট",
+    "শ্বিলং",
+    "শিলচৰ",
+    "দিছপুৰ"
+   ],
+   "correct_index": 3,
+   "explanation_en": "Dispur, a part of Guwahati, has been the capital of Assam since 1973. Shillong was the capital before Meghalaya was formed.",
+   "explanation_as": "গুৱাহাটীৰ এটা অংশ দিছপুৰ ১৯৭৩ চনৰ পৰা অসমৰ ৰাজধানী। মেঘালয় গঠন হোৱাৰ আগতে শ্বিলং অসমৰ ৰাজধানী আছিল।"
+  },
+  {
+   "topic_en": "Polity",
+   "topic_as": "শাসন ব্যৱস্থা",
+   "question_en": "How many seats does Assam have in the Lok Sabha?",
+   "question_as": "লোকসভাত অসমৰ আসন কেইটা?",
+   "options_en": [
+    "7",
+    "11",
+    "14",
+    "16"
+   ],
+   "options_as": [
+    "৭",
+    "১১",
+    "১৪",
+    "১৬"
+   ],
+   "correct_index": 2,
+   "explanation_en": "Assam elects 14 members to the Lok Sabha and 7 to the Rajya Sabha. The State Legislative Assembly has 126 seats.",
+   "explanation_as": "অসমৰ পৰা লোকসভালৈ ১৪ জন আৰু ৰাজ্যসভালৈ ৭ জন সদস্য নিৰ্বাচিত হয়। অসম বিধানসভাৰ আসন ১২৬টা।"
+  },
+  {
+   "topic_en": "Polity",
+   "topic_as": "শাসন ব্যৱস্থা",
+   "question_en": "How many seats are there in the Assam Legislative Assembly?",
+   "question_as": "অসম বিধানসভাৰ আসন সংখ্যা কিমান?",
+   "options_en": [
+    "140",
+    "126",
+    "117",
+    "60"
+   ],
+   "options_as": [
+    "১৪০",
+    "১২৬",
+    "১১৭",
+    "৬০"
+   ],
+   "correct_index": 1,
+   "explanation_en": "The Assam Legislative Assembly has 126 elected members. It has only one house (unicameral).",
+   "explanation_as": "অসম বিধানসভাত ১২৬ জন নিৰ্বাচিত সদস্য থাকে। ইয়াৰ এটাহে সদন আছে (এক-সদনীয়)।"
+  },
+  {
+   "topic_en": "Geography",
+   "topic_as": "ভূগোল",
+   "question_en": "Majuli, one of the largest river islands in the world, is on which river?",
+   "question_as": "পৃথিৱীৰ আটাইতকৈ ডাঙৰ নদী-দ্বীপসমূহৰ অন্যতম মাজুলী কোন নদীত অৱস্থিত?",
+   "options_en": [
+    "Brahmaputra",
+    "Barak",
+    "Subansiri",
+    "Manas"
+   ],
+   "options_as": [
+    "ব্ৰহ্মপুত্ৰ",
+    "বৰাক",
+    "সুবনশিৰি",
+    "মানাহ"
+   ],
+   "correct_index": 0,
+   "explanation_en": "Majuli lies in the Brahmaputra. It became a separate district in 2016, the first river-island district in India, and is known for its Vaishnavite satras.",
+   "explanation_as": "মাজুলী ব্ৰহ্মপুত্ৰ নদীত অৱস্থিত। ২০১৬ চনত ই এখন সুকীয়া জিলা হয়, ভাৰতৰ প্ৰথম নদী-দ্বীপ জিলা। মাজুলী বৈষ্ণৱ সত্ৰৰ বাবে বিখ্যাত।"
+  },
+  {
+   "topic_en": "Geography",
+   "topic_as": "ভূগোল",
+   "question_en": "The Bogibeel Bridge, India's longest rail-cum-road bridge, connects which two districts?",
+   "question_as": "ভাৰতৰ আটাইতকৈ দীঘলীয়া ৰেল-সহ-পথ দলং বগীবিলে কোনকেইখন জিলা সংযোগ কৰিছে?",
+   "options_en": [
+    "Kamrup and Darrang",
+    "Jorhat and Majuli",
+    "Tinsukia and Lakhimpur",
+    "Dibrugarh and Dhemaji"
+   ],
+   "options_as": [
+    "কামৰূপ আৰু দৰং",
+    "যোৰহাট আৰু মাজুলী",
+    "তিনিচুকীয়া আৰু লখিমপুৰ",
+    "ডিব্ৰুগড় আৰু ধেমাজি"
+   ],
+   "correct_index": 3,
+   "explanation_en": "The 4.94 km Bogibeel Bridge over the Brahmaputra was opened in December 2018. It links Dibrugarh on the south bank with Dhemaji on the north bank.",
+   "explanation_as": "ব্ৰহ্মপুত্ৰৰ ওপৰত ৪.৯৪ কিলোমিটাৰ দীঘল বগীবিল দলং ২০১৮ চনৰ ডিচেম্বৰত মুকলি কৰা হয়। ই দক্ষিণ পাৰৰ ডিব্ৰুগড়ক উত্তৰ পাৰৰ ধেমাজিৰ সৈতে সংযোগ কৰিছে।"
+  },
+  {
+   "topic_en": "Geography",
+   "topic_as": "ভূগোল",
+   "question_en": "Manas National Park lies along Assam's border with which country?",
+   "question_as": "মানাহ ৰাষ্ট্ৰীয় উদ্যান অসমৰ কোন দেশৰ সৈতে থকা সীমাত অৱস্থিত?",
+   "options_en": [
+    "Bangladesh",
+    "Myanmar",
+    "Bhutan",
+    "Nepal"
+   ],
+   "options_as": [
+    "বাংলাদেশ",
+    "ম্যানমাৰ",
+    "ভূটান",
+    "নেপাল"
+   ],
+   "correct_index": 2,
+   "explanation_en": "Manas National Park lies at the foot of the Himalayas along the Bhutan border, next to Bhutan's Royal Manas National Park. It is a UNESCO World Heritage Site and a tiger reserve.",
+   "explanation_as": "মানাহ ৰাষ্ট্ৰীয় উদ্যান হিমালয়ৰ নামনিত ভূটানৰ সীমাত অৱস্থিত, ভূটানৰ ৰয়েল মানাহ ৰাষ্ট্ৰীয় উদ্যানৰ কাষতে। ই ইউনেস্কোৰ বিশ্ব ঐতিহ্য ক্ষেত্ৰ আৰু ব্যাঘ্ৰ সংৰক্ষিত বনাঞ্চল।"
+  },
+  {
+   "topic_en": "Wildlife",
+   "topic_as": "বন্যপ্ৰাণী",
+   "question_en": "In which year was Kaziranga National Park declared a UNESCO World Heritage Site?",
+   "question_as": "কাজিৰঙা ৰাষ্ট্ৰীয় উদ্যানক কোন চনত ইউনেস্কোৱে বিশ্ব ঐতিহ্য ক্ষেত্ৰ হিচাপে ঘোষণা কৰে?",
+   "options_en": [
+    "1974",
+    "1985",
+    "1908",
+    "2006"
+   ],
+   "options_as": [
+    "১৯৭৪",
+    "১৯৮৫",
+    "১৯০৮",
+    "২০০৬"
+   ],
+   "correct_index": 1,
+   "explanation_en": "Kaziranga was added to the UNESCO World Heritage list in 1985. It became a national park in 1974 and is home to most of the world's one-horned rhinos.",
+   "explanation_as": "১৯৮৫ চনত কাজিৰঙাক ইউনেস্কোৰ বিশ্ব ঐতিহ্য ক্ষেত্ৰৰ তালিকাত অন্তৰ্ভুক্ত কৰা হয়। ১৯৭৪ চনত ই ৰাষ্ট্ৰীয় উদ্যান হয় আৰু পৃথিৱীৰ বেছিভাগ এখৰীয়া গঁড় ইয়াতে বাস কৰে।"
+  },
+  {
+   "topic_en": "Wildlife",
+   "topic_as": "বন্যপ্ৰাণী",
+   "question_en": "What is the state animal of Assam?",
+   "question_as": "অসমৰ ৰাজ্যিক জন্তু কি?",
+   "options_en": [
+    "One-horned rhinoceros",
+    "Asian elephant",
+    "Royal Bengal tiger",
+    "Hoolock gibbon"
+   ],
+   "options_as": [
+    "এখৰীয়া গঁড়",
+    "এছিয়াৰ হাতী",
+    "ৰয়েল বেংগল বাঘ",
+    "হলৌ বান্দৰ"
+   ],
+   "correct_index": 0,
+   "explanation_en": "The Indian one-horned rhinoceros is the state animal of Assam. Kaziranga, Orang, Pobitora and Manas protect it.",
+   "explanation_as": "ভাৰতীয় এখৰীয়া গঁড় অসমৰ ৰাজ্যিক জন্তু। কাজিৰঙা, ওৰাং, পবিতৰা আৰু মানাহত ইয়াক সুৰক্ষা দিয়া হয়।"
+  },
+  {
+   "topic_en": "Wildlife",
+   "topic_as": "বন্যপ্ৰাণী",
+   "question_en": "What is the state bird of Assam?",
+   "question_as": "অসমৰ ৰাজ্যিক পক্ষী কি?",
+   "options_en": [
+    "Great hornbill",
+    "Peacock",
+    "Bengal florican",
+    "White-winged wood duck (Deo hanh)"
+   ],
+   "options_as": [
+    "ৰাজধনেশ",
+    "ময়ূৰ",
+    "উলুমৰা",
+    "দেও হাঁহ (বগা-ডেউকাৰ কাঠ হাঁহ)"
+   ],
+   "correct_index": 3,
+   "explanation_en": "The white-winged wood duck, called Deo hanh in Assamese, is the state bird. It is endangered and lives in the wet forests of eastern Assam.",
+   "explanation_as": "অসমীয়াত দেও হাঁহ বুলি জনা বগা-ডেউকাৰ কাঠ হাঁহ অসমৰ ৰাজ্যিক পক্ষী। ই বিপন্ন প্ৰজাতিৰ আৰু উজনি অসমৰ জলাহ অৰণ্যত বাস কৰে।"
+  },
+  {
+   "topic_en": "Culture",
+   "topic_as": "সংস্কৃতি",
+   "question_en": "Bohag (Rongali) Bihu marks:",
+   "question_as": "বহাগ (ৰঙালী) বিহুৱে কি সূচায়?",
+   "options_en": [
+    "The end of the harvest",
+    "Prayers for the growing crops",
+    "The Assamese New Year",
+    "The start of the monsoon"
+   ],
+   "options_as": [
+    "শস্য চপোৱাৰ শেষ",
+    "পথাৰৰ শস্যৰ মংগল কামনা",
+    "অসমীয়া নৱবৰ্ষ",
+    "বাৰিষাৰ আৰম্ভণি"
+   ],
+   "correct_index": 2,
+   "explanation_en": "Bohag or Rongali Bihu, in mid-April, begins the Assamese New Year. Magh (Bhogali) Bihu marks the end of the harvest, and Kati (Kongali) Bihu is for prayers for the crops.",
+   "explanation_as": "এপ্ৰিলৰ মাজভাগত পালন কৰা বহাগ বা ৰঙালী বিহুৰে অসমীয়া নৱবৰ্ষ আৰম্ভ হয়। মাঘ (ভোগালী) বিহুৱে শস্য চপোৱাৰ শেষ সূচায় আৰু কাতি (কঙালী) বিহুত শস্যৰ মংগল কামনা কৰা হয়।"
+  },
+  {
+   "topic_en": "Culture",
+   "topic_as": "সংস্কৃতি",
+   "question_en": "Sattriya dance, recognised as a classical dance of India in 2000, was started by:",
+   "question_as": "২০০০ চনত ভাৰতৰ শাস্ত্ৰীয় নৃত্য হিচাপে স্বীকৃতি পোৱা সত্ৰীয়া নৃত্যৰ প্ৰৱৰ্তক কোন?",
+   "options_en": [
+    "Madhavdev",
+    "Srimanta Sankardev",
+    "Jyoti Prasad Agarwala",
+    "Bishnu Prasad Rabha"
+   ],
+   "options_as": [
+    "মাধৱদেৱ",
+    "শ্ৰীমন্ত শংকৰদেৱ",
+    "জ্যোতিপ্ৰসাদ আগৰৱালা",
+    "বিষ্ণুপ্ৰসাদ ৰাভা"
+   ],
+   "correct_index": 1,
+   "explanation_en": "Srimanta Sankardev started Sattriya dance in the 15th to 16th century as part of the Vaishnavite satras. The Sangeet Natak Akademi recognised it as a classical dance on 15 November 2000.",
+   "explanation_as": "শ্ৰীমন্ত শংকৰদেৱে পোন্ধৰ-ষোল্ল শতিকাত বৈষ্ণৱ সত্ৰৰ অংশ হিচাপে সত্ৰীয়া নৃত্যৰ প্ৰৱৰ্তন কৰে। ২০০০ চনৰ ১৫ নৱেম্বৰত সংগীত নাটক একাডেমীয়ে ইয়াক শাস্ত্ৰীয় নৃত্যৰ স্বীকৃতি দিয়ে।"
+  },
+  {
+   "topic_en": "Culture",
+   "topic_as": "সংস্কৃতি",
+   "question_en": "Who was the first Assamese writer to receive the Jnanpith Award?",
+   "question_as": "জ্ঞানপীঠ বঁটা লাভ কৰা প্ৰথমজন অসমীয়া সাহিত্যিক কোন?",
+   "options_en": [
+    "Birendra Kumar Bhattacharya",
+    "Mamoni Raisom Goswami",
+    "Lakshminath Bezbaroa",
+    "Nilmani Phookan"
+   ],
+   "options_as": [
+    "বীৰেন্দ্ৰ কুমাৰ ভট্টাচাৰ্য",
+    "মামনি ৰয়ছম গোস্বামী",
+    "লক্ষ্মীনাথ বেজবৰুৱা",
+    "নীলমণি ফুকন"
+   ],
+   "correct_index": 0,
+   "explanation_en": "Birendra Kumar Bhattacharya received the Jnanpith Award for 1979 for his novel Mrityunjay. Mamoni Raisom Goswami (2000) and Nilmani Phookan (2021) received it later.",
+   "explanation_as": "বীৰেন্দ্ৰ কুমাৰ ভট্টাচাৰ্যই 'মৃত্যুঞ্জয়' উপন্যাসৰ বাবে ১৯৭৯ চনৰ জ্ঞানপীঠ বঁটা লাভ কৰে। পিছত মামনি ৰয়ছম গোস্বামী (২০০০) আৰু নীলমণি ফুকনে (২০২১) এই বঁটা পায়।"
+  },
+  {
+   "topic_en": "Culture",
+   "topic_as": "সংস্কৃতি",
+   "question_en": "In which year was Dr Bhupen Hazarika awarded the Bharat Ratna?",
+   "question_as": "ড° ভূপেন হাজৰিকাক কোন চনত ভাৰতৰত্ন প্ৰদান কৰা হয়?",
+   "options_en": [
+    "2011",
+    "1992",
+    "2008",
+    "2019"
+   ],
+   "options_as": [
+    "২০১১",
+    "১৯৯২",
+    "২০০৮",
+    "২০১৯"
+   ],
+   "correct_index": 3,
+   "explanation_en": "Bhupen Hazarika, the singer and composer known as Sudhakantha, was given the Bharat Ratna after his death; it was announced in January 2019. He had received the Dadasaheb Phalke Award in 1992.",
+   "explanation_as": "সুধাকণ্ঠ নামে জনাজাত শিল্পী ভূপেন হাজৰিকাক মৰণোত্তৰভাৱে ভাৰতৰত্ন দিয়া হয়; ২০১৯ চনৰ জানুৱাৰীত ইয়াৰ ঘোষণা কৰা হৈছিল। ১৯৯২ চনত তেওঁ দাদাচাহেব ফাল্কে বঁটা লাভ কৰিছিল।"
+  },
+  {
+   "topic_en": "Economy",
+   "topic_as": "অৰ্থনীতি",
+   "question_en": "Digboi in Assam is famous for:",
+   "question_as": "অসমৰ ডিগবৈ কিহৰ বাবে বিখ্যাত?",
+   "options_en": [
+    "India's first tea garden",
+    "The largest river port",
+    "Asia's oldest working oil refinery",
+    "The first paper mill"
+   ],
+   "options_as": [
+    "ভাৰতৰ প্ৰথম চাহ বাগিচা",
+    "আটাইতকৈ ডাঙৰ নদী বন্দৰ",
+    "এছিয়াৰ আটাইতকৈ পুৰণি চলি থকা তেল শোধনাগাৰ",
+    "প্ৰথম কাগজ কল"
+   ],
+   "correct_index": 2,
+   "explanation_en": "The Digboi refinery started in 1901 and is often called the oldest working oil refinery in Asia. Oil was struck at Digboi in 1889.",
+   "explanation_as": "ডিগবৈ শোধনাগাৰ ১৯০১ চনত আৰম্ভ হৈছিল আৰু ইয়াক এছিয়াৰ আটাইতকৈ পুৰণি চলি থকা তেল শোধনাগাৰ বুলি কোৱা হয়। ১৮৮৯ চনত ডিগবৈত তেল পোৱা গৈছিল।"
+  },
+  {
+   "topic_en": "Economy",
+   "topic_as": "অৰ্থনীতি",
+   "question_en": "Which silk of Assam, known for its natural golden colour, has a GI tag?",
+   "question_as": "প্ৰাকৃতিক সোণালী ৰঙৰ বাবে বিখ্যাত অসমৰ কোনবিধ পাটে ভৌগোলিক সূচক (জি.আই.) টেগ পাইছে?",
+   "options_en": [
+    "Eri",
+    "Muga",
+    "Pat",
+    "Tussar"
+   ],
+   "options_as": [
+    "এৰী",
+    "মুগা",
+    "পাট",
+    "টছৰ"
+   ],
+   "correct_index": 1,
+   "explanation_en": "Muga silk comes from silkworms found mainly in Assam and has a natural golden shine. It received a Geographical Indication (GI) tag in 2007.",
+   "explanation_as": "প্ৰধানকৈ অসমত পোৱা মুগা পলুৰ পৰা হোৱা মুগা পাটৰ প্ৰাকৃতিক সোণালী চিকমিকনি আছে। ২০০৭ চনত ই ভৌগোলিক সূচক (জি.আই.) টেগ লাভ কৰে।"
+  }
+ ]
+}

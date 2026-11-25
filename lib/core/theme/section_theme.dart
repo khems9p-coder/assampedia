@@ -7,6 +7,7 @@ abstract final class SectionColors {
   static const learn = Color(0xFF1E7A46);
   static const exams = Color(0xFF1F6FB2);
   static const practice = Color(0xFFB3266B);
+  static const mock = Color(0xFFC0392B);
   static const jobs = Color(0xFF00796B);
   static const news = Color(0xFFB85C00);
   static const careers = Color(0xFF6A3FB5);

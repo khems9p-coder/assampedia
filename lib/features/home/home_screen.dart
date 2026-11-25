@@ -10,6 +10,7 @@ import '../dictionary/dictionary_screen.dart';
 import 'home_drawer.dart';
 import '../notifications/notifications_screen.dart';
 import '../practice/daily_question_card.dart';
+import '../mock/mock_tests_screen.dart';
 import '../practice/practice_screen.dart';
 import '../premium/paywall_screen.dart';
 import '../reader/reader_screen.dart';
@@ -70,6 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
       _Tile(s.encyclopedia, Icons.auto_stories_outlined, SectionColors.learn, () => widget.openTab(Tabs.learn)),
       _Tile(s.tileExams, Icons.school_outlined, SectionColors.exams, () => widget.openTab(Tabs.exams)),
       _Tile(s.practiceZone, Icons.quiz_outlined, SectionColors.practice, () => _push(const PracticeScreen())),
+      _Tile(s.mockTests, Icons.timer_outlined, SectionColors.mock, () => _push(const MockTestsScreen())),
       _Tile(s.tileJobs, Icons.badge_outlined, SectionColors.jobs, () => widget.openTab(Tabs.jobs)),
       _Tile(s.tileNews, Icons.newspaper_outlined, SectionColors.news, () => widget.openTab(Tabs.jobs)),
       _Tile(s.tileCareers, Icons.explore_outlined, SectionColors.careers, () => widget.openTab(Tabs.exams)),
