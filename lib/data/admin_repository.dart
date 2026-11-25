@@ -442,6 +442,22 @@ extension AdminStudy on AdminRepository {
     if (paths.isNotEmpty) await client.storage.from('study').remove(paths);
   }
 
+  /// The top section of a course's own content; made the first time it is needed.
+  Future<StudySection> courseSection(Course course) async {
+    final row = await client.from('study_sections').select().eq('course_id', course.id!).isFilter('parent_id', null).maybeSingle();
+    if (row != null) return StudySection.fromJson(row);
+    return saveStudySection(
+      StudySection(
+        courseId: course.id,
+        tier: StudyTier.premium,
+        titleEn: course.titleEn,
+        titleAs: course.titleAs,
+        icon: course.icon,
+        isPublished: true,
+      ),
+    );
+  }
+
   /// A section's items, drafts included.
   Future<List<StudyItem>> studyItems(String sectionId) async {
     final rows = await client

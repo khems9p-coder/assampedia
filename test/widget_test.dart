@@ -676,6 +676,10 @@ void main() {
     await tester.tap(find.text('Sample course (layout test)'));
     await tester.pumpAndSettle();
     expect(find.text('0 of 4 done'), findsOneWidget);
+    // The course's own subjects and uploads show under the lessons.
+    await tester.scrollUntilVisible(find.text('Sample course PDF'), 300);
+    expect(find.text('Sample subject'), findsOneWidget);
+    await tester.scrollUntilVisible(find.text('0 of 4 done'), -300);
     expect(find.byIcon(Icons.lock_outline), findsOneWidget);
     expect(find.text('Quiz · Free'), findsOneWidget);
 
@@ -715,6 +719,7 @@ void main() {
     await tester.tap(find.text('Premium').first);
     await tester.pumpAndSettle();
     expect(find.text('Unlock everything with Premium'), findsOneWidget);
+    expect(find.text('Sample course'), findsNothing); // a course's own content shows only inside the course
     await tester.tap(find.text('Sample premium notes'));
     await tester.pumpAndSettle();
     expect(find.text('Sample sub-section'), findsOneWidget);

@@ -58,3 +58,17 @@ set role authenticated; set request.jwt.claim.sub = '33333333-3333-3333-3333-333
 select 'paid files', count(*) from storage.objects where bucket_id = 'study';
 select 'paid video4', video_url from study_section_items('f0000000-0000-0000-0000-000000000002') where title_en = 'paid4';
 reset role;
+
+-- Course content: a published course's own section is visible; a draft course's is not.
+insert into courses (id, slug, title_en, is_published) values
+  ('eeeeeeee-0000-0000-0000-0000000000c1', 'pub-course', 'Pub', true),
+  ('eeeeeeee-0000-0000-0000-0000000000c2', 'draft-course2', 'Draft', false);
+insert into study_sections (id, course_id, tier, title_en, is_published) values
+  ('f0000000-0000-0000-0000-0000000000c1', 'eeeeeeee-0000-0000-0000-0000000000c1', 'premium', 'Pub course content', true),
+  ('f0000000-0000-0000-0000-0000000000c2', 'eeeeeeee-0000-0000-0000-0000000000c2', 'premium', 'Draft course content', true);
+insert into study_sections (parent_id, tier, title_en, is_published) values
+  ('f0000000-0000-0000-0000-0000000000c1', 'premium', 'Pub subject', true),
+  ('f0000000-0000-0000-0000-0000000000c2', 'premium', 'Draft subject', true);
+set role authenticated; set request.jwt.claim.sub = '22222222-2222-2222-2222-222222222222';
+select 'course sections seen', string_agg(title_en, ',' order by title_en) from study_sections where title_en like '%course content' or title_en like '%subject';
+reset role;

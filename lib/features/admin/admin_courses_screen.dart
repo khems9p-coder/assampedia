@@ -9,6 +9,8 @@ import '../../data/course_models.dart';
 import '../../data/models.dart';
 import '../../data/practice_models.dart';
 
+import 'admin_study_screen.dart';
+
 const _border = OutlineInputBorder();
 
 const _icons = ['flag', 'gavel', 'shield', 'history', 'map', 'account_balance', 'work', 'public', 'groups', 'place'];
@@ -32,8 +34,20 @@ class _AdminCoursesScreenState extends State<AdminCoursesScreen> {
 
   void _reload() => setState(() => _courses = context.services.admin!.courses());
 
+  /// Opens the course's own content (sections, subjects, topics, uploads).
   Future<void> _open(Course c) async {
-    await Navigator.of(context).push(SectionRoute(context, builder: (_) => AdminCourseLessonsScreen(course: c)));
+    try {
+      final section = await context.services.admin!.courseSection(c);
+      if (!mounted) return;
+      await Navigator.of(context).push(SectionRoute(context, builder: (_) => AdminStudySectionScreen(section: section, course: c)));
+    } catch (e) {
+      if (!mounted) return;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('Could not open the course content: $e\nRun supabase/migrations/0013_course_content.sql first.')),
+      );
+      // Older databases: the lesson list still works.
+      await Navigator.of(context).push(SectionRoute(context, builder: (_) => AdminCourseLessonsScreen(course: c)));
+    }
     if (mounted) _reload();
   }
 

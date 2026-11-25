@@ -241,6 +241,8 @@ class DemoContentRepository implements ContentRepository {
   Future<List<StudySection>> studySections() async => [
     StudySection(id: 's1', slug: 'free-pdf', titleEn: 'Free PDF Study Material', titleAs: 'বিনামূলীয়া পিডিএফ অধ্যয়ন সামগ্ৰী', icon: 'menu_book', isPublished: true),
     StudySection(id: 's2', tier: StudyTier.premium, titleEn: 'Sample premium notes', titleAs: 'নমুনা প্ৰিমিয়াম টোকা', isPublished: true),
+    StudySection(id: 's4', courseId: 'k1', tier: StudyTier.premium, titleEn: 'Sample course', isPublished: true),
+    StudySection(id: 's5', parentId: 's4', tier: StudyTier.premium, titleEn: 'Sample subject', titleAs: 'নমুনা বিষয়', isPublished: true),
     StudySection(id: 's3', parentId: 's2', tier: StudyTier.premium, titleEn: 'Sample sub-section', titleAs: 'নমুনা উপ-শাখা', isPublished: true),
   ];
 
@@ -254,6 +256,9 @@ class DemoContentRepository implements ContentRepository {
       StudyItem(id: 'i3', sectionId: 's2', type: StudyItemType.video, titleEn: 'Sample video class', titleAs: 'নমুনা ভিডিঅ’ শ্ৰেণী', videoUrl: 'https://youtu.be/abc', isFree: true),
       StudyItem(id: 'i4', sectionId: 's2', type: StudyItemType.quiz, setId: 'q1', titleEn: 'Sample quiz (layout test)', titleAs: 'নমুনা কুইজ (পৰীক্ষা)', isFree: true),
       StudyItem(id: 'i5', sectionId: 's2', type: StudyItemType.pdf, titleEn: 'Sample locked notes', titleAs: 'নমুনা বন্ধ টোকা', filePath: 'locked.pdf'),
+    ],
+    's4' => [
+      StudyItem(id: 'i6', sectionId: 's4', type: StudyItemType.pdf, titleEn: 'Sample course PDF', titleAs: 'নমুনা পাঠ্যক্ৰম পিডিএফ', filePath: 'course.pdf', isFree: true),
     ],
     _ => const [],
   };

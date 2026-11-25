@@ -34,6 +34,7 @@ class S {
   String get unlockAll => _t('প্ৰিমিয়ামৰ সৈতে সকলো খোলক', 'Unlock everything with Premium');
   String get unlockAllHint => _t('সকলো পাঠ্যক্ৰম, পিডিএফ টোকা, ভিডিঅ’ আৰু আদৰ্শ পৰীক্ষা।', 'All courses, PDF notes, videos and mock tests.');
   String get coursesHeading => _t('পাঠ্যক্ৰম', 'Courses');
+  String get coursesLessonsHeading => _t('ক্ৰমান্বয়ে পাঠ', 'Step-by-step lessons');
   String get materialHeading => _t('অধ্যয়ন সামগ্ৰী', 'Study material');
   String get nothingHereYet => _t('ইয়াত এতিয়াও একো নাই।', 'Nothing here yet.');
   String get itemPdf => _t('পিডিএফ', 'PDF');

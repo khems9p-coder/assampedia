@@ -24,10 +24,14 @@ class StudySection {
     this.icon,
     this.position = 0,
     this.isPublished = false,
+    this.courseId,
   });
 
   final String? id;
   final String? parentId;
+
+  /// Set on the top section of a course's own content (shown inside the course).
+  final String? courseId;
   final StudyTier tier;
   final String? slug;
   final String? titleAs;
@@ -54,11 +58,14 @@ class StudySection {
     icon: j['icon'] as String?,
     position: (j['position'] as num?)?.toInt() ?? 0,
     isPublished: j['is_published'] as bool? ?? false,
+    courseId: j['course_id'] as String?,
   );
 
   Map<String, dynamic> toJson() => {
     'id': ?id,
     'parent_id': parentId,
+    // Only sent when set, so databases without 0013_course_content.sql keep working.
+    'course_id': ?courseId,
     'tier': tier.name,
     'slug': slug,
     'title_as': titleAs,
@@ -82,12 +89,18 @@ class StudySection {
     icon: icon,
     position: position ?? this.position,
     isPublished: isPublished ?? this.isPublished,
+    courseId: courseId,
   );
 }
 
-/// The sections directly inside [parentId] (null = top level), in order.
+/// The top section of a course's own content, if it has one.
+StudySection? courseRootSection(List<StudySection> all, String courseId) =>
+    all.where((s) => s.courseId == courseId && s.parentId == null).firstOrNull;
+
+/// The sections directly inside [parentId] (null = top level, without course
+/// content, which shows inside its course), in order.
 List<StudySection> childSections(List<StudySection> all, String? parentId) =>
-    [for (final s in all) if (s.parentId == parentId) s]..sort((a, b) {
+    [for (final s in all) if (s.parentId == parentId && (parentId != null || s.courseId == null)) s]..sort((a, b) {
       final p = a.position.compareTo(b.position);
       return p != 0 ? p : (a.id ?? '').compareTo(b.id ?? '');
     });

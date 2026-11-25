@@ -418,3 +418,69 @@ Future<void> openStudyItem(BuildContext context, StudyItem item, {required bool 
       if (!ok) messenger.showSnackBar(SnackBar(content: Text(s.couldNotOpenVideo)));
   }
 }
+
+/// A course's own sections, subjects, topics and items, shown inside the course.
+class CourseMaterial extends StatefulWidget {
+  const CourseMaterial({super.key, required this.courseId, this.showEmpty = false});
+  final String courseId;
+
+  /// Say "no lessons yet" when the course has nothing here either.
+  final bool showEmpty;
+
+  @override
+  State<CourseMaterial> createState() => _CourseMaterialState();
+}
+
+class _CourseMaterialState extends State<CourseMaterial> {
+  Future<(List<StudySection>, StudySection?, List<StudyItem>)>? _data;
+
+  Future<(List<StudySection>, StudySection?, List<StudyItem>)> _load() async {
+    final repo = context.services.content!;
+    final all = await repo.studySections();
+    final root = courseRootSection(all, widget.courseId);
+    final items = root == null ? <StudyItem>[] : await repo.studyItems(root.id!);
+    return (all, root, items);
+  }
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    if (context.services.content != null) _data ??= _load();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final s = context.s;
+    final services = context.services;
+    return FutureBuilder<(List<StudySection>, StudySection?, List<StudyItem>)>(
+      future: _data,
+      builder: (context, snap) {
+        if (snap.connectionState != ConnectionState.done) {
+          return const Padding(padding: EdgeInsets.all(16), child: Center(child: CircularProgressIndicator()));
+        }
+        // An older database without course content just shows the lessons.
+        final (all, root, items) = snap.data ?? (const <StudySection>[], null, const <StudyItem>[]);
+        final subs = root == null ? const <StudySection>[] : childSections(all, root.id);
+        if (subs.isEmpty && items.isEmpty) {
+          return widget.showEmpty ? Padding(padding: const EdgeInsets.all(24), child: Center(child: Text(s.noLessons))) : const SizedBox.shrink();
+        }
+        return ListenableBuilder(
+          listenable: services.premium,
+          builder: (context, _) {
+            final premium = services.premium.isPremium;
+            final locked = premium ? 0 : items.where((i) => !i.isFree).length;
+            return Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                _heading(context, s.materialHeading),
+                for (final x in subs) SectionCard(section: x, all: all),
+                for (final it in items) StudyItemTile(item: it, locked: !premium && !it.isFree),
+                if (locked > 0) ...[const SizedBox(height: 8), UpsellCard(title: s.moreWithPremium(locked))],
+              ],
+            );
+          },
+        );
+      },
+    );
+  }
+}
