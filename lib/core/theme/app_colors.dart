@@ -12,6 +12,22 @@ class AppColors {
   static const cream = Color(0xFFFBF6EA); // Gamosa white
   static const earth = Color(0xFF6B4F35); // natural earthy shade
   static const nightGreen = Color(0xFF0F1D16); // dark-mode background
+
+  // The simple look: ink on warm paper.
+  static const ink = Color(0xFF111111); // main buttons, headings, icons
+  static const paper = Color(0xFFFAF8F3); // page background
+  static const card = Color(0xFFFFFFFF); // cards
+  static const line = Color(0xFFE7E3DA); // card borders and dividers
+  static const tint = Color(0xFFF1ECE1); // soft fills behind icons
+  static const sub = Color(0xFF6B6B6B); // secondary text
+  static const premiumTint = Color(0xFFF3E7C6); // soft gold for Premium
+
+  // Dark mode versions.
+  static const night = Color(0xFF121212);
+  static const nightCard = Color(0xFF1C1C1C);
+  static const nightLine = Color(0xFF2E2E2E);
+  static const nightTint = Color(0xFF262421);
+  static const snow = Color(0xFFF2F0EA);
 }
 
 /// The meaning of each highlight colour used inside lessons.

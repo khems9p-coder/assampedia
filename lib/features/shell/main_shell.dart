@@ -36,7 +36,7 @@ class _MainShellState extends State<MainShell> {
           const AccountScreen(),
         ],
       ),
-      bottomNavigationBar: _FloatingNavBar(
+      bottomNavigationBar: _SimpleNavBar(
         index: _index,
         onTap: _go,
         items: [
@@ -52,9 +52,9 @@ class _MainShellState extends State<MainShell> {
   }
 }
 
-/// A rounded bottom bar that floats above the page edge.
-class _FloatingNavBar extends StatelessWidget {
-  const _FloatingNavBar({required this.index, required this.onTap, required this.items});
+/// A plain white bottom bar. The open tab is shown in black with a small dot.
+class _SimpleNavBar extends StatelessWidget {
+  const _SimpleNavBar({required this.index, required this.onTap, required this.items});
   final int index;
   final ValueChanged<int> onTap;
   final List<(IconData, IconData, String)> items;
@@ -62,60 +62,57 @@ class _FloatingNavBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final scheme = Theme.of(context).colorScheme;
-    return SafeArea(
-      top: false,
-      child: Padding(
-        padding: const EdgeInsets.fromLTRB(12, 4, 12, 10),
-        child: Material(
-          elevation: 6,
-          shadowColor: Colors.black26,
-          color: scheme.surfaceContainerLow,
-          borderRadius: BorderRadius.circular(28),
-          child: Padding(
-            padding: const EdgeInsets.all(6),
-            child: Row(
-              children: [
-                for (var i = 0; i < items.length; i++)
-                  Expanded(
-                    child: Semantics(
-                      selected: i == index,
-                      button: true,
-                      child: InkWell(
-                        borderRadius: BorderRadius.circular(22),
-                        onTap: () => onTap(i),
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 200),
-                          height: 56,
-                          decoration: BoxDecoration(
-                            color: i == index ? scheme.primaryContainer : Colors.transparent,
-                            borderRadius: BorderRadius.circular(22),
+    return DecoratedBox(
+      decoration: BoxDecoration(
+        color: scheme.surfaceContainerLowest,
+        border: Border(top: BorderSide(color: scheme.outlineVariant)),
+      ),
+      child: SafeArea(
+        top: false,
+        child: SizedBox(
+          height: 64,
+          child: Row(
+            children: [
+              for (var i = 0; i < items.length; i++)
+                Expanded(
+                  child: Semantics(
+                    selected: i == index,
+                    button: true,
+                    child: InkResponse(
+                      onTap: () => onTap(i),
+                      radius: 32,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            i == index ? items[i].$2 : items[i].$1,
+                            size: 24,
+                            color: i == index ? scheme.onSurface : scheme.onSurfaceVariant,
                           ),
-                          child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                i == index ? items[i].$2 : items[i].$1,
-                                color: i == index ? scheme.onPrimaryContainer : scheme.onSurfaceVariant,
-                              ),
-                              const SizedBox(height: 2),
-                              Text(
-                                items[i].$3,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  fontWeight: i == index ? FontWeight.w700 : FontWeight.w500,
-                                  color: i == index ? scheme.onPrimaryContainer : scheme.onSurfaceVariant,
-                                ),
-                              ),
-                            ],
+                          const SizedBox(height: 3),
+                          Text(
+                            items[i].$3,
+                            maxLines: 1,
+                            overflow: TextOverflow.ellipsis,
+                            style: TextStyle(
+                              fontSize: 11.5,
+                              fontWeight: i == index ? FontWeight.w700 : FontWeight.w500,
+                              color: i == index ? scheme.onSurface : scheme.onSurfaceVariant,
+                            ),
                           ),
-                        ),
+                          const SizedBox(height: 3),
+                          AnimatedContainer(
+                            duration: const Duration(milliseconds: 200),
+                            width: i == index ? 5 : 0,
+                            height: 5,
+                            decoration: BoxDecoration(color: scheme.onSurface, shape: BoxShape.circle),
+                          ),
+                        ],
                       ),
                     ),
                   ),
-              ],
-            ),
+                ),
+            ],
           ),
         ),
       ),

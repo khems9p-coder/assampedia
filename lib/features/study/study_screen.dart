@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../../core/widgets/line_art.dart';
 import '../../core/app_scope.dart';
 import '../../core/theme/section_theme.dart';
 import '../../core/widgets/common.dart';
@@ -60,12 +61,7 @@ class _StudyScreenState extends State<StudyScreen> {
             ),
             const Padding(padding: EdgeInsets.only(right: 8), child: LanguageSwitch()),
           ],
-          bottom: TabBar(
-            tabs: [
-              Tab(icon: const Icon(Icons.card_giftcard_outlined), text: s.tabFree),
-              Tab(icon: const Icon(Icons.workspace_premium_outlined), text: s.tabPremium),
-            ],
-          ),
+          bottom: PillTabBar(labels: [s.tabFree, s.tabPremium]),
         ),
         body: _sections == null
             ? Center(child: Text(s.notConnected))
@@ -102,7 +98,7 @@ class _FreeTab extends StatelessWidget {
         physics: const AlwaysScrollableScrollPhysics(),
         padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
         children: [
-          Padding(padding: const EdgeInsets.fromLTRB(4, 0, 4, 12), child: Text(s.freeIntro)),
+          IntroCard(text: s.freeIntro, art: LineArt.books),
           if (top.isEmpty) Padding(padding: const EdgeInsets.all(24), child: Center(child: Text(s.nothingHereYet))),
           for (final x in top) SectionCard(section: x, all: all),
         ],
@@ -132,7 +128,7 @@ class _PremiumTab extends StatelessWidget {
           physics: const AlwaysScrollableScrollPhysics(),
           padding: const EdgeInsets.fromLTRB(16, 12, 16, 24),
           children: [
-            Padding(padding: const EdgeInsets.fromLTRB(4, 0, 4, 12), child: Text(s.premiumIntro)),
+            IntroCard(text: s.premiumIntro, art: LineArt.town, color: Theme.of(context).colorScheme.tertiaryContainer),
             if (!premium.isPremium) const UpsellCard(),
             _heading(context, s.coursesHeading),
             FutureBuilder<List<Course>>(
@@ -235,9 +231,36 @@ class SectionCard extends StatelessWidget {
         title: Text(section.title(lang), style: const TextStyle(fontWeight: FontWeight.w600)),
         subtitle: Text([?section.description(lang), if (subs > 0) s.sectionsCount(subs)].join('\n')),
         isThreeLine: section.description(lang) != null && subs > 0,
-        trailing: const Icon(Icons.chevron_right),
+        trailing: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            _Tag(section.isPremium ? s.premium : s.lessonFree, premium: section.isPremium),
+            const SizedBox(width: 4),
+            const Icon(Icons.chevron_right),
+          ],
+        ),
         onTap: () => Navigator.of(context).push(SectionRoute(context, builder: (_) => StudySectionScreen(section: section, all: all))),
       ),
+    );
+  }
+}
+
+/// A small "Free" or "Premium" label.
+class _Tag extends StatelessWidget {
+  const _Tag(this.text, {required this.premium});
+  final String text;
+  final bool premium;
+
+  @override
+  Widget build(BuildContext context) {
+    final scheme = Theme.of(context).colorScheme;
+    final dark = Theme.of(context).brightness == Brightness.dark;
+    final bg = premium ? scheme.tertiaryContainer : (dark ? const Color(0xFF1F3A29) : const Color(0xFFE3F0E7));
+    final fg = premium ? scheme.onTertiaryContainer : scheme.secondary;
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 3),
+      decoration: BoxDecoration(color: bg, borderRadius: BorderRadius.circular(6)),
+      child: Text(text, style: TextStyle(fontSize: 11, fontWeight: FontWeight.w700, color: fg)),
     );
   }
 }

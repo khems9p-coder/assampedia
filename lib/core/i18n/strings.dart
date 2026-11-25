@@ -164,6 +164,13 @@ class S {
   // Home screen (tiles, banner slides, side menu).
   String hello(String name) => _t('নমস্কাৰ, $name', 'Hello, $name');
   String get helloNoName => _t('নমস্কাৰ!', 'Hello!');
+  String get helloSub => _t('আজি অলপ পঢ়া-শুনা কৰোঁ আহক', "Ready for today's study?");
+  String get quickRead => _t('পঢ়ক', 'Read');
+  String get quickPractice => _t('অনুশীলন', 'Practice');
+  String get quickMock => _t('আদৰ্শ পৰীক্ষা', 'Mock test');
+  String get gridGk => _t('অসমৰ জ্ঞান', 'Assam GK');
+  String get gridNews => _t('খবৰ', 'News');
+  String get gridCareers => _t('কেৰিয়াৰ', 'Careers');
   String get openMenu => _t('মেনু খোলক', 'Open menu');
   String get switchLanguage => _t('ভাষা সলনি কৰক', 'Switch language');
   String get tileExams => _t('পৰীক্ষাৰ পাঠ্যক্ৰম', 'Exam syllabus');

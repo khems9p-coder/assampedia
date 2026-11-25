@@ -145,7 +145,7 @@ void main() {
     await tester.pumpWidget(AssampediaApp(services: services));
     await tester.pumpAndSettle();
 
-    await tester.tap(find.text('Mock Tests'));
+    await tester.tap(find.text('Mock test'));
     await tester.pumpAndSettle();
     await tester.tap(find.text('Sample mock test (layout test)'));
     await tester.pumpAndSettle();
