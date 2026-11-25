@@ -7,6 +7,7 @@ import '../../data/course_models.dart';
 import '../practice/quiz_screen.dart';
 import '../premium/paywall_screen.dart';
 import '../reader/reader_screen.dart';
+import '../study/study_screen.dart';
 
 /// One course: its lessons in order, with ticks for the ones already done.
 class CourseScreen extends StatefulWidget {
@@ -101,39 +102,41 @@ class _CourseScreenState extends State<CourseScreen> {
                         physics: const AlwaysScrollableScrollPhysics(),
                         padding: const EdgeInsets.fromLTRB(16, 8, 16, 24),
                         children: [
-                          Card(
-                            child: Padding(
-                              padding: const EdgeInsets.all(16),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  if (course.description(lang) != null) ...[
-                                    Text(course.description(lang)!),
-                                    const SizedBox(height: 12),
-                                  ],
-                                  if (lessons.isNotEmpty) ...[
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(6),
-                                      child: LinearProgressIndicator(value: done / lessons.length, minHeight: 8),
-                                    ),
-                                    const SizedBox(height: 6),
-                                    Text(s.lessonsDone(done, lessons.length), style: theme.textTheme.labelLarge),
-                                    const SizedBox(height: 12),
-                                    if (next == null)
-                                      Text(s.courseFinished, style: theme.textTheme.titleSmall?.copyWith(color: theme.colorScheme.primary))
-                                    else
-                                      FilledButton.icon(
-                                        onPressed: () => _open(next, locked(next)),
-                                        icon: const Icon(Icons.play_arrow),
-                                        label: Text('${done == 0 ? s.startCourse : s.continueCourse}: ${s.lessonNo(next.number)}'),
+                          if (course.description(lang) != null || lessons.isNotEmpty)
+                            Card(
+                              child: Padding(
+                                padding: const EdgeInsets.all(16),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    if (course.description(lang) != null) ...[Text(course.description(lang)!), const SizedBox(height: 12)],
+                                    if (lessons.isNotEmpty) ...[
+                                      ClipRRect(
+                                        borderRadius: BorderRadius.circular(6),
+                                        child: LinearProgressIndicator(value: done / lessons.length, minHeight: 8),
                                       ),
+                                      const SizedBox(height: 6),
+                                      Text(s.lessonsDone(done, lessons.length), style: theme.textTheme.labelLarge),
+                                      const SizedBox(height: 12),
+                                      if (next == null)
+                                        Text(
+                                          s.courseFinished,
+                                          style: theme.textTheme.titleSmall?.copyWith(color: theme.colorScheme.primary),
+                                        )
+                                      else
+                                        FilledButton.icon(
+                                          onPressed: () => _open(next, locked(next)),
+                                          icon: const Icon(Icons.play_arrow),
+                                          label: Text('${done == 0 ? s.startCourse : s.continueCourse}: ${s.lessonNo(next.number)}'),
+                                        ),
+                                    ],
                                   ],
-                                ],
+                                ),
                               ),
                             ),
-                          ),
                           const SizedBox(height: 8),
-                          if (lessons.isEmpty) Padding(padding: const EdgeInsets.all(24), child: Center(child: Text(s.noLessons))),
+                          if (lessons.isNotEmpty) Text(s.coursesLessonsHeading, style: theme.textTheme.titleSmall),
+                          if (lessons.isNotEmpty) const SizedBox(height: 6),
                           for (final l in lessons)
                             Card(
                               margin: const EdgeInsets.only(bottom: 6),
@@ -167,6 +170,7 @@ class _CourseScreenState extends State<CourseScreen> {
                                 onTap: () => _open(l, locked(l)),
                               ),
                             ),
+                          if (course.id != null) CourseMaterial(courseId: course.id!, showEmpty: lessons.isEmpty),
                         ],
                       ),
                     );

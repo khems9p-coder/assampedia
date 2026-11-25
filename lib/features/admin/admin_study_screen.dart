@@ -7,6 +7,7 @@ import '../../core/i18n/app_lang.dart';
 import '../../core/theme/section_theme.dart';
 import '../../core/widgets/common.dart';
 import '../../data/admin_repository.dart';
+import '../../data/course_models.dart';
 import '../../data/study_models.dart';
 import 'admin_courses_screen.dart';
 
@@ -119,8 +120,11 @@ class _AdminStudyScreenState extends State<AdminStudyScreen> {
 
 /// One section in Admin: its sub-sections and items.
 class AdminStudySectionScreen extends StatefulWidget {
-  const AdminStudySectionScreen({super.key, required this.section});
+  const AdminStudySectionScreen({super.key, required this.section, this.course});
   final StudySection section;
+
+  /// Set when this is a course's own content (Admin > Courses).
+  final Course? course;
 
   @override
   State<AdminStudySectionScreen> createState() => _AdminStudySectionScreenState();
@@ -128,6 +132,7 @@ class AdminStudySectionScreen extends StatefulWidget {
 
 class _AdminStudySectionScreenState extends State<AdminStudySectionScreen> {
   late StudySection _section = widget.section;
+  late Course? _course = widget.course;
   List<StudySection>? _all;
   List<StudyItem>? _items;
   Object? _error;
@@ -294,11 +299,17 @@ class _AdminStudySectionScreenState extends State<AdminStudySectionScreen> {
   }
 
   Future<void> _edit() async {
+    if (_course != null) {
+      final c = await Navigator.of(context).push<Course>(SectionRoute(context, builder: (_) => CourseEditorScreen(course: _course!)));
+      if (c != null && mounted) setState(() => _course = c);
+      return;
+    }
     final saved = await Navigator.of(context).push<StudySection>(SectionRoute(context, builder: (_) => StudySectionEditor(section: _section)));
     if (saved != null && mounted) setState(() => _section = saved);
   }
 
   Future<void> _delete() async {
+    if (_course != null) return _deleteCourse();
     final ok = await showDialog<bool>(
       context: context,
       builder: (c) => AlertDialog(
@@ -313,6 +324,28 @@ class _AdminStudySectionScreenState extends State<AdminStudySectionScreen> {
     if (ok != true || !mounted) return;
     try {
       await _admin.deleteStudySection(_section.id!, _all ?? const []);
+      if (mounted) Navigator.of(context).pop();
+    } catch (e) {
+      _say('Could not delete: $e');
+    }
+  }
+
+  Future<void> _deleteCourse() async {
+    final ok = await showDialog<bool>(
+      context: context,
+      builder: (c) => AlertDialog(
+        title: const Text('Delete this course?'),
+        content: const Text('The course, its sections, subjects, topics and uploaded files are deleted. Chapters and quizzes from the app stay.'),
+        actions: [
+          TextButton(onPressed: () => Navigator.pop(c, false), child: const Text('Cancel')),
+          FilledButton(onPressed: () => Navigator.pop(c, true), child: const Text('Delete')),
+        ],
+      ),
+    );
+    if (ok != true || !mounted) return;
+    try {
+      await _admin.deleteStudySection(_section.id!, _all ?? const []);
+      await _admin.deleteCourse(_course!.id!);
       if (mounted) Navigator.of(context).pop();
     } catch (e) {
       _say('Could not delete: $e');
@@ -373,12 +406,12 @@ class _AdminStudySectionScreenState extends State<AdminStudySectionScreen> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              opt(Icons.create_new_folder_outlined, 'Add section / subject / topic', 'A folder inside this one; open it to add more inside', _addSubSection),
               opt(Icons.picture_as_pdf_outlined, 'Upload PDF', 'From this tablet, up to 50 MB', _addPdf),
               opt(Icons.image_outlined, 'Upload picture', 'From the gallery', _addPicture),
               opt(Icons.ondemand_video_outlined, 'Add video', 'Paste a YouTube link', _addVideo),
               opt(Icons.article_outlined, 'Add note page', 'A chapter or exam page already in the app', _addPage),
               opt(Icons.quiz_outlined, 'Add quiz', 'From the Practice Zone', _addQuiz),
-              opt(Icons.create_new_folder_outlined, 'Add sub-section', 'A folder inside this section', _addSubSection),
             ],
           ),
         ),
@@ -393,10 +426,10 @@ class _AdminStudySectionScreenState extends State<AdminStudySectionScreen> {
     final premium = _section.isPremium;
     return Scaffold(
       appBar: AppBar(
-        title: Text(_name(_section)),
+        title: Text(_course != null ? (_course!.titleEn ?? _course!.title(AppLang.english)) : _name(_section)),
         actions: [
-          IconButton(tooltip: 'Edit section', icon: const Icon(Icons.edit_outlined), onPressed: _edit),
-          IconButton(tooltip: 'Delete section', icon: const Icon(Icons.delete_outline), onPressed: _delete),
+          IconButton(tooltip: _course != null ? 'Edit course name and description' : 'Edit section', icon: const Icon(Icons.edit_outlined), onPressed: _edit),
+          IconButton(tooltip: _course != null ? 'Delete course' : 'Delete section', icon: const Icon(Icons.delete_outline), onPressed: _delete),
         ],
         bottom: _busy ? const PreferredSize(preferredSize: Size.fromHeight(4), child: LinearProgressIndicator()) : null,
       ),
@@ -415,6 +448,28 @@ class _AdminStudySectionScreenState extends State<AdminStudySectionScreen> {
               header: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  if (_course != null)
+                    Card(
+                      margin: const EdgeInsets.fromLTRB(12, 12, 12, 0),
+                      child: Padding(
+                        padding: const EdgeInsets.all(12),
+                        child: Text(
+                          'Build this course here: tap Add to make sections, subjects and topics (each can hold more inside), '
+                          'and upload PDFs, pictures and YouTube videos straight into any of them. '
+                          'The first 3 items of each section or topic are a free preview. '
+                          '${_course!.isPublished ? 'The course is published.' : 'The course is hidden (draft): publish it with the edit button.'}',
+                        ),
+                      ),
+                    ),
+                  if (_course != null)
+                    ListTile(
+                      leading: const Icon(Icons.format_list_numbered),
+                      title: const Text('Step-by-step lessons from the app'),
+                      subtitle: const Text('Chapters and quizzes already in the app, in order, with progress ticks'),
+                      trailing: const Icon(Icons.chevron_right),
+                      onTap: () => Navigator.of(context).push(SectionRoute(context, builder: (_) => AdminCourseLessonsScreen(course: _course!))),
+                    ),
+                  if (_course == null)
                   Padding(
                     padding: const EdgeInsets.fromLTRB(16, 12, 16, 4),
                     child: Text(
@@ -423,7 +478,10 @@ class _AdminStudySectionScreenState extends State<AdminStudySectionScreen> {
                     ),
                   ),
                   if (subs.isNotEmpty)
-                    const Padding(padding: EdgeInsets.fromLTRB(16, 12, 16, 0), child: Text('Sub-sections', style: TextStyle(fontWeight: FontWeight.w600))),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(16, 12, 16, 0),
+                      child: Text(_course != null ? 'Sections, subjects and topics' : 'Sub-sections', style: const TextStyle(fontWeight: FontWeight.w600)),
+                    ),
                   for (final s in subs)
                     ListTile(
                       leading: const Icon(Icons.folder_outlined),

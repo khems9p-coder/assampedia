@@ -27,6 +27,7 @@ Do this once, in the Supabase dashboard.
 - `migrations/0007_premium.sql` (Phase 6c): Premium. The first 3 pages of each group and first 3 quizzes of each type stay free.
 - `migrations/0008_student_profile.sql` and `migrations/0009_security_question.sql`: student profile and the security question.
 - `migrations/0010_courses.sql`: the Courses tab (study paths per exam) and three starter courses (APSC CCE, ADRE, Assam Police) built from pages already in the app. The first 3 lessons of each course are free. Run it again after importing more chapters: missing starter lessons are added.
+- `migrations/0013_course_content.sql`: lets each course hold its own sections, subjects and topics with uploads (Admin > Courses > open a course). Run 0010 and 0012 first.
 - `functions/verify-purchase` (Phase 6c): server function that checks Google Play subscriptions. Deploy it from the dashboard (Edge Functions) and add the `GOOGLE_SERVICE_ACCOUNT` secret.
 
 ## How content is stored
