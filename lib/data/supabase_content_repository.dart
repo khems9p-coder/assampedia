@@ -2,6 +2,7 @@ import 'package:supabase_flutter/supabase_flutter.dart' hide User;
 
 import '../core/i18n/app_lang.dart';
 import 'content_repository.dart';
+import 'course_models.dart';
 import 'jobs_models.dart';
 import 'models.dart';
 import 'practice_models.dart';
@@ -188,5 +189,22 @@ class SupabaseContentRepository implements ContentRepository {
   Future<List<Question>> questions(String setId) async {
     final rows = await client.from('questions').select().eq('set_id', setId).order('position', ascending: true);
     return [for (final r in rows) Question.fromJson(r)];
+  }
+
+  @override
+  Future<List<Course>> courses() async {
+    final rows = await client
+        .from('courses')
+        .select('*, course_items(count)')
+        .eq('is_published', true)
+        .order('position', ascending: true)
+        .order('id', ascending: true);
+    return [for (final r in rows) Course.fromJson(r)];
+  }
+
+  @override
+  Future<List<CourseLesson>> courseLessons(String courseId) async {
+    final rows = await client.rpc('course_lessons', params: {'cid': courseId}) as List;
+    return [for (final r in rows) CourseLesson.fromJson(r as Map<String, dynamic>)];
   }
 }

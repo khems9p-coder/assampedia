@@ -25,6 +25,8 @@ Do this once, in the Supabase dashboard.
 - `migrations/0005_current_affairs_jobs.sql` (Phase 5): current-affairs groups and event dates, and the job vacancies table.
 - `migrations/0006_practice.sql` (Phase 6): Practice Zone quizzes and questions.
 - `migrations/0007_premium.sql` (Phase 6c): Premium. The first 3 pages of each group and first 3 quizzes of each type stay free.
+- `migrations/0008_student_profile.sql` and `migrations/0009_security_question.sql`: student profile and the security question.
+- `migrations/0010_courses.sql`: the Courses tab (study paths per exam) and three starter courses (APSC CCE, ADRE, Assam Police) built from pages already in the app. The first 3 lessons of each course are free. Run it again after importing more chapters: missing starter lessons are added.
 - `functions/verify-purchase` (Phase 6c): server function that checks Google Play subscriptions. Deploy it from the dashboard (Edge Functions) and add the `GOOGLE_SERVICE_ACCOUNT` secret.
 
 ## How content is stored
@@ -41,4 +43,4 @@ Readers can only read published versions. Only admin accounts can change content
 
 `tests/local_stub.sql` stands in for Supabase's auth and storage on plain
 PostgreSQL; `tests/rls_test.sql` checks who can read and write what, and
-`tests/terms_test.sql` does the same for the dictionary.
+`tests/terms_test.sql` does the same for the dictionary, and `tests/courses_test.sql` checks course lessons and their free/locked rule.

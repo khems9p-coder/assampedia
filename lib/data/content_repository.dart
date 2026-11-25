@@ -1,3 +1,4 @@
+import 'course_models.dart';
 import 'jobs_models.dart';
 import 'models.dart';
 import 'practice_models.dart';
@@ -22,6 +23,12 @@ abstract class ContentRepository {
 
   /// The questions of one set, in order.
   Future<List<Question>> questions(String setId);
+
+  /// Published courses (study paths), in order.
+  Future<List<Course>> courses();
+
+  /// The lessons of one course, in order, with which ones are free.
+  Future<List<CourseLesson>> courseLessons(String courseId);
 }
 
 extension DailyQuestion on ContentRepository {

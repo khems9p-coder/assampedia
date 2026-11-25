@@ -5,6 +5,7 @@ import '../data/admin_repository.dart';
 import '../data/auth_service.dart';
 import '../data/bookmark_store.dart';
 import '../data/content_repository.dart';
+import '../data/course_models.dart';
 import '../data/models.dart';
 import '../data/notification_service.dart';
 import '../data/practice_models.dart';
@@ -27,7 +28,9 @@ class AppServices {
     PracticeProgressStore? progress,
     PremiumService? premium,
     NotificationService? notifications,
-  }) : bookmarks = bookmarks ?? BookmarkStore(),
+    CourseProgressStore? courseProgress,
+  }) : courseProgress = courseProgress ?? CourseProgressStore(),
+       bookmarks = bookmarks ?? BookmarkStore(),
        savedJobs = savedJobs ?? SavedJobsStore(),
        progress = progress ?? PracticeProgressStore(),
        premium = premium ?? PremiumService(),
@@ -43,6 +46,9 @@ class AppServices {
 
   /// Quiz scores, kept on this phone.
   final PracticeProgressStore progress;
+
+  /// Which course lessons this reader has finished, kept on this phone.
+  final CourseProgressStore courseProgress;
 
   /// Premium subscription status and purchase.
   final PremiumService premium;

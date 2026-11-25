@@ -6,6 +6,7 @@ import '../../core/app_scope.dart';
 import '../../core/widgets/common.dart';
 import '../../data/models.dart';
 import 'admin_chapter_list_screen.dart';
+import 'admin_courses_screen.dart';
 import 'admin_import_screen.dart';
 import 'admin_practice_screen.dart';
 import 'admin_terms_screen.dart';
@@ -78,6 +79,16 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
                 subtitle: const Text('Recruitment notices from official notifications'),
                 trailing: const Icon(Icons.chevron_right),
                 onTap: () => Navigator.of(context).push(SectionRoute(context, builder: (_) => const AdminVacanciesScreen())),
+              ),
+            ),
+            Card(
+              margin: const EdgeInsets.fromLTRB(12, 4, 12, 4),
+              child: ListTile(
+                leading: const Icon(Icons.route_outlined),
+                title: const Text('Courses'),
+                subtitle: const Text('Study paths: pages and quizzes in order, per exam'),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => Navigator.of(context).push(SectionRoute(context, builder: (_) => const AdminCoursesScreen())),
               ),
             ),
             Card(

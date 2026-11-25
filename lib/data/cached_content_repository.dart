@@ -1,4 +1,5 @@
 import 'content_repository.dart';
+import 'course_models.dart';
 import 'jobs_models.dart';
 import 'models.dart';
 import 'offline_cache.dart';
@@ -103,5 +104,21 @@ class CachedContentRepository implements ContentRepository {
     () => remote.questions(setId),
     (v) => [for (final x in v) x.toJson()],
     (j) => [for (final x in j as List) Question.fromJson(x as Map<String, dynamic>)],
+  );
+
+  @override
+  Future<List<Course>> courses() => _try(
+    'courses',
+    remote.courses,
+    (v) => [for (final x in v) x.toJson()],
+    (j) => [for (final x in j as List) Course.fromJson(x as Map<String, dynamic>)],
+  );
+
+  @override
+  Future<List<CourseLesson>> courseLessons(String courseId) => _try(
+    'course_lessons_$courseId',
+    () => remote.courseLessons(courseId),
+    (v) => [for (final x in v) x.toJson()],
+    (j) => [for (final x in j as List) CourseLesson.fromJson(x as Map<String, dynamic>)],
   );
 }

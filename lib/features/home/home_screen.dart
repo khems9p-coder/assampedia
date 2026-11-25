@@ -69,6 +69,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     final tiles = [
       _Tile(s.encyclopedia, Icons.auto_stories_outlined, SectionColors.learn, () => widget.openTab(Tabs.learn)),
+      _Tile(s.coursesTitle, Icons.route_outlined, SectionColors.courses, () => widget.openTab(Tabs.courses)),
       _Tile(s.tileExams, Icons.school_outlined, SectionColors.exams, () => widget.openTab(Tabs.exams)),
       _Tile(s.practiceZone, Icons.quiz_outlined, SectionColors.practice, () => _push(const PracticeScreen())),
       _Tile(s.mockTests, Icons.timer_outlined, SectionColors.mock, () => _push(const MockTestsScreen())),

@@ -6,6 +6,7 @@ import 'app_theme.dart';
 abstract final class SectionColors {
   static const learn = Color(0xFF1E7A46);
   static const exams = Color(0xFF1F6FB2);
+  static const courses = Color(0xFF0E6E86);
   static const practice = Color(0xFFB3266B);
   static const mock = Color(0xFFC0392B);
   static const jobs = Color(0xFF00796B);
