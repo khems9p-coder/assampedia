@@ -3,6 +3,7 @@ import 'dart:typed_data';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../core/i18n/app_lang.dart';
+import 'course_models.dart';
 import 'jobs_models.dart';
 import 'models.dart';
 import 'practice_models.dart';
@@ -322,5 +323,55 @@ extension AdminImages on AdminRepository {
     final path = 'images/${DateTime.now().millisecondsSinceEpoch}-$safe';
     await client.storage.from('media').uploadBinary(path, bytes, fileOptions: FileOptions(contentType: type, upsert: false));
     return client.storage.from('media').getPublicUrl(path);
+  }
+}
+
+/// Courses (study paths) and their lessons.
+extension AdminCourses on AdminRepository {
+  /// Every course, including drafts.
+  Future<List<Course>> courses() async {
+    final rows = await client
+        .from('courses')
+        .select('*, course_items(count)')
+        .order('position', ascending: true)
+        .order('id', ascending: true);
+    return [for (final r in rows) Course.fromJson(r)];
+  }
+
+  Future<Course> saveCourse(Course c) async {
+    final row = await client
+        .from('courses')
+        .upsert({...c.toRow(), 'updated_at': DateTime.now().toUtc().toIso8601String()})
+        .select()
+        .single();
+    return Course.fromJson(row);
+  }
+
+  /// Deletes a course and its lessons (the pages and quizzes stay).
+  Future<void> deleteCourse(String id) => client.from('courses').delete().eq('id', id);
+
+  /// A course's lessons with page and quiz titles, drafts included.
+  Future<List<CourseItem>> courseItems(String courseId) async {
+    final rows = await client
+        .from('course_items')
+        .select('*, content(slug, content_versions(lang, title)), question_sets(title_en, title_as)')
+        .eq('course_id', courseId)
+        .order('position', ascending: true)
+        .order('id', ascending: true);
+    return [for (final r in rows) CourseItem.fromJson(r)];
+  }
+
+  /// Adds a page ([contentId]) or a quiz ([setId]) at the end of a course.
+  Future<void> addCourseItem(String courseId, {String? contentId, String? setId, required int position}) =>
+      client.from('course_items').insert({'course_id': courseId, 'position': position, 'content_id': contentId, 'set_id': setId});
+
+  Future<void> deleteCourseItem(String id) => client.from('course_items').delete().eq('id', id);
+
+  /// Saves a new order: lesson 1 gets position 10, lesson 2 gets 20, and so on.
+  Future<void> reorderCourseItems(List<CourseItem> items) async {
+    for (final (i, it) in items.indexed) {
+      if (it.id == null || it.position == (i + 1) * 10) continue;
+      await client.from('course_items').update({'position': (i + 1) * 10}).eq('id', it.id!);
+    }
   }
 }

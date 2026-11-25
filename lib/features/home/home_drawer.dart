@@ -18,7 +18,7 @@ const playStoreUrl = 'https://play.google.com/store/apps/details?id=com.assamped
 
 /// Tab numbers in the bottom bar.
 abstract final class Tabs {
-  static const home = 0, learn = 1, exams = 2, jobs = 3, me = 4;
+  static const home = 0, learn = 1, courses = 2, exams = 3, jobs = 4, me = 5;
 }
 
 /// The side menu opened from the Home screen's menu button.
@@ -89,6 +89,7 @@ class HomeDrawer extends StatelessWidget {
             if (auth.isSignedIn) item(Icons.account_circle_outlined, s.myProfile, () => push(const ProfileScreen())),
             item(Icons.notifications_outlined, s.notifications, () => push(const NotificationsScreen())),
             item(Icons.workspace_premium_outlined, s.premium, () => push(const PaywallScreen())),
+            item(Icons.route_outlined, s.coursesTitle, () => tab(Tabs.courses)),
             item(Icons.quiz_outlined, s.practiceZone, () => push(const PracticeScreen())),
             item(Icons.translate, s.dictionary, () => push(const DictionaryScreen())),
             item(Icons.bookmarks_outlined, s.saved, () => push(const SavedScreen())),

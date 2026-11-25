@@ -1,5 +1,6 @@
 import '../core/i18n/app_lang.dart';
 import 'content_repository.dart';
+import 'course_models.dart';
 import 'jobs_models.dart';
 import 'models.dart';
 import 'practice_models.dart';
@@ -188,4 +189,27 @@ class DemoContentRepository implements ContentRepository {
     'qd' => [_sample('qd', 1, 0)],
     _ => const [],
   };
+
+  @override
+  Future<List<Course>> courses() async => [
+    Course(
+      id: 'k1',
+      slug: 'sample-course',
+      titleEn: 'Sample course (layout test)',
+      titleAs: 'নমুনা পাঠ্যক্ৰম (পৰীক্ষা)',
+      descriptionEn: 'Sample text for testing the layout.',
+      descriptionAs: 'বিন্যাস পৰীক্ষাৰ বাবে নমুনা লেখা।',
+      icon: 'flag',
+      isPublished: true,
+      lessonCount: 4,
+    ),
+  ];
+
+  @override
+  Future<List<CourseLesson>> courseLessons(String courseId) async => [
+    CourseLesson(id: 'l1', number: 1, contentId: 'demo', titleEn: 'Sample chapter (layout test)', titleAs: 'নমুনা অধ্যায় (পৰীক্ষা)', isFree: true),
+    CourseLesson(id: 'l2', number: 2, setId: 'q1', kind: LessonKind.quiz, titleEn: 'Sample quiz (layout test)', titleAs: 'নমুনা কুইজ (পৰীক্ষা)', isFree: true),
+    CourseLesson(id: 'l3', number: 3, contentId: 'demo', kind: LessonKind.exam, titleEn: 'Sample exam page', titleAs: 'নমুনা পৰীক্ষাৰ পৃষ্ঠা', isFree: true),
+    CourseLesson(id: 'l4', number: 4, contentId: 'demo', titleEn: 'Sample locked chapter', titleAs: 'নমুনা বন্ধ অধ্যায়'),
+  ];
 }

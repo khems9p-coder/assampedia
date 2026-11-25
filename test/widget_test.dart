@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import 'package:assampedia/data/course_models.dart';
 import 'package:assampedia/core/app_scope.dart';
 import 'package:assampedia/core/i18n/app_lang.dart';
 import 'package:assampedia/core/theme/theme_controller.dart';
@@ -108,6 +109,10 @@ class _Switchable implements ContentRepository {
   Future<List<QuestionSet>> questionSets() => _go(inner.questionSets);
   @override
   Future<List<Question>> questions(String id) => _go(() => inner.questions(id));
+  @override
+  Future<List<Course>> courses() => _go(inner.courses);
+  @override
+  Future<List<CourseLesson>> courseLessons(String id) => _go(() => inner.courseLessons(id));
 }
 
 void main() {
@@ -646,6 +651,38 @@ void main() {
       expect(find.text('Practise the wrong ones'), findsOneWidget);
       expect(services.progress.quizzesTaken, 1);
     });
+  });
+
+  testWidgets('Courses tab: open a course, the 4th lesson is locked, opening a lesson ticks it', (tester) async {
+    tester.view.physicalSize = const Size(1200, 2600);
+    tester.view.devicePixelRatio = 1.0;
+    addTearDown(tester.view.reset);
+    final services = await _services(lang: 'en');
+    await tester.pumpWidget(AssampediaApp(services: services));
+    await tester.pumpAndSettle();
+    await tester.tap(find.descendant(of: find.byType(InkWell), matching: find.text('Courses')).last);
+    await tester.pumpAndSettle();
+    expect(find.text('Sample course (layout test)'), findsOneWidget);
+    expect(find.text('4 lessons'), findsOneWidget);
+    await tester.tap(find.text('Sample course (layout test)'));
+    await tester.pumpAndSettle();
+    expect(find.text('0 of 4 done'), findsOneWidget);
+    expect(find.byIcon(Icons.lock_outline), findsOneWidget);
+    expect(find.text('Quiz · Free'), findsOneWidget);
+
+    await tester.tap(find.text('Start: Lesson 1'));
+    await tester.pumpAndSettle();
+    expect(find.text('Applies to: Sample version (layout test)'), findsOneWidget);
+    await tester.pageBack();
+    await tester.pumpAndSettle();
+    expect(find.text('1 of 4 done'), findsOneWidget);
+    expect(find.text('Continue: Lesson 2'), findsOneWidget);
+    expect(services.courseProgress.isDone('l1'), isTrue);
+
+    await tester.tap(find.text('Sample locked chapter'));
+    await tester.pumpAndSettle();
+    expect(find.text('Premium'), findsWidgets);
+    expect(services.courseProgress.isDone('l4'), isFalse);
   });
 
   testWidgets('Phase 6b: flashcards flip and one-liners list the answers', (tester) async {

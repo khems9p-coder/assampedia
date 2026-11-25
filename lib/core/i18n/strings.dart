@@ -19,6 +19,29 @@ class S {
   String get navExams => _t('পৰীক্ষা', 'Exams');
   String get navJobs => _t('চাকৰি', 'Jobs');
   String get navMe => _t('মোৰ', 'Me');
+  String get navCourses => _t('পাঠ্যক্ৰম', 'Courses');
+
+  String get coursesTitle => _t('পাঠ্যক্ৰম', 'Courses');
+  String get coursesIntro => _t(
+    'প্ৰতিটো পাঠ্যক্ৰম এটা পৰীক্ষাৰ বাবে ক্ৰমান্বয়ে পঢ়াৰ পথ। পাঠবোৰ ক্ৰমে পঢ়ক আৰু কুইজ দিয়ক। প্ৰথম ৩টা পাঠ বিনামূলীয়া।',
+    'Each course is a step-by-step study path for one exam. Read the lessons in order and take the quizzes. The first 3 lessons are free.',
+  );
+  String get noCourses => _t('এতিয়ালৈকে কোনো পাঠ্যক্ৰম প্ৰকাশ হোৱা নাই।', 'No courses published yet.');
+  String get noLessons => _t('এই পাঠ্যক্ৰমত এতিয়ালৈকে কোনো পাঠ নাই।', 'This course has no lessons yet.');
+  String lessonsCount(int n) => _t('$nটা পাঠ', n == 1 ? '1 lesson' : '$n lessons');
+  String lessonsDone(int done, int total) => _t('$total টাৰ $doneটা সম্পূৰ্ণ', '$done of $total done');
+  String lessonNo(int n) => _t('পাঠ $n', 'Lesson $n');
+  String get lessonChapter => _t('সাধাৰণ জ্ঞানৰ অধ্যায়', 'GK chapter');
+  String get lessonExam => _t('পৰীক্ষাৰ পাঠ্যক্ৰম', 'Exam syllabus');
+  String get lessonCareer => _t('কেৰিয়াৰ', 'Career');
+  String get lessonNews => _t('সাম্প্ৰতিক ঘটনা', 'Current affairs');
+  String get lessonQuiz => _t('কুইজ', 'Quiz');
+  String get lessonFree => _t('বিনামূলীয়া', 'Free');
+  String get markDone => _t('সম্পূৰ্ণ হিচাপে চিহ্নিত কৰক', 'Mark as done');
+  String get continueCourse => _t('আগবাঢ়ক', 'Continue');
+  String get startCourse => _t('আৰম্ভ কৰক', 'Start');
+  String get courseFinished => _t('অভিনন্দন! আপুনি এই পাঠ্যক্ৰম সম্পূৰ্ণ কৰিলে।', 'Well done! You have finished this course.');
+  String get quizNotFound => _t('এই কুইজটো এতিয়া উপলব্ধ নহয়।', 'This quiz is not available right now.');
 
   String get encyclopedia => _t('অসমৰ সাধাৰণ জ্ঞান', 'Assam GK Encyclopedia');
   String get encyclopediaHint => _t('ইতিহাস, ভূগোল, সংস্কৃতি আৰু অধিক', 'History, geography, culture and more');
