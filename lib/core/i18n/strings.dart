@@ -328,4 +328,102 @@ class S {
   String get morningQuoteHint =>
       _t('প্ৰতিদিনে ৰাতিপুৱা ৭ বজাত এজন মহান ব্যক্তিৰ প্ৰেৰণাদায়ক বাণী', 'A motivational quote by a great person every day at 7 AM');
   String newJobsCount(int n) => _t('$nটা নতুন খালী পদ', n == 1 ? '1 new vacancy' : '$n new vacancies');
+
+  // Mock tests
+  String get mockTests => _t('আদৰ্শ পৰীক্ষা', 'Mock Tests');
+  String get mockTestsHint => _t('সময় বান্ধি প্ৰকৃত পৰীক্ষাৰ দৰে অনুশীলন', 'Timed tests that work like the real exam');
+  String get noMockTests => _t('এতিয়ালৈকে কোনো আদৰ্শ পৰীক্ষা প্ৰকাশ হোৱা নাই।', 'No mock tests published yet.');
+  String lastAttempt(String marks, String max) => _t('শেষবাৰ: $max ৰ ভিতৰত $marks', 'Last time: $marks / $max');
+  String timesTaken(int n) => _t('$n বাৰ দিয়া হৈছে', n == 1 ? 'Taken once' : 'Taken $n times');
+  String get generalInstructions => _t('সাধাৰণ নিৰ্দেশনা', 'General instructions');
+  String get testInstructions => _t('এই পৰীক্ষাৰ নিৰ্দেশনা', 'Instructions for this test');
+  String get totalQuestions => _t('মুঠ প্ৰশ্ন', 'Total questions');
+  String get totalMarks => _t('মুঠ নম্বৰ', 'Total marks');
+  String get timeAllowed => _t('সময়', 'Time allowed');
+  String get noTimeLimit => _t('সময়সীমা নাই', 'No time limit');
+  String get marksForCorrect => _t('শুদ্ধ উত্তৰৰ বাবে', 'For each right answer');
+  String get marksForWrong => _t('ভুল উত্তৰৰ বাবে', 'For each wrong answer');
+  String get marksForSkipped => _t('উত্তৰ নিদিলে', 'For a question left out');
+  String get noNegative => _t('ঋণাত্মক নম্বৰ নাই', 'No negative marking');
+  String plusMarks(String m) => '+$m';
+  String minusMarks(String m) => '−$m';
+  List<String> mockRules({required int minutes, required bool negative}) => [
+    if (minutes > 0)
+      _t(
+        'পৰীক্ষা আৰম্ভ হোৱাৰ লগে লগে ওপৰত $minutes মিনিটৰ ঘড়ী চলিবলৈ ধৰিব। সময় শেষ হ’লে আপোনাৰ উত্তৰবোৰ নিজে নিজে জমা হ’ব।',
+        'A $minutes-minute timer starts at the top as soon as the test begins. When time runs out, your answers are submitted by themselves.',
+      ),
+    _t(
+      'প্ৰতিটো প্ৰশ্নৰ কেইবাটাও বিকল্প আছে, তাৰে এটাহে শুদ্ধ। এটা বিকল্প টিপি উত্তৰ বাছক।',
+      'Each question has several options and only one is right. Tap an option to choose it.',
+    ),
+    _t(
+      'যিকোনো প্ৰশ্নলৈ যাবলৈ ওপৰৰ প্ৰশ্ন তালিকাৰ বুটামটো টিপক। "আগৰ" আৰু "সংৰক্ষণ কৰি পৰৱৰ্তী" বুটামেৰেও আগ-পিছ কৰিব পাৰি।',
+      'Tap the question palette button at the top to jump to any question. You can also move with "Previous" and "Save & next".',
+    ),
+    _t(
+      'নিশ্চিত নহ’লে "পুনৰীক্ষণৰ বাবে চিহ্নিত কৰক" টিপক আৰু পিছত উভতি আহক। চিহ্নিত প্ৰশ্নৰ উত্তৰ দিয়া থাকিলে সেইটোও গণনা কৰা হ’ব।',
+      'Not sure? Tap "Mark for review" and come back later. A marked question that has an answer is still counted.',
+    ),
+    _t('বাছি লোৱা উত্তৰ আঁতৰাবলৈ "উত্তৰ মচক" টিপক।', 'Tap "Clear answer" to remove the option you chose.'),
+    if (negative)
+      _t(
+        'প্ৰতিটো ভুল উত্তৰৰ বাবে নম্বৰ কটা যাব। উত্তৰ নিদিয়া প্ৰশ্নৰ বাবে নম্বৰ কটা নাযায়, গতিকে আন্দাজ কৰাৰ আগতে ভাবক।',
+        'Marks are taken away for every wrong answer. Questions left out lose nothing, so think before you guess.',
+      ),
+    _t(
+      'শেষত "পৰীক্ষা জমা দিয়ক" টিপক। জমা দিয়াৰ পিছত উত্তৰ সলনি কৰিব নোৱাৰি।',
+      'Tap "Submit test" when you finish. Answers cannot be changed after you submit.',
+    ),
+    _t(
+      'পৰীক্ষাৰ মাজত এপৰ পৰা ওলাই গ’লে উত্তৰবোৰ হেৰাব। ভাষা যিকোনো সময়ত সলনি কৰিব পাৰি।',
+      'Leaving the test midway loses your answers. You can switch language at any time.',
+    ),
+  ];
+  String get paletteLegend => _t('প্ৰশ্ন তালিকাৰ ৰং', 'Question palette colours');
+  String get notVisited => _t('চোৱা হোৱা নাই', 'Not visited');
+  String get answered => _t('উত্তৰ দিয়া হৈছে', 'Answered');
+  String get markedForReview => _t('পুনৰীক্ষণৰ বাবে চিহ্নিত', 'Marked for review');
+  String get answeredAndMarked => _t('উত্তৰ দিয়া আৰু চিহ্নিত', 'Answered and marked');
+  String get readInstructions => _t('মই নিৰ্দেশনাবোৰ পঢ়িলোঁ আৰু বুজি পালোঁ।', 'I have read and understood the instructions.');
+  String get startTest => _t('পৰীক্ষা আৰম্ভ কৰক', 'Start test');
+  String get questionPalette => _t('প্ৰশ্ন তালিকা', 'Question palette');
+  String get markForReview => _t('পুনৰীক্ষণৰ বাবে চিহ্নিত কৰক', 'Mark for review');
+  String get unmark => _t('চিহ্ন আঁতৰাওক', 'Remove mark');
+  String get clearAnswer => _t('উত্তৰ মচক', 'Clear answer');
+  String get saveAndNext => _t('সংৰক্ষণ কৰি পৰৱৰ্তী', 'Save & next');
+  String marksLine(String plus, String minus) => _t('শুদ্ধ: $plus · ভুল: $minus', 'Right: $plus · Wrong: $minus');
+  String get submitConfirmTitle => _t('পৰীক্ষা জমা দিবনে?', 'Submit the test?');
+  String submitConfirmTime(String t) => _t('এতিয়াও $t সময় বাকী আছে।', 'You still have $t left.');
+  String get submitConfirmHint => _t('জমা দিয়াৰ পিছত উত্তৰ সলনি কৰিব নোৱাৰিব।', 'You cannot change your answers after submitting.');
+  String get goBack => _t('উভতি যাওক', 'Go back');
+  String get submit => _t('জমা দিয়ক', 'Submit');
+  String get leaveTest => _t('পৰীক্ষাৰ পৰা ওলাই যাবনে?', 'Leave the test?');
+  String get leaveTestHint => _t('আপোনাৰ উত্তৰবোৰ হেৰাব আৰু ফলাফল নাপাব।', 'Your answers will be lost and you will not get a result.');
+  String get fiveMinutesLeft => _t('মাত্ৰ ৫ মিনিট বাকী!', 'Only 5 minutes left!');
+  String get oneMinuteLeft => _t('মাত্ৰ ১ মিনিট বাকী!', 'Only 1 minute left!');
+
+  String get analysis => _t('ফলাফল বিশ্লেষণ', 'Result analysis');
+  String get timeUpSubmitted => _t('সময় শেষ হোৱাত পৰীক্ষাটো নিজে নিজে জমা হ’ল।', 'Time ran out, so the test was submitted by itself.');
+  String get yourScore => _t('আপোনাৰ নম্বৰ', 'Your score');
+  String outOf(String max) => _t('$max ৰ ভিতৰত', 'out of $max');
+  String get correctLabel => _t('শুদ্ধ', 'Correct');
+  String get wrongLabel => _t('ভুল', 'Wrong');
+  String get skippedLabel => _t('এৰি দিয়া', 'Skipped');
+  String get attemptedLabel => _t('উত্তৰ দিয়া', 'Attempted');
+  String get accuracyLabel => _t('শুদ্ধতা', 'Accuracy');
+  String get timeTaken => _t('লগা সময়', 'Time taken');
+  String get perQuestion => _t('প্ৰতি প্ৰশ্নত গড়', 'Average per answer');
+  String negativeLost(String m) => _t('ভুল উত্তৰৰ বাবে $m নম্বৰ কটা গ’ল।', m == '1' ? '1 mark was taken away for wrong answers.' : '$m marks were taken away for wrong answers.');
+  String get accuracyHint => _t('শুদ্ধতা = উত্তৰ দিয়া প্ৰশ্নৰ ভিতৰত শুদ্ধ', 'Accuracy = right answers out of the ones you answered');
+  String get topicWise => _t('বিষয়ভিত্তিক বিশ্লেষণ', 'Topic-wise analysis');
+  String get generalTopic => _t('সাধাৰণ', 'General');
+  String topicLine(int c, int w, int sk) => _t('শুদ্ধ $c · ভুল $w · এৰি দিয়া $sk', '$c right · $w wrong · $sk skipped');
+  String get strongTopic => _t('শক্তিশালী', 'Strong');
+  String get weakTopic => _t('অধিক অনুশীলন লাগে', 'Needs practice');
+  String get reviewAnswers => _t('উত্তৰ আৰু ব্যাখ্যা', 'Review answers');
+  String get all => _t('সকলো', 'All');
+  String get noneHere => _t('এই ভাগত কোনো প্ৰশ্ন নাই।', 'No questions here.');
+  String get retakeTest => _t('পুনৰ পৰীক্ষা দিয়ক', 'Retake test');
+  String secondsShort(int n) => _t('$n ছেকেণ্ড', '${n}s');
 }

@@ -9,6 +9,7 @@ import '../../core/app_scope.dart';
 import '../account/profile_screen.dart';
 import '../dictionary/dictionary_screen.dart';
 import '../notifications/notifications_screen.dart';
+import '../mock/mock_tests_screen.dart';
 import '../practice/practice_screen.dart';
 import '../premium/paywall_screen.dart';
 import '../saved/saved_screen.dart';
@@ -90,6 +91,7 @@ class HomeDrawer extends StatelessWidget {
             item(Icons.notifications_outlined, s.notifications, () => push(const NotificationsScreen())),
             item(Icons.workspace_premium_outlined, s.premium, () => push(const PaywallScreen())),
             item(Icons.quiz_outlined, s.practiceZone, () => push(const PracticeScreen())),
+            item(Icons.timer_outlined, s.mockTests, () => push(const MockTestsScreen())),
             item(Icons.translate, s.dictionary, () => push(const DictionaryScreen())),
             item(Icons.bookmarks_outlined, s.saved, () => push(const SavedScreen())),
             item(Icons.settings_outlined, s.settings, () => tab(Tabs.me)),

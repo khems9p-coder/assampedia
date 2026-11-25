@@ -53,6 +53,16 @@ class _AdminHomeScreenState extends State<AdminHomeScreen> {
             Card(
               margin: const EdgeInsets.fromLTRB(12, 4, 12, 4),
               child: ListTile(
+                leading: const Icon(Icons.timer_outlined),
+                title: const Text('Import mock tests'),
+                subtitle: const Text('Add ready-made timed mock tests as hidden drafts'),
+                trailing: const Icon(Icons.chevron_right),
+                onTap: () => Navigator.of(context).push(SectionRoute(context, builder: (_) => const AdminImportMockScreen())),
+              ),
+            ),
+            Card(
+              margin: const EdgeInsets.fromLTRB(12, 4, 12, 4),
+              child: ListTile(
                 leading: const Icon(Icons.translate),
                 title: const Text('Dictionary terms'),
                 subtitle: const Text('Words readers can tap inside chapters'),

@@ -30,6 +30,8 @@ String _either(String Function(AppLang) f) {
   return en.isNotEmpty ? en : f(AppLang.assamese);
 }
 
+String _num(double v) => v == v.roundToDouble() ? v.toInt().toString() : v.toString();
+
 Future<bool> _confirmDelete(BuildContext context, String title, String body) async =>
     await showDialog<bool>(
       context: context,
@@ -76,6 +78,22 @@ class _AdminPracticeScreenState extends State<AdminPracticeScreen> {
     }
   }
 
+  Future<void> _newMock(int position) async {
+    final saved = await Navigator.of(context).push<QuestionSet>(
+      SectionRoute(
+        context,
+        builder: (_) => SetEditorScreen(
+          set: QuestionSet(position: position, kind: QuizKind.mock, level: QuizLevel.competitive, timeLimitMinutes: 60),
+        ),
+      ),
+    );
+    if (saved != null && mounted) {
+      _reload();
+      await Navigator.of(context).push(SectionRoute(context, builder: (_) => AdminQuestionListScreen(set: saved)));
+      if (mounted) _reload();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -86,9 +104,10 @@ class _AdminPracticeScreenState extends State<AdminPracticeScreen> {
           if (snap.hasError) return LoadError(message: '${snap.error}', onRetry: _reload);
           if (!snap.hasData) return const Center(child: CircularProgressIndicator());
           final sets = snap.data!;
+          final nextPosition = sets.isEmpty ? 1 : sets.map((x) => x.position).reduce((a, b) => a > b ? a : b) + 1;
           return Scaffold(
             floatingActionButton: FloatingActionButton.extended(
-              onPressed: () => _newSet(sets.isEmpty ? 1 : sets.map((x) => x.position).reduce((a, b) => a > b ? a : b) + 1),
+              onPressed: () => _newSet(nextPosition),
               icon: const Icon(Icons.add),
               label: const Text('Add quiz'),
             ),
@@ -100,6 +119,17 @@ class _AdminPracticeScreenState extends State<AdminPracticeScreen> {
                   child: Text(
                     'A quiz is a group of questions. Create the quiz first, then add its questions. '
                     'Use "Daily GK challenge" quizzes for the question shown on the Home screen (a different one each day).',
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(16, 0, 16, 8),
+                  child: Align(
+                    alignment: Alignment.centerLeft,
+                    child: OutlinedButton.icon(
+                      onPressed: () => _newMock(nextPosition),
+                      icon: const Icon(Icons.timer_outlined),
+                      label: const Text('Add mock test'),
+                    ),
                   ),
                 ),
                 if (sets.isEmpty) const Padding(padding: EdgeInsets.all(16), child: Text('No quizzes yet.')),
@@ -148,6 +178,8 @@ class _SetEditorScreenState extends State<SetEditorScreen> {
       for (final l in AppLang.values) '${f}_${l.code}': TextEditingController(text: widget.set.text['${f}_${l.code}'] ?? ''),
   };
   late final _minutes = TextEditingController(text: widget.set.timeLimitMinutes?.toString() ?? '');
+  late final _marks = TextEditingController(text: _num(widget.set.marksPerQuestion));
+  late final _negative = TextEditingController(text: _num(widget.set.negativeMarks));
   late QuizKind _kind = widget.set.kind;
   late QuizLevel _level = widget.set.level;
   late bool _published = widget.set.isPublished;
@@ -155,7 +187,7 @@ class _SetEditorScreenState extends State<SetEditorScreen> {
 
   @override
   void dispose() {
-    for (final c in [..._text.values, _minutes]) {
+    for (final c in [..._text.values, _minutes, _marks, _negative]) {
       c.dispose();
     }
     super.dispose();
@@ -172,6 +204,16 @@ class _SetEditorScreenState extends State<SetEditorScreen> {
     if (m.isNotEmpty && (minutes == null || minutes < 1 || minutes > 300)) {
       return _snack('Time limit: a number of minutes from 1 to 300, or leave it empty.');
     }
+    final isMock = _kind == QuizKind.mock;
+    if (isMock && minutes == null) return _snack('A mock test needs a time limit in minutes.');
+    final marks = double.tryParse(_marks.text.trim().replaceAll(',', '.'));
+    final negative = double.tryParse(_negative.text.trim().isEmpty ? '0' : _negative.text.trim().replaceAll(',', '.'));
+    if (isMock && (marks == null || marks <= 0 || marks > 100)) {
+      return _snack('Marks for a right answer: a number above 0, for example 1 or 2.');
+    }
+    if (isMock && (negative == null || negative < 0 || negative > (marks ?? 1))) {
+      return _snack('Marks taken away for a wrong answer: 0 (no negative marking) or a number such as 0.25, not more than the marks for a right answer.');
+    }
     setState(() => _saving = true);
     try {
       final saved = await context.services.admin!.saveSet(
@@ -187,6 +229,9 @@ class _SetEditorScreenState extends State<SetEditorScreen> {
           timeLimitMinutes: minutes,
           position: widget.set.position,
           isPublished: _published,
+          marksPerQuestion: isMock ? marks! : widget.set.marksPerQuestion,
+          negativeMarks: isMock ? negative! : widget.set.negativeMarks,
+          slug: widget.set.slug,
         ),
       );
       if (mounted) Navigator.of(context).pop(saved);
@@ -200,7 +245,7 @@ class _SetEditorScreenState extends State<SetEditorScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.set.id == null ? 'New quiz' : 'Edit quiz'),
+        title: Text(widget.set.id == null ? (_kind == QuizKind.mock ? 'New mock test' : 'New quiz') : 'Edit quiz'),
         actions: [
           FilledButton.icon(onPressed: _saving ? null : _save, icon: const Icon(Icons.save_outlined), label: const Text('Save')),
           const SizedBox(width: 8),
@@ -251,15 +296,77 @@ class _SetEditorScreenState extends State<SetEditorScreen> {
             onChanged: (l) => setState(() => _level = l ?? _level),
           ),
           const SizedBox(height: 12),
-          TextField(
-            controller: _minutes,
-            keyboardType: TextInputType.number,
-            decoration: const InputDecoration(
-              labelText: 'Time limit in minutes (mock tests only)',
-              helperText: 'Leave empty for a practice quiz: readers then see the answer after each question.',
-              border: _border,
+          if (_kind != QuizKind.mock)
+            TextField(
+              controller: _minutes,
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(
+                labelText: 'Time limit in minutes (optional)',
+                helperText: 'Leave empty for a practice quiz: readers then see the answer after each question. '
+                    'With a time limit it is taken like a mock test.',
+                border: _border,
+              ),
             ),
-          ),
+          if (_kind == QuizKind.mock) ...[
+            _heading(context, 'Mock test settings'),
+            const Text(
+              'Readers see these on the instructions page before the test starts. '
+              'The timer submits the test by itself when the time is up.',
+            ),
+            const SizedBox(height: 12),
+            TextField(
+              controller: _minutes,
+              keyboardType: TextInputType.number,
+              decoration: const InputDecoration(labelText: 'Time limit in minutes', helperText: 'For example 60.', border: _border),
+            ),
+            const SizedBox(height: 12),
+            _pair(
+              context,
+              TextField(
+                controller: _marks,
+                keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                decoration: const InputDecoration(
+                  labelText: 'Marks for each right answer',
+                  helperText: 'For example 1 or 2.',
+                  border: _border,
+                ),
+              ),
+              TextField(
+                controller: _negative,
+                keyboardType: const TextInputType.numberWithOptions(decimal: true),
+                decoration: const InputDecoration(
+                  labelText: 'Marks taken away for each wrong answer',
+                  helperText: '0 means no negative marking. 0.25 takes away a quarter mark. Check the real exam notice for its rule.',
+                  helperMaxLines: 2,
+                  border: _border,
+                ),
+              ),
+            ),
+            const SizedBox(height: 12),
+            _pair(
+              context,
+              TextField(
+                controller: _text['instructions_as'],
+                maxLines: null,
+                minLines: 3,
+                decoration: const InputDecoration(
+                  labelText: 'Extra instructions (অসমীয়া), one per line',
+                  border: _border,
+                ),
+              ),
+              TextField(
+                controller: _text['instructions_en'],
+                maxLines: null,
+                minLines: 3,
+                decoration: const InputDecoration(
+                  labelText: 'Extra instructions (English), one per line',
+                  helperText: 'Optional. The general rules (timer, palette, marking) are always shown.',
+                  helperMaxLines: 2,
+                  border: _border,
+                ),
+              ),
+            ),
+          ],
           SwitchListTile(
             contentPadding: EdgeInsets.zero,
             title: const Text('Show to readers'),
@@ -348,6 +455,7 @@ class _AdminQuestionListScreenState extends State<AdminQuestionListScreen> {
                   subtitle: Text(
                     [
                       if (_set.isTimed) 'Timed: ${_set.timeLimitMinutes} min' else 'Practice (answers shown after each question)',
+                      if (_set.isMockTest) '+${_num(_set.marksPerQuestion)} right, −${_num(_set.negativeMarks)} wrong',
                       _set.isPublished ? 'Shown to readers' : 'Hidden (draft)',
                     ].join(' · '),
                   ),
@@ -363,6 +471,7 @@ class _AdminQuestionListScreenState extends State<AdminQuestionListScreen> {
                         if (qs[i].text['question_as'] == null) 'English only',
                         if (qs[i].text['question_en'] == null) 'Assamese only',
                         if (qs[i].get('explanation', AppLang.english) == null) 'No explanation yet',
+                        if (_set.isMockTest) qs[i].get('topic', AppLang.english) ?? 'No topic',
                       ].join(' · '),
                     ),
                     trailing: const Icon(Icons.edit_outlined),
@@ -516,6 +625,7 @@ class _QuestionEditorScreenState extends State<QuestionEditorScreen> {
           const Text('Only use facts you have checked in a reliable source. Write both languages if you can.'),
           _heading(context, 'Question'),
           _bilingual('question', 'Question'),
+          _bilingual('topic', 'Topic, e.g. History (for the mock test analysis)', minLines: 1),
           _heading(context, 'Options (tap the circle next to the correct one)'),
           for (var i = 0; i < _opts.length; i++)
             Padding(
