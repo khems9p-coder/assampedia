@@ -102,6 +102,24 @@ class LaterPhase extends StatelessWidget {
       );
 }
 
+/// Small "Developed by Kbx Studios" line shown at the bottom of the side menu and Me screen.
+class DeveloperCredit extends StatelessWidget {
+  const DeveloperCredit({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(24, 24, 24, 8),
+      child: Text(
+        context.s.developedBy,
+        textAlign: TextAlign.center,
+        style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant, letterSpacing: 0.3),
+      ),
+    );
+  }
+}
+
 /// A small gold pill shown when a quiz or mock test score beats every earlier try.
 class NewRecordBadge extends StatelessWidget {
   const NewRecordBadge({super.key, required this.label});
@@ -123,24 +141,6 @@ class NewRecordBadge extends StatelessWidget {
             style: theme.textTheme.labelLarge?.copyWith(color: const Color(0xFF3B2A00), fontWeight: FontWeight.w700),
           ),
         ],
-      ),
-    );
-  }
-}
-
-/// Small "Developed by Kbx" line shown at the bottom of the side menu and Me screen.
-class DeveloperCredit extends StatelessWidget {
-  const DeveloperCredit({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(24, 24, 24, 8),
-      child: Text(
-        context.s.developedBy,
-        textAlign: TextAlign.center,
-        style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant, letterSpacing: 0.3),
       ),
     );
   }
