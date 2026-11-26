@@ -101,3 +101,29 @@ class LaterPhase extends StatelessWidget {
         ),
       );
 }
+
+/// A small gold pill shown when a quiz or mock test score beats every earlier try.
+class NewRecordBadge extends StatelessWidget {
+  const NewRecordBadge({super.key, required this.label});
+  final String label;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 5),
+      decoration: BoxDecoration(color: const Color(0xFFF2B51C), borderRadius: BorderRadius.circular(999)),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          const Icon(Icons.emoji_events, size: 18, color: Color(0xFF3B2A00)),
+          const SizedBox(width: 6),
+          Text(
+            label,
+            style: theme.textTheme.labelLarge?.copyWith(color: const Color(0xFF3B2A00), fontWeight: FontWeight.w700),
+          ),
+        ],
+      ),
+    );
+  }
+}

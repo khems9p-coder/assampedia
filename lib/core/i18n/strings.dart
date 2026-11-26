@@ -336,6 +336,7 @@ class S {
   String get submitTest => _t('পৰীক্ষা জমা দিয়ক', 'Submit test');
   String timeLeft(String t) => _t('বাকী সময়: $t', 'Time left: $t');
   String get timeUp => _t('সময় শেষ। আপোনাৰ উত্তৰ জমা দিয়া হ’ল।', 'Time is up. Your answers were submitted.');
+  String get newRecord => _t('নতুন অভিলেখ', 'New record');
   String get yourResult => _t('আপোনাৰ ফলাফল', 'Your result');
   String scoreLine(int a, int b) => _t('$b টাৰ ভিতৰত $aটা শুদ্ধ', '$a of $b correct');
   String accuracy(int p) => _t('শুদ্ধতা: $p%', 'Accuracy: $p%');

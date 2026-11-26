@@ -12,8 +12,11 @@ enum _Filter { all, correct, wrong, skipped, marked }
 /// The analysis after a mock test: score, counts, accuracy, time, topics,
 /// and every answer with its explanation.
 class MockResultScreen extends StatefulWidget {
-  const MockResultScreen({super.key, required this.result});
+  const MockResultScreen({super.key, required this.result, this.newRecord = false});
   final MockResult result;
+
+  /// True when this score beats every earlier try at the same test.
+  final bool newRecord;
 
   @override
   State<MockResultScreen> createState() => _MockResultScreenState();
@@ -108,6 +111,7 @@ class _MockResultScreenState extends State<MockResultScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  if (widget.newRecord) ...[NewRecordBadge(label: s.newRecord), const SizedBox(height: 6)],
                   Text(s.yourScore, style: theme.textTheme.titleMedium),
                   Text(
                     formatMarks(r.marks),

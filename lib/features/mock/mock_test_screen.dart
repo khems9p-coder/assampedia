@@ -261,8 +261,16 @@ class _MockTestScreenState extends State<MockTestScreen> {
       secondsPerQuestion: _spent,
       timeUp: timeUp,
     );
-    if (widget.set.id != null) context.services.progress.add(result.toAttempt(widget.now()));
-    Navigator.of(context).pushReplacement(SectionRoute(context, builder: (_) => MockResultScreen(result: result)));
+    var newRecord = false;
+    if (widget.set.id != null) {
+      final attempt = result.toAttempt(widget.now());
+      final progress = context.services.progress;
+      newRecord = progress.isNewRecord(attempt);
+      progress.add(attempt);
+    }
+    Navigator.of(
+      context,
+    ).pushReplacement(SectionRoute(context, builder: (_) => MockResultScreen(result: result, newRecord: newRecord)));
   }
 
   Future<void> _confirmLeave() async {
