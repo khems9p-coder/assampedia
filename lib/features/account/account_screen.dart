@@ -4,6 +4,7 @@ import '../../core/theme/section_theme.dart';
 
 import '../../core/app_scope.dart';
 import '../../core/i18n/app_lang.dart';
+import '../../core/widgets/common.dart';
 import '../admin/admin_home_screen.dart';
 import '../jobs/vacancy_widgets.dart';
 import '../premium/paywall_screen.dart';
@@ -119,6 +120,7 @@ class AccountScreen extends StatelessWidget {
                     ),
                   ListTile(leading: const Icon(Icons.logout), title: Text(s.signOut), onTap: auth.signOut),
                 ],
+                const DeveloperCredit(),
               ],
             ),
           );

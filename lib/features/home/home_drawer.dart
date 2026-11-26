@@ -6,6 +6,7 @@ import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../core/app_scope.dart';
+import '../../core/widgets/common.dart';
 import '../account/profile_screen.dart';
 import '../dictionary/dictionary_screen.dart';
 import '../notifications/notifications_screen.dart';
@@ -124,6 +125,7 @@ class HomeDrawer extends StatelessWidget {
                 ),
               ),
             ],
+            const DeveloperCredit(),
           ],
         ),
       ),
