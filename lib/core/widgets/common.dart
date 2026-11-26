@@ -127,3 +127,21 @@ class NewRecordBadge extends StatelessWidget {
     );
   }
 }
+
+/// Small "Developed by Kbx" line shown at the bottom of the side menu and Me screen.
+class DeveloperCredit extends StatelessWidget {
+  const DeveloperCredit({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(24, 24, 24, 8),
+      child: Text(
+        context.s.developedBy,
+        textAlign: TextAlign.center,
+        style: theme.textTheme.bodySmall?.copyWith(color: theme.colorScheme.onSurfaceVariant, letterSpacing: 0.3),
+      ),
+    );
+  }
+}

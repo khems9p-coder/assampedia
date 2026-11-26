@@ -187,6 +187,7 @@ class S {
   String get slideJobsCta => _t('চাকৰি চাওক', 'See vacancies');
   String get shareApp => _t('এপটো শ্বেয়াৰ কৰক', 'Share the app');
   String get rateApp => _t('এপটোক ৰেটিং দিয়ক', 'Rate the app');
+  String get developedBy => _t('Kbx-ৰ দ্বাৰা নিৰ্মিত', 'Developed by Kbx');
   String shareText(String link) => _t(
     'ASSAMPEDIA: অসমৰ সাধাৰণ জ্ঞান, পৰীক্ষা, চাকৰি আৰু কুইজ, অসমীয়া আৰু ইংৰাজীত। $link',
     'ASSAMPEDIA: Assam GK, exams, jobs and quizzes in Assamese and English. $link',
