@@ -330,6 +330,15 @@ class PracticeProgressStore extends ChangeNotifier {
   /// How many times a set was taken.
   int timesTaken(String? setId) => _items.where((a) => a.setId == setId).length;
 
+  /// True when [a] beats every earlier attempt at the same set.
+  /// Call it before [add]. The first try at a set is not a record.
+  bool isNewRecord(QuizAttempt a) {
+    final b = best(a.setId);
+    if (b == null) return false;
+    if (a.marks != null && b.marks != null && a.maxMarks == b.maxMarks) return a.marks! > b.marks!;
+    return a.accuracy > b.accuracy;
+  }
+
   /// Best score for a set, or null if it was never taken.
   QuizAttempt? best(String? setId) {
     QuizAttempt? b;

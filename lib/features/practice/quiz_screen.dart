@@ -30,6 +30,7 @@ class _QuizScreenState extends State<QuizScreen> {
   final _answers = <int, int>{};
   int _i = 0;
   bool _finished = false;
+  bool _newRecord = false;
   Timer? _timer;
   int _secondsLeft = 0;
   final _started = DateTime.now();
@@ -74,19 +75,23 @@ class _QuizScreenState extends State<QuizScreen> {
   void _finish() {
     if (_finished) return;
     _timer?.cancel();
-    setState(() => _finished = true);
     // Only full quizzes count towards progress.
+    QuizAttempt? attempt;
     if (widget.only == null && widget.set.id != null) {
-      context.services.progress.add(
-        QuizAttempt(
-          setId: widget.set.id!,
-          score: _score,
-          total: _qs.length,
-          at: DateTime.now(),
-          seconds: DateTime.now().difference(_started).inSeconds,
-        ),
+      attempt = QuizAttempt(
+        setId: widget.set.id!,
+        score: _score,
+        total: _qs.length,
+        at: DateTime.now(),
+        seconds: DateTime.now().difference(_started).inSeconds,
       );
     }
+    final progress = context.services.progress;
+    setState(() {
+      _finished = true;
+      _newRecord = attempt != null && progress.isNewRecord(attempt);
+    });
+    if (attempt != null) progress.add(attempt);
   }
 
   Future<bool> _confirmLeave() async {
@@ -234,6 +239,7 @@ class _QuizScreenState extends State<QuizScreen> {
             padding: const EdgeInsets.all(20),
             child: Column(
               children: [
+                if (_newRecord) ...[NewRecordBadge(label: s.newRecord), const SizedBox(height: 8)],
                 Text(s.yourResult, style: theme.textTheme.titleMedium),
                 const SizedBox(height: 8),
                 Text('$score / ${_qs.length}', style: theme.textTheme.displaySmall?.copyWith(fontWeight: FontWeight.w700)),
