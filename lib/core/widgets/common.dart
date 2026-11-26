@@ -102,7 +102,7 @@ class LaterPhase extends StatelessWidget {
       );
 }
 
-/// Small "Developed by Kbx" line shown at the bottom of the side menu and Me screen.
+/// Small "Developed by Kbx Studios" line shown at the bottom of the side menu and Me screen.
 class DeveloperCredit extends StatelessWidget {
   const DeveloperCredit({super.key});
 
